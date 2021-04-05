@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="SVM HOG," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="上一篇说到在特征选取的时候，我们选择了最简单的方式完成特征提取的工作。除了简单的把整个图作为特征提取外，还有一种更加精确的方式，即HOG. 一.HOG简介方向梯度直方图（Histogram of Oriented Gradient, HOG）特征是一种在计算机视觉和图像处理中用来进行物体检测的特征描述子。HOG特征通过计算和统计图像局部区域的梯度方向直方图来构成特征。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【大创】（二）训练SVM分类器进行HOG行人检测">
+<meta property="og:url" content="https://chocofairy.github.io/2021/04/05/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%BA%8C%EF%BC%89%E8%AE%AD%E7%BB%83SVM%E5%88%86%E7%B1%BB%E5%99%A8%E8%BF%9B%E8%A1%8CHOG%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="上一篇说到在特征选取的时候，我们选择了最简单的方式完成特征提取的工作。除了简单的把整个图作为特征提取外，还有一种更加精确的方式，即HOG. 一.HOG简介方向梯度直方图（Histogram of Oriented Gradient, HOG）特征是一种在计算机视觉和图像处理中用来进行物体检测的特征描述子。HOG特征通过计算和统计图像局部区域的梯度方向直方图来构成特征。">
+<meta property="og:locale">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-c37cf0789b9cf790d4b4afe514f9c906_720w.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-1d866ca3e02c8288b17c9b714f71f5f0_720w.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=g_x">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=g_y">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctheta">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=g=%5Csqrt%7Bg_x%5E2+g_y%5E2%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctheta=arctan%7B%5Cfrac%7Bg_x%7D%7Bg_y%7D%7D">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-8a48667c4af86625067fa656e27ac9e8_720w.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-60eafba2db53f5cef77313b712a34315_720w.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Csqrt%7B128%5E2+64%5E2+32%5E2%7D=146.64">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-8b1272440a88b4ba792b59947c48d55a_b.webp">
+<meta property="article:published_time" content="2021-04-05T13:14:44.000Z">
+<meta property="article:modified_time" content="2021-04-05T13:15:43.222Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="SVM HOG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-c37cf0789b9cf790d4b4afe514f9c906_720w.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2021/04/05/【大创】（二）训练SVM分类器进行HOG行人检测/"/>
+
+
+
+
+
+  <title>【大创】（二）训练SVM分类器进行HOG行人检测 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/05/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%BA%8C%EF%BC%89%E8%AE%AD%E7%BB%83SVM%E5%88%86%E7%B1%BB%E5%99%A8%E8%BF%9B%E8%A1%8CHOG%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【大创】（二）训练SVM分类器进行HOG行人检测</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-05T21:14:44+08:00">
+                2021-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%88%9B/" itemprop="url" rel="index">
+                    <span itemprop="name">大创</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.7k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上一篇说到在特征选取的时候，我们选择了最简单的方式完成特征提取的工作。除了简单的把整个图作为特征提取外，还有一种更加精确的方式，即HOG.</p>
+<h2 id="一-HOG简介"><a href="#一-HOG简介" class="headerlink" title="一.HOG简介"></a>一.HOG简介</h2><p>方向梯度直方图（Histogram of Oriented Gradient, HOG）特征是一种在计算机视觉和图像处理中用来进行物体检测的特征描述子。HOG特征通过计算和统计图像局部区域的梯度方向直方图来构成特征。</p>
+<span id="more"></span>
+
+<h3 id="1-主要思想"><a href="#1-主要思想" class="headerlink" title="1.主要思想"></a>1.主要思想</h3><p>在一副图像中，局部目标的表象和形状能够被梯度或边缘的方向密度分布很好地描述。其本质为：梯度的统计信息，而梯度主要存在于边缘的地方。Hog特征结合SVM分类器已经被广泛应用于图像识别中，尤其在行人检测中获得了极大的成功。</p>
+<p>下面是HOG+SVM的工作流程，首先对输入的图片进行预处理，然后计算像素点的梯度值，然后形成梯度直方图，然后对blocks进行normalize（归一化），最后收集到HOG feature（其实是一行高维的vector）放到SVM里进行监督学习，从而实现行人的检测。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-c37cf0789b9cf790d4b4afe514f9c906_720w.jpg" alt="img"></p>
+<h3 id="2-实现方法"><a href="#2-实现方法" class="headerlink" title="2.实现方法"></a>2.实现方法</h3><p>首先将图像分成小的连通区域，这些连通区域被叫做细胞单元。然后采集细胞单元中各像素点的梯度的或边缘的方向直方图。最后把这些直方图组合起来，就可以构成特征描述符。</p>
+<h4 id="①图像预处理"><a href="#①图像预处理" class="headerlink" title="①图像预处理"></a>①图像预处理</h4><p>包括伽马校正和灰度化。这是可选的步骤，因为实验证明做不做影响不大。伽马校正是减少光度对实验的影响。灰度化是将彩色图片变成灰度图。其实彩色图片也可以直接处理。不过是分别对三通道的颜色值进行梯度计算，最后选择梯度最大的那个。为简单起见，假设输入为灰度图，同时大小是64*128。</p>
+<h4 id="②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）"><a href="#②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）" class="headerlink" title="②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）"></a>②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）</h4><p><img src="https://pic1.zhimg.com/80/v2-1d866ca3e02c8288b17c9b714f71f5f0_720w.jpg" alt="img"></p>
+<p>对于像素点A，要计算水平梯度和竖直梯度，如上图，水平梯度 <img src="https://www.zhihu.com/equation?tex=g_x" alt="[公式]"> =30-20=10,竖直梯度 <img src="https://www.zhihu.com/equation?tex=g_y" alt="[公式]"> =64-32=32.</p>
+<p>那么总的梯度强度值g和梯度方向 <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="[公式]"> 将按照以下公式计算：</p>
+<p><img src="https://www.zhihu.com/equation?tex=g=%5Csqrt%7Bg_x%5E2+g_y%5E2%7D" alt="[公式]"></p>
+<p><img src="https://www.zhihu.com/equation?tex=%5Ctheta=arctan%7B%5Cfrac%7Bg_x%7D%7Bg_y%7D%7D" alt="[公式]"></p>
+<p>梯度方向将会取绝对值，因此梯度方向的范围是0-180度。取绝对值的原因是这样效果更好。</p>
+<h4 id="③计算梯度直方图"><a href="#③计算梯度直方图" class="headerlink" title="③计算梯度直方图"></a>③计算梯度直方图</h4><p>按照第二步的计算，每一个像素点都会有两个值：梯度强度/梯度方向。</p>
+<p>现在就计算梯度直方图，这是一个关键步骤也是HOG能够work的原因。</p>
+<p>梯度直方图是在一个8×8的cell里面计算的。那么在8×8的cell里面就会有8×8×2=128个值，2是包括了梯度强度和梯度方向。通过统计形成梯度直方图，128个值将会变成9个值，大大降低了计算量，同时又对光照等环境变化更加地robust。</p>
+<p>首先，我将0-180度分成9个bins，分别是0，20，40…160。然后统计每一个像素点所在的bin。请看下图：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-8a48667c4af86625067fa656e27ac9e8_720w.jpg" alt="img"></p>
+<p>左上图是8*8的梯度方向值，右上图是8×8的梯度强度值，下图是9个bins。</p>
+<p>先看两个蓝色圈圈。因为蓝圈的方向是80度，大小是2，所以该点就投给80这个bin；</p>
+<p>再看两个红色圈圈。因为红色圈圈的方向是10，大小是4，因为10距离0点为10，距离20点为也为10，那么有一半的大小是投给0这个bin，还有一半的大小（即是2）投给20这个bin。</p>
+<p>那么统计完64个点的投票数以后，每个bin就会得到一个数值，可以得到一个直方图，在计算机里面就是一个大小为9的数组。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-60eafba2db53f5cef77313b712a34315_720w.jpg" alt="img"></p>
+<p><strong>从上图可以看到，更多的点的梯度方向是倾向于0度和160度，也就是说这些点的梯度方向是向上或者向下，表明图像这个位置存在比较明显的横向边缘。因此HOG是对边角敏感的，由于这样的统计方法，也是对部分像素值变化不敏感的，所以能够适应不同的环境。</strong></p>
+<h4 id="④对16×16大小的block归一化"><a href="#④对16×16大小的block归一化" class="headerlink" title="④对16×16大小的block归一化"></a>④对16×16大小的block归一化</h4><p>归一化的目的是降低光照的影响。</p>
+<p>归一化的方法是向量的每一个值除以向量的模长。</p>
+<p>比如对于一个（128，64，32）的三维向量来说，模长是 <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B128%5E2+64%5E2+32%5E2%7D=146.64" alt="[公式]"></p>
+<p>那么归一化后的向量变成了（0.87，0.43，0.22）</p>
+<p>那么16×16大小的block是怎么来的？</p>
+<p>请看下图：</p>
+<p><img src="https://pic3.zhimg.com/v2-8b1272440a88b4ba792b59947c48d55a_b.webp" alt="img"></p>
+<p>绿色方块是8×8大小的cell，蓝色方块就是由4个cell组成的block。如果要对block进行normalize，那么由于一个cell就会有大小为9的vector，四个cell就有36大小的vector。对block进行normalize就是对这大小为36的vector进行归一化。</p>
+<p>而每一个block将按照上图篮框移动的方式进行迭代截取。</p>
+<h4 id="⑤得到HOG特征向量"><a href="#⑤得到HOG特征向量" class="headerlink" title="⑤得到HOG特征向量"></a>⑤得到HOG特征向量</h4><p>每一个16×16大小的block将会得到36大小的vector。那么对于一个64×128大小的图像，按照上图的方式提取block，将会有7个水平位置和15个竖直位可以取得，所以一共有7×15=105个block，所以我们整合所有block的vector，形成一个大的一维vector的大小将会是36×105=3780。</p>
+<p>得到HOG特征向w量，就可以用来可视化和分类了。对于这么大的HOG特征，SVM就排上用场了。</p>
+<h3 id="3-性能提高"><a href="#3-性能提高" class="headerlink" title="3.性能提高"></a>3.性能提高</h3><p>将这些局部直方图在图像的更大的范围内（叫做区间）进行对比度归一化，可以提高该算法的性能，所采用的方法是：先计算各直方图在这个区间中的密度，然后根据这个密度对区间中的各个细胞单元做归一化。通过这个归一化后，能对光照变化和阴影获得更好的效果。</p>
+<h2 id="二-HOG的优点"><a href="#二-HOG的优点" class="headerlink" title="二.HOG的优点"></a>二.HOG的优点</h2><p>与其他的特征描述方法相比，HOG有很多优点。<br>首先，由于HOG是 在图像的局部方格单元上操作，所以它对图像几何的和光学的形变都能保持很好的不变性，这两种形变只会出现在更大的空间领域上。<br>其次，在粗的空域抽样、精细 的方向抽样以及较强的局部光学归一化等条件下，只要行人大体上能够保持直立的姿势，可以容许行人有一些细微的肢体动作，这些细微的动作可以被忽略而不影响 检测效果。<br>因此HOG特征是特别适合于做图像中的人体检测的 。</p>
+<h2 id="三-HOG实现行人检测"><a href="#三-HOG实现行人检测" class="headerlink" title="三.HOG实现行人检测"></a>三.HOG实现行人检测</h2><p>正样本来源是INRIA数据集中的96<em>160大小的人体图片，使用时上下左右都去掉16个像素，截取中间的64</em>128大小的人体。</p>
+<p>负样本是从不包含人体的图片中随机裁取的，大小同样是64<em>128(从完全不包含人体的图片中随机剪裁出64</em>128大小的用于人体检测的负样本)。</p>
+<p>SVM使用的是OpenCV自带的CvSVM类。</p>
+<p>首先计算正负样本图像的HOG描述子，组成一个特征向量矩阵，对应的要有一个指定每个特征向量的类别的类标向量，输入SVM中进行训练。</p>
+<p>训练好的SVM分类器保存为XML文件，然后根据其中的支持向量和参数生成OpenCV中的HOG描述子可用的检测子参数，再调用OpenCV中的多尺度检测函数进行行人检测。</p>
+<p><code>难例(Hard Example)</code>是指利用第一次训练的分类器在负样本原图(肯定没有人体)上进行行人检测时所有检测到的矩形框，这些矩形框区域很明显都是误报，把这些误报的矩形框保存为图片，加入到初始的负样本集合中，重新进行SVM的训练，可显著减少误报。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core/core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/imgproc/imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/objdetect/objdetect.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/ml/ml.hpp&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PosSamNO 2400    <span class="comment">//正样本个数</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NegSamNO 12000    <span class="comment">//负样本个数</span></span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRAIN false    <span class="comment">//是否进行训练,true表示重新训练，false表示读取xml文件中的SVM模型</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CENTRAL_CROP true   <span class="comment">//true:训练时，对96*160的INRIA正样本图片剪裁出中间的64*128大小人体</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//HardExample：负样本个数。如果HardExampleNO大于0，表示处理完初始负样本集后，继续处理HardExample负样本集。</span></span><br><span class="line"><span class="comment">//不使用HardExample时必须设置为0，因为特征向量矩阵和特征类别矩阵的维数初始化时用到这个值</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HardExampleNO 4435  </span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">//继承自CvSVM的类，因为生成setSVMDetector()中用到的检测子参数时，需要用到训练好的SVM的decision_func参数，</span></span><br><span class="line"><span class="comment">//但通过查看CvSVM源码可知decision_func参数是protected类型变量，无法直接访问到，只能继承之后通过函数访问</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySVM</span> :</span> <span class="keyword">public</span> CvSVM</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//获得SVM的决策函数中的alpha数组</span></span><br><span class="line">	<span class="function"><span class="keyword">double</span> * <span class="title">get_alpha_vector</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>-&gt;decision_func-&gt;alpha;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">//获得SVM的决策函数中的rho参数,即偏移量</span></span><br><span class="line">	<span class="function"><span class="keyword">float</span> <span class="title">get_rho</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>-&gt;decision_func-&gt;rho;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//检测窗口(64,128),块尺寸(16,16),块步长(8,8),cell尺寸(8,8),直方图bin个数9</span></span><br><span class="line">	<span class="function">HOGDescriptor <span class="title">hog</span><span class="params">(Size(<span class="number">64</span>,<span class="number">128</span>),Size(<span class="number">16</span>,<span class="number">16</span>),Size(<span class="number">8</span>,<span class="number">8</span>),Size(<span class="number">8</span>,<span class="number">8</span>),<span class="number">9</span>)</span></span>;<span class="comment">//HOG检测器，用来计算HOG描述子的</span></span><br><span class="line">	<span class="keyword">int</span> DescriptorDim;<span class="comment">//HOG描述子的维数，由图片大小、检测窗口大小、块大小、细胞单元中直方图bin个数决定</span></span><br><span class="line">	MySVM svm;<span class="comment">//SVM分类器</span></span><br><span class="line"> </span><br><span class="line">	<span class="comment">//若TRAIN为true，重新训练分类器</span></span><br><span class="line">	<span class="keyword">if</span>(TRAIN)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">string</span> ImgName;<span class="comment">//图片名(绝对路径)</span></span><br><span class="line">		<span class="function">ifstream <span class="title">finPos</span><span class="params">(<span class="string">&quot;INRIAPerson96X160PosList.txt&quot;</span>)</span></span>;<span class="comment">//正样本图片的文件名列表</span></span><br><span class="line">		<span class="comment">//ifstream finPos(&quot;PersonFromVOC2012List.txt&quot;);//正样本图片的文件名列表</span></span><br><span class="line">		<span class="function">ifstream <span class="title">finNeg</span><span class="params">(<span class="string">&quot;NoPersonFromINRIAList.txt&quot;</span>)</span></span>;<span class="comment">//负样本图片的文件名列表</span></span><br><span class="line"> </span><br><span class="line">		Mat sampleFeatureMat;<span class="comment">//所有训练样本的特征向量组成的矩阵，行数等于所有样本的个数，列数等于HOG描述子维数	</span></span><br><span class="line">		Mat sampleLabelMat;<span class="comment">//训练样本的类别向量，行数等于所有样本的个数，列数等于1；1表示有人，-1表示无人</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">		<span class="comment">//依次读取正样本图片，生成HOG描述子</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num=<span class="number">0</span>; num&lt;PosSamNO &amp;&amp; getline(finPos,ImgName); num++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;处理：&quot;</span>&lt;&lt;ImgName&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="comment">//ImgName = &quot;D:\\DataSet\\PersonFromVOC2012\\&quot; + ImgName;//加上正样本的路径名</span></span><br><span class="line">			ImgName = <span class="string">&quot;D:\\DataSet\\INRIAPerson\\INRIAPerson\\96X160H96\\Train\\pos\\&quot;</span> + ImgName;<span class="comment">//加上正样本的路径名</span></span><br><span class="line">			Mat src = imread(ImgName);<span class="comment">//读取图片</span></span><br><span class="line">			<span class="keyword">if</span>(CENTRAL_CROP)</span><br><span class="line">				src = src(Rect(<span class="number">16</span>,<span class="number">16</span>,<span class="number">64</span>,<span class="number">128</span>));<span class="comment">//将96*160的INRIA正样本图片剪裁为64*128，即剪去上下左右各16个像素</span></span><br><span class="line">			<span class="comment">//resize(src,src,Size(64,128));</span></span><br><span class="line"> </span><br><span class="line">			<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; descriptors;<span class="comment">//HOG描述子向量</span></span><br><span class="line">			hog.compute(src,descriptors,Size(<span class="number">8</span>,<span class="number">8</span>));<span class="comment">//计算HOG描述子，检测窗口移动步长(8,8)</span></span><br><span class="line">			<span class="comment">//cout&lt;&lt;&quot;描述子维数：&quot;&lt;&lt;descriptors.size()&lt;&lt;endl;</span></span><br><span class="line"> </span><br><span class="line">			<span class="comment">//处理第一个样本时初始化特征向量矩阵和类别矩阵，因为只有知道了特征向量的维数才能初始化特征向量矩阵</span></span><br><span class="line">			<span class="keyword">if</span>( <span class="number">0</span> == num )</span><br><span class="line">			&#123;</span><br><span class="line">				DescriptorDim = descriptors.size();<span class="comment">//HOG描述子的维数</span></span><br><span class="line">				<span class="comment">//初始化所有训练样本的特征向量组成的矩阵，行数等于所有样本的个数，列数等于HOG描述子维数sampleFeatureMat</span></span><br><span class="line">				sampleFeatureMat = Mat::zeros(PosSamNO+NegSamNO+HardExampleNO, DescriptorDim, CV_32FC1);</span><br><span class="line">				<span class="comment">//初始化训练样本的类别向量，行数等于所有样本的个数，列数等于1；1表示有人，0表示无人</span></span><br><span class="line">				sampleLabelMat = Mat::zeros(PosSamNO+NegSamNO+HardExampleNO, <span class="number">1</span>, CV_32FC1);</span><br><span class="line">			&#125;</span><br><span class="line"> </span><br><span class="line">			<span class="comment">//将计算好的HOG描述子复制到样本特征矩阵sampleFeatureMat</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;DescriptorDim; i++)</span><br><span class="line">				sampleFeatureMat.at&lt;<span class="keyword">float</span>&gt;(num,i) = descriptors[i];<span class="comment">//第num个样本的特征向量中的第i个元素</span></span><br><span class="line">			sampleLabelMat.at&lt;<span class="keyword">float</span>&gt;(num,<span class="number">0</span>) = <span class="number">1</span>;<span class="comment">//正样本类别为1，有人</span></span><br><span class="line">		&#125;</span><br><span class="line"> </span><br><span class="line">		<span class="comment">//依次读取负样本图片，生成HOG描述子</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num=<span class="number">0</span>; num&lt;NegSamNO &amp;&amp; getline(finNeg,ImgName); num++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;处理：&quot;</span>&lt;&lt;ImgName&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			ImgName = <span class="string">&quot;D:\\DataSet\\NoPersonFromINRIA\\&quot;</span> + ImgName;<span class="comment">//加上负样本的路径名</span></span><br><span class="line">			Mat src = imread(ImgName);<span class="comment">//读取图片</span></span><br><span class="line">			<span class="comment">//resize(src,img,Size(64,128));</span></span><br><span class="line"> </span><br><span class="line">			<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; descriptors;<span class="comment">//HOG描述子向量</span></span><br><span class="line">			hog.compute(src,descriptors,Size(<span class="number">8</span>,<span class="number">8</span>));<span class="comment">//计算HOG描述子，检测窗口移动步长(8,8)</span></span><br><span class="line">			<span class="comment">//cout&lt;&lt;&quot;描述子维数：&quot;&lt;&lt;descriptors.size()&lt;&lt;endl;</span></span><br><span class="line"> </span><br><span class="line">			<span class="comment">//将计算好的HOG描述子复制到样本特征矩阵sampleFeatureMat</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;DescriptorDim; i++)</span><br><span class="line">				sampleFeatureMat.at&lt;<span class="keyword">float</span>&gt;(num+PosSamNO,i) = descriptors[i];<span class="comment">//第PosSamNO+num个样本的特征向量中的第i个元素</span></span><br><span class="line">			sampleLabelMat.at&lt;<span class="keyword">float</span>&gt;(num+PosSamNO,<span class="number">0</span>) = <span class="number">-1</span>;<span class="comment">//负样本类别为-1，无人</span></span><br><span class="line">		&#125;</span><br><span class="line"> </span><br><span class="line">		<span class="comment">//处理HardExample负样本</span></span><br><span class="line">		<span class="keyword">if</span>(HardExampleNO &gt; <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="function">ifstream <span class="title">finHardExample</span><span class="params">(<span class="string">&quot;HardExample_2400PosINRIA_12000NegList.txt&quot;</span>)</span></span>;<span class="comment">//HardExample负样本的文件名列表</span></span><br><span class="line">			<span class="comment">//依次读取HardExample负样本图片，生成HOG描述子</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> num=<span class="number">0</span>; num&lt;HardExampleNO &amp;&amp; getline(finHardExample,ImgName); num++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;处理：&quot;</span>&lt;&lt;ImgName&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">				ImgName = <span class="string">&quot;D:\\DataSet\\HardExample_2400PosINRIA_12000Neg\\&quot;</span> + ImgName;<span class="comment">//加上HardExample负样本的路径名</span></span><br><span class="line">				Mat src = imread(ImgName);<span class="comment">//读取图片</span></span><br><span class="line">				<span class="comment">//resize(src,img,Size(64,128));</span></span><br><span class="line"> </span><br><span class="line">				<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; descriptors;<span class="comment">//HOG描述子向量</span></span><br><span class="line">				hog.compute(src,descriptors,Size(<span class="number">8</span>,<span class="number">8</span>));<span class="comment">//计算HOG描述子，检测窗口移动步长(8,8)</span></span><br><span class="line">				<span class="comment">//cout&lt;&lt;&quot;描述子维数：&quot;&lt;&lt;descriptors.size()&lt;&lt;endl;</span></span><br><span class="line"> </span><br><span class="line">				<span class="comment">//将计算好的HOG描述子复制到样本特征矩阵sampleFeatureMat</span></span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;DescriptorDim; i++)</span><br><span class="line">					sampleFeatureMat.at&lt;<span class="keyword">float</span>&gt;(num+PosSamNO+NegSamNO,i) = descriptors[i];<span class="comment">//第PosSamNO+num个样本的特征向量中的第i个元素</span></span><br><span class="line">				sampleLabelMat.at&lt;<span class="keyword">float</span>&gt;(num+PosSamNO+NegSamNO,<span class="number">0</span>) = <span class="number">-1</span>;<span class="comment">//负样本类别为-1，无人</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"> </span><br><span class="line">		输出样本的HOG特征向量矩阵到文件</span><br><span class="line">		<span class="comment">//ofstream fout(&quot;SampleFeatureMat.txt&quot;);</span></span><br><span class="line">		<span class="comment">//for(int i=0; i&lt;PosSamNO+NegSamNO; i++)</span></span><br><span class="line">		<span class="comment">//&#123;</span></span><br><span class="line">		<span class="comment">//	fout&lt;&lt;i&lt;&lt;endl;</span></span><br><span class="line">		<span class="comment">//	for(int j=0; j&lt;DescriptorDim; j++)</span></span><br><span class="line">		<span class="comment">//		fout&lt;&lt;sampleFeatureMat.at&lt;float&gt;(i,j)&lt;&lt;&quot;  &quot;;</span></span><br><span class="line">		<span class="comment">//	fout&lt;&lt;endl;</span></span><br><span class="line">		<span class="comment">//&#125;</span></span><br><span class="line"> </span><br><span class="line">		<span class="comment">//训练SVM分类器</span></span><br><span class="line">		<span class="comment">//迭代终止条件，当迭代满1000次或误差小于FLT_EPSILON时停止迭代</span></span><br><span class="line">		CvTermCriteria criteria = cvTermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, <span class="number">1000</span>, FLT_EPSILON);</span><br><span class="line">		<span class="comment">//SVM参数：SVM类型为C_SVC；线性核函数；松弛因子C=0.01</span></span><br><span class="line">		<span class="function">CvSVMParams <span class="title">param</span><span class="params">(CvSVM::C_SVC, CvSVM::LINEAR, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0.01</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, criteria)</span></span>;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;开始训练SVM分类器&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		svm.train(sampleFeatureMat, sampleLabelMat, Mat(), Mat(), param);<span class="comment">//训练分类器</span></span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;训练完成&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		svm.save(<span class="string">&quot;SVM_HOG.xml&quot;</span>);<span class="comment">//将训练好的SVM模型保存为xml文件</span></span><br><span class="line"> </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="comment">//若TRAIN为false，从XML文件读取训练好的分类器</span></span><br><span class="line">	&#123;</span><br><span class="line">		svm.load(<span class="string">&quot;SVM_HOG_2400PosINRIA_12000Neg_HardExample(误报少了漏检多了).xml&quot;</span>);<span class="comment">//从XML文件读取训练好的SVM模型</span></span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	<span class="comment">/*************************************************************************************************</span></span><br><span class="line"><span class="comment">	线性SVM训练完成后得到的XML文件里面，有一个数组，叫做support vector，还有一个数组，叫做alpha,有一个浮点数，叫做rho;</span></span><br><span class="line"><span class="comment">	将alpha矩阵同support vector相乘，注意，alpha*supportVector,将得到一个列向量。之后，再该列向量的最后添加一个元素rho。</span></span><br><span class="line"><span class="comment">	如此，变得到了一个分类器，利用该分类器，直接替换opencv中行人检测默认的那个分类器（cv::HOGDescriptor::setSVMDetector()），</span></span><br><span class="line"><span class="comment">	就可以利用你的训练样本训练出来的分类器进行行人检测了。</span></span><br><span class="line"><span class="comment">	***************************************************************************************************/</span></span><br><span class="line">	DescriptorDim = svm.get_var_count();<span class="comment">//特征向量的维数，即HOG描述子的维数</span></span><br><span class="line">	<span class="keyword">int</span> supportVectorNum = svm.get_support_vector_count();<span class="comment">//支持向量的个数</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;支持向量个数：&quot;</span>&lt;&lt;supportVectorNum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"> </span><br><span class="line">	Mat alphaMat = Mat::zeros(<span class="number">1</span>, supportVectorNum, CV_32FC1);<span class="comment">//alpha向量，长度等于支持向量个数</span></span><br><span class="line">	Mat supportVectorMat = Mat::zeros(supportVectorNum, DescriptorDim, CV_32FC1);<span class="comment">//支持向量矩阵</span></span><br><span class="line">	Mat resultMat = Mat::zeros(<span class="number">1</span>, DescriptorDim, CV_32FC1);<span class="comment">//alpha向量乘以支持向量矩阵的结果</span></span><br><span class="line"> </span><br><span class="line">	<span class="comment">//将支持向量的数据复制到supportVectorMat矩阵中</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;supportVectorNum; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">float</span> * pSVData = svm.get_support_vector(i);<span class="comment">//返回第i个支持向量的数据指针</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;DescriptorDim; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//cout&lt;&lt;pData[j]&lt;&lt;&quot; &quot;;</span></span><br><span class="line">			supportVectorMat.at&lt;<span class="keyword">float</span>&gt;(i,j) = pSVData[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">//将alpha向量的数据复制到alphaMat中</span></span><br><span class="line">	<span class="keyword">double</span> * pAlphaData = svm.get_alpha_vector();<span class="comment">//返回SVM的决策函数中的alpha向量</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;supportVectorNum; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		alphaMat.at&lt;<span class="keyword">float</span>&gt;(<span class="number">0</span>,i) = pAlphaData[i];</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">//计算-(alphaMat * supportVectorMat),结果放到resultMat中</span></span><br><span class="line">	<span class="comment">//gemm(alphaMat, supportVectorMat, -1, 0, 1, resultMat);//不知道为什么加负号？</span></span><br><span class="line">	resultMat = <span class="number">-1</span> * alphaMat * supportVectorMat;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">//得到最终的setSVMDetector(const vector&lt;float&gt;&amp; detector)参数中可用的检测子</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; myDetector;</span><br><span class="line">	<span class="comment">//将resultMat中的数据复制到数组myDetector中</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;DescriptorDim; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		myDetector.push_back(resultMat.at&lt;<span class="keyword">float</span>&gt;(<span class="number">0</span>,i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//最后添加偏移量rho，得到检测子</span></span><br><span class="line">	myDetector.push_back(svm.get_rho());</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;检测子维数：&quot;</span>&lt;&lt;myDetector.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">//设置HOGDescriptor的检测子</span></span><br><span class="line">	HOGDescriptor myHOG;</span><br><span class="line">	myHOG.setSVMDetector(myDetector);</span><br><span class="line">	<span class="comment">//myHOG.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());</span></span><br><span class="line"> </span><br><span class="line">	<span class="comment">//保存检测子参数到文件</span></span><br><span class="line">	<span class="function">ofstream <span class="title">fout</span><span class="params">(<span class="string">&quot;HOGDetectorForOpenCV.txt&quot;</span>)</span></span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;myDetector.size(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		fout&lt;&lt;myDetector[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	<span class="comment">/**************读入图片进行HOG行人检测******************/</span></span><br><span class="line">	<span class="comment">//Mat src = imread(&quot;00000.jpg&quot;);</span></span><br><span class="line">	<span class="comment">//Mat src = imread(&quot;2007_000423.jpg&quot;);</span></span><br><span class="line">	Mat src = imread(<span class="string">&quot;1.png&quot;</span>);</span><br><span class="line">	<span class="built_in">vector</span>&lt;Rect&gt; found, found_filtered;<span class="comment">//矩形框数组</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;进行多尺度HOG人体检测&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	myHOG.detectMultiScale(src, found, <span class="number">0</span>, Size(<span class="number">8</span>,<span class="number">8</span>), Size(<span class="number">32</span>,<span class="number">32</span>), <span class="number">1.05</span>, <span class="number">2</span>);<span class="comment">//对图片进行多尺度行人检测</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;找到的矩形框个数：&quot;</span>&lt;&lt;found.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">//找出所有没有嵌套的矩形框r,并放入found_filtered中,如果有嵌套的话,则取外面最大的那个矩形框放入found_filtered中</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; found.size(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Rect r = found[i];</span><br><span class="line">		<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(; j &lt; found.size(); j++)</span><br><span class="line">			<span class="keyword">if</span>(j != i &amp;&amp; (r &amp; found[j]) == r)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">if</span>( j == found.size())</span><br><span class="line">			found_filtered.push_back(r);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">//画矩形框，因为hog检测出的矩形框比实际人体框要稍微大些,所以这里需要做一些调整</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;found_filtered.size(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Rect r = found_filtered[i];</span><br><span class="line">		r.x += cvRound(r.width*<span class="number">0.1</span>);</span><br><span class="line">		r.width = cvRound(r.width*<span class="number">0.8</span>);</span><br><span class="line">		r.y += cvRound(r.height*<span class="number">0.07</span>);</span><br><span class="line">		r.height = cvRound(r.height*<span class="number">0.8</span>);</span><br><span class="line">		rectangle(src, r.tl(), r.br(), Scalar(<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	imwrite(<span class="string">&quot;ImgProcessed.jpg&quot;</span>,src);</span><br><span class="line">	namedWindow(<span class="string">&quot;src&quot;</span>,<span class="number">0</span>);</span><br><span class="line">	imshow(<span class="string">&quot;src&quot;</span>,src);</span><br><span class="line">	waitKey();<span class="comment">//注意：imshow之后必须加waitKey，否则无法显示图像</span></span><br><span class="line">	</span><br><span class="line"> </span><br><span class="line">	<span class="comment">/******************读入单个64*128的测试图并对其HOG描述子进行分类*********************/</span></span><br><span class="line">	读取测试图片(<span class="number">64</span>*<span class="number">128</span>大小)，并计算其HOG描述子</span><br><span class="line">	Mat testImg = imread(<span class="string">&quot;person014142.jpg&quot;</span>);</span><br><span class="line">	<span class="comment">//Mat testImg = imread(&quot;noperson000026.jpg&quot;);</span></span><br><span class="line">	<span class="comment">//vector&lt;float&gt; descriptor;</span></span><br><span class="line">	<span class="comment">//hog.compute(testImg,descriptor,Size(8,8));//计算HOG描述子，检测窗口移动步长(8,8)</span></span><br><span class="line">	<span class="comment">//Mat testFeatureMat = Mat::zeros(1,3780,CV_32FC1);//测试样本的特征向量矩阵</span></span><br><span class="line">	将计算好的HOG描述子复制到testFeatureMat矩阵中</span><br><span class="line">	<span class="comment">//for(int i=0; i&lt;descriptor.size(); i++)</span></span><br><span class="line">	<span class="comment">//	testFeatureMat.at&lt;float&gt;(0,i) = descriptor[i];</span></span><br><span class="line"> </span><br><span class="line">	用训练好的SVM分类器对测试图片的特征向量进行分类</span><br><span class="line">	<span class="comment">//int result = svm.predict(testFeatureMat);//返回类标</span></span><br><span class="line">	<span class="comment">//cout&lt;&lt;&quot;分类结果：&quot;&lt;&lt;result&lt;&lt;endl;</span></span><br><span class="line"> </span><br><span class="line">	system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SVM-HOG/" rel="tag"># SVM HOG</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/30/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91N%E4%B8%AA%E7%BA%BF%E6%AE%B5%E6%B1%82%E6%9C%80%E5%A4%A7%E5%A4%96%E6%8E%A5%E5%9C%86%E5%8D%8A%E5%BE%84/" rel="next" title="【算法】N个线段求最大外接圆半径">
+                <i class="fa fa-chevron-left"></i> 【算法】N个线段求最大外接圆半径
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-HOG%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">一.HOG简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.</span> <span class="nav-text">1.主要思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2.实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A0%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">①图像预处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A1%E8%AE%A1%E7%AE%97%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%83%8F%E7%B4%A0%E7%82%B9%E7%9A%84%E6%A2%AF%E5%BA%A6%E5%80%BC%EF%BC%8C%E5%BE%97%E5%88%B0%E6%A2%AF%E5%BA%A6%E5%9B%BE%EF%BC%88%E8%A7%84%E6%A8%A1%E5%92%8C%E5%8E%9F%E5%9B%BE%E5%A4%A7%E5%B0%8F%E4%B8%80%E6%A0%B7%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A2%E8%AE%A1%E7%AE%97%E6%A2%AF%E5%BA%A6%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.2.3.</span> <span class="nav-text">③计算梯度直方图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A3%E5%AF%B916%C3%9716%E5%A4%A7%E5%B0%8F%E7%9A%84block%E5%BD%92%E4%B8%80%E5%8C%96"><span class="nav-number">1.2.4.</span> <span class="nav-text">④对16×16大小的block归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A4%E5%BE%97%E5%88%B0HOG%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="nav-number">1.2.5.</span> <span class="nav-text">⑤得到HOG特征向量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%80%A7%E8%83%BD%E6%8F%90%E9%AB%98"><span class="nav-number">1.3.</span> <span class="nav-text">3.性能提高</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-HOG%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二.HOG的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-HOG%E5%AE%9E%E7%8E%B0%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">三.HOG实现行人检测</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
