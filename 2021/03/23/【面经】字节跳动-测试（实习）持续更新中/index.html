@@ -382,9 +382,6 @@
 <p>⑥团队合作中遇到过哪些问题？</p>
 <h4 id="个人博客："><a href="#个人博客：" class="headerlink" title="个人博客："></a>个人博客：</h4><p>让我发了网址看了一下，没有过多提问，因为实现原理很简单并且在自我介绍过程中说过了</p>
 <span id="more"></span>
-
-
-
 <h3 id="2-基础知识"><a href="#2-基础知识" class="headerlink" title="2.基础知识"></a>2.基础知识</h3><h4 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h4><h5 id="①什么是线程，什么是进程？有什么区别？"><a href="#①什么是线程，什么是进程？有什么区别？" class="headerlink" title="①什么是线程，什么是进程？有什么区别？"></a>①什么是线程，什么是进程？有什么区别？</h5><ol>
 <li>进程是资源分配的基本单位，线程是CPU调度的基本单位</li>
 <li>线程是进程的一部分，一个线程只属于一个进程，一个进程可以有很多线程</li>
@@ -428,7 +425,6 @@
 <p>②问了遇到的问题和解决方法</p>
 <h3 id="2-算法"><a href="#2-算法" class="headerlink" title="2.算法"></a>2.算法</h3><p>删除链表倒数第n个结点，时间复杂度为O(n)</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode* dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>, head);</span><br><span class="line">        ListNode* first = head;</span><br><span class="line">        ListNode* second = dummy;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            first = first-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (first) &#123;</span><br><span class="line">            first = first-&gt;next;</span><br><span class="line">            second = second-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        second-&gt;next = second-&gt;next-&gt;next;</span><br><span class="line">        ListNode* ans = dummy-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> dummy;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>①问我用了什么思想，我说双指针，一前一后，两个指针的距离是n，后面一个指针先到最后一个节点，这样前一个节点就是倒数第n个节点</p>
 <p>②问了测试用例，我说会测试普通的功能，以及空链表，只有一个节点的链表等</p>
 <h3 id="3-操作系统"><a href="#3-操作系统" class="headerlink" title="3.操作系统"></a>3.操作系统</h3><p><strong>堆和栈的区别：</strong></p>
@@ -468,14 +464,13 @@
 <p>缺点：<br>可用的内存大小缩小为原来的一半，对象存活率高时会频繁进行复制。</p>
 </li>
 <li><p>标记-整理算法<br> 标记-整理算法 采用和 标记-清除算法 一样的方式进行对象的标记，但后续不直接对可回收对象进行清理，而是将所有的存活对象往一端空闲空间移动，然后清理掉端边界以外的内存空间。</p>
+<p>优点：<br>解决了标记-清理算法存在的内存碎片问题。</p>
+<p>缺点：<br>仍需要进行局部对象移动，一定程度上降低了效率。</p>
+</li>
+<li><p>分代收集算法<br> 当前商业虚拟机都采用分代收集的垃圾收集算法。分代收集算法，顾名思义是根据对象的存活周期将内存划分为几块。一般包括年轻代、老年代 和 永久代。</p>
+<p>新生代（Young generation）<br>绝大多数最新被创建的对象会被分配到这里，由于大部分对象在创建后会很快变得不可达，所以很多对象被创建在新生代，然后消失。对象从这个区域消失的过程我们称之为 minor GC。<br>新生代 中存在一个Eden区和两个Survivor区。新对象会首先分配在Eden中（如果新对象过大，会直接分配在老年代中）。在GC中，Eden中的对象会被移动到Survivor中，直至对象满足一定的年纪（定义为熬过GC的次数），会被移动到老年代。<br>可以设置新生代和老年代的相对大小。这种方式的优点是新生代大小会随着整个堆大小动态扩展。参数 -XX:NewRatio 设置老年代与新生代的比例。例如 -XX:NewRatio=8 指定 老年代/新生代 为8/1. 老年代 占堆大小的 7/8 ，新生代 占堆大小的 1/8（默认即是 1/8）。<br>例如：<br>-XX:NewSize=64m -XX:MaxNewSize=1024m -XX:NewRatio=8<br>复制代码<br>老年代（Old generation）<br>对象没有变得不可达，并且从新生代中存活下来，会被拷贝到这里。其所占用的空间要比新生代多。也正由于其相对较大的空间，发生在老年代上的GC要比新生代要少得多。对象从老年代中消失的过程，可以称之为major GC（或者full GC）。<br>永久代（permanent generation）<br>像一些类的层级信息，方法数据 和方法信息（如字节码，栈 和 变量大小），运行时常量池（JDK7之后移出永久代），已确定的符号引用和虚方法表等等。它们几乎都是静态的并且很少被卸载和回收，在JDK8之前的HotSpot虚拟机中，类的这些<strong>“永久的”</strong> 数据存放在一个叫做永久代的区域。<br>永久代一段连续的内存空间，我们在JVM启动之前可以通过设置-XX:MaxPermSize的值来控制永久代的大小。但是JDK8之后取消了永久代，这些元数据被移到了一个与堆不相连的称为元空间 (Metaspace) 的本地内存区域。</p>
 </li>
 </ol>
-<p>  优点：<br>  解决了标记-清理算法存在的内存碎片问题。</p>
-<p>  缺点：<br>  仍需要进行局部对象移动，一定程度上降低了效率。</p>
-<ol start="4">
-<li>分代收集算法<br> 当前商业虚拟机都采用分代收集的垃圾收集算法。分代收集算法，顾名思义是根据对象的存活周期将内存划分为几块。一般包括年轻代、老年代 和 永久代。</li>
-</ol>
-<p>  新生代（Young generation）<br>  绝大多数最新被创建的对象会被分配到这里，由于大部分对象在创建后会很快变得不可达，所以很多对象被创建在新生代，然后消失。对象从这个区域消失的过程我们称之为 minor GC。<br>  新生代 中存在一个Eden区和两个Survivor区。新对象会首先分配在Eden中（如果新对象过大，会直接分配在老年代中）。在GC中，Eden中的对象会被移动到Survivor中，直至对象满足一定的年纪（定义为熬过GC的次数），会被移动到老年代。<br>  可以设置新生代和老年代的相对大小。这种方式的优点是新生代大小会随着整个堆大小动态扩展。参数 -XX:NewRatio 设置老年代与新生代的比例。例如 -XX:NewRatio=8 指定 老年代/新生代 为8/1. 老年代 占堆大小的 7/8 ，新生代 占堆大小的 1/8（默认即是 1/8）。<br>  例如：<br>  -XX:NewSize=64m -XX:MaxNewSize=1024m -XX:NewRatio=8<br>  复制代码<br>  老年代（Old generation）<br>  对象没有变得不可达，并且从新生代中存活下来，会被拷贝到这里。其所占用的空间要比新生代多。也正由于其相对较大的空间，发生在老年代上的GC要比新生代要少得多。对象从老年代中消失的过程，可以称之为major GC（或者full GC）。<br>  永久代（permanent generation）<br>  像一些类的层级信息，方法数据 和方法信息（如字节码，栈 和 变量大小），运行时常量池（JDK7之后移出永久代），已确定的符号引用和虚方法表等等。它们几乎都是静态的并且很少被卸载和回收，在JDK8之前的HotSpot虚拟机中，类的这些<strong>“永久的”</strong> 数据存放在一个叫做永久代的区域。<br>  永久代一段连续的内存空间，我们在JVM启动之前可以通过设置-XX:MaxPermSize的值来控制永久代的大小。但是JDK8之后取消了永久代，这些元数据被移到了一个与堆不相连的称为元空间 (Metaspace) 的本地内存区域。</p>
 </li>
 </ul>
 <h3 id="5-计算机网络"><a href="#5-计算机网络" class="headerlink" title="5.计算机网络"></a>5.计算机网络</h3><p>①网络七层协议栈</p>
@@ -534,7 +529,7 @@
 <p>5、本地DNS服务器继续向域服务器发出请求，在这个例子中，请求的对象是.com域服务器。.com域服务器收到请求之后，也不会直接返回域名和IP地址的对应关系，而是告诉本地DNS服务器，你的域名的解析服务器的地址。</p>
 <p>6、最后，本地DNS服务器向域名的解析服务器发出请求，这时就能收到一个域名和IP地址对应关系，本地DNS服务器不仅要把IP地址返回给用户电脑，还要把这个对应关系保存在缓存中，以备下次别的用户查询时，可以直接返回结果，加快网络访问。</p>
 <h3 id="6-用例设计"><a href="#6-用例设计" class="headerlink" title="6.用例设计"></a>6.用例设计</h3><p>问我平常用什么软件？我说微信，面试官说我一面问的是微信，换一个，我就说了微博。然后问我用啥功能，我说发微博，发图片。让我设计发图片的测试用例。</p>
-<p><img src="/images/weibopicture.jpg"></p>
+<p><img src="/images/weibopicture.jpg" alt=""></p>
 <h3 id="7-发展方向和职业规划"><a href="#7-发展方向和职业规划" class="headerlink" title="7.发展方向和职业规划"></a>7.发展方向和职业规划</h3><p>这个坑了自己一把，我说我想今年保研之后，10月份到明年3、4月份都可以实习，面试官表示了解，说今天没有时间面下一轮了，后面再约时间面。当时感觉面试官还是很满意的。</p>
 <p>然后！！！hr打电话告诉我暑期实习可能没法保留到10月，要先和leader商量才能告诉我能不能继续面试。</p>
 <p>感觉像是愚人节给我开了个玩笑……</p>
