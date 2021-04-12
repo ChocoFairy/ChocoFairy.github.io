@@ -248,6 +248,213 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/12/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3next5%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%B7%B3%E8%BD%AC%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/12/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3next5%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%B7%B3%E8%BD%AC%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url">【博客】解决next5主题目录无法跳转的问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-12T19:41:59+08:00">
+                2021-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  773 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述">概述</h2>
+<p>目前使用的 next 版本是 5.1.4 ，文章左侧的目录一直不能跳转也不能展开，按网上的办法一直没法解决，今天自己琢磨了一阵总算搞定了。</p>
+<p>由于发现遇到这个问题的人不少，特此总结一下。</p>
+<p>一般分为两种情况：渲染错误和超链接乱码。</p>
+<h2 id="一、渲染错误">一、渲染错误</h2>
+<h3 id="1-问题描述">1.问题描述</h3>
+<p>最典型的特征就是目录上的超链接为 <code>undefined</code>，或者点击的时候报错： <code>Cannot read property 'replace' of null</code>。</p>
+<p>前一情况 GitHub 中已有相应的 Issues：<a target="_blank" rel="noopener" href="https://github.com/Haojen/hexo-theme-Anisina/issues/34">根据 markdown 生成的 TOC 锚点的内容是 undefined</a></p>
+<p>这个情况一般是 <code>markdown-it</code> 渲染出错，渲染时候把应该加在标题的锚点加到了标题内的 sapn 标签里，导致生成目录的时候获取不到对应的锚点。</p>
+<p>比如原本 <code>##一级标题</code> 应该是渲染成 <code>&lt;h2 id=&quot;一级标题&quot;&gt;一级标题&lt;/h2&gt;</code>，然后生成目录的时候扫描所有 <code>h2</code> 标签获取 id 作为链接，但是实际上 marked-it 渲染出来的是这样的： <code>&lt;h2&gt;&lt;span id=&quot;一级标题&quot;&gt;一级标题&lt;/span&gt;&lt;/h2&gt;</code></p>
+<h3 id="2-解决方案">2.解决方案</h3>
+<p><strong>方案一：调整渲染引擎</strong></p>
+<p>最直白的解决方案就是更换渲染引擎。</p>
+<p>如果一定要使用 <code>markdown-it </code>的话，可以为 <code>markdown-it</code> 安装 <code>markdown-it-named-headings</code>插件。具体的过程可以参考 <code>markdown-it</code>的 Issues：<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-markdown-it/issues/40">Cannot render headings with ids？</a></p>
+<p><strong>方案二：修改代码</strong></p>
+<p>如果安装插件仍然不行，那就只能手动更改目录渲染的 js 代码，具体过程可以参考这个大佬的：<a target="_blank" rel="noopener" href="https://convivae.top/posts/hexo-bo-ke-cai-keng/#%E6%96%B9%E6%B3%95-2">Hexo 博客踩坑</a>。</p>
+<h2 id="二、超链接乱码">二、超链接乱码</h2>
+<h3 id="1-问题描述-2">1.问题描述</h3>
+<p>这个问题的特征是渲染没问题，也就是不会有上面那种情况，但是点击目录链接会在控制台报错：<code>Cannot read property 'top' of undefined</code>。</p>
+<p>我们打开控制台，查看目录的的超链接标签，会看到 href 是一串乱码：</p>
+<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217163920205.png"><img src="http://img.xiajibagao.top/image-20201217163920205.png" alt="image-20201217163920205"></a></p>
+<p>image-20201217163920205</p>
+<p>我们去找他对应的标题：</p>
+<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217164207627.png"><img src="http://img.xiajibagao.top/image-20201217164207627.png" alt="image-20201217164207627"></a></p>
+<p>image-20201217164207627</p>
+<p>实际上直接点击这个超链接是可以跳转的，但是点目录却不行。这是因为标题 id 是中文，但是目录的连接是中文乱码，代码里头的 JQuery 选择器拿着乱码是没法找到对应 id 的标题的。</p>
+<h3 id="2-解决方案-2">2.解决方案</h3>
+<p>这个错误很明显，因为控制台已经告诉我错误代码在 <code>post-details.js</code>里了，顺着提示找到 <code>themes\next\source\js\src\post-details.js</code>，找到第 73 行为目录绑定点击事件的方法，会看到：</p>
+<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217170155109.png"><img src="http://img.xiajibagao.top/image-20201217170155109.png" alt="image-20201217170155109"></a></p>
+<p>image-20201217170155109</p>
+<p><code>targetSelector</code>就是对应标题的 id，我们在他被塞到选择器之前重新编码一下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对获取到的url进行重编码</span></span><br><span class="line">targetSelector = <span class="built_in">decodeURI</span>(<span class="built_in">this</span>.getAttribute(<span class="string">&#x27;href&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>然后 <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code> 重新跑一下，发现目录就正常了。</p>
+<p>另外，在next6 里这个问题被修复了：<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/issues/1547">点击文章中文目录跳转无法实现 #1547</a>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/11/%E3%80%90TensorFlow%E3%80%91%E5%A6%82%E4%BD%95%E5%9C%A8pycharm%E5%88%A9%E7%94%A8Anaconda%E5%AE%89%E8%A3%85TensorFlow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -595,194 +802,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/11/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E5%BC%95%E7%94%A8%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/person.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="巧克力梦工厂">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/04/11/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E5%BC%95%E7%94%A8%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url">【博客】解决Hexo博客引用网络图片无法显示的问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-11T20:59:37+08:00">
-                2021-04-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index">
-                    <span itemprop="name">环境配置</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  102 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <meta name="referrer" content="no-referrer"/>
-<h2 id="问题">问题</h2>
-<p>这几天在Hexo博客发布的时候，预览可以看见所有的网络图片，但是一旦deploy上去之后就全部显示不了，如下图所示：</p>
-<p><img src="https://img-blog.csdnimg.cn/20190721222823613.png" alt="img"></p>
-<p>用Chrome浏览器，按F12提示如下403错误：</p>
-<p><img src="https://img-blog.csdnimg.cn/2019072122303179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21xZHhpYW94aWFv,size_16,color_FFFFFF,t_70" alt="img"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/04/11/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E5%BC%95%E7%94%A8%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-	
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
   </nav>
 
 
@@ -831,7 +855,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
