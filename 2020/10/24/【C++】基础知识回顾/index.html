@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="c++基础," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近准备重新学习学习C++，因为之前也都是上课学习，其实很多细节自己还是没有掌握地很好，现在时间比较充裕，乘着这个窗口期赶紧再充实一下自己。这系列的文章既是每周的总结也是希望跟读者们共同进步，相互学习。 这篇文章并不是讲C++的语法，而是C++学习的预热。内容看起来很杂，其实是一些自己感觉很熟的东西中容易忽略的地方。主要是建立学习C++的好奇与兴趣。正如某位大佬所说：“技术领域并不缺少神奇，只是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C++】基础知识回顾">
+<meta property="og:url" content="https://chocofairy.github.io/2020/10/24/%E3%80%90C++%E3%80%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="最近准备重新学习学习C++，因为之前也都是上课学习，其实很多细节自己还是没有掌握地很好，现在时间比较充裕，乘着这个窗口期赶紧再充实一下自己。这系列的文章既是每周的总结也是希望跟读者们共同进步，相互学习。 这篇文章并不是讲C++的语法，而是C++学习的预热。内容看起来很杂，其实是一些自己感觉很熟的东西中容易忽略的地方。主要是建立学习C++的好奇与兴趣。正如某位大佬所说：“技术领域并不缺少神奇，只是">
+<meta property="og:locale">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201024100631866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201024100657949.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-10-24T08:25:49.000Z">
+<meta property="article:modified_time" content="2021-04-12T08:59:38.419Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="c++基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201024100631866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2020/10/24/【C++】基础知识回顾/"/>
+
+
+
+
+
+  <title>【C++】基础知识回顾 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2020/10/24/%E3%80%90C++%E3%80%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【C++】基础知识回顾</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-24T16:25:49+08:00">
+                2020-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>﻿最近准备重新学习学习C++，因为之前也都是上课学习，其实很多细节自己还是没有掌握地很好，现在时间比较充裕，乘着这个窗口期赶紧再充实一下自己。这系列的文章既是每周的总结也是希望跟读者们共同进步，相互学习。</p>
+<p>这篇文章并不是讲C++的语法，而是C++学习的预热。内容看起来很杂，其实是一些自己感觉很熟的东西中容易忽略的地方。主要是建立学习C++的好奇与兴趣。正如某位大佬所说：“技术领域并不缺少神奇，只是缺少发现神奇的眼睛。”</p>
+<p>主要内容包括：c++工程开发规范；编译链接的具体过程；如何在c++工程中引入第三方模块以及预处理。</p>
+<p>说明：部分内容源自自己购买的付费课程，若有侵权，请联系删除。</p>
+<p><strong>&lt;面向对象&gt;</strong></p>
+<p>对于最开始的一段代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;hello world&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，cout到底是什么东西呢?</p>
+<p>-&gt;实际上，cout在c++中是一个预定义的<strong>对象</strong>。</p>
+<p><strong>&lt;运算符重载&gt;</strong></p>
+<blockquote>
+<p>目的：通过运算符重载可以输出自定义的对象，让不同类型的对象使用更加方便，符合编码逻辑</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class Point&#123;</span><br><span class="line">public:</span><br><span class="line">     Point(int x,int y):x(x),y(y)&#123;&#125;</span><br><span class="line">     int x,y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;重载运算符</span><br><span class="line">ostream &amp;operator&lt;&lt;(ostream &amp;out, const Point &amp;p)&#123;</span><br><span class="line">    out&lt;&lt;&quot;(&quot;&lt;&lt;p.x&lt;&lt;&quot;,&quot;&lt;&lt;p.y&lt;&lt;&quot;)&quot;;</span><br><span class="line">    return out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    Point a(3,4);</span><br><span class="line">    cout&lt;&lt;&quot;hello world&quot;&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--&gt;</span><br><span class="line">hello world </span><br><span class="line">(3,4)</span><br></pre></td></tr></table></figure>
+<p>其中，<strong>思考</strong>一下两个问题：</p>
+<ol>
+<li><p>operator&lt;&lt; 返回的是左值引用。但什么是左值引用呢？</p>
+<p>可以实现连续赋值的操作，如==，+=，&lt;&lt;等。这里就是说，cout&lt;&lt;a之后仍返回一个ostream的实例。</p>
+<p>更简单的解释是：下面这个例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">5</span>,b=<span class="number">7</span>;</span><br><span class="line">(a=b)=<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//result: a=10, b=7</span></span><br></pre></td></tr></table></figure>
+<p>具体过程：b先赋值给a，返回一个int对象的引用（a的引用），然后再将10赋值给这个引用，所以最终才会有这个答案。若（a=b）返回的不是左值引用，而仅仅是一个值，那么int值=10就<strong>编译</strong>不通过了（报错为：error: left value required as left operand of assignment）。</p>
+<p><strong>小结</strong>：连续运算符的重载应返回左值引用</p>
+</li>
+<li><p>为什么第二个参数要为const类型？</p>
+<ul>
+<li>不希望对类成员变量进行修改。</li>
+<li>加上const，对于const和非const的实参，函数都能接受。但不加的话，就只能接受非const的实参。编译不能通过（报错为：error: no match for ‘operator&lt;&lt;’ (operand types are ‘std::ostream {aka std::basic_ostream<char>}’ and ‘const Point’)）</li>
+</ul>
+<p>同时补充一下，使用引用&amp;Point 是因为 可以避免在函数调用时对实参的一次拷贝，提高了效率。</p>
+</li>
+</ol>
+<p><strong>&lt;工程开发规范&gt;</strong></p>
+<p>对于&lt;运算符重载&gt;部分的代码：</p>
+<p>存在以下问题：</p>
+<ol>
+<li>没有将类的声明与定义分离</li>
+<li>暴露了类的成员变量</li>
+<li>命名空间的使用，不清楚到底引入了多少符号！</li>
+</ol>
+<p>修改如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">//using namespace std;</span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::ostream;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Point(<span class="keyword">int</span> x,<span class="keyword">int</span> y);</span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out,<span class="keyword">const</span> Point &amp;p);    <span class="comment">// 若私有变量需要被外部函数使用，那么可以使用友元函数。</span></span><br><span class="line"><span class="keyword">private</span>:        <span class="comment">// 保护类的成员变量</span></span><br><span class="line">    <span class="keyword">int</span> x,y;    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Point::Point(<span class="keyword">int</span> x,<span class="keyword">int</span> y):x(x),y(y)&#123;&#125;    <span class="comment">// 分离类的声明与定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//重载运算符</span></span><br><span class="line">ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Point &amp;p)&#123;</span><br><span class="line">    out&lt;&lt;<span class="string">&quot;(&quot;</span>&lt;&lt;p.x&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;p.y&lt;&lt;<span class="string">&quot;)&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">Point <span class="title">a</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;hello world&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但是注意，类的成员变量若是私有，外部需要访问就需要将 使用了这个私有成员变量的函数 声明为友元函数。</p>
+<p><strong><c++为什么难学></strong></p>
+<p>有以下几个原因：</p>
+<ul>
+<li><p>c++语法难学，多样复杂</p>
+</li>
+<li><p>“技术想象力”要求高（用“编程范式”来举例了，如：面向过程，面向对象，泛型编程，函数式编程。即设计代码的思想），来源于夯实的基础知识。<strong>为什么会看不懂开源代码？就是由于基础知识的匮乏导致的技术想象力有限</strong>。</p>
+<p>技术想象力的例子，以c++中实现加法为例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 面向过程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add1</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 面向对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ADD</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a+b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 泛型编程</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> U&gt;</span><br><span class="line">auto add3(T a, U b) -&gt; decltype(a+b)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 函数式编程</span></span><br><span class="line"><span class="keyword">auto</span> add4 = [](<span class="keyword">int</span> a,<span class="keyword">int</span> b) -&gt; <span class="keyword">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ADD add2;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;add1(<span class="number">3</span>,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;add2(<span class="number">3</span>,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;add3(<span class="number">3</span>,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;add4(<span class="number">3</span>,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main中，看似使用的一样，但是背后实现完全不同！</span></span><br></pre></td></tr></table></figure>
+<p>其实，为什么c++语法特性多，难学，是因为c++要同时支持4种编程范式。</p>
+</li>
+<li><p>c++背后承载的体系特别大。不仅仅是c++语言本身，除此之外，c++跟底层系统的联系，和网络的联系，所透露出算法数据结构的思想，不同的编程范式等。一个真正掌握c++开发的程序员，背后的这套体系极其夯实庞大！</p>
+</li>
+</ul>
+<h2 id="C程序执行的过程"><a href="#C程序执行的过程" class="headerlink" title="C程序执行的过程"></a>C程序执行的过程</h2><p>C源码变成可执行文件的重点的两个过程（一共有6个过程）：</p>
+<p><img src="https://img-blog.csdnimg.cn/20201024100631866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>对象文件中，存放的是“<strong>定义</strong>”</p>
+<p>多个C源码被编译为多个对象文件，然后将多个对象文件链接成一个可执行文件。</p>
+<p><strong>&lt;声明与定义&gt;</strong></p>
+<ul>
+<li>声明：相当于一个说明的作用</li>
+<li>定义：表示具体的实现过程</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于对象文件是什么感到好奇吗？</p>
+<p><strong>&lt;编译阶段&gt;</strong></p>
+<blockquote>
+<p>编译阶段的主要目的：语法检查。即确保c源码没有语法错误，能生成对象文件。</p>
+</blockquote>
+<p>只执行编译的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -c main.cpp</span><br></pre></td></tr></table></figure>
+<p>查看对象文件main.o中到底是什么东西：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nm -C main.o</span><br></pre></td></tr></table></figure>
+<p>得到以下的结果：</p>
+<p><img src="https://img-blog.csdnimg.cn/20201024100657949.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>其中，前面有一串数字以及T字母的 这些方法是当前文件中定义的；没有数字的 表示那些方法的定义是在外部进行查找的。</p>
+<p>思考：那些需要外部查找定义的函数是如何被找到的呢？</p>
+<p>注意：编译阶段不需要知道所声明函数的定义</p>
+<p><strong>&lt;链接阶段&gt;</strong></p>
+<blockquote>
+<p>链接阶段的主要目的：将多个对象文件拼接在一起。把对象文件中需要外部查找的方法与其具体的定义链接起来。</p>
+</blockquote>
+<p>相当于，你有病（需要外部查找的方法），我有药（方法的定义），我们之间匹配上了。</p>
+<p>举例：</p>
+<p>（1）main.cpp —&gt; main.o</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;add(3,4)=&quot;</span>&lt;&lt;add(<span class="number">3</span>,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.o的部分内容</span></span><br><span class="line">                 <span class="function">U <span class="title">add</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span></span><br><span class="line"><span class="function">0000000000000000 T main</span></span><br><span class="line"><span class="function"></span></span><br></pre></td></tr></table></figure>
+<p>（2）add.cpp —&gt; add.o</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// add.o中的内容</span></span><br><span class="line"><span class="number">0000000000000000</span> <span class="function">T <span class="title">add</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br></pre></td></tr></table></figure>
+<p>接着将这两个对象文件连接在一起，就可以形成一个完整的可执行程序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ main.o add.o</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后执行这个可执行文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./a.out</span><br><span class="line"></span><br><span class="line">-----result------</span><br><span class="line">add(3,4)=7</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>&lt;小结&gt;</strong></p>
+<ol>
+<li>编译阶段主要在做 <strong>语法检查</strong>， 而链接阶段主要在做 <strong>定义匹配</strong>。</li>
+<li>声明作用于编译阶段，帮助源程序通过编译（编译期间出现的错误主要有：符号未定义/找不到，语法错误等）；定义作用在链接阶段，帮助对象文件完成定义的匹配（链接阶段出现的错误主要有：定义不存在或者定义冲突）</li>
+<li>声明主要放在头文件中，定义主要放在源文件中</li>
+</ol>
+<h2 id="google测试框架"><a href="#google测试框架" class="headerlink" title="google测试框架"></a>google测试框架</h2><blockquote>
+<p>重点：学习如何在c/c++工程中引入第三方功能模块</p>
+</blockquote>
+<p>我们在编译阶段只需要第三方模块的声明（在头文件.h中），在链接阶段，我们需要第三方模块的定义（静态链接库.a文件）</p>
+<p>googletest提供的是cmake方法进行编译，那么新建build文件夹并对googletest模块进行编译，得到如下结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">zzmine@ubuntu:~/myLibs/googletest/build<span class="variable">$cmake</span> ../</span><br><span class="line">zzmine@ubuntu:~/myLibs/googletest/build$ make</span><br><span class="line">Scanning dependencies of target gtest</span><br><span class="line">[ 12%] Building CXX object googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o</span><br><span class="line">[ 25%] Linking CXX static library ../lib/libgtest.a</span><br><span class="line">Scanning dependencies of target gmock</span><br><span class="line">[ 37%] Building CXX object googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o</span><br><span class="line">[ 50%] Linking CXX static library ../lib/libgmock.a</span><br><span class="line">Scanning dependencies of target gmock_main</span><br><span class="line">[ 62%] Building CXX object googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o</span><br><span class="line">[ 75%] Linking CXX static library ../lib/libgmock_main.a</span><br><span class="line">[ 75%] Built target gmock_main</span><br><span class="line">Scanning dependencies of target gtest_main</span><br><span class="line">[ 87%] Building CXX object googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o</span><br><span class="line">[100%] Linking CXX static library ../lib/libgtest_main.a</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意这里生成了4个.a文件，并且有一个lib文件夹，这个就是第三方模块googletest中方法的定义！</p>
+<p>然后在xxx/googletest/googletest/ 中可以找到include文件，这就是第三方模块googletest中方法的声明！</p>
+<p>接着就可以使用googletest编写C++程序了：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;gtest/gtest.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(test,add1)&#123;</span><br><span class="line">    EXPECT_EQ(add(<span class="number">3</span>,<span class="number">4</span>),<span class="number">8</span>);</span><br><span class="line">    EXPECT_EQ(add(<span class="number">3</span>,<span class="number">4</span>),<span class="number">7</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(test,add2)&#123;</span><br><span class="line">    EXPECT_LT(add(<span class="number">3</span>,<span class="number">4</span>),<span class="number">7</span>);</span><br><span class="line">    EXPECT_LT(add(<span class="number">3</span>,<span class="number">4</span>),<span class="number">8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;add(3,4)=&quot;</span>&lt;&lt;add(<span class="number">3</span>,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但是，在执行编译过程时，发生以下报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">zzmine@ubuntu:~/CPractice$ g++ -c main.cpp</span><br><span class="line">main.cpp:2:9: fatal error: gtest/gtest.h: No such file or directory</span><br><span class="line"> <span class="comment">#include&lt;gtest/gtest.h&gt;</span></span><br><span class="line">         ^~~~~~~~~~~~~~~</span><br><span class="line">compilation terminated.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>说明，其实在默认的头文件搜索路径中，没有包括googletest的include文件夹。</p>
+<p>所以需要告诉g++编译器，在编译搜索目录时需要加上googletest的include路径。执行（这里我把googletest的include路径拷贝到当前目录中了）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -I./include -c main.cpp </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>完成了编译过程，此时在当前目录中生成了一个main.o文件。用nm -C main.o查看对象文件内容，发现有大量的外部符号链接。</p>
+<p>接下来进行链接过程，将main.o与之前生成的googletest静态链接库文件进行链接。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -L./lib main.o -lgtest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>最后，执行可执行文件 ./a.out 获得想要的输出结果。</p>
+<h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><blockquote>
+<p>C++源文件通过预处理得到待编译源码，<strong>待编译源码决定了可执行文件的功能</strong>。</p>
+</blockquote>
+<p>所有预处理命令都是以#开头，其中宏定义是预处理家族中的一员，宏做的事情就是简单的替换。</p>
+<p><strong>&lt;宏定义&gt;</strong></p>
+<ul>
+<li><p>定义符号常量</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.1415926</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_N 10000</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义表达式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> S(a,b) a*b</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义代码段：注意，每行后面要加\ 表示连接，因为预处理命令只能写在一行</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P(a) &#123; \</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,a); \</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>备注：#include 表示将后面库文件的内容添加到当前文件中。</p>
+<p>举例：define.cpp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.1415926</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lf\n&quot;</span>,<span class="number">2</span>*PI);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以执行一下命令来查看待编译源码的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -E define.cpp</span><br></pre></td></tr></table></figure>
+<p>也可以通过重定向文件输出到某个文件中进行查看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -E define.cpp &gt; output.cpp</span><br></pre></td></tr></table></figure>
+<p>发现主函数部分被替换成了如下的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ... 上面省略了很多产生的内容</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lf\n&quot;</span>,<span class="number">2</span>*<span class="number">3.1415926</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要特别注意的是，可执行文件的功能完全取决于待编译源码！</p>
+<p>可以举出下面的一些例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#define S(a,b) a*b</span><br><span class="line"></span><br><span class="line">S(3,4)        ---&gt;    3*4&#x3D;12</span><br><span class="line">S(3+9,4)      ---&gt;    3+9*4&#x3D;39</span><br><span class="line">int n &#x3D; 5;</span><br><span class="line">S(int,p)&#x3D;&amp;n;  ---&gt;    int*p &#x3D; &amp;n;</span><br></pre></td></tr></table></figure>
+<p><strong>&lt;预定义的宏&gt;</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>宏</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong> DATE </strong></td>
+<td>日期：Mmm dd yyyy</td>
+</tr>
+<tr>
+<td><strong> TIME </strong></td>
+<td>时间：hh:mm:ss</td>
+</tr>
+<tr>
+<td><strong> LINE </strong></td>
+<td>行号</td>
+</tr>
+<tr>
+<td><strong> FILE </strong></td>
+<td>文件名</td>
+</tr>
+<tr>
+<td><strong> FUNC </strong></td>
+<td>函数名/非标准</td>
+</tr>
+<tr>
+<td><strong> PRETTY_FUNCTION </strong></td>
+<td>更详细的函数信息</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>通过这种探索式的学习，自己发现其实C++中有很多有趣的内容，而这些在之前的课程学习中完全被忽略掉了，当时的我只是很功利地去模拟书上的代码，却很少静下心来领略编程的艺术。</p>
+<p>同时，我在重学C++的过程中，全程使用的是Linux平台的g++编译器以及vim编辑器，而没有选择更加“方便”的IDE。在学习的过程中，我对c++文件从文本到可执行文件的过程有了更深的理解。我明显地感觉到自己对C++的理解更加深刻了，其实这种感觉也说不上来是什么样子，大概就是代码打起来手比较熟，报错啥的完全不慌哈哈哈哈哈。印象最深刻的就是可执行文件的功能其实完全取决于预编译源码，而并不是自己写的源代码。感觉正确的编程学习方式还是要基于原理，然后大规模开发需要提升效率再使用IDE。</p>
+<p>最后，这并不是一周所学的全部内容，只是这些都是C++预热的部分，而且全放在一篇文章会显得很臃肿，所以其余内容将会在后续发布。</p>
+<p>若有任何疑问，欢迎交流！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c-%E5%9F%BA%E7%A1%80/" rel="tag"># c++基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/16/java%E7%AC%94%E8%AE%B0/" rel="next" title="【java】java笔记">
+                <i class="fa fa-chevron-left"></i> 【java】java笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/21/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0/" rel="prev" title="【微信小程序】微信小程序学习笔记">
+                【微信小程序】微信小程序学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">C程序执行的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#google%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">google测试框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%80%9D"><span class="nav-number">4.</span> <span class="nav-text">反思</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
