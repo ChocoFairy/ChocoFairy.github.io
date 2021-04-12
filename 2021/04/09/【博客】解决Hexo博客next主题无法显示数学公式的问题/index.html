@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="问题在用markdown写技术文档时，免不了会碰到数学公式。常用的Markdown编辑器都会集成Mathjax，用来渲染文档中的类Latex格式书写的数学公式。基于Hexo搭建的个人博客，默认情况下渲染数学公式却会出现各种各样的问题。">
+<meta name="description" content="问题 在用markdown写技术文档时，免不了会碰到数学公式。常用的Markdown编辑器都会集成Mathjax，用来渲染文档中的类Latex格式书写的数学公式。基于Hexo搭建的个人博客，默认情况下渲染数学公式却会出现各种各样的问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【博客】解决Hexo博客next主题无法显示数学公式的问题">
 <meta property="og:url" content="https://chocofairy.github.io/2021/04/09/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="问题在用markdown写技术文档时，免不了会碰到数学公式。常用的Markdown编辑器都会集成Mathjax，用来渲染文档中的类Latex格式书写的数学公式。基于Hexo搭建的个人博客，默认情况下渲染数学公式却会出现各种各样的问题。">
+<meta property="og:description" content="问题 在用markdown写技术文档时，免不了会碰到数学公式。常用的Markdown编辑器都会集成Mathjax，用来渲染文档中的类Latex格式书写的数学公式。基于Hexo搭建的个人博客，默认情况下渲染数学公式却会出现各种各样的问题。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-04-09T13:04:41.000Z">
 <meta property="article:modified_time" content="2021-04-11T13:09:15.691Z">
@@ -369,19 +369,25 @@
       
 
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在用markdown写技术文档时，免不了会碰到数学公式。常用的Markdown编辑器都会集成Mathjax，用来渲染文档中的类Latex格式书写的数学公式。基于Hexo搭建的个人博客，默认情况下渲染数学公式却会出现各种各样的问题。</p>
+        <h2 id="问题">问题</h2>
+<p>在用markdown写技术文档时，免不了会碰到数学公式。常用的Markdown编辑器都会集成Mathjax，用来渲染文档中的类Latex格式书写的数学公式。基于Hexo搭建的个人博客，默认情况下渲染数学公式却会出现各种各样的问题。</p>
 <span id="more"></span>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Hexo 默认使用 hexo-renderer-marked 引擎渲染网页，该引擎会把一些特殊的 markdown 符号转换为相应的 html 标签，比如在 markdown 语法中，下划线<code>_</code>代表斜体，会被渲染引擎处理为<code>&lt;em&gt;</code>标签。</p>
+<h2 id="原因">原因</h2>
+<p>Hexo 默认使用 hexo-renderer-marked 引擎渲染网页，该引擎会把一些特殊的 markdown 符号转换为相应的 html 标签，比如在 markdown 语法中，下划线<code>_</code>代表斜体，会被渲染引擎处理为<code>&lt;em&gt;</code>标签。</p>
 <p>因为类 Latex 格式书写的数学公式下划线<code>_</code>表示下标，有特殊的含义，如果被强制转换为<code>&lt;em&gt;</code>标签，那么 MathJax 引擎在渲染数学公式的时候就会出错。</p>
 <p>类似的语义冲突的符号还包括<code>*</code>, <code>&#123;</code>, <code>&#125;</code>, <code>\\</code>等。</p>
-<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><p>更换 Hexo 的 markdown 渲染引擎，hexo-renderer-kramed 引擎是在默认的渲染引擎 hexo-renderer-marked 的基础上修改了一些 bug ，两者比较接近，也比较轻量级。</p>
+<h2 id="解决方式">解决方式</h2>
+<p>更换 Hexo 的 markdown 渲染引擎，hexo-renderer-kramed 引擎是在默认的渲染引擎 hexo-renderer-marked 的基础上修改了一些 bug ，两者比较接近，也比较轻量级。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo<span class="operator">-</span>renderer<span class="operator">-</span>marked <span class="comment">--save</span></span><br><span class="line">npm install hexo<span class="operator">-</span>renderer<span class="operator">-</span>kramed <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-<p>执行上面的命令即可，先卸载原来的渲染引擎，再安装新的。<br>然后，跟换引擎后行间公式可以正确渲染了，但是这样还没有完全解决问题，行内公式的渲染还是有问题，因为 hexo-renderer-kramed 引擎也有语义冲突的问题。接下来到博客根目录下，找到node_modules\kramed\lib\rules\inline.js，把第11行的 escape 变量的值做相应的修改：</p>
+<p>执行上面的命令即可，先卸载原来的渲染引擎，再安装新的。<br>
+然后，跟换引擎后行间公式可以正确渲染了，但是这样还没有完全解决问题，行内公式的渲染还是有问题，因为 hexo-renderer-kramed 引擎也有语义冲突的问题。接下来到博客根目录下，找到node_modules\kramed\lib\rules\inline.js，把第11行的 escape 变量的值做相应的修改：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//escape: /^\\([<span class="string">\\`*&#123;&#125;\[\</span>](<span class="link"></span>)#$+\-.!<span class="emphasis">_&gt;])/,</span></span><br><span class="line"><span class="emphasis">escape: /^\\([<span class="string">`*\[\</span>](<span class="link"></span>)#$+\-.!_</span>&gt;])/,</span><br></pre></td></tr></table></figure>
-<p>这一步是在原基础上取消了对\,{,}的转义(escape)。<br>同时把第20行的em变量也要做相应的修改。</p>
+<p>这一步是在原基础上取消了对,{,}的转义(escape)。<br>
+同时把第20行的em变量也要做相应的修改。</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//em: /^\b<span class="emphasis">_((?:<span class="strong">__|[\s\S])+?)<span class="emphasis">_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis">em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span></span></span><br></pre></td></tr></table></figure>
 <p>重新启动hexo（先clean再generate）,问题完美解决。哦，如果不幸还没解决的话，看看是不是还需要在使用的主题中配置mathjax开关。</p>
-<h5 id="在-Next-主题中开启-MathJax-开关"><a href="#在-Next-主题中开启-MathJax-开关" class="headerlink" title="在 Next 主题中开启 MathJax 开关"></a>在 Next 主题中开启 MathJax 开关</h5><p>如何使用了主题了，别忘了在主题（Theme）中开启 MathJax 开关，下面以 next 主题为例，介绍下如何打开 MathJax 开关。</p>
+<h5 id="在-Next-主题中开启-MathJax-开关">在 Next 主题中开启 MathJax 开关</h5>
+<p>如何使用了主题了，别忘了在主题（Theme）中开启 MathJax 开关，下面以 next 主题为例，介绍下如何打开 MathJax 开关。</p>
 <p>进入到博客根目录下的themes/next/，找到 _config.yml 配置，找到math的位置，把 math 默认的 false 修改为true，具体如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default(true) will load mathjax/katex script on demand</span></span><br><span class="line">  <span class="comment"># That is it only render those page who has &#x27;mathjax: true&#x27; in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax/katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex</span></span><br><span class="line"> </span><br><span class="line"> <span class="number">1234567891011</span></span><br><span class="line"> <span class="number">12345678910111234567891011</span></span><br></pre></td></tr></table></figure>
 <p>还需要在文章的Front-matter里打开mathjax开关，如下：</p>
