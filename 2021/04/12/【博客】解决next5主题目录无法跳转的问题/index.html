@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="概述 目前使用的 next 版本是 5.1.4 ，文章左侧的目录一直不能跳转也不能展开，按网上的办法一直没法解决，今天自己琢磨了一阵总算搞定了。 由于发现遇到这个问题的人不少，特此总结一下。 一般分为两种情况：渲染错误和超链接乱码。">
+<meta name="description" content="概述 目前使用的 next 版本是 5.1.4 ，文章左侧的目录一直不能跳转也不能展开，按网上的办法一直没法解决，今天自己琢磨了一阵总算搞定了。 由于发现遇到这个问题的人不少，特此总结一下。 一般分为两种情况：渲染错误和超链接乱码。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【博客】解决next5主题目录无法跳转的问题">
 <meta property="og:url" content="https://chocofairy.github.io/2021/04/12/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3next5%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%B7%B3%E8%BD%AC%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="概述 目前使用的 next 版本是 5.1.4 ，文章左侧的目录一直不能跳转也不能展开，按网上的办法一直没法解决，今天自己琢磨了一阵总算搞定了。 由于发现遇到这个问题的人不少，特此总结一下。 一般分为两种情况：渲染错误和超链接乱码。">
+<meta property="og:description" content="概述 目前使用的 next 版本是 5.1.4 ，文章左侧的目录一直不能跳转也不能展开，按网上的办法一直没法解决，今天自己琢磨了一阵总算搞定了。 由于发现遇到这个问题的人不少，特此总结一下。 一般分为两种情况：渲染错误和超链接乱码。">
 <meta property="og:locale">
 <meta property="og:image" content="http://img.xiajibagao.top/image-20201217163920205.png">
 <meta property="og:image" content="http://img.xiajibagao.top/image-20201217164207627.png">
@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  773 字
+                  769 字
                 </span>
               
 
@@ -388,31 +388,31 @@
 <p>由于发现遇到这个问题的人不少，特此总结一下。</p>
 <p>一般分为两种情况：渲染错误和超链接乱码。</p>
 <span id="more"></span>
-<h2 id="一、渲染错误">一、渲染错误</h2>
-<h3 id="1-问题描述">1.问题描述</h3>
+<h2 id="一渲染错误">一、渲染错误</h2>
+<h3 id="问题描述">1.问题描述</h3>
 <p>最典型的特征就是目录上的超链接为 <code>undefined</code>，或者点击的时候报错： <code>Cannot read property 'replace' of null</code>。</p>
 <p>前一情况 GitHub 中已有相应的 Issues：<a target="_blank" rel="noopener" href="https://github.com/Haojen/hexo-theme-Anisina/issues/34">根据 markdown 生成的 TOC 锚点的内容是 undefined</a></p>
 <p>这个情况一般是 <code>markdown-it</code> 渲染出错，渲染时候把应该加在标题的锚点加到了标题内的 sapn 标签里，导致生成目录的时候获取不到对应的锚点。</p>
-<p>比如原本 <code>##一级标题</code> 应该是渲染成 <code>&lt;h2 id=&quot;一级标题&quot;&gt;一级标题&lt;/h2&gt;</code>，然后生成目录的时候扫描所有 <code>h2</code> 标签获取 id 作为链接，但是实际上 marked-it 渲染出来的是这样的： <code>&lt;h2&gt;&lt;span id=&quot;一级标题&quot;&gt;一级标题&lt;/span&gt;&lt;/h2&gt;</code></p>
-<h3 id="2-解决方案">2.解决方案</h3>
+<p>比如原本 <code>##一级标题</code> 应该是渲染成 <code>&lt;h2 id="一级标题"&gt;一级标题&lt;/h2&gt;</code>，然后生成目录的时候扫描所有 <code>h2</code> 标签获取 id 作为链接，但是实际上 marked-it 渲染出来的是这样的： <code>&lt;h2&gt;&lt;span id="一级标题"&gt;一级标题&lt;/span&gt;&lt;/h2&gt;</code></p>
+<h3 id="解决方案">2.解决方案</h3>
 <p><strong>方案一：调整渲染引擎</strong></p>
 <p>最直白的解决方案就是更换渲染引擎。</p>
-<p>如果一定要使用 <code>markdown-it </code>的话，可以为 <code>markdown-it</code> 安装 <code>markdown-it-named-headings</code>插件。具体的过程可以参考 <code>markdown-it</code>的 Issues：<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-markdown-it/issues/40">Cannot render headings with ids？</a></p>
+<p>如果一定要使用 <code>markdown-it</code>的话，可以为 <code>markdown-it</code> 安装 <code>markdown-it-named-headings</code>插件。具体的过程可以参考 <code>markdown-it</code>的 Issues：<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-markdown-it/issues/40">Cannot render headings with ids？</a></p>
 <p><strong>方案二：修改代码</strong></p>
-<p>如果安装插件仍然不行，那就只能手动更改目录渲染的 js 代码，具体过程可以参考这个大佬的：<a target="_blank" rel="noopener" href="https://convivae.top/posts/hexo-bo-ke-cai-keng/#%E6%96%B9%E6%B3%95-2">Hexo 博客踩坑</a>。</p>
-<h2 id="二、超链接乱码">二、超链接乱码</h2>
-<h3 id="1-问题描述-2">1.问题描述</h3>
+<p>如果安装插件仍然不行，那就只能手动更改目录渲染的 js 代码，具体过程可以参考这个大佬的：<a target="_blank" rel="noopener" href="https://convivae.top/posts/hexo-bo-ke-cai-keng/#方法-2">Hexo 博客踩坑</a>。</p>
+<h2 id="二超链接乱码">二、超链接乱码</h2>
+<h3 id="问题描述-1">1.问题描述</h3>
 <p>这个问题的特征是渲染没问题，也就是不会有上面那种情况，但是点击目录链接会在控制台报错：<code>Cannot read property 'top' of undefined</code>。</p>
 <p>我们打开控制台，查看目录的的超链接标签，会看到 href 是一串乱码：</p>
-<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217163920205.png"><img src="http://img.xiajibagao.top/image-20201217163920205.png" alt="image-20201217163920205"></a></p>
+<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217163920205.png"><img src="http://img.xiajibagao.top/image-20201217163920205.png" alt="image-20201217163920205" /></a></p>
 <p>image-20201217163920205</p>
 <p>我们去找他对应的标题：</p>
-<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217164207627.png"><img src="http://img.xiajibagao.top/image-20201217164207627.png" alt="image-20201217164207627"></a></p>
+<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217164207627.png"><img src="http://img.xiajibagao.top/image-20201217164207627.png" alt="image-20201217164207627" /></a></p>
 <p>image-20201217164207627</p>
 <p>实际上直接点击这个超链接是可以跳转的，但是点目录却不行。这是因为标题 id 是中文，但是目录的连接是中文乱码，代码里头的 JQuery 选择器拿着乱码是没法找到对应 id 的标题的。</p>
-<h3 id="2-解决方案-2">2.解决方案</h3>
+<h3 id="解决方案-1">2.解决方案</h3>
 <p>这个错误很明显，因为控制台已经告诉我错误代码在 <code>post-details.js</code>里了，顺着提示找到 <code>themes\next\source\js\src\post-details.js</code>，找到第 73 行为目录绑定点击事件的方法，会看到：</p>
-<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217170155109.png"><img src="http://img.xiajibagao.top/image-20201217170155109.png" alt="image-20201217170155109"></a></p>
+<p><a target="_blank" rel="noopener" href="http://img.xiajibagao.top/image-20201217170155109.png"><img src="http://img.xiajibagao.top/image-20201217170155109.png" alt="image-20201217170155109" /></a></p>
 <p>image-20201217170155109</p>
 <p><code>targetSelector</code>就是对应标题的 id，我们在他被塞到选择器之前重新编码一下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对获取到的url进行重编码</span></span><br><span class="line">targetSelector = <span class="built_in">decodeURI</span>(<span class="built_in">this</span>.getAttribute(<span class="string">&#x27;href&#x27;</span>))</span><br></pre></td></tr></table></figure>
@@ -609,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B8%B2%E6%9F%93%E9%94%99%E8%AF%AF"><span class="nav-number">2.</span> <span class="nav-text">一、渲染错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">1.问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.2.</span> <span class="nav-text">2.解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%B6%85%E9%93%BE%E6%8E%A5%E4%B9%B1%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">二、超链接乱码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">1.问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-2"><span class="nav-number">3.2.</span> <span class="nav-text">2.解决方案</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%B8%B2%E6%9F%93%E9%94%99%E8%AF%AF"><span class="nav-number">2.</span> <span class="nav-text">一、渲染错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">1.问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.2.</span> <span class="nav-text">2.解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E8%B6%85%E9%93%BE%E6%8E%A5%E4%B9%B1%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">二、超链接乱码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">3.1.</span> <span class="nav-text">1.问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-1"><span class="nav-number">3.2.</span> <span class="nav-text">2.解决方案</span></a></li></ol></li></ol></div>
             
 
           </div>
