@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="单链表," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -75,25 +75,18 @@
 
 
 
-<meta name="description" content="单链表反转，就是将链表中所有节点的指向改变方向，具体可以有四种方式。">
+<meta name="description" content="问题 Trie（发音类似 &quot;try&quot;）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。 请你实现 Trie 类：  Trie() 初始化前缀树对象。 void insert(String word) 向前缀树中插入字符串 word 。 boolean search(String word) 如果字符串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法】单链表反转的四种方法">
-<meta property="og:url" content="https://chocofairy.github.io/2021/04/04/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="【算法】实现前缀树Trie">
+<meta property="og:url" content="https://chocofairy.github.io/2021/04/14/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%BC%80%E6%A0%91Trie/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="单链表反转，就是将链表中所有节点的指向改变方向，具体可以有四种方式。">
+<meta property="og:description" content="问题 Trie（发音类似 &quot;try&quot;）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。 请你实现 Trie 类：  Trie() 初始化前缀树对象。 void insert(String word) 向前缀树中插入字符串 word 。 boolean search(String word) 如果字符串">
 <meta property="og:locale">
-<meta property="og:image" content="https://i.loli.net/2021/04/04/D5JU9ghVlwkqsIc.gif">
-<meta property="og:image" content="https://i.loli.net/2021/04/04/mqbe6xW7A9MiXpJ.gif">
-<meta property="og:image" content="https://i.loli.net/2021/04/04/yBupAWeIU9sHRon.gif">
-<meta property="og:image" content="https://i.loli.net/2021/04/04/WZQ2MDJmKb6oy1V.gif">
-<meta property="og:image" content="https://i.loli.net/2021/04/04/7Il1oOtfpRuXAsx.gif">
-<meta property="og:image" content="https://i.loli.net/2021/04/04/i8vtmnHslBcKZL4.gif">
-<meta property="article:published_time" content="2021-04-04T12:14:16.000Z">
-<meta property="article:modified_time" content="2021-04-12T09:04:44.062Z">
+<meta property="article:published_time" content="2021-04-14T01:13:40.000Z">
+<meta property="article:modified_time" content="2021-04-14T01:20:09.079Z">
 <meta property="article:author" content="wlz">
-<meta property="article:tag" content="单链表">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/04/04/D5JU9ghVlwkqsIc.gif">
 
 
 
@@ -123,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="https://ChocoFairy.github.io/2021/04/04/单链表反转的四种方法/"/>
+  <link rel="canonical" href="https://ChocoFairy.github.io/2021/04/14/【算法】实现前缀树Trie/"/>
 
 
 
 
 
-  <title>【算法】单链表反转的四种方法 | 巧克力梦工厂</title>
+  <title>【算法】实现前缀树Trie | 巧克力梦工厂</title>
   
 
 
@@ -266,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/04/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/14/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%BC%80%E6%A0%91Trie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -283,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【算法】单链表反转的四种方法</h1>
+          <h1 class="post-title" itemprop="name headline">【算法】实现前缀树Trie</h1>
         
 
         <div class="post-meta">
@@ -295,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-04T20:14:16+08:00">
-                2021-04-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-14T09:13:40+08:00">
+                2021-04-14
               </time>
             
 
@@ -349,7 +342,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  646 字
+                  923 字
                 </span>
               
 
@@ -365,7 +358,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -386,51 +379,52 @@
       
 
       
-        <p>单链表反转，就是将链表中所有节点的指向改变方向，具体可以有四种方式。</p>
+        <h2 id="问题">问题</h2>
+<p>Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。</p>
+<p>请你实现 Trie 类：</p>
+<ul>
+<li>Trie() 初始化前缀树对象。</li>
+<li>void insert(String word) 向前缀树中插入字符串 word 。</li>
+<li>boolean search(String word) 如果字符串 word 在前缀树中，返回 true（即，在检索之前已经插入）；否则，返回 false 。</li>
+<li>boolean startsWith(String prefix) 如果之前已经插入的字符串 word 的前缀之一为 prefix ，返回 true ；否则，返回 false 。</li>
+</ul>
 <span id="more"></span>
-<h2 id="迭代法">迭代法</h2>
-<p>迭代法的思想很直接，每次改变一个节点的next指向，依次迭代到尾节点。</p>
-<p>需要3个辅助节点：beg，mid，end</p>
-<figure>
-<img src="https://i.loli.net/2021/04/04/D5JU9ghVlwkqsIc.gif" alt="0U23460R-2.png" /><figcaption aria-hidden="true">0U23460R-2.png</figcaption>
-</figure>
-<p>每次将mid指向beg，然后beg, mid, end整体向后移动一个单位，直到完成反转。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="literal">NULL</span> || head-&gt;next==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode *beg=<span class="literal">NULL</span>, *mid=head, *end=head-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        mid-&gt;next = beg;</span><br><span class="line">        <span class="keyword">if</span>(end==<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        beg = mid;</span><br><span class="line">        mid = end;</span><br><span class="line">        end = end-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="递归法">递归法</h2>
-<p>递归法的思想跟迭代法正好相反，且不易理解。从尾链表开始依次向前遍历，过程中改变每个节点的指向。</p>
-<p>先给出代码，再做解释：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> head;</span><br><span class="line">	&#125;</span><br><span class="line">    ListNode *new_node = reverseList(head-&gt;next);</span><br><span class="line">    head-&gt;next-&gt;next = head;</span><br><span class="line">    head-&gt;next = <span class="literal">NULL</span>; </span><br><span class="line">    <span class="comment">// 将新的头指针返回上层</span></span><br><span class="line">    <span class="keyword">return</span> new_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每次执行到new_node处时，都会深入链表一步，直到<code>head-&gt;next==NULL</code>时才不继续深入，此时返回的是链表反转之后的新头节点，并且该节点作为每步递归的返回值，一直在不断地向上层递归返回。</p>
-<p>在过程中的操作可以用下面的简图来表示，1，2步分别代表着 <code>head-&gt;next-&gt;next=head</code> 以及 <code>head-&gt;next=NULL</code> 。</p>
-<figure>
-<img src="https://i.loli.net/2021/04/04/mqbe6xW7A9MiXpJ.gif" alt="0U23413F-8.gif" /><figcaption aria-hidden="true">0U23413F-8.gif</figcaption>
-</figure>
-<p>再一次返回上层时，new_head仍然是4号节点，但是把3的next指向到2。</p>
-<figure>
-<img src="https://i.loli.net/2021/04/04/yBupAWeIU9sHRon.gif" alt="0U234D49-9.gif" /><figcaption aria-hidden="true">0U234D49-9.gif</figcaption>
-</figure>
-<p>依次向上层返回，过程中不断修改节点指向，从而完成链表反转。</p>
-<h2 id="头插法">头插法</h2>
-<p>头插法的思路也比较简单，设置一个<code>哑节点</code>，然后迭代地将链表中的节点插入到哑节点后，最后返回哑节点的next节点。</p>
-<p>构建哑节点：</p>
-<figure>
-<img src="https://i.loli.net/2021/04/04/WZQ2MDJmKb6oy1V.gif" alt="0U2342546-11.gif" /><figcaption aria-hidden="true">0U2342546-11.gif</figcaption>
-</figure>
-<p>将1节点插入到哑节点后：</p>
-<figure>
-<img src="https://i.loli.net/2021/04/04/7Il1oOtfpRuXAsx.gif" alt="0U2342R3-12.gif" /><figcaption aria-hidden="true">0U2342R3-12.gif</figcaption>
-</figure>
-<p>这样也很容易写出代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">    <span class="function">ListNode <span class="title">dummy</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    ListNode *curr=head, *nxt;</span><br><span class="line">    <span class="keyword">while</span>(curr)&#123;</span><br><span class="line">        nxt = curr-&gt;next;</span><br><span class="line">        curr-&gt;next = dummy.next;</span><br><span class="line">        dummy.next = curr;</span><br><span class="line">        curr = nxt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="原地置换法">原地置换法</h2>
-<p>所谓原地，就是直接对原链表进行修改。在过程中需要借助两个指针 beg 和 end。</p>
-<p>过程可以参考简图：</p>
-<figure>
-<img src="https://i.loli.net/2021/04/04/i8vtmnHslBcKZL4.gif" alt="0U2341592-16.gif" /><figcaption aria-hidden="true">0U2341592-16.gif</figcaption>
-</figure>
-<p>代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode *beg, *end;</span><br><span class="line">    beg = head;</span><br><span class="line">    <span class="keyword">while</span>(beg-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        end = beg-&gt;next;</span><br><span class="line">        beg-&gt;next = end-&gt;next;</span><br><span class="line">        end-&gt;next = head;</span><br><span class="line">        head = end;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上四种方法建议熟记！！</p>
+<h2 id="示例">示例</h2>
+<p><strong>输入</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&quot;Trie&quot;, &quot;insert&quot;, &quot;search&quot;, &quot;search&quot;, &quot;startsWith&quot;, &quot;insert&quot;, &quot;search&quot;]</span><br><span class="line">[[], [&quot;apple&quot;], [&quot;apple&quot;], [&quot;app&quot;], [&quot;app&quot;], [&quot;app&quot;], [&quot;app&quot;]]</span><br></pre></td></tr></table></figure>
+<p><strong>输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[null, null, true, false, true, null, true]</span><br></pre></td></tr></table></figure>
+<p><strong>解释</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Trie trie &#x3D; new Trie();</span><br><span class="line">trie.insert(&quot;apple&quot;);</span><br><span class="line">trie.search(&quot;apple&quot;);   &#x2F;&#x2F; 返回 True</span><br><span class="line">trie.search(&quot;app&quot;);     &#x2F;&#x2F; 返回 False</span><br><span class="line">trie.startsWith(&quot;app&quot;); &#x2F;&#x2F; 返回 True</span><br><span class="line">trie.insert(&quot;app&quot;);</span><br><span class="line">trie.search(&quot;app&quot;);     &#x2F;&#x2F; 返回 True</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li>1 &lt;= word.length, prefix.length &lt;= 2000</li>
+<li>word 和 prefix 仅由小写英文字母组成</li>
+<li>insert、search 和 startsWith 调用次数 总计 不超过 3 * 104 次</li>
+</ul>
+<h2 id="思路字典树">思路：字典树</h2>
+<p>Trie，又称前缀树或字典树，是一棵有根树，其每个节点包含以下字段：</p>
+<ul>
+<li>指向子节点的指针数组children。对于本题而言，数组长度为 26，即小写英文字母的数量。此时children[0] 对应小写字母 a，children[1] 对应小写字母 b，…，children[25] 对应小写字母 z。</li>
+<li>布尔字段isEnd，表示该节点是否为字符串的结尾。</li>
+</ul>
+<p><strong>插入字符串</strong></p>
+<p>我们从字典树的根开始，插入字符串。对于当前字符对应的子节点，有两种情况：</p>
+<ul>
+<li>子节点存在。沿着指针移动到子节点，继续处理下一个字符。</li>
+<li>子节点不存在。创建一个新的子节点，记录在 children 数组的对应位置上，然后沿着指针移动到子节点，继续搜索下一个字符。</li>
+</ul>
+<p>重复以上步骤，直到处理字符串的最后一个字符，然后将当前节点标记为字符串的结尾。</p>
+<p><strong>查找前缀</strong></p>
+<p>我们从字典树的根开始，查找前缀。对于当前字符对应的子节点，有两种情况：</p>
+<ul>
+<li>子节点存在。沿着指针移动到子节点，继续搜索下一个字符。</li>
+<li>子节点不存在。说明字典树中不包含该前缀，返回空指针。</li>
+</ul>
+<p>重复以上步骤，直到返回空指针或搜索完前缀的最后一个字符。</p>
+<p>若搜索到了前缀的末尾，就说明字典树中存在该前缀。此外，若前缀末尾对应节点的isEnd 为真，则说明字典树中存在该字符串。</p>
+<h2 id="实现">实现</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;Trie*&gt; child;</span><br><span class="line">    <span class="keyword">bool</span> isEnd;</span><br><span class="line"></span><br><span class="line">    <span class="function">Trie* <span class="title">searchPrefix</span><span class="params">(<span class="built_in">string</span> prefix)</span> </span>&#123;</span><br><span class="line">        Trie* node = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> ch : prefix) &#123;</span><br><span class="line">            ch -= <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (node-&gt;child[ch] == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            node = node-&gt;child[ch];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    Trie() &#123;</span><br><span class="line">        child.resize(<span class="number">26</span>);</span><br><span class="line">        isEnd = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Inserts a word into the trie. */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="built_in">string</span> word)</span> </span>&#123;</span><br><span class="line">        Trie* node = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> ch:word)</span><br><span class="line">        &#123;</span><br><span class="line">            ch -= <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (node-&gt;child[ch] == <span class="literal">nullptr</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                node-&gt;child[ch] = <span class="keyword">new</span> Trie();</span><br><span class="line">            &#125;</span><br><span class="line">            node = node-&gt;child[ch];</span><br><span class="line">        &#125;</span><br><span class="line">        node-&gt;isEnd = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns if the word is in the trie. */</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(<span class="built_in">string</span> word)</span> </span>&#123;</span><br><span class="line">        Trie* node = <span class="keyword">this</span>-&gt;searchPrefix(word);</span><br><span class="line">        <span class="keyword">return</span> node != <span class="literal">nullptr</span> &amp;&amp; node-&gt;isEnd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns if there is any word in the trie that starts with the given prefix. */</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">startsWith</span><span class="params">(<span class="built_in">string</span> prefix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>-&gt;searchPrefix(prefix) != <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * Trie* obj = new Trie();</span></span><br><span class="line"><span class="comment"> * obj-&gt;insert(word);</span></span><br><span class="line"><span class="comment"> * bool param_2 = obj-&gt;search(word);</span></span><br><span class="line"><span class="comment"> * bool param_3 = obj-&gt;startsWith(prefix);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -449,7 +443,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/" rel="tag"># 单链表</a>
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
           
         </div>
       
@@ -462,8 +456,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/03/30/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91N%E4%B8%AA%E7%BA%BF%E6%AE%B5%E6%B1%82%E6%9C%80%E5%A4%A7%E5%A4%96%E6%8E%A5%E5%9C%86%E5%8D%8A%E5%BE%84/" rel="next" title="【算法】N个线段求最大外接圆半径">
-                <i class="fa fa-chevron-left"></i> 【算法】N个线段求最大外接圆半径
+              <a href="/2021/04/12/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3next5%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%B7%B3%E8%BD%AC%E7%9A%84%E9%97%AE%E9%A2%98/" rel="next" title="【博客】解决next5主题目录无法跳转的问题">
+                <i class="fa fa-chevron-left"></i> 【博客】解决next5主题目录无法跳转的问题
               </a>
             
           </div>
@@ -471,10 +465,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/04/05/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%BA%8C%EF%BC%89%E8%AE%AD%E7%BB%83SVM%E5%88%86%E7%B1%BB%E5%99%A8%E8%BF%9B%E8%A1%8CHOG%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B/" rel="prev" title="【大创】（二）训练SVM分类器进行HOG行人检测">
-                【大创】（二）训练SVM分类器进行HOG行人检测 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -626,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">迭代法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">递归法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">头插法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9C%B0%E7%BD%AE%E6%8D%A2%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">原地置换法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">3.</span> <span class="nav-text">思路：字典树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li></ol></div>
             
 
           </div>
