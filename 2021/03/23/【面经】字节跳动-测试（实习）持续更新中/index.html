@@ -84,7 +84,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://chocofairy.github.io/images/weibopicture.jpg">
 <meta property="article:published_time" content="2021-03-23T10:50:25.000Z">
-<meta property="article:modified_time" content="2021-04-01T12:37:45.192Z">
+<meta property="article:modified_time" content="2021-04-16T07:07:45.245Z">
 <meta property="article:author" content="wlz">
 <meta property="article:tag" content="面经">
 <meta name="twitter:card" content="summary">
@@ -344,7 +344,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6.6k 字
+                  10.8k 字
                 </span>
               
 
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  23 分钟
+                  37 分钟
                 </span>
               
             </div>
@@ -562,6 +562,99 @@
 <p>一面问的比较基础，当时什么也没准备，基础知识也只能靠着印象回答，感觉面的不是很好。</p>
 <p>二面问的比较深，感觉会着重根据你的简历问一些问题。比如我写的精通C++，java，就会问java问的比较深入。计网的知识也不仅仅是停留在表面了。</p>
 <p>总之，好好准备才是最重要的！</p>
+<h2 id="三面1h">三面（1h）：</h2>
+<p>最紧张的一次面试，比较难，而且一开始面试官在开会，忘记面试的事情了，等待的时间比较漫长……</p>
+<h3 id="自我介绍-2">1.自我介绍</h3>
+<p>不多赘述</p>
+<h3 id="项目相关">2.项目相关</h3>
+<p>问了项目持续的时间，期间出现的问题等。</p>
+<p>也看了个人博客，差点就要问人群异常检测这个关于深度学习的大创项目了= =</p>
+<h3 id="计算机网络-2">3.计算机网络</h3>
+<p>①输入一个url之后发生了什么？（DNS）</p>
+<ul>
+<li><p>输入地址：当我们开始在浏览器中输入网址的时候，浏览器其实就已经在智能的匹配可能得 url 了，他会从历史记录，书签等地方，找到已经输入的字符串可能对应的 url，然后给出智能提示，让你可以补全url地址。对于 google的chrome 的浏览器，他甚至会直接从缓存中把网页展示出来，就是说，你还没有按下 enter，页面就出来了。</p></li>
+<li><p>浏览器查找域名的 IP 地址：</p>
+<p>1、请求一旦发起，浏览器首先要做的事情就是解析这个域名，一般来说，浏览器会首先查看本地硬盘的 hosts 文件，看看其中有没有和这个域名对应的规则，如果有的话就直接使用 hosts 文件里面的 ip 地址。</p>
+<p>2、如果在本地的 hosts 文件没有能够找到对应的 ip 地址，浏览器会发出一个 DNS请求到本地DNS服务器 。本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动。</p>
+<p>3、查询你输入的网址的DNS请求到达本地DNS服务器之后，本地DNS服务器会首先查询它的缓存记录，如果缓存中有此条记录，就可以直接返回结果，此过程是递归的方式进行查询。如果没有，本地DNS服务器还要向DNS根服务器进行查询。</p>
+<p>4、根DNS服务器没有记录具体的域名和IP地址的对应关系，而是告诉本地DNS服务器，你可以到域服务器上去继续查询，并给出域服务器的地址。这种过程是迭代的过程。</p>
+<p>5、本地DNS服务器继续向域服务器发出请求，在这个例子中，请求的对象是.com域服务器。.com域服务器收到请求之后，也不会直接返回域名和IP地址的对应关系，而是告诉本地DNS服务器，你的域名的解析服务器的地址。</p>
+<p>6、最后，本地DNS服务器向域名的解析服务器发出请求，这时就能收到一个域名和IP地址对应关系，本地DNS服务器不仅要把IP地址返回给用户电脑，还要把这个对应关系保存在缓存中，以备下次别的用户查询时，可以直接返回结果，加快网络访问。</p></li>
+</ul>
+<p>②如果在这个过程中DNS服务器出错，可能是发生了什么？</p>
+<p>回答的很磕巴，面试官很温柔，一直在引导我，我还很傻X的说了个输错了IP地址……然后我说了个可能发生DNS劫持，就继续问了DNS劫持是什么。（前面有答案，这里不写了）</p>
+<p>③如果输入url之后网页打开比较慢，可能是什么原因？</p>
+<p>针对这个题目我们可以简单理解成是server端出现的问题，而不是client端出现了问题（用户网络不好包括域名服务器解析等可能），当然面试官要考你用户端的知识，例如域名解析，也是有挺多可以考到的知识点，但单就这个问题，更强调的是server端的知识点。下面逐一来剖析可能的原因：</p>
+<p>（1）可能的原因一：服务器出口带宽不够用。这是一个很常见的瓶颈。一方面，可能是本身购买的服务器出口带宽就很小（企业购买带宽相当昂贵），一旦用户访问量上来了，并发量大了，自然均分给用户的出口带宽就更小了，所以某些用户的访问速度就会下降了很多。另一个，就是跨运营商网络导致带宽缩减，例如很多公司的网站（服务器）是放在电信的网络上的，而如果用户这边对接的是长城或者说联通的宽带，运营商之间网络传输在对接时是会有限制的，这就可能导致带宽的缩减。</p>
+<p>（2）可能原因二：服务器负载过大忙不过来，比如说CPU和内存消耗完了，这个容易理解，不展开。</p>
+<p>（3）可能原因三：网站的开发代码没写好，例如mysql语句没有进行优化，导致数据库的读写相当耗费时间。</p>
+<p>（4）可能原因四：数据库的瓶颈，也是很常见的一个瓶颈，这点跟上面第三个原因可以一起来说。当我们的数据库变得愈发庞大，比如好多G好多T这么大，那对于数据库的读写就会变得相当缓慢了，索引优化固然能提升一些效率，但数据库已经如此庞大的话，如果每次查询都对这么大的数据库进行全局查询，自然会很慢。这个学过数据库的话也是挺容易理解的。</p>
+<h3 id="java相关">4.Java相关</h3>
+<p>①用过多线程吗？怎么实现的？</p>
+<p>用过，实现方法有下面四种：</p>
+<ul>
+<li><p>继承Thread类，启动线程通过Thread类的start()实例方法。start()方法是一个native方法，它将启动一个新线程，并执行run()方法。优点：代码简单。缺点：该类无法继承别的类。</p></li>
+<li><p>实现Runnable接口，优点：继承其他类。同一实现该接口的实例可以共享资源。缺点：代码复杂</p></li>
+<li><p>实现Callable接口，通过FutureTask包装器来创建Thread线程：优点：可以获得异步任务的返回值</p></li>
+<li><p>线程池：实现自动化装配，易于管理，循环利用资源。</p></li>
+</ul>
+<p>②java多线程的安全是怎么实现的呢？</p>
+<p>锁</p>
+<p>③说一说锁的升级</p>
+<p>在 Java 语言中，使用 Synchronized 是能够实现线程同步的，即<strong>加锁</strong>。并且实现的是<strong>悲观锁</strong>，在操作同步资源的时候直接先加锁。</p>
+<p>加锁可以使一段代码在同一时间只有一个线程可以访问，在增加安全性的同时，牺牲掉的是程序的执行性能，所以为了在一定程度上减少获得锁和释放锁带来的性能消耗，在 jdk6 之后便引入了“偏向锁”和“轻量级锁”，所以总共有4种锁状态，级别由低到高依次为：<strong>无锁状态</strong>、<strong>偏向锁状态</strong>、<strong>轻量级锁状态</strong>、<strong>重量级锁状态</strong>。这几个状态会随着竞争情况逐渐升级。</p>
+<p>注意：锁可以升级但不能降级</p>
+<ul>
+<li><p>无锁：无锁是指没有对资源进行锁定，所有的线程都能访问并修改同一个资源，但同时只有一个线程能修改成功。无锁的特点是修改操作会在循环内进行，线程会不断的尝试修改共享资源。如果没有冲突就修改成功并退出，否则就会继续循环尝试。如果有多个线程修改同一个值，必定会有一个线程能修改成功，而其他修改失败的线程会不断重试直到修改成功。</p></li>
+<li><p>偏向锁：偏向锁是指当一段同步代码一直被同一个线程所访问时，即不存在多个线程的竞争时，那么该线程在后续访问时便会自动获得锁，从而降低获取锁带来的消耗，即提高性能。当一个线程访问同步代码块并获取锁时，会在 Mark Word 里存储锁偏向的线程 ID。在线程进入和退出同步块时不再通过 CAS 操作来加锁和解锁，而是检测 Mark Word 里是否存储着指向当前线程的偏向锁。轻量级锁的获取及释放依赖多次 CAS 原子指令，而偏向锁只需要在置换 ThreadID 的时候依赖一次 CAS 原子指令即可。</p>
+<p>偏向锁只有遇到其他线程尝试竞争偏向锁时，持有偏向锁的线程才会释放锁，线程是不会主动释放偏向锁的。</p>
+<p>关于偏向锁的撤销，需要等待全局安全点，即在某个时间点上没有字节码正在执行时，它会先暂停拥有偏向锁的线程，然后判断锁对象是否处于被锁定状态。如果线程不处于活动状态，则将对象头设置成无锁状态，并撤销偏向锁，恢复到无锁（标志位为01）或轻量级锁（标志位为00）的状态。</p>
+<p>偏向锁在 JDK 6 及之后版本的 JVM 里是默认启用的。可以通过 JVM 参数关闭偏向锁：-XX:-UseBiasedLocking=false，关闭之后程序默认会进入轻量级锁状态。</p></li>
+<li><p>轻量级锁：轻量级锁是指当锁是偏向锁的时候，却被另外的线程所访问，此时偏向锁就会升级为轻量级锁，其他线程会通过自旋（关于自旋的介绍见文末）的形式尝试获取锁，线程不会阻塞，从而提高性能。</p>
+<p>轻量级锁的获取主要由两种情况：① 当关闭偏向锁功能时；② 由于多个线程竞争偏向锁导致偏向锁升级为轻量级锁。</p>
+<p>在代码进入同步块的时候，如果同步对象锁状态为无锁状态，虚拟机将首先在当前线程的栈帧中建立一个名为锁记录（Lock Record）的空间，用于存储锁对象目前的 Mark Word 的拷贝，然后将对象头中的 Mark Word 复制到锁记录中。</p>
+<p>拷贝成功后，虚拟机将使用 CAS 操作尝试将对象的 Mark Word 更新为指向 Lock Record 的指针，并将 Lock Record 里的 owner 指针指向对象的 Mark Word。</p>
+<p>如果这个更新动作成功了，那么这个线程就拥有了该对象的锁，并且对象 Mark Word 的锁标志位设置为“00”，表示此对象处于轻量级锁定状态。</p>
+<p>如果轻量级锁的更新操作失败了，虚拟机首先会检查对象的 Mark Word 是否指向当前线程的栈帧，如果是就说明当前线程已经拥有了这个对象的锁，那就可以直接进入同步块继续执行，否则说明多个线程竞争锁。</p>
+<p>若当前只有一个等待线程，则该线程将通过自旋进行等待。但是当自旋超过一定的次数时，轻量级锁便会升级为重量级锁（锁膨胀）。</p>
+<p>另外，当一个线程已持有锁，另一个线程在自旋，而此时又有第三个线程来访时，轻量级锁也会升级为重量级锁（锁膨胀）。</p></li>
+<li><p>重量级锁：重量级锁是指当有一个线程获取锁之后，其余所有等待获取该锁的线程都会处于阻塞状态。</p>
+<p>重量级锁通过对象内部的监视器（monitor）实现，而其中 monitor 的本质是依赖于底层操作系统的 Mutex Lock 实现，操作系统实现线程之间的切换需要从用户态切换到内核态，切换成本非常高。</p>
+<p>简言之，就是所有的控制权都交给了操作系统，由操作系统来负责线程间的调度和线程的状态变更。而这样会出现频繁地对线程运行状态的切换，线程的挂起和唤醒，从而消耗大量的系统资源，导致性能低下。</p></li>
+</ul>
+<p>③有用Java写过别的项目吗？</p>
+<p>写过一个J2EE的项目</p>
+<h3 id="唠嗑">5.唠嗑</h3>
+<p>①什么时候能来实习？</p>
+<p>②考虑读研吗？</p>
+<p>③有什么优缺点？</p>
+<h3 id="测试相关">6.测试相关</h3>
+<p>①为什么选择测试？</p>
+<p>②平常用什么软件？（QQ）用什么功能？（发红包）设计个测试用例</p>
+<p><strong>功能测试</strong> 在红包钱数，和红包个数的输入框中只能输入数字 红包里最多和最少可以输入的钱数 200 0.01 拼手气红包最多可以发多少个红包 100 超过最大拼手气红包的个数是否有提醒 当红包钱数超过最大范围是不是有对应的提示 当发送的红包个数超过最大范围是不是有提示 当余额不足时，红包发送失败 在红包描述里是否可以输入汉字，英文，符号，表情，纯数字，汉字英语符号，（是否可以输入它们的混合搭配） 输入红包钱数是不是只能输入数字 红包描述里许多能有多少个字符 10个 红包描述，金额，红包个数框里是否支持复制粘贴操作 红包描述里的表情可以删除 发送的红包别人是否可以领取 发的红包自己可不可以领取 24小时内没有领取的红包是否可以退回到原来的账户 超过24小时没有领取的红包，是否还可以领取 用户是否可以多次抢一个红包 红包的金额里的小数位数是否有限制 可以按返回键，取消发红包 断网时，无法抢红包 可不可以自己选择支付方式 余额不足时，会不会自动匹配支付方式 在发红包界面能否看到以前的收发红包的记录 红包记录里的信息与实际收发红包记录是否匹配 支付时可以密码支付也可以指纹支付 如果直接输入小数点，那么小数点之前应该有个0 支付成功后，退回聊天界面 .发红包金额和收到的红包金额应该匹配 是否可以连续多次发红包 输入钱数为0，"塞钱进红包"置灰</p>
+<p><strong>性能测试</strong> 弱网时抢红包，发红包的时间 不同网速时抢红包，发红包的时间 发红包和收红包成功后的跳转时间 收发红包的耗电量 退款到账的时间</p>
+<p><strong>兼容性测试</strong> 苹果，安卓是否都可以收发红包 电脑端可以抢红包 网络兼容性：2g/3g/4g，WiFi，热点，移动/联通/电信 不同分辨率</p>
+<p><strong>界面测试</strong> 发红包界面没有错别字 收红包界面没有错别字 收红包和发红包界面布置合理 发红包和收到红包界面颜色搭配合理</p>
+<p><strong>安全性测试</strong> 对方QQ号异地登录，是否会有提醒 2人 红包被领取以后，发送红包人的金额会减少，收红包金额会增加 发送红包失败，余额和银行卡里的钱数不会少 .红包发送成功，是否会收QQ支付的通知</p>
+<p><strong>易用性测试</strong> 红包描述，可以通过语音输入 可以指纹支付也可以密码支付 中断测试：前后台切换，网络异常，低电量，断电，来电，短信等</p>
+<h3 id="算法题">7.算法题</h3>
+<h3 id="求二叉树所有根到叶子路径组成的数字之和">求：二叉树所有根到叶子路径组成的数字之和</h3>
+<h3 id="描述信息">描述信息</h3>
+<p>二叉树每个节点的value范围是1-9</p>
+<p>​ 1</p>
+<p>2 3</p>
+<p>4 5</p>
+<p>从根到叶子共3条：1-&gt;2-&gt;4, 1-&gt;2-&gt;5, 1-&gt;3</p>
+<p>构成的数字为124，125，13，求和124 + 125 + 13 = 262即为所求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; pathsum(node root)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> dfs(root,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> vois <span class="title">dfs</span><span class="params">(node root,<span class="keyword">int</span> presum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> sum=preSum*<span class="number">10</span>+root.val;</span><br><span class="line">    <span class="keyword">if</span>(root.left==<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">		<span class="keyword">return</span>  sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> dfs(root.left,sum)+dfs(root.right,sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="反问-1">8.反问</h3>
+<p>我：请问我的面试有什么优缺点和注意的地方，可以指导一下吗？</p>
+<p>面试官：你觉得自己的逻辑表达怎么样</p>
+<p>我：有待加强</p>
+<p>面试官：你自己准备过的部分回答得很有条理和逻辑，但是就像你自己说的缺点一样，项目经验不足，在某些实际应用的场景上还是稍有欠缺</p>
+<p>我：谢谢！</p>
+<h3 id="结语">结语</h3>
+<p>晚饭都没来得及吃就去准备某门选修课的答辩了……被老师蹂躏了一通之后晚上大概8：30接到了hr姐姐的电话约hr面。等待ing~</p>
 
       
     </div>
@@ -757,7 +850,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E9%9D%A245min"><span class="nav-number">1.</span> <span class="nav-text">一面（45min）：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">1.自我介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E6%9C%9F%E5%88%8A%E6%8A%95%E7%A8%BF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.1.</span> <span class="nav-text">java期刊投稿管理系统：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.1.2.</span> <span class="nav-text">个人博客：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.2.</span> <span class="nav-text">2.基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">①什么是线程，什么是进程？有什么区别？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%BB%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88%E5%A6%82%E4%BD%95%E9%A2%84%E9%98%B2%E5%B9%B6%E5%A4%84%E7%90%86%E6%B2%A1%E5%87%86%E5%A4%87%E5%8F%AA%E8%83%BD%E7%94%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%9D%E8%AF%B4"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">②死锁是什么，如何预防并处理？（没准备，只能用自己的话说）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">1.2.2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp%E5%92%8Cudp%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">①TCP和UDP的区别以及应用场景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">②TCP三次握手</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">3.算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E5%AE%9E%E5%9C%BA%E6%99%AF"><span class="nav-number">1.4.</span> <span class="nav-text">4.现实场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E9%97%AE%E9%9D%A2%E8%AF%95%E5%AE%98"><span class="nav-number">1.5.</span> <span class="nav-text">5.有什么问题问面试官</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%9D%A230min"><span class="nav-number">2.</span> <span class="nav-text">二面（30min）：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D-1"><span class="nav-number">2.1.</span> <span class="nav-text">1.自我介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95-1"><span class="nav-number">2.2.</span> <span class="nav-text">2.算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1"><span class="nav-number">2.3.</span> <span class="nav-text">3.操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%86%9F%E6%82%89%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3%E7%9A%84%E9%97%AE%E9%A2%98%E6%88%91%E8%AF%B4%E7%9A%84java"><span class="nav-number">2.4.</span> <span class="nav-text">4.熟悉的语言相关的问题（我说的java）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1"><span class="nav-number">2.5.</span> <span class="nav-text">5.计算机网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.6.</span> <span class="nav-text">6.用例设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E6%96%B9%E5%90%91%E5%92%8C%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92"><span class="nav-number">2.7.</span> <span class="nav-text">7.发展方向和职业规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E9%97%AE"><span class="nav-number">2.8.</span> <span class="nav-text">8.反问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E4%B8%A4%E8%BD%AE%E6%8A%80%E6%9C%AF%E9%9D%A2%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">前两轮技术面总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E9%9D%A245min"><span class="nav-number">1.</span> <span class="nav-text">一面（45min）：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">1.自我介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E6%9C%9F%E5%88%8A%E6%8A%95%E7%A8%BF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.1.</span> <span class="nav-text">java期刊投稿管理系统：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.1.2.</span> <span class="nav-text">个人博客：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.2.</span> <span class="nav-text">2.基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">①什么是线程，什么是进程？有什么区别？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%BB%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88%E5%A6%82%E4%BD%95%E9%A2%84%E9%98%B2%E5%B9%B6%E5%A4%84%E7%90%86%E6%B2%A1%E5%87%86%E5%A4%87%E5%8F%AA%E8%83%BD%E7%94%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%9D%E8%AF%B4"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">②死锁是什么，如何预防并处理？（没准备，只能用自己的话说）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">1.2.2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp%E5%92%8Cudp%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">①TCP和UDP的区别以及应用场景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">②TCP三次握手</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">3.算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E5%AE%9E%E5%9C%BA%E6%99%AF"><span class="nav-number">1.4.</span> <span class="nav-text">4.现实场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E9%97%AE%E9%9D%A2%E8%AF%95%E5%AE%98"><span class="nav-number">1.5.</span> <span class="nav-text">5.有什么问题问面试官</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%9D%A230min"><span class="nav-number">2.</span> <span class="nav-text">二面（30min）：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D-1"><span class="nav-number">2.1.</span> <span class="nav-text">1.自我介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95-1"><span class="nav-number">2.2.</span> <span class="nav-text">2.算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1"><span class="nav-number">2.3.</span> <span class="nav-text">3.操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%86%9F%E6%82%89%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3%E7%9A%84%E9%97%AE%E9%A2%98%E6%88%91%E8%AF%B4%E7%9A%84java"><span class="nav-number">2.4.</span> <span class="nav-text">4.熟悉的语言相关的问题（我说的java）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1"><span class="nav-number">2.5.</span> <span class="nav-text">5.计算机网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.6.</span> <span class="nav-text">6.用例设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E6%96%B9%E5%90%91%E5%92%8C%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92"><span class="nav-number">2.7.</span> <span class="nav-text">7.发展方向和职业规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E9%97%AE"><span class="nav-number">2.8.</span> <span class="nav-text">8.反问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E4%B8%A4%E8%BD%AE%E6%8A%80%E6%9C%AF%E9%9D%A2%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">前两轮技术面总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%9D%A21h"><span class="nav-number">4.</span> <span class="nav-text">三面（1h）：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D-2"><span class="nav-number">4.1.</span> <span class="nav-text">1.自我介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3"><span class="nav-number">4.2.</span> <span class="nav-text">2.项目相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-2"><span class="nav-number">4.3.</span> <span class="nav-text">3.计算机网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E7%9B%B8%E5%85%B3"><span class="nav-number">4.4.</span> <span class="nav-text">4.Java相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%94%A0%E5%97%91"><span class="nav-number">4.5.</span> <span class="nav-text">5.唠嗑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3"><span class="nav-number">4.6.</span> <span class="nav-text">6.测试相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E9%A2%98"><span class="nav-number">4.7.</span> <span class="nav-text">7.算法题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%80%E6%9C%89%E6%A0%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%B7%AF%E5%BE%84%E7%BB%84%E6%88%90%E7%9A%84%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C"><span class="nav-number">4.8.</span> <span class="nav-text">求：二叉树所有根到叶子路径组成的数字之和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-number">4.9.</span> <span class="nav-text">描述信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E9%97%AE-1"><span class="nav-number">4.10.</span> <span class="nav-text">8.反问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.11.</span> <span class="nav-text">结语</span></a></li></ol></li></ol></div>
             
 
           </div>
