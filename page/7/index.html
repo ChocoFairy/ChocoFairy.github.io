@@ -561,14 +561,20 @@
 
       
         
-          <h1 id="Java小学期笔记"><a href="#Java小学期笔记" class="headerlink" title="Java小学期笔记"></a>Java小学期笔记</h1><h2 id="Java-vs-C"><a href="#Java-vs-C" class="headerlink" title="Java vs C++"></a>Java vs C++</h2><h5 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1, 数据类型"></a>1, 数据类型</h5><p>​    *基本数据类型：byte(8bits)   short(16bits)   int(43bits)   long(64bits)   float(32bits)   double(64bits)  char(16bits)   boolean</p>
-<p>​    char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等  </p>
+          <h1 id="java小学期笔记">Java小学期笔记</h1>
+<h2 id="java-vs-c">Java vs C++</h2>
+<h5 id="数据类型">1, 数据类型</h5>
+<p>​ *基本数据类型：byte(8bits) short(16bits) int(43bits) long(64bits) float(32bits) double(64bits) char(16bits) boolean</p>
+<p>​ char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="string">&#x27;\u0065&#x27;</span>;</span><br><span class="line"><span class="comment">// 禁止 大数据类型给小数据类型赋值-syntax error</span></span><br><span class="line"><span class="keyword">float</span> f = <span class="number">3.14F</span>;   <span class="comment">// (数值类型默认double)</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">011</span>;    <span class="comment">// 八进制</span></span><br></pre></td></tr></table></figure>
-<p>​    *引用数据类型： Object （every thing is Object ）</p>
-<h5 id="2-参数传递"><a href="#2-参数传递" class="headerlink" title="2, 参数传递"></a>2, 参数传递</h5><p>​    只有传值一种方式 </p>
-<h5 id="3-对象存储与访问"><a href="#3-对象存储与访问" class="headerlink" title="3, 对象存储与访问"></a>3, 对象存储与访问</h5><p>​    除非用new创建对象，否则，实际上并未获得任何对象</p>
-<p>​    对象全部存储在堆中，栈中没有对象，  访问对象的唯一方法是 ‘引用’（引用的大小：8byte）</p>
-<h5 id="4-对象回收"><a href="#4-对象回收" class="headerlink" title="4, 对象回收"></a>4, 对象回收</h5><p>​    没有引用的对象 是垃圾对象，JVM的垃圾回收机制将自动回收，但不知道何时进行。（System.gc()仅是发一个回收请求，并不立刻进行）</p>
+<p>​ *引用数据类型： Object （every thing is Object ）</p>
+<h5 id="参数传递">2, 参数传递</h5>
+<p>​ 只有传值一种方式</p>
+<h5 id="对象存储与访问">3, 对象存储与访问</h5>
+<p>​ 除非用new创建对象，否则，实际上并未获得任何对象</p>
+<p>​ 对象全部存储在堆中，栈中没有对象， 访问对象的唯一方法是 ‘引用’（引用的大小：8byte）</p>
+<h5 id="对象回收">4, 对象回收</h5>
+<p>​ 没有引用的对象 是垃圾对象，JVM的垃圾回收机制将自动回收，但不知道何时进行。（System.gc()仅是发一个回收请求，并不立刻进行）</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/10/16/java%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -747,13 +753,20 @@
       
         
           <p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。</p>
-<h2 id="博客部署"><a href="#博客部署" class="headerlink" title="博客部署"></a>博客部署</h2><p>(1) 安装git</p>
-<p>到git官网上下载（<a target="_blank" rel="noopener" href="https://gitforwindows.org/）">https://gitforwindows.org/）</a></p>
-<p>(2) 下载node.js</p>
-<p>windows直接进入这个网址（<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/），选择windows">https://nodejs.org/en/download/），选择windows</a>  Installer一路下载就可以了。</p>
+<h2 id="博客部署">博客部署</h2>
+<ol type="1">
+<li>安装git</li>
+</ol>
+<p>到git官网上下载（https://gitforwindows.org/）</p>
+<ol start="2" type="1">
+<li>下载node.js</li>
+</ol>
+<p>windows直接进入这个网址（https://nodejs.org/en/download/），选择windows Installer一路下载就可以了。</p>
 <p>检查以下命令，以判断node.js是否安装成功：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>(3) 安装Hexo</p>
+<ol start="3" type="1">
+<li>安装Hexo</li>
+</ol>
 <p>先在某个目录下创建一个文件夹blog，然后cd到这个文件夹下。git bash进入命令行，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <p>检查以下命令，以判断Hexo是否安装成功：</p>
