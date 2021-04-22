@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="概述在兴奋地准备本地测试博客时，发现在使用node 14版本进行hexo generate之后，博客打开竟然是一片空白。然后发现public文件夹大小只有0KB。">
+<meta name="description" content="概述 在兴奋地准备本地测试博客时，发现在使用node 14版本进行hexo generate之后，博客打开竟然是一片空白。然后发现public文件夹大小只有0KB。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决hexo g产生的文件为0KB的问题">
 <meta property="og:url" content="https://chocofairy.github.io/2019/11/10/%E8%A7%A3%E5%86%B3hexo-g%E4%BA%A7%E7%94%9F%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%BA0KB%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="概述在兴奋地准备本地测试博客时，发现在使用node 14版本进行hexo generate之后，博客打开竟然是一片空白。然后发现public文件夹大小只有0KB。">
+<meta property="og:description" content="概述 在兴奋地准备本地测试博客时，发现在使用node 14版本进行hexo generate之后，博客打开竟然是一片空白。然后发现public文件夹大小只有0KB。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2019-11-10T04:28:28.000Z">
 <meta property="article:modified_time" content="2021-04-12T09:04:54.519Z">
@@ -379,17 +379,21 @@
       
 
       
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在兴奋地准备本地测试博客时，发现在使用node 14版本进行<code>hexo generate</code>之后，博客打开竟然是一片空白。然后发现<code>public</code>文件夹大小只有0KB。</p>
+        <h2 id="概述">概述</h2>
+<p>在兴奋地准备本地测试博客时，发现在使用node 14版本进行<code>hexo generate</code>之后，博客打开竟然是一片空白。然后发现<code>public</code>文件夹大小只有0KB。</p>
 <span id="more"></span>
 <p>其中在运行hexo时有一些Warning:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(node:9876) Warning: Accessing non-existent property &#39;lineno&#39; of module exports inside circular dependency</span><br><span class="line">(Use &#96;node --trace-warnings ...&#96; to show where the warning was created)</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;column&#39; of module exports inside circular dependency</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;filename&#39; of module exports inside circular dependency</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;lineno&#39; of module exports inside circular dependency</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;column&#39; of module exports inside circular dependency</span><br><span class="line">(node:9876) Warning: Accessing non-existent property &#39;filename&#39; of module exports inside circular dependency</span><br></pre></td></tr></table></figure>
 <p>之前以为就是一些warning，并没有注意。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>网上搜了许多回答，发现是node版本的bug，我当时用的版本是14.16.0。</p>
+<h2 id="原因">原因</h2>
+<p>网上搜了许多回答，发现是node版本的bug，我当时用的版本是14.16.0。</p>
 <p>切换到低版本的node之后就可以解决了。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>之前想着删了这个node 14版本，重新下载一个13.14.0版本的node。但是其实很多项目是需要利用到不同版本的node，此时可以选择一个nvm工具来对不同node版本进行管理与切换。</p>
-<h3 id="使用nvm管理node版本"><a href="#使用nvm管理node版本" class="headerlink" title="使用nvm管理node版本"></a>使用nvm管理node版本</h3><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6858118598813024264">https://juejin.cn/post/6858118598813024264</a></p>
+<h2 id="解决方法">解决方法</h2>
+<p>之前想着删了这个node 14版本，重新下载一个13.14.0版本的node。但是其实很多项目是需要利用到不同版本的node，此时可以选择一个nvm工具来对不同node版本进行管理与切换。</p>
+<h3 id="使用nvm管理node版本">使用nvm管理node版本</h3>
+<p>参考：https://juejin.cn/post/6858118598813024264</p>
 <p>（1）下载<code>nvm</code>：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a></p>
+<p>https://github.com/coreybutler/nvm-windows/releases</p>
 <p>选择nvm-setup.zip</p>
 <p>（2）安装</p>
 <p>解压，双击<code>nvm-setup.exe</code>进行安装。</p>
@@ -398,7 +402,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 13.14.0</span><br></pre></td></tr></table></figure>
 <p>（4）切换node版本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm use 13.14.0</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<h3 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h3><p>在nvm切换node时可能会出一个小问题：”该文件没有与之关联的应用来执行操作…”</p>
+<h3 id="小问题">小问题</h3>
+<p>在nvm切换node时可能会出一个小问题："该文件没有与之关联的应用来执行操作..."</p>
 <p>这是因为使用的是 <code>git bash</code>，而不是<code>cmd命令行</code>。在<code>cmd</code>中操作就行了。</p>
 
       
@@ -524,7 +529,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -258,6 +258,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/03/28/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%8E%B0-Invalid-username-or-password%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/28/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%8E%B0-Invalid-username-or-password%E9%97%AE%E9%A2%98/" itemprop="url">【博客】Hexo搭建个人博客出现 Invalid username or password问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-28T20:59:31+08:00">
+                2021-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  836 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>GitHub开启<strong>二次验证</strong>后会导致博客提交<strong>hexo deploy</strong>的时候密码错误，无法提交至GitHub。具体提示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Logon failed, use ctrl+c to cancel basic credential prompt.</span><br><span class="line">Username for &#39;https:&#x2F;&#x2F;github.com&#39;: username</span><br><span class="line">remote: Invalid username or password.</span><br><span class="line">fatal: Authentication failed for &#39;https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;username.github.io.git&#x2F;&#39;</span><br><span class="line">FATAL &#123;</span><br><span class="line">  err: Error: Spawn failed</span><br><span class="line">      at ChildProcess.&lt;anonymous&gt; (D:\Mine\blog\node_modules\hexo-util\lib\spawn.js:51:21)</span><br><span class="line">      at ChildProcess.emit (events.js:315:20)</span><br><span class="line">      at ChildProcess.cp.emit (D:\Mine\blog\node_modules\cross-spawn\lib\enoent.js:34:29)</span><br><span class="line">      at Process.ChildProcess._handle.onexit (internal&#x2F;child_process.js:277:12) &#123;</span><br><span class="line">    code: 128</span><br><span class="line">  &#125;</span><br><span class="line">&#125; Something&#39;s wrong. Maybe you can find the solution here: %s https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;troubleshooting.html</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这是由于在GitHub中开启了 <strong>Two-factor authentication（二次验证）</strong>导致。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/03/28/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%8E%B0-Invalid-username-or-password%E9%97%AE%E9%A2%98/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/03/28/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%B8%80%EF%BC%89%E5%A6%82%E4%BD%95%E7%94%A8OpenCV%E5%AE%9E%E7%8E%B0%E5%9F%BA%E4%BA%8ESVM%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%B8%8E%E5%88%86%E7%B1%BB%E7%9A%84%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -560,8 +740,11 @@
 
       
         
-          <h2 id="一面（45min）："><a href="#一面（45min）：" class="headerlink" title="一面（45min）："></a>一面（45min）：</h2><h3 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1.自我介绍"></a>1.自我介绍</h3><p>介绍了自己的大学学习成绩和两个项目，一个是大二暑期小学期的java期刊投稿管理系统（主要问的也是这个），还有一个是自己写的博客。</p>
-<h4 id="java期刊投稿管理系统："><a href="#java期刊投稿管理系统：" class="headerlink" title="java期刊投稿管理系统："></a>java期刊投稿管理系统：</h4><p>我负责的是组织队员任务，代码编写部分有稿件管理部分、期刊管理部分、审稿管理部分以及代码汇总调试和优化。</p>
+          <h2 id="一面45min">一面（45min）：</h2>
+<h3 id="自我介绍">1.自我介绍</h3>
+<p>介绍了自己的大学学习成绩和两个项目，一个是大二暑期小学期的java期刊投稿管理系统（主要问的也是这个），还有一个是自己写的博客。</p>
+<h4 id="java期刊投稿管理系统">java期刊投稿管理系统：</h4>
+<p>我负责的是组织队员任务，代码编写部分有稿件管理部分、期刊管理部分、审稿管理部分以及代码汇总调试和优化。</p>
 <p>针对我的任务主要问了：</p>
 <p>①出于什么目的做的项目</p>
 <p>②做项目的过程中遇到了什么问题</p>
@@ -569,196 +752,11 @@
 <p>④初次接触多线程，查找了什么资料，用了什么方法</p>
 <p>⑤通过项目学到了什么？得到了哪些成长？</p>
 <p>⑥团队合作中遇到过哪些问题？</p>
-<h4 id="个人博客："><a href="#个人博客：" class="headerlink" title="个人博客："></a>个人博客：</h4><p>让我发了网址看了一下，没有过多提问，因为实现原理很简单并且在自我介绍过程中说过了</p>
+<h4 id="个人博客">个人博客：</h4>
+<p>让我发了网址看了一下，没有过多提问，因为实现原理很简单并且在自我介绍过程中说过了</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/03/23/%E3%80%90%E9%9D%A2%E7%BB%8F%E3%80%91%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E6%B5%8B%E8%AF%95%EF%BC%88%E5%AE%9E%E4%B9%A0%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-	
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/03/21/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/person.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="巧克力梦工厂">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/21/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0/" itemprop="url">【微信小程序】微信小程序学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-21T16:55:49+08:00">
-                2021-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  4.3k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  17 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="一，基本配置"><a href="#一，基本配置" class="headerlink" title="一，基本配置"></a>一，基本配置</h2><p>一个小程序里边有下列不同类型的文件：</p>
-<ol>
-<li>.json后缀的JSON配置文件</li>
-<li>.wxml后缀的WXML模板文件</li>
-<li>.wxss后缀的WXSS样式文件</li>
-<li>.js后缀的JS脚本逻辑文件</li>
-</ol>
-<h3 id="JSON配置"><a href="#JSON配置" class="headerlink" title="JSON配置"></a>JSON配置</h3><p>JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。</p>
-<p><strong>app.json</strong>中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/03/21/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -850,7 +848,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
