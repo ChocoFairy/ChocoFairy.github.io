@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="之前在学数据结构的时候就没有太弄懂KMP算法，近日恰好刷到一道查找子串位置的算法题，所以好好复习一下KMP算法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【算法】字符串匹配KMP算法详解">
+<meta property="og:url" content="https://chocofairy.github.io/2021/04/21/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8DKMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="之前在学数据结构的时候就没有太弄懂KMP算法，近日恰好刷到一道查找子串位置的算法题，所以好好复习一下KMP算法。">
+<meta property="og:locale">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050103.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050105.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050106.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050107.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050108.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050109.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050107.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050110.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050111.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050112.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050113.png">
+<meta property="og:image" content="https://pic.leetcode-cn.com/1618845342-ydYJRp-9364346F937803F03CD1A0AE645EA0F1.jpg">
+<meta property="og:image" content="https://pic.leetcode-cn.com/1618755191-ddejks-image.png">
+<meta property="og:image" content="https://pic.leetcode-cn.com/1618846927-xFAEXE-010FD8AE2B79FFE03DC3735ACD224A6A.png">
+<meta property="og:image" content="https://pic.leetcode-cn.com/1618847960-lkVIDM-B9497542844478144BED83E9ADA0C12F.png">
+<meta property="og:image" content="https://pic.leetcode-cn.com/1618847981-wncoqJ-161584A2D930A7B91092A2C3872D9DE5.png">
+<meta property="og:image" content="https://pic.leetcode-cn.com/1618847995-vRWimV-6127EBA37435560C20BB8B15D5B790B6.png">
+<meta property="article:published_time" content="2021-04-21T13:31:32.000Z">
+<meta property="article:modified_time" content="2021-04-22T01:18:23.203Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050103.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2021/04/21/【算法】字符串匹配KMP算法详解/"/>
+
+
+
+
+
+  <title>【算法】字符串匹配KMP算法详解 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/21/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8DKMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【算法】字符串匹配KMP算法详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-21T21:31:32+08:00">
+                2021-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前在学数据结构的时候就没有太弄懂KMP算法，近日恰好刷到一道查找子串位置的算法题，所以好好复习一下KMP算法。</p>
+<span id="more"></span>
+<p>KMP算法是一个快速查找匹配子串的算法，它的作用是在<code>原字符串</code>中快速找到<code>匹配字符串</code>。KMP算法的复杂度为O(m+n)。</p>
+<p>KMP算法之所以能够在O(m+n)的复杂度内完成查找，是因为它能够在非完全匹配的过程中提取到有效的信息进行复用，从而减少重复匹配的消耗。</p>
+<h2 id="过程演示"><a href="#过程演示" class="headerlink" title="过程演示"></a>过程演示</h2><p>首先，字符串”BBC ABCDAB ABCDABCDABDE”的第一个字符与搜索词”ABCDABD”的第一个字符，进行比较。因为B与A不匹配，所以搜索词后移一位。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050103.png" alt="img"></p>
+<p>因为B与A不匹配，所以搜索词往后移，知道字符串中有一个字符与搜索词的第一个字符相同为止。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050105.png" alt="img"></p>
+<p>接着比较字符串和搜索词的下一个字符，还是相同。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050106.png" alt="img"></p>
+<p>直到字符串有一个字符，与搜索词对应的字符不相同为止。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050107.png" alt="img"></p>
+<p>这时，最自然的反应是，将搜索词整个后移一位，再从头逐个比较。这样做虽然可行，但是效率很差，因为你要把”搜索位置”移到已经比较过的位置，重比一遍。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050108.png" alt="img"></p>
+<p>一个基本事实是，当空格与D不匹配时，你其实知道前面六个字符是”ABCDAB”。KMP算法的想法是，设法利用这个已知信息，不要把”搜索位置”移回已经比较过的位置，继续把它向后移，这样就提高了效率。</p>
+<p>怎么做到这一点呢？可以针对搜索词，算出一张<code>《部分匹配表》（Partial Match Table）</code>。这张表是如何产生的，后面再介绍，这里只要会用就可以了。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050109.png" alt="img"></p>
+<p>已知空格与D不匹配时，前面六个字符”ABCDAB”是匹配的。查表可知，最后一个匹配字符B对应的”部分匹配值”为2，因此按照下面的公式算出向后移动的位数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　移动位数 &#x3D; 已匹配的字符数 - 对应的部分匹配值</span><br></pre></td></tr></table></figure>
+<p>因为 6 - 2 等于4，所以将搜索词向后移动4位。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050107.png" alt="img"></p>
+<p>因为空格与Ｃ不匹配，搜索词还要继续往后移。这时，已匹配的字符数为2（”AB”），对应的”部分匹配值”为0。所以，移动位数 = 2 - 0，结果为 2，于是将搜索词向后移2位。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050110.png" alt="img"></p>
+<p>因为空格与A不匹配，继续后移一位。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050111.png" alt="img"></p>
+<p>逐位比较，直到发现C与D不匹配。于是，移动位数 = 6 - 2，继续将搜索词向后移动4位。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050112.png" alt="img"></p>
+<p>逐位比较，直到搜索词的最后一位，发现完全匹配，于是搜索完成。如果还要继续搜索（即找出全部匹配），移动位数 = 7 - 0，再将搜索词向后移动7位，这里就不再重复了。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/201305/bg2013050113.png" alt="img"></p>
+<p>这一块的部分如果用代码演示，就是下面这样：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用haystack代表原字符串，needle代表匹配字符串</span></span><br><span class="line"><span class="comment">//next数组用来记录部分匹配表中的部分匹配值</span></span><br><span class="line"><span class="keyword">int</span> n=haystack.size();</span><br><span class="line"><span class="keyword">int</span> m=needle.size();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;m;i++)<span class="comment">//用i来做原字符串中的指针，j来表示匹配字符串中的指针</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span>(j&amp;&amp;haystack[j]!=needle[i])j=next[j<span class="number">-1</span>];<span class="comment">//对应公式　移动位数 = 已匹配的字符数 - 对应的部分匹配值</span></span><br><span class="line">    <span class="keyword">if</span>(needle[j]==haystack[i])j++;<span class="comment">//如果找到相等的部分，指针向后移一位</span></span><br><span class="line">    <span class="keyword">if</span>(j==m)<span class="keyword">return</span> i-m+<span class="number">1</span>;<span class="comment">//如果j指针已经移到匹配字符串末尾，则返回i-m+1即是匹配字符串的位置</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">-1</span>;<span class="comment">//如果没找到匹配字符串就返回-1</span></span><br></pre></td></tr></table></figure>
+<p>那么如何求<code>next数组</code>（即部分匹配表）呢？</p>
+<h2 id="next数组求解"><a href="#next数组求解" class="headerlink" title="next数组求解"></a>next数组求解</h2><p>我们再仔细观察一下KMP的匹配过程：</p>
+<p><strong>首先匹配串会检查之前已经匹配成功的部分中里是否存在相同的「前缀」和「后缀」。如果存在，则跳转到「前缀」的下一个位置继续往下匹配：</strong></p>
+<p><img src="https://pic.leetcode-cn.com/1618845342-ydYJRp-9364346F937803F03CD1A0AE645EA0F1.jpg" alt="9364346F937803F03CD1A0AE645EA0F1.jpg"></p>
+<p><strong>跳转到下一匹配位置后，尝试匹配，发现两个指针的字符对不上，并且此时匹配串指针前面不存在相同的「前缀」和「后缀」，这时候只能回到匹配串的起始位置重新开始：</strong></p>
+<p><img src="https://pic.leetcode-cn.com/1618755191-ddejks-image.png" alt="image.png"></p>
+<p>所以你发现了吗？从匹配串某个位置跳转下一个匹配位置这一过程是与原串无关的，我们将这一过程称为找 <code>next</code> 点。<code>next数组</code>中每个值的含义其实就是该下标应该跳转到的目标位置。</p>
+<p>比如上图中的字符串<code>abeabf</code>对应的<code>next数组</code>应该是：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>匹配串</th>
+<th>a</th>
+<th>b</th>
+<th>e</th>
+<th>a</th>
+<th>b</th>
+<th>f</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>匹配值</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>假设i指针指向原串string，j指针指向匹配串pattern，当i指针指向string[5]，即字母’a’，j指针指向pattern[5]，即字母’f’时，由于前五轮比较都是匹配的，因此pattern的指针<code>j=j-(j-next[j-1])=next[j-1]=2</code>，直接跳转到patter[2]，即字母’e’与string[5]进行比较。这是因为KMP的优化过程就是<code>检查已匹配部分的相同前缀和后缀</code>。</p>
+<p>因此，next数组的构建过程也就是寻找匹配串pattern的相同前缀和后缀的过程，然后从第一个相同的后缀开始记匹配值为1，而后递增，直到找到第一个不匹配的后缀，再重新记为0。</p>
+<p><img src="https://pic.leetcode-cn.com/1618846927-xFAEXE-010FD8AE2B79FFE03DC3735ACD224A6A.png" alt="010FD8AE2B79FFE03DC3735ACD224A6A.png"></p>
+<p><img src="https://pic.leetcode-cn.com/1618847960-lkVIDM-B9497542844478144BED83E9ADA0C12F.png" alt="B9497542844478144BED83E9ADA0C12F.png"></p>
+<p><img src="https://pic.leetcode-cn.com/1618847981-wncoqJ-161584A2D930A7B91092A2C3872D9DE5.png" alt="161584A2D930A7B91092A2C3872D9DE5.png"></p>
+<p><img src="https://pic.leetcode-cn.com/1618847995-vRWimV-6127EBA37435560C20BB8B15D5B790B6.png" alt="6127EBA37435560C20BB8B15D5B790B6.png"></p>
+<p>这就是整个 <code>next</code> 数组的构建过程，时空复杂度均为 O(m)。</p>
+<p>至此整个 KMP 匹配过程复杂度是 O(m + n) 的。</p>
+<p>next数组实现部分代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = haystack.size();</span><br><span class="line"><span class="keyword">int</span> m = needle.size();</span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">next</span><span class="params">(m)</span></span>;</span><br><span class="line">next.push_back(<span class="number">0</span>);</span><br><span class="line">        </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span> (j &amp;&amp; needle[j] != needle[i])j = next[j - <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">if</span> (needle[i] == needle[j])j++;</span><br><span class="line">	next[i] = j;<span class="comment">//实现递增的效果</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>在实际编码时，通常我会往原串和匹配串头部追加一个空格（哨兵）。</p>
+<p>目的是让 <code>j</code> 下标从 <code>0</code> 开始，省去 <code>j</code> 从 <code>-1</code> 开始的麻烦。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.size(), m = p.size();</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//设置哨兵</span></span><br><span class="line">        s.insert(s.begin(),<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">        p.insert(p.begin(),<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">next</span><span class="params">(m + <span class="number">1</span>)</span></span>;</span><br><span class="line">        <span class="comment">//预处理next数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= m; i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(j <span class="keyword">and</span> p[i] != p[j + <span class="number">1</span>]) j = next[j];</span><br><span class="line">            <span class="keyword">if</span>(p[i] == p[j + <span class="number">1</span>]) j++;</span><br><span class="line">            next[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//匹配过程</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(j <span class="keyword">and</span> s[i] != p[j + <span class="number">1</span>]) j = next[j];</span><br><span class="line">            <span class="keyword">if</span>(s[i] == p[j + <span class="number">1</span>]) j++;</span><br><span class="line">            <span class="keyword">if</span>(j == m) <span class="keyword">return</span> i - m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>参考：<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a></p>
+<p>图片源自<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/solution/shua-chuan-lc-shuang-bai-po-su-jie-fa-km-tb86/">水印</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/21/%E3%80%90git%E3%80%91git%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E8%B6%85%E8%BF%87100M%E7%9A%84%E5%A4%A7%E6%96%87%E4%BB%B6/" rel="next" title="【git】git如何上传超过100M的大文件">
+                <i class="fa fa-chevron-left"></i> 【git】git如何上传超过100M的大文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B%E6%BC%94%E7%A4%BA"><span class="nav-number">1.</span> <span class="nav-text">过程演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E6%B1%82%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">next数组求解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
