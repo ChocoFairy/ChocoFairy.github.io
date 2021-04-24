@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="问题 Trie（发音类似 &quot;try&quot;）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。 请你实现 Trie 类：  Trie() 初始化前缀树对象。 void insert(String word) 向前缀树中插入字符串 word 。 boolean search(String word) 如果字符串">
+<meta name="description" content="问题 Trie（发音类似 “try”）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。 请你实现 Trie 类：  Trie() 初始化前缀树对象。 void insert(String word) 向前缀树中插入字符串 word 。 boolean search(String word) 如果字符串 word 在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法】实现前缀树Trie">
 <meta property="og:url" content="https://chocofairy.github.io/2021/04/14/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%BC%80%E6%A0%91Trie/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="问题 Trie（发音类似 &quot;try&quot;）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。 请你实现 Trie 类：  Trie() 初始化前缀树对象。 void insert(String word) 向前缀树中插入字符串 word 。 boolean search(String word) 如果字符串">
+<meta property="og:description" content="问题 Trie（发音类似 “try”）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。 请你实现 Trie 类：  Trie() 初始化前缀树对象。 void insert(String word) 向前缀树中插入字符串 word 。 boolean search(String word) 如果字符串 word 在">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-04-14T01:13:40.000Z">
 <meta property="article:modified_time" content="2021-04-14T01:20:09.079Z">
@@ -380,7 +380,7 @@
 
       
         <h2 id="问题">问题</h2>
-<p>Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。</p>
+<p>Trie（发音类似 “try”）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。</p>
 <p>请你实现 Trie 类：</p>
 <ul>
 <li>Trie() 初始化前缀树对象。</li>
@@ -402,7 +402,7 @@
 <li>word 和 prefix 仅由小写英文字母组成</li>
 <li>insert、search 和 startsWith 调用次数 总计 不超过 3 * 104 次</li>
 </ul>
-<h2 id="思路字典树">思路：字典树</h2>
+<h2 id="思路：字典树">思路：字典树</h2>
 <p>Trie，又称前缀树或字典树，是一棵有根树，其每个节点包含以下字段：</p>
 <ul>
 <li>指向子节点的指针数组children。对于本题而言，数组长度为 26，即小写英文字母的数量。此时children[0] 对应小写字母 a，children[1] 对应小写字母 b，…，children[25] 对应小写字母 z。</li>
@@ -620,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">3.</span> <span class="nav-text">思路：字典树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">3.</span> <span class="nav-text">思路：字典树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li></ol></div>
             
 
           </div>
