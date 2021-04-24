@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="一，基本配置 一个小程序里边有下列不同类型的文件：  .json后缀的JSON配置文件 .wxml后缀的WXML模板文件 .wxss后缀的WXSS样式文件 .js后缀的JS脚本逻辑文件  JSON配置 JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。 app.json中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。">
+<meta name="description" content="一，基本配置 一个小程序里边有下列不同类型的文件：  .json后缀的JSON配置文件 .wxml后缀的WXML模板文件 .wxss后缀的WXSS样式文件 .js后缀的JS脚本逻辑文件  JSON配置 JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。 app.json中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【微信小程序】微信小程序学习笔记">
 <meta property="og:url" content="https://chocofairy.github.io/2021/03/21/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="一，基本配置 一个小程序里边有下列不同类型的文件：  .json后缀的JSON配置文件 .wxml后缀的WXML模板文件 .wxss后缀的WXSS样式文件 .js后缀的JS脚本逻辑文件  JSON配置 JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。 app.json中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。">
+<meta property="og:description" content="一，基本配置 一个小程序里边有下列不同类型的文件：  .json后缀的JSON配置文件 .wxml后缀的WXML模板文件 .wxss后缀的WXSS样式文件 .js后缀的JS脚本逻辑文件  JSON配置 JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。 app.json中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab">
 <meta property="og:locale">
 <meta property="og:image" content="https://chocofairy.github.io/images/1582438221515.png">
 <meta property="og:image" content="https://chocofairy.github.io/images/1582438446115.png">
@@ -383,21 +383,21 @@
       
 
       
-        <h2 id="一，基本配置">一，基本配置</h2>
+        <h2 id="一基本配置">一，基本配置</h2>
 <p>一个小程序里边有下列不同类型的文件：</p>
-<ol>
+<ol type="1">
 <li>.json后缀的JSON配置文件</li>
 <li>.wxml后缀的WXML模板文件</li>
 <li>.wxss后缀的WXSS样式文件</li>
 <li>.js后缀的JS脚本逻辑文件</li>
 </ol>
-<h3 id="JSON配置">JSON配置</h3>
+<h3 id="json配置">JSON配置</h3>
 <p>JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。</p>
 <p><strong>app.json</strong>中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
 <span id="more"></span>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;pages&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;pages/index/index&quot;</span>, </span><br><span class="line">    <span class="string">&quot;pages/logs/logs&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pages/weixin/weixin&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pages/wo/wo&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;window&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;navigationBarBackgroundColor&quot;</span>: <span class="string">&quot;#FFCF00&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;navigationBarTitleText&quot;</span>: <span class="string">&quot;我的应用&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;navigationBarTextStyle&quot;</span>: <span class="string">&quot;black&quot;</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="attr">&quot;enablePullDownRefresh&quot;</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;backgroundColor&quot;</span>: <span class="string">&quot;pink&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;backgroundTextStyle&quot;</span>: <span class="string">&quot;dark&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;tabBar&quot;</span>:&#123;</span><br><span class="line">    <span class="attr">&quot;color&quot;</span>: <span class="string">&quot;#000000&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;selectedColor&quot;</span>: <span class="string">&quot;#ddd&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;list&quot;</span>:[</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;text&quot;</span>:<span class="string">&quot;微信&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;iconPath&quot;</span>:<span class="string">&quot;images/weixin.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;selectedIconPath&quot;</span>:<span class="string">&quot;images/weixin2.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;pagePath&quot;</span>:<span class="string">&quot;pages/index/index&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;我&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;iconPath&quot;</span>: <span class="string">&quot;images/wo.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;selectedIconPath&quot;</span>: <span class="string">&quot;images/wo2.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;pagePath&quot;</span>: <span class="string">&quot;pages/wo/wo&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;style&quot;</span>: <span class="string">&quot;v2&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sitemapLocation&quot;</span>: <span class="string">&quot;sitemap.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意：</p>
-<ol>
+<ol type="1">
 <li>json中不能写注释</li>
 <li>pages中第一个字段为小程序的首页</li>
 <li>可以通过在pages中写代码添加页面</li>
@@ -406,7 +406,7 @@
 <p><strong>JSON语法</strong></p>
 <p>JSON文件都是被包裹在一个大括号<code>&#123;&#125;</code>，通过<code>key-value</code>的方式表达数据。key必须包裹在一个双引号中。JSON的值只能是一下几种数据格式，其他任何格式都会触发报错。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 数字，包含浮点数和整数</span><br><span class="line">2. 字符串，需要包裹在双引号中</span><br><span class="line">3. Bool值，true或false</span><br><span class="line">4. 数组，需要包裹在方括号中[]</span><br><span class="line">5. 对象，需要包裹在大括号中&#123;&#125;</span><br><span class="line">6. Null</span><br></pre></td></tr></table></figure>
-<h3 id="WXML模板">WXML模板</h3>
+<h3 id="wxml模板">WXML模板</h3>
 <p>WXML充当类似HTML的角色。将<code>div</code>标签替换为<code>view</code>标签。</p>
 <p>多了wx:if 之类的渲染语法，以及<code>&#123;&#123; &#125;&#125;</code>表达式。将渲染与逻辑分离。比如：</p>
 <p><strong>1, 数据绑定</strong></p>
@@ -420,33 +420,35 @@
 <p><strong>3，条件渲染</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">&quot;&#123;&#123;view == &#x27;WEBVIEW&#x27;&#125;&#125;&quot;</span>&gt;</span> WEBVIEW <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:elif</span>=<span class="string">&quot;&#123;&#123;view == &#x27;APP&#x27;&#125;&#125;&quot;</span>&gt;</span> APP <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:else</span>=<span class="string">&quot;&#123;&#123;view == &#x27;MINA&#x27;&#125;&#125;&quot;</span>&gt;</span> MINA <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Page*/</span></span><br><span class="line">Page&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        view:<span class="string">&quot;MINA&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="WXSS样式">WXSS样式</h3>
+<h3 id="wxss样式">WXSS样式</h3>
 <p>WXSS具有CSS大部分的特性，小程序在WXSS也做了一些扩充与修改。</p>
-<ol>
-<li>
-<p><code>WXSS</code> 在底层支持新的尺寸单位 <code>rpx</code> ，开发者可以免去换算像素的烦恼。规定所有的屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。</p>
-<p><img src="/images/1582438221515.png" alt="1582438221515"></p>
-</li>
-<li>
-<p>提供了全局的样式和局部样式，支持样式导入（@import语句）</p>
+<ol type="1">
+<li><p><code>WXSS</code> 在底层支持新的尺寸单位 <code>rpx</code> ，开发者可以免去换算像素的烦恼。规定所有的屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。</p>
+<figure>
+<img src="/images/1582438221515.png" alt="1582438221515" /><figcaption aria-hidden="true">1582438221515</figcaption>
+</figure></li>
+<li><p>提供了全局的样式和局部样式，支持样式导入（<span class="citation" data-cites="import语句">@import语句</span>）</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** common.wxss **/</span></span><br><span class="line"><span class="selector-class">.small-p</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** app.wxss **/</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;common.wxss&quot;</span>;</span><br><span class="line"><span class="selector-class">.middle-p</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** app.wxss **/</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;common.wxss&quot;</span>;</span><br><span class="line"><span class="selector-class">.middle-p</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>常见的选择器有且不限于以下几种：</p>
-<p><img src="/images/1582438446115.png" alt="1582438446115"></p>
-<h3 id="JS逻辑交互">JS逻辑交互</h3>
+<figure>
+<img src="/images/1582438446115.png" alt="1582438446115" /><figcaption aria-hidden="true">1582438446115</figcaption>
+</figure>
+<h3 id="js逻辑交互">JS逻辑交互</h3>
 <p>仅有界面展示是不够的，通过编写JS脚本文件来处理用户的操作。比如：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">bindtap</span>=<span class="string">&quot;clickMe&quot;</span>&gt;</span>点击我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>点击button按钮时，我们希望把上面msg的内容显示成&quot;Hello World&quot;，于是我们在button上声明一个属性bindtap，在JS文件中声明了clickMe方法来响应这次点击操作：</p>
+<p>点击button按钮时，我们希望把上面msg的内容显示成"Hello World"，于是我们在button上声明一个属性bindtap，在JS文件中声明了clickMe方法来响应这次点击操作：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  clickMe: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.setData(&#123; <span class="attr">msg</span>: <span class="string">&quot;Hello World&quot;</span> &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="二，小程序宿主环境">二，小程序宿主环境</h2>
+<h2 id="二小程序宿主环境">二，小程序宿主环境</h2>
 <p>我们称微信客户端给小程序所提供的环境为宿主环境。小程序借助宿主环境提供的能力，可以完成许多普通网页无法完成的功能。</p>
 <h3 id="渲染层和逻辑层">渲染层和逻辑层</h3>
 <p>小程序运行环境分成渲染层和逻辑层，其中WXML模板和WXSS样式工作在渲染层，JS脚本工作在逻辑层。</p>
 <p>小程序的渲染层和逻辑层分别由两个线程管理：渲染层界面使用WebView进行渲染；逻辑层采用JsCore线程运行JS脚本。一个小程序存在多个界面，所以渲染层存在多个WebView线程。</p>
 <p>这两个线程的通信会经由微信客户端（下文中也会采用Native来代指微信客户端）做中转，逻辑层发送网络请求也经由Native转发，小程序的通信模型下图所示。</p>
-<p><img src="/images/1582425605881.png" alt="1582425605881"></p>
+<figure>
+<img src="/images/1582425605881.png" alt="1582425605881" /><figcaption aria-hidden="true">1582425605881</figcaption>
+</figure>
 <p>通过app.json的pages字段可以知道当前小程序的所有页面路径：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;pages&quot;</span>: [</span><br><span class="line">   	    <span class="string">&quot;pages/index/index&quot;</span>, </span><br><span class="line">   	    <span class="string">&quot;pages/logs/logs&quot;</span>,</span><br><span class="line">        <span class="string">&quot;pages/weixin/weixin&quot;</span>,</span><br><span class="line">   	    <span class="string">&quot;pages/wo/wo&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中，第一个字段表示小程序的首页。于是微信客户端把首页代码装载，通过小程序底层机制，渲染出首页。</p>
@@ -459,11 +461,11 @@
 <p>在渲染界面之后，页面实例就会收到一个onLoad的回调，可以在这个回调处理自己的逻辑。</p>
 <h3 id="组件">组件</h3>
 <p>小程序提供了丰富的基础组件给开发者，开发者可以像搭积木一样，组合各种组件拼合成自己的小程序。</p>
-<h3 id="API">API</h3>
+<h3 id="api">API</h3>
 <p>为了让开发者可以很方便的调起微信提供的能力，例如获取用户信息、微信支付等等，小程序提供了很多 API 给开发者去使用。</p>
 <p>需要注意的是：多数 API 的回调都是异步，你需要处理好代码逻辑的异步问题。</p>
-<h2 id="三，事件">三，事件</h2>
-<h3 id="什么是事件？">什么是事件？</h3>
+<h2 id="三事件">三，事件</h2>
+<h3 id="什么是事件">什么是事件？</h3>
 <ul>
 <li>事件是视图层到逻辑层的通讯方式</li>
 <li>事件可以将用户的行为反馈到逻辑层进行处理</li>
@@ -471,89 +473,85 @@
 <li>事件对象可以携带额外信息。如id, dataset, touches。</li>
 </ul>
 <h3 id="事件的使用方式">事件的使用方式</h3>
-<ol>
-<li>
-<p>在组件中绑定一个事件处理函数</p>
+<ol type="1">
+<li><p>在组件中绑定一个事件处理函数</p>
 <p>如bindtap，当用户点击该组件时，会在该页面对应的Page中找到相应的事件处理函数</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">id</span>=<span class="string">&quot;tapTest&quot;</span> <span class="attr">data-hi</span>=<span class="string">&quot;WeChat&quot;</span> <span class="attr">bindtap</span>=<span class="string">&quot;tapName&quot;</span>&gt;</span>Click me!<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>在相应的Page定义中写上相应的事件处理函数，<strong>参数是event</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page&#123;</span><br><span class="line">    tapName:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(event)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">id</span>=<span class="string">&quot;tapTest&quot;</span> <span class="attr">data-hi</span>=<span class="string">&quot;WeChat&quot;</span> <span class="attr">bindtap</span>=<span class="string">&quot;tapName&quot;</span>&gt;</span>Click me!<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>在相应的Page定义中写上相应的事件处理函数，<strong>参数是event</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page&#123;</span><br><span class="line">    tapName:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(event)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="事件分类">事件分类</h3>
 <p>事件分为冒泡事件和非冒泡事件</p>
-<ol>
+<ol type="1">
 <li>冒泡事件：当一个组件上的事件被触发后，该事件会向父节点传递</li>
 <li>非冒泡事件：当一个组件上的事件被触发后，该事件不会向父节点传递</li>
 </ol>
 <p>WXML冒泡事件列表：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>类型</th>
 <th>触发条件</th>
 <th>最低版本</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>touchstart</td>
 <td>手指触摸动作开始</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>touchmove</td>
 <td>手指触摸后移动</td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>touchcancel</td>
 <td>手指触摸动作被打断，如来电提醒，弹窗</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>touchend</td>
 <td>手指触摸动作结束</td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>tap</td>
 <td>手指触摸后马上离开</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>longpress</td>
 <td>手指触摸后，超过350ms再离开，如果指定了事件回调函数并触发了这个事件，tap事件将不被触发</td>
 <td>[1.5.0]</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>longtap</td>
 <td>手指触摸后，超过350ms再离开（推荐使用longpress事件代替）</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>transitionend</td>
 <td>会在 WXSS transition 或 wx.createAnimation 动画结束后触发</td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>animationstart</td>
 <td>会在一个 WXSS animation 动画开始时触发</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>animationiteration</td>
 <td>会在一个 WXSS animation 一次迭代结束时触发</td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>animationend</td>
 <td>会在一个 WXSS animation 动画完成时触发</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>touchforcechange</td>
 <td>在支持 3D Touch 的 iPhone 设备，重按时会触发</td>
 <td>[1.9.90]</td>
@@ -568,20 +566,14 @@
 <li>data-element-type，最终呈现为 event.currentTarget.dataset.elementType;</li>
 <li>data-elementType，最终呈现为 event.currentTarget.dataset.elementtype.</li>
 </ul>
-<h2 id="四，云开发">四，云开发</h2>
+<h2 id="四云开发">四，云开发</h2>
 <p>云开发为开发者提供完整的原生云端支持和微信服务支持，弱化后端和运维概念，无需搭建服务器，使用平台提供的 API 进行核心业务开发，即可实现快速上线和迭代，同时这一能力，同开发者已经使用的云服务相互兼容，并不互斥。</p>
 <h3 id="初始化云程序">初始化云程序</h3>
-<ol>
-<li>
-<p>在project.config.json中添加&quot;cloudfunctionRoot&quot;: “&lt;云函数目录&gt;/”</p>
-</li>
-<li>
-<p>项目根目录处创建文件夹 &lt;云函数目录&gt;，并配置当前环境</p>
-</li>
-<li>
-<p>在app.js的onLaunch中进行云函数初始化</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 云开发初始化</span></span><br><span class="line"><span class="keyword">if</span> (!wx.cloud) &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">&#x27;请使用 2.2.3 或以上的基础库以使用云能力&#x27;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  wx.cloud.init(&#123;</span><br><span class="line">    env: <span class="string">&#x27;zzmine-3cgx9&#x27;</span>,</span><br><span class="line">    traceUser: <span class="literal">true</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<ol type="1">
+<li><p>在project.config.json中添加"cloudfunctionRoot": "<云函数目录>/"</p></li>
+<li><p>项目根目录处创建文件夹 <云函数目录>，并配置当前环境</p></li>
+<li><p>在app.js的onLaunch中进行云函数初始化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 云开发初始化</span></span><br><span class="line"><span class="keyword">if</span> (!wx.cloud) &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">&#x27;请使用 2.2.3 或以上的基础库以使用云能力&#x27;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  wx.cloud.init(&#123;</span><br><span class="line">    env: <span class="string">&#x27;zzmine-3cgx9&#x27;</span>,</span><br><span class="line">    traceUser: <span class="literal">true</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="云数据库">云数据库</h3>
 <p>云开发提供了一个 <strong>JSON 数据库</strong>，顾名思义，数据库中的每条记录都是一个 JSON 格式的对象。</p>
@@ -611,7 +603,7 @@
 <p>视频上传：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">uploadVideo:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="built_in">this</span></span><br><span class="line">    <span class="comment">// 选择视频</span></span><br><span class="line">    wx.chooseVideo(&#123;</span><br><span class="line">      sourceType: [<span class="string">&#x27;album&#x27;</span>,<span class="string">&#x27;camera&#x27;</span>],</span><br><span class="line">      maxDuration: <span class="number">60</span>,   <span class="comment">//最长时长 单位 s </span></span><br><span class="line">      camera: <span class="string">&#x27;back&#x27;</span>,</span><br><span class="line">      <span class="function"><span class="title">success</span>(<span class="params">res</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;选择视频成功&quot;</span>,res.tempFilePath)</span><br><span class="line">        wx.cloud.uploadFile(&#123;</span><br><span class="line">          cloudPath:  <span class="string">&#x27;video.mp4&#x27;</span>, <span class="comment">// 上传至云端的路径</span></span><br><span class="line">          filePath: res.tempFilePath, <span class="comment">// 小程序临时文件路径</span></span><br><span class="line">          success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 返回文件 ID</span></span><br><span class="line">            <span class="built_in">console</span>.log(res.fileID)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;文件视频成功&quot;</span>)</span><br><span class="line">            that.setData(&#123;<span class="attr">imageFileId</span>:res.fileID&#125;)</span><br><span class="line">            <span class="comment">// 上传成功后会获得文件唯一标识符，即文件 ID，后续操作(如回显)都基于文件 ID 而不是 URL</span></span><br><span class="line">          &#125;,</span><br><span class="line">          fail: <span class="built_in">console</span>.error</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="带有云后台的小程序进行多人协作">带有云后台的小程序进行多人协作</h2>
-<ol>
+<ol type="1">
 <li>将所有开发者在微信小程序后台里面设置权限</li>
 <li>在微信开发工具导入项目的时候使用同一个appid（wx9e2d10f6dc0c617f）</li>
 <li>这样子之后，新的项目人员需要在cloudfunction文件夹右键配置云环境，过个几分钟应该就可以编译预览了</li>
@@ -620,7 +612,7 @@
 <p>注意：上传多张图片到云后台需要加同步锁Promise</p>
 <h2 id="穷举获取云函数的ip">穷举获取云函数的ip</h2>
 <p>有时我们希望能够获取到服务器的公网IP，比如用于IP地址的白名单，或者想根据IP查询到服务器所在的地址，ipify就是一个免费好用的依赖，通过它我们也可以获取到云函数所在服务器的公网IP。</p>
-<p>建立云函数getip, 然后输入以下代码。同时在package.json的”dependencies”里新增 “ipify”:“latest”。</p>
+<p>建立云函数getip, 然后输入以下代码。同时在package.json的”dependencies”里新增 "ipify":"latest"。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cloud = <span class="built_in">require</span>(<span class="string">&#x27;wx-server-sdk&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> ipify = <span class="built_in">require</span>(<span class="string">&#x27;ipify&#x27;</span>);</span><br><span class="line">cloud.init(&#123;</span><br><span class="line">  env: <span class="string">&quot;自己的云环境id&quot;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">exports</span>.main = <span class="keyword">async</span> (event, context) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> ipify(&#123; <span class="attr">useIPv6</span>: <span class="literal">false</span> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -817,7 +809,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%EF%BC%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">一，基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">JSON配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WXML%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.2.</span> <span class="nav-text">WXML模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WXSS%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">WXSS样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E9%80%BB%E8%BE%91%E4%BA%A4%E4%BA%92"><span class="nav-number">1.4.</span> <span class="nav-text">JS逻辑交互</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%EF%BC%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%BF%E4%B8%BB%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">二，小程序宿主环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%B1%82%E5%92%8C%E9%80%BB%E8%BE%91%E5%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">渲染层和逻辑层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">2.3.</span> <span class="nav-text">API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%EF%BC%8C%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">三，事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E4%BB%B6%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">什么是事件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">事件的使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E7%B1%BB"><span class="nav-number">3.3.</span> <span class="nav-text">事件分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E6%95%B0%E6%8D%AE"><span class="nav-number">3.4.</span> <span class="nav-text">绑定数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%EF%BC%8C%E4%BA%91%E5%BC%80%E5%8F%91"><span class="nav-number">4.</span> <span class="nav-text">四，云开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%91%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.1.</span> <span class="nav-text">初始化云程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.2.</span> <span class="nav-text">云数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%91%E5%AD%98%E5%82%A8"><span class="nav-number">4.3.</span> <span class="nav-text">云存储</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E6%9C%89%E4%BA%91%E5%90%8E%E5%8F%B0%E7%9A%84%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%BF%9B%E8%A1%8C%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">带有云后台的小程序进行多人协作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%B7%E4%B8%BE%E8%8E%B7%E5%8F%96%E4%BA%91%E5%87%BD%E6%95%B0%E7%9A%84ip"><span class="nav-number">6.</span> <span class="nav-text">穷举获取云函数的ip</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">一，基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#json%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">JSON配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wxml%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.2.</span> <span class="nav-text">WXML模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wxss%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">WXSS样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js%E9%80%BB%E8%BE%91%E4%BA%A4%E4%BA%92"><span class="nav-number">1.4.</span> <span class="nav-text">JS逻辑交互</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%BF%E4%B8%BB%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">二，小程序宿主环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%B1%82%E5%92%8C%E9%80%BB%E8%BE%91%E5%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">渲染层和逻辑层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#api"><span class="nav-number">2.3.</span> <span class="nav-text">API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">三，事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">什么是事件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">事件的使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E7%B1%BB"><span class="nav-number">3.3.</span> <span class="nav-text">事件分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E6%95%B0%E6%8D%AE"><span class="nav-number">3.4.</span> <span class="nav-text">绑定数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E4%BA%91%E5%BC%80%E5%8F%91"><span class="nav-number">4.</span> <span class="nav-text">四，云开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%91%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.1.</span> <span class="nav-text">初始化云程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.2.</span> <span class="nav-text">云数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%91%E5%AD%98%E5%82%A8"><span class="nav-number">4.3.</span> <span class="nav-text">云存储</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E6%9C%89%E4%BA%91%E5%90%8E%E5%8F%B0%E7%9A%84%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%BF%9B%E8%A1%8C%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">带有云后台的小程序进行多人协作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%B7%E4%B8%BE%E8%8E%B7%E5%8F%96%E4%BA%91%E5%87%BD%E6%95%B0%E7%9A%84ip"><span class="nav-number">6.</span> <span class="nav-text">穷举获取云函数的ip</span></a></li></ol></div>
             
 
           </div>
