@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="人群异常检测,深度学习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2013年~2014年的人群异常检测相关论文。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【大创】（五）2013-2014人群异常检测相关论文">
+<meta property="og:url" content="https://chocofairy.github.io/2021/04/25/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%BA%94%EF%BC%892013-2014%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="2013年~2014年的人群异常检测相关论文。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-25T01:53:33.000Z">
+<meta property="article:modified_time" content="2021-04-25T05:44:25.857Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="人群异常检测">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2021/04/25/【大创】（五）2013-2014人群异常检测相关论文/"/>
+
+
+
+
+
+  <title>【大创】（五）2013-2014人群异常检测相关论文 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/25/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%BA%94%EF%BC%892013-2014%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【大创】（五）2013-2014人群异常检测相关论文</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-25T09:53:33+08:00">
+                2021-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%88%9B/" itemprop="url" rel="index">
+                    <span itemprop="name">大创</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  22 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>2013年~2014年的人群异常检测相关论文。</p>
+<span id="more"></span>
+<h4 id="基于结构分析的在线人群异常检测">基于结构分析的在线人群异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6844850">Online Anomaly Detection in Crowd Scenes via Structure Analysis</a></p>
+<blockquote>
+<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6221036">IEEE Transactions on Cybernetics</a> ( Volume: 45, <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=7041256">Issue: 3</a>, March 2015)</p>
+<p><strong>Date of Publication:</strong> 26 June 2014</p>
+<p><strong>被引用次数</strong>：155</p>
+</blockquote>
+<p><strong>Abstract:</strong></p>
+<p>Abnormal behavior detection in crowd scenes is continuously a challenge in the field of computer vision. For tackling this problem, this paper starts from a novel structure modeling of crowd behavior. We first propose an informative structural context descriptor (SCD) for describing the crowd individual, which originally introduces the potential energy function of particle's interforce in solid-state physics to intuitively conduct vision contextual cueing. For computing the crowd SCD variation effectively, we then design a robust multi-object tracker to associate the targets in different frames, which employs the incremental analytical ability of the 3-D discrete cosine transform (DCT). By online spatial-temporal analyzing the SCD variation of the crowd, the abnormality is finally localized. Our contribution mainly lies on three aspects: 1) the new exploration of abnormal detection from structure modeling where the motion difference between individuals is computed by a novel selective histogram of optical flow that makes the proposed method can deal with more kinds of anomalies; 2) the SCD description that can effectively represent the relationship among the individuals; and 3) the 3-D DCT multi-object tracker that can robustly associate the limited number of (instead of all) targets which makes the tracking analysis in high density crowd situation feasible. Experimental results on several publicly available crowd video datasets verify the effectiveness of the proposed method.</p>
+<p>人群场景中的异常行为检测一直是计算机视觉领域的一个挑战。为了解决这个问题，本文从人群行为的<strong>新型结构建模</strong>入手。我们首先提出了一个用于描述人群个体的信息结构描述符（SCD），它最初引入了固体物理学中粒子相互作用的势能函数来直观地进行视觉情境提示。为了有效地计算人群的<strong>SCD变化</strong>，我们设计了一个强大的<strong>多目标跟踪器</strong>来关联不同帧中的目标，它采用了<strong>3-D离散余弦变换（DCT）的增量分析</strong>能力。通过对人群的SCD变化进行在线时空分析，最终对异常情况进行了定位。我们的贡献主要体现在三个方面。1）从结构建模的角度对异常检测进行了新的探索，其中个体之间的运动差异是通过新颖的选择性光流直方图来计算的，这使得所提出的方法可以处理更多种类的异常；2）SCD描述可以有效地代表个体之间的关系；3）3-D DCT多目标跟踪器可以稳健地关联有限数量（而不是全部）的目标，这使得在高密度人群情况下进行跟踪分析成为可行。在几个公开可用的人群视频数据集上的实验结果验证了所提方法的有效性。</p>
+<p><strong>keywords</strong>:</p>
+<p>Context, Trajectory, Computational modeling, Potential energy, Target tracking, Discrete cosine transforms, Visualization</p>
+<p>环境, 轨迹, 计算模型, 势能, 目标追踪, 离散余弦变换, 视觉化</p>
+<h4 id="层次化的人群分析和异常检测">层次化的人群分析和异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1045926X13000992">Hierarchical crowd analysis and anomaly detection</a></p>
+<blockquote>
+<p><strong>Date of Publication:</strong> 2 December 2013</p>
+<p><strong>被引用次数</strong>：18</p>
+</blockquote>
+<p><strong>Abstract:</strong></p>
+<p>Objective This work proposes a novel approach to model the spatiotemporal distribution of crowd motions and detect anomalous events.</p>
+<p>Methods We first learn the regions of interest (ROIs) which inform the behavioral patterns by trajectory analysis with Hierarchical Dirichlet Processes (HDP), so that the main trends of crowd motions can be modeled. Based on the ROIs, we then build a series of histograms both on global and local levels as the templates for the observed movement distribution, which statistically describes time-correlated crowd events. Once the template has been built hierarchically, we import real data containing the discrete trajectory observations from video surveillance and detect abnormal events for individuals and for crowds.</p>
+<p>Results Experimental results show the effectiveness of our approach, which is able to analyze and extract the crowd motion information from observed trajectory dataset, and achieve the anomaly detection at the hierarchical levels.</p>
+<p>Conclusion The proposed hierarchical approach can learn the moving trends of crowd both in global and local area and describe the crowd behaviors in statistical way, which build a template for pedestrian movement distribution that allows for the detection of time-correlated abnormal crowd events.</p>
+<p>目的 这项工作提出了一种新的方法来模拟人群运动的时空分布并检测异常事件。</p>
+<p>方法 我们首先学习<strong>regions of interest（ROI）</strong>，这些区域通过使用<strong>Hierarchical Dirichlet Processes（HDP）的轨迹分析</strong>来告知行为模式，这样就可以对人群运动的主要趋势进行建模。基于ROI，我们在全局和局部水平上建立一系列直方图，作为观察到的运动分布的模板，从统计学上描述时间相关的人群事件。一旦模板被分层建立，我们就导入包含视频监控中离散轨迹观测的真实数据，并检测个人和人群的异常事件。</p>
+<p>实验结果 实验结果表明，我们的方法是有效的，它能够分析和提取观察到的轨迹数据集中的人群运动信息，并在分层上实现异常检测。</p>
+<p>结论 所提出的分层方法能够学习人群在全局和局部区域的运动趋势，并以统计学的方式描述人群行为，从而建立一个行人运动分布的模板，可以对时间相关的异常人群事件进行检测。</p>
+<p><strong>keywords</strong>:</p>
+<p>Crowd analysis, Anomaly detection, Video surveillance, Hierarchical Dirichlet Process, Trajectory analysis</p>
+<p>人群分析,异常检测,视频监控,HDP,轨迹分析</p>
+<h4 id="实时人群异常检测">实时人群异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9026/902608/Real-time-anomaly-detection-in-dense-crowded-scenes/10.1117/12.2040521.short?SSO=1">Real-time anomaly detection in dense crowded scenes</a></p>
+<blockquote>
+<p><strong>Date of Publication:</strong> 5 March 2014</p>
+<p><strong>被引用次数</strong>：35</p>
+</blockquote>
+<p><strong>Abstract</strong> In this paper we propose a novel approach to detect anomalies in crowded scenes. This is achieved by analyzing the crowd behavior by extracting the corner features. For each corner feature we collect a set of motion features. The motion features are used to train an MLP neural network during the training stage, and the behavior of crowd is inferred on the test samples. Considering the difficulty of tracking individuals in dense crowds due to multiple occlusions and clutter, in this work we extract corner features and consider them as an approximate representation of the people motion. Corner features are then advected over a temporal window through optical flow tracking. Corner features well match the motion of individuals and their consistency, and accuracy is higher both in structured and unstructured crowded scenes compared to other detectors. In the current work, corner features are exploited to extract motion information, which is used as input prior to train the neural network. The MLP neural network is subsequently used to highlight the dominant corner features that can reveal an anomaly in the crowded scenes. The experimental evaluation is conducted on a set of benchmark video sequences commonly used for crowd motion analysis. In addition, we show that our approach outperforms a state of the art technique proposed in.</p>
+<p>在本文中，我们提出了一种新的方法来检测拥挤场景中的异常情况。这是通过<strong>提取角点特征</strong>来分析人群行为来实现的。对于每个角点特征，我们收集一组运动特征。在训练阶段，运动特征被用来训练MLP神经网络，并在测试样本上推断出人群的行为。考虑到由于多重遮挡和杂乱，在密集的人群中跟踪个人是很困难的，在这项工作中，我们提取角点特征，并将其视为人们运动的近似代表。然后，角点特征通过光流跟踪在一个时间窗口上进行平移。角点特征很好地匹配了个人的运动和他们的一致性，与其他检测器相比，在结构化和非结构化的拥挤场景中，准确性都更高。在目前的工作中，角点特征被用来提取运动信息，在训练神经网络之前将其作为输入。随后，MLP神经网络被用来突出能够揭示拥挤场景中异常情况的主导角点特征。实验评估是在一组常用于人群运动分析的基准视频序列上进行的。此外，我们表明，我们的方法优于在《中国社会科学》中提出的最先进的技术。</p>
+<h4 id="基于群体运动特征的人群异常检测">基于群体运动特征的人群异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7025477">Swarm-based motion features for anomaly detection in crowds</a></p>
+<blockquote>
+<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6992914/proceeding">2014 IEEE International Conference on Image Processing (ICIP)</a></p>
+<p><strong>Date of Conference:</strong> 27-30 Oct. 2014</p>
+<p><strong>被引用次数</strong>：18</p>
+</blockquote>
+<p><strong>Abstract:</strong></p>
+<p>In this work we propose a novel approach to the detection of anomalous events occurring in crowded scenes. Swarm theory is applied for the creation of a motion feature first introduced in this work, the Histograms of Oriented Swarm Accelerations (HOSA), which are shown to effectively capture a scene's motion dynamics. The HOSA, together with the well known Histograms of Oriented Gradients (HOGs) describing appearance, are combined to provide a final descriptor based on both motion and appearance, to effectively characterize a crowded scene. Appearance and motion features are only extracted within spatiotemporal volumes of moving pixels (regions of interest) to ensure robustness to local noise and allow the detection of anomalies occurring only in a small region of the frame. Experiments and comparisons with the State of the Art (SoA) on a variety of benchmark datasets demonstrate the effectiveness of the proposed method, its flexibility and applicability to different crowd environments, and its superiority over currently existing approaches.</p>
+<p>在这项工作中，我们提出了一种新颖的方法来检测拥挤场景中发生的异常事件。<strong>群体理论</strong>(Swarm theory )被应用于创建这项工作中首先引入的运动特征，即<strong>定向群体加速度直方图（HOSA）</strong>，该直方图被显示为有效地捕获了场景的运动动态。 HOSA与描述外观的众所周知的<strong>定向直方图（HOG）</strong>结合在一起，可以基于运动和外观提供最终的描述符，以有效地表征拥挤的场景。外观和运动特征仅在运动像素（感兴趣区域）的时空体积内提取，以确保对局部噪声的鲁棒性，并允许检测仅在帧的较小区域内发生的异常。在各种基准数据集上与最新技术（SoA）进行的实验和比较证明了该方法的有效性，其灵活性和对不同人群环境的适用性以及相对于现有方法的优越性。</p>
+<p><strong>keywords</strong>:</p>
+<p>Force, Histograms, Videos, Conferences, Computer vision, Dynamics, Pattern recognition</p>
+<p>力，直方图，视频，会议，计算机视觉，动力学，模式识别</p>
+<h4 id="h.264压缩视频中的实时异常检测">H.264压缩视频中的实时异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6776164">Real time anomaly detection in H.264 compressed videos</a></p>
+<blockquote>
+<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6765546/proceeding">2013 Fourth National Conference on Computer Vision, Pattern Recognition, Image Processing and Graphics (NCVPRIPG)</a></p>
+<p><strong>Date of Conference:</strong> 18-21 Dec. 2013</p>
+<p><strong>被引用次数</strong>：42</p>
+</blockquote>
+<p><strong>Abstract:</strong></p>
+<p>Real time anomaly detection is the need of the hour for any security applications. In this paper, we have proposed a real-time anomaly detection algorithm by utilizing cues from the motion vectors in H.264/AVC compressed domain. The discussed work is principally motivated by the observation that motion vectors (MVs) exhibit different characteristics during anomaly. We have observed that H.264 motion vector magnitude contains relevant information which can be used to model the usual behavior (UB) effectively. This is subsequently extended to detect abnormality/anomaly based on the probability of occurrence of a behavior. Additionally, we have suggested a hierarchical approach through Motion Pyramid for High Resolution videos to further increase the detection rate. The proposed algorithm has performed extremely well on UMN and Peds Anomaly Detection Video datasets, with a detection speed of &gt;150 and 65-75 frames per sec in respective datasets resulting in more than 200× speedup along with comparable accuracy to pixel domain state-of-the-art algorithms.</p>
+<p>实时异常检测对于任何安全应用程序来说都是以小时为单位的即时需求。在本文中，我们提出了一种<strong>利用H.264 / AVC压缩域</strong>中的<strong>运动矢量</strong>提示的实时异常检测算法。所讨论的工作主要是由于观察到运动矢量（MVs）在异常期间表现出不同的特性而引起的。我们已经观察到H.264运动矢量幅度包含相关信息，这些信息可用于有效地建模通常的行为（UB）。随后将其扩展为基于行为发生的概率来检测异常。此外，我们建议通过运动金字塔对高分辨率视频使用分层方法，以进一步提高检测率。所提出的算法在UMN和Peds异常检测视频数据集上表现非常出色，在各个数据集中的检测速度分别&gt; 150和65-75帧/秒，从而导致超过200倍的加速以及与像素域状态相当的精度最先进的算法。</p>
+<p><strong>Keywords</strong> Videos, Computer vision, Real-time systems, Training, Conferences, Accuracy, Histograms</p>
+<p>视频，计算机视觉，实时系统，培训，会议，准确性，直方图</p>
+<h4 id="基于时空上下文中的分层活动发现的视频异常检测">基于时空上下文中的分层活动发现的视频异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S092523121400753X">Video anomaly detection based on a hierarchical activity discovery within spatio-temporal contexts</a></p>
+<blockquote>
+<p><strong>Date of Publication:</strong> 11 June 2014</p>
+<p>82</p>
+</blockquote>
+<p>Abstract</p>
+<p>In this paper, we present a novel approach for video-anomaly detection in crowded and complicated scenes. The proposed approach detects anomalies based on a hierarchical activity-pattern discovery framework, comprehensively considering both global and local spatio-temporal contexts. The discovery is a coarse-to-fine learning process with unsupervised methods for automatically constructing normal activity patterns at different levels. A unified anomaly energy function is designed based on these discovered activity patterns to identify the abnormal level of an input motion pattern. We demonstrate the effectiveness of the proposed method on the UCSD anomaly-detection datasets and compare the performance with existing work.</p>
+<p>在本文中，我们提出了一种在拥挤和复杂场景中进行视频异常检测的新颖方法。 所提出的方法<strong>基于分层活动模式</strong>发现框架检测异常，并全面考虑了<strong>全局和局部时空上下文</strong>。 该发现是从无到有的学习过程，采用<strong>无监督的方法</strong>来自动构建不同级别的正常活动模式。 基于这些发现的活动模式设计统一的异常能量函数，以识别输入运动模式的异常级别。 我们证明了该方法在UCSD异常检测数据集上的有效性，并将其性能与现有工作进行了比较。</p>
+<p><strong>Keywords</strong> Visual surveillance, Video anomaly detection, Hierarchical discovery, Energy function</p>
+<p>视觉监控，视频异常检测，分层发现，能量函数</p>
+<h4 id="使用运动影响矩阵的人群行为表示异常检测">使用运动影响矩阵的人群行为表示异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6778292">Crowd Behavior Representation Using Motion Influence Matrix for Anomaly Detection</a></p>
+<blockquote>
+<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6777805/proceeding">2013 2nd IAPR Asian Conference on Pattern Recognition</a></p>
+<p><strong>Date of Conference:</strong> 5-8 Nov. 2013</p>
+<p><strong>被引用次数</strong>：9</p>
+</blockquote>
+<p><strong>Abstract:</strong></p>
+<p>In this paper, we propose a new method to detect abnormal behavior in crowd video. The motion influence matrix is proposed to represent crowd behaviors. It is generated based on concept of human perception with block-level motion vectors which describe actual crowd movement. Furthermore, a generalized framework is developed to detect abnormal crowd behavior using motion influence matrix. The proposed method has an advantage of that does not require any human detection or segmentation method which make it robust to human detection error by using optical flows which is extracted from two continuous frames. In this model, a normal behavior is presented by a low motion influence value. On the other hand, a high motion influence value indicates occurrence of abnormal behavior. Spatio-temporal cuboids are extracted from the motion influence matrix to measure the unusualness of the frame. Two different kinds of abnormal behaviors are dealt in this research: global abnormal behavior and local abnormal behavior. For t quantitative measurement of effectiveness of the proposed method, we evaluate our algorithm on two datasets: UMN and UCSD for global and local abnormal behavior, respectively. Experimental results show that the proposed method outperforms the competing methods.</p>
+<p>在本文中，我们提出了一种检测人群视频中异常行为的新方法。提出了<strong>运动影响矩阵</strong>来表示人群行为。它是根据人类感知的概念以及描述实际人群运动的块级运动矢量生成的。此外，开发了一种通用框架来使用运动影响矩阵来检测异常人群行为。所提出的方法的优点在于不需要任何人类检测或分割方法，该方法通过使用从两个连续帧提取的<strong>光流</strong>使其对人类检测错误具有鲁棒性。在此模型中，正常行为是由<strong>低运动影响值</strong>表示的。另一方面，较高的运动影响值表示发生异常行为。从运动影响矩阵中提取时空长方体，以测量帧的异常情况。这项研究处理两种不同类型的异常行为：全局异常行为和局部异常行为。为了定量评估所提出方法的有效性，我们在两个数据集上评估了我们的算法：UMN和UCSD，分别用于全局和局部异常行为。实验结果表明，该方法优于竞争方法。</p>
+<p><strong>Keywords</strong> Vectors, Computer vision, Feature extraction, Force, Pattern recognition, Conferences, Legged locomotion</p>
+<p>向量，计算机视觉，特征提取，力，模式识别，会议，步行运动</p>
+<h4 id="人群异常检测与定位">人群异常检测与定位</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6531615">Anomaly Detection and Localization in Crowded Scenes</a></p>
+<blockquote>
+<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=34">IEEE Transactions on Pattern Analysis and Machine Intelligence</a> ( Volume: 36, <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=6674932">Issue: 1</a>, Jan. 2014)</p>
+<p><strong>Date of Publication:</strong> 13 June 2013</p>
+<p><strong>被引用次数</strong>：662</p>
+</blockquote>
+<p><strong>Abstract:</strong></p>
+<p>The detection and localization of anomalous behaviors in crowded scenes is considered, and a joint detector of temporal and spatial anomalies is proposed. The proposed detector is based on a video representation that accounts for both appearance and dynamics, using a set of mixture of dynamic textures models. These models are used to implement 1) a center-surround discriminant saliency detector that produces spatial saliency scores, and 2) a model of normal behavior that is learned from training data and produces temporal saliency scores. Spatial and temporal anomaly maps are then defined at multiple spatial scales, by considering the scores of these operators at progressively larger regions of support. The multiscale scores act as potentials of a conditional random field that guarantees global consistency of the anomaly judgments. A data set of densely crowded pedestrian walkways is introduced and used to evaluate the proposed anomaly detector. Experiments on this and other data sets show that the latter achieves state-of-the-art anomaly detection results.</p>
+<p>考虑了拥挤场景中异常行为的检测和定位，提出了一种<strong>时空异常联合检测器</strong>。所提出的检测器基于使用动态纹理模型混合的一组视频，该视频表示同时考虑了外观和动态。这些模型用于实现1）产生空间显着性分数的中心周围判别显着性检测器，以及2）从训练数据中学习并产生时间显着性分数的正常行为模型。然后，通过考虑这些操作者在支持区域中逐渐增大的分数，可以在多个空间尺度上定义空间和时间异常图。多尺度得分可作为条件随机场的潜力，从而保证异常判断的整体一致性。引入了一个拥挤的人行道的数据集，并用于评估提出的异常检测器。在该数据集和其他数据集上进行的实验表明，后者可实现最新的异常检测结果。</p>
+<p><strong>Keywords</strong></p>
+<p>Video analysis, surveillance, anomaly detection, crowded scene, dynamic texture, center-surround saliency</p>
+<p>视频分析，监视，异常检测，拥挤场景，动态纹理，中心周围显着性</p>
+<h4 id="基于人员流动和社交媒体的交通异常人群感知">基于人员流动和社交媒体的交通异常人群感知</h4>
+<p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2525314.2525343">Crowd sensing of traffic anomalies based on human mobility and social media</a></p>
+<blockquote>
+<p><strong>Publication:</strong>SIGSPATIAL'13: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems</p>
+<p><strong>Date of Publication:</strong> November 2013</p>
+<p><strong>被引用次数</strong>：389</p>
+</blockquote>
+<p><strong>Abstract:</strong> The advances in mobile computing and social networking services enable people to probe the dynamics of a city. In this paper, we address the problem of detecting and describing traffic anomalies using crowd sensing with two forms of data, human mobility and social media. Traffic anomalies are caused by accidents, control, protests, sport events, celebrations, disasters and other events. Unlike existing traffic-anomaly-detection methods, we identify anomalies according to drivers' routing behavior on an urban road network. Here, a detected anomaly is represented by a sub-graph of a road network where drivers' routing behaviors significantly differ from their original patterns. We then try to describe the detected anomaly by mining representative terms from the social media that people posted when the anomaly happened. The system for detecting such traffic anomalies can benefit both drivers and transportation authorities, e.g., by notifying drivers approaching an anomaly and suggesting alternative routes, as well as supporting traffic jam diagnosis and dispersal. We evaluate our system with a GPS trajectory dataset generated by over 30,000 taxicabs over a period of 3 months in Beijing, and a dataset of tweets collected from WeiBo, a Twitter-like social site in China. The results demonstrate the effectiveness and efficiency of our system.</p>
+<p>移动计算和社交网络服务的进步使人们能够探索城市的动态。在本文中，我们解决了使用<strong>人群感知</strong>和两种形式的数据（<strong>人类流动性和社交媒体</strong>）来检测和描述交通异常的问题。交通异常是由事故，控制，抗议，体育赛事，庆典，灾难和其他事件引起的。与现有的交通异常检测方法不同，我们根据驾驶员在城市道路网络上的路线选择行为来识别异常。在此，检测到的异常由道路网络的子图表示，其中驾驶员的路线选择行为与其原始模式明显不同。然后，我们尝试通过挖掘人们在异常发生时发布的社交媒体中的代表性术语来描述检测到的异常。用于检测这种交通异常的系统可以例如通过通知驾驶员接近异常并建议替代路线以及支持交通拥堵诊断和分散来使驾驶员和运输当局都受益。我们通过在3个月的时间内在北京超过30,000个出租车生成的GPS轨迹数据集以及从类似Twitter的中国社交网站微博收集的推文数据集来评估我们的系统。结果证明了我们系统的有效性和效率。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" rel="tag"># 人群异常检测</a>
+          
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/24/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98/" rel="next" title="【算法】组合总和系列问题">
+                <i class="fa fa-chevron-left"></i> 【算法】组合总和系列问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90%E7%9A%84%E5%9C%A8%E7%BA%BF%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">1.</span> <span class="nav-text">基于结构分析的在线人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E5%8C%96%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%88%86%E6%9E%90%E5%92%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">2.</span> <span class="nav-text">层次化的人群分析和异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E6%97%B6%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">实时人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BE%A4%E4%BD%93%E8%BF%90%E5%8A%A8%E7%89%B9%E5%BE%81%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">4.</span> <span class="nav-text">基于群体运动特征的人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#h.264%E5%8E%8B%E7%BC%A9%E8%A7%86%E9%A2%91%E4%B8%AD%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">5.</span> <span class="nav-text">H.264压缩视频中的实时异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%97%B6%E7%A9%BA%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%AD%E7%9A%84%E5%88%86%E5%B1%82%E6%B4%BB%E5%8A%A8%E5%8F%91%E7%8E%B0%E7%9A%84%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">6.</span> <span class="nav-text">基于时空上下文中的分层活动发现的视频异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%BF%90%E5%8A%A8%E5%BD%B1%E5%93%8D%E7%9F%A9%E9%98%B5%E7%9A%84%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E8%A1%A8%E7%A4%BA%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">7.</span> <span class="nav-text">使用运动影响矩阵的人群行为表示异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%AE%9A%E4%BD%8D"><span class="nav-number">8.</span> <span class="nav-text">人群异常检测与定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%BA%BA%E5%91%98%E6%B5%81%E5%8A%A8%E5%92%8C%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93%E7%9A%84%E4%BA%A4%E9%80%9A%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E6%84%9F%E7%9F%A5"><span class="nav-number">9.</span> <span class="nav-text">基于人员流动和社交媒体的交通异常人群感知</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
