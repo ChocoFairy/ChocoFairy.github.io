@@ -85,7 +85,6 @@
 <meta property="og:image" content="https://i.loli.net/2021/05/16/lEzBNCGYgcDQkOs.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/16/2pvM4EBfuyXsYq5.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/16/qNpXHISKQajVJmf.png">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11152291-0fba91301ce9831a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=t">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=t-1">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-e7917f8978ffbebdebaeee2022b2d11d_720w.jpg">
@@ -149,7 +148,7 @@
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=1">
 <meta property="og:image" content="https://pic4.zhimg.com/v2-caff9e6f1af1efea11f766363f2aefcf_b.webp">
 <meta property="article:published_time" content="2021-05-17T02:31:32.000Z">
-<meta property="article:modified_time" content="2021-05-17T02:36:09.229Z">
+<meta property="article:modified_time" content="2021-05-17T02:37:46.881Z">
 <meta property="article:author" content="wlz">
 <meta property="article:tag" content="人群异常检测">
 <meta property="article:tag" content="深度学习">
@@ -480,7 +479,8 @@
 <p><code>图2:时刻t的放大架构，其中t是这个时刻步骤的输入向量。时序编解码器模型有3个卷积LSTM (Conv LSTM)层。</code></p></li>
 <li><h5 id="lstmlong-short-term-memory长期短期记忆">LSTM（Long Short Term Memory）长期短期记忆</h5>
 <p>在传统的前馈神经网络中，我们假设所有输入（和输出）彼此独立。 但是，学习输入之间的时间依赖性在涉及序列的任务中很重要，例如，单词预测器模型应该能够从过去的输入中获取信息。 RNN的工作原理与前馈网络相同，不同之处在于RNN的输出矢量的值不仅受输入矢量的影响，而且还受输入的整个历史的影响。 从理论上讲，RNN可以按任意长的顺序使用信息，但是在实践中，由于梯度逐渐消失，它们仅限于回顾一些步骤。（梯度消失和梯度爆炸）</p>
-<p>为了克服这一问题，引入了RNN的一种变体:LSTM模型，该模型包含一个称为遗忘门的循环门。利用新的结构，lstm可以防止反向传播的错误消失或爆发，因此可以在长序列上工作，并可以将它们叠加在一起以捕获更高层次的信息。典型LSTM单元的计算公式如图3及式(1)至式(6)所示。 <span class="math display">\[
+<p>为了克服这一问题，引入了RNN的一种变体:LSTM模型，该模型包含一个称为遗忘门的循环门。利用新的结构，lstm可以防止反向传播的错误消失或爆发，因此可以在长序列上工作，并可以将它们叠加在一起以捕获更高层次的信息。典型LSTM单元的计算公式如图3及式(1)至式(6)所示。</p>
+<p>式(1)表示遗忘层，式(2)、式(3)为添加新信息的层，式(4)结合新旧信息，式(5)、式(6)则在下一个时间步向LSTM单元输出目前已经学习到的信息。变量xt为输入向量，ht为隐藏状态，Ct为t时刻的单元状态。W为可训练权矩阵，b为偏置向量，符号⊗为Hadamard积。 <span class="math display">\[
 f_t= σ(W_f⊗ [h_{t−1}, x_t] + b_f)  \tag{1}
 \]</span></p>
 <p><span class="math display">\[
@@ -498,11 +498,11 @@ o_t= σ(W_o⊗ [h_{t−1}, x_t] + b_o)\tag{5}
 <p><span class="math display">\[
 h_t= o_t⊗ tanh(C_t)\tag{6}
 \]</span></p>
+<p>LSTM有三个门：输入门，输出门，遗忘门。网络主要通过学习对这三者的控制来得到理想的结果。 有些实现细节，如果是多层结构的话，每个LSTM计算单元向上层传递的是h值。</p>
 <figure>
 <img src="https://i.loli.net/2021/05/16/qNpXHISKQajVJmf.png" alt="图3" /><figcaption aria-hidden="true">图3</figcaption>
 </figure>
 <p><code>图3：一个典型的LSTM单元的结构。蓝线代表一个可选的窥视孔结构，它允许内部状态回看（窥视）之前的单元状态Ct-1以做出更好的决定。</code></p>
-<p>式(1)表示遗忘层，式(2)、式(3)为添加新信息的层，式(4)结合新旧信息，式(5)、式(6)则在下一个时间步向LSTM单元输出目前已经学习到的信息。变量xt为输入向量，ht为隐藏状态，Ct为t时刻的单元状态。W为可训练权矩阵，b为偏置向量，符号⊗为Hadamard积。</p>
 <p><strong>Hadamard 乘积</strong></p>
 <p>反向传播算法基于常规的线性代数运算 —— 诸如向量加法，向量矩阵乘法等。但是有一个运算不大常见: <span class="math display">\[
 \left[
@@ -522,9 +522,7 @@ h_t= o_t⊗ tanh(C_t)\tag{6}
 3\\8
 \end{matrix}
 \right]\tag{1}
-\]</span> 这种类型的按元素乘法有时候被称为 <strong>Hadamard 乘积</strong>，或者 <strong>Schur 乘积</strong>。我们这里取前者。好的矩阵库通常会提供 Hadamard 乘积的快速实现，在实现反向传播的时候用起来很方便。</p>
-<p>LSTM有三个门：输入门，输出门，遗忘门。网络主要通过学习对这三者的控制来得到理想的结果。 有些实现细节，如果是多层结构的话，每个LSTM计算单元向上层传递的是h值。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/11152291-0fba91301ce9831a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp" /></p></li>
+\]</span> 这种类型的按元素乘法有时候被称为 <strong>Hadamard 乘积</strong>，或者 <strong>Schur 乘积</strong>。我们这里取前者。好的矩阵库通常会提供 Hadamard 乘积的快速实现，在实现反向传播的时候用起来很方便。</p></li>
 <li><h5 id="卷积lstm">卷积LSTM</h5>
 <p>与通常的全连接LSTM (FC-LSTM)相比，ConvLSTM将其矩阵操作替换为卷积。通过对输入到隐藏和隐藏到隐藏连接使用卷积，ConvLSTM需要更少的权值，产生更好的空间特征映射。ConvLSTM单元的公式可归纳为(7)~(12)。 <span class="math display">\[
 f_t= σ(W_f∗ [h_{t−1}, x_t, C_{t−1}] + b_f)\tag{7}
