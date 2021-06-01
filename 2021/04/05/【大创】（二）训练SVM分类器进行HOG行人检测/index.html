@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="上一篇说到在特征选取的时候，我们选择了最简单的方式完成特征提取的工作。除了简单的把整个图作为特征提取外，还有一种更加精确的方式，即HOG. 一.HOG简介 方向梯度直方图（Histogram of Oriented Gradient, HOG）特征是一种在计算机视觉和图像处理中用来进行物体检测的特征描述子。HOG特征通过计算和统计图像局部区域的梯度方向直方图来构成特征。">
+<meta name="description" content="上一篇说到在特征选取的时候，我们选择了最简单的方式完成特征提取的工作。除了简单的把整个图作为特征提取外，还有一种更加精确的方式，即HOG. 一.HOG简介 方向梯度直方图（Histogram of Oriented Gradient, HOG）特征是一种在计算机视觉和图像处理中用来进行物体检测的特征描述子。HOG特征通过计算和统计图像局部区域的梯度方向直方图来构成特征。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【大创】（二）训练SVM分类器进行HOG行人检测">
 <meta property="og:url" content="https://chocofairy.github.io/2021/04/05/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%BA%8C%EF%BC%89%E8%AE%AD%E7%BB%83SVM%E5%88%86%E7%B1%BB%E5%99%A8%E8%BF%9B%E8%A1%8CHOG%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="上一篇说到在特征选取的时候，我们选择了最简单的方式完成特征提取的工作。除了简单的把整个图作为特征提取外，还有一种更加精确的方式，即HOG. 一.HOG简介 方向梯度直方图（Histogram of Oriented Gradient, HOG）特征是一种在计算机视觉和图像处理中用来进行物体检测的特征描述子。HOG特征通过计算和统计图像局部区域的梯度方向直方图来构成特征。">
+<meta property="og:description" content="上一篇说到在特征选取的时候，我们选择了最简单的方式完成特征提取的工作。除了简单的把整个图作为特征提取外，还有一种更加精确的方式，即HOG. 一.HOG简介 方向梯度直方图（Histogram of Oriented Gradient, HOG）特征是一种在计算机视觉和图像处理中用来进行物体检测的特征描述子。HOG特征通过计算和统计图像局部区域的梯度方向直方图来构成特征。">
 <meta property="og:locale">
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-c37cf0789b9cf790d4b4afe514f9c906_720w.jpg">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-1d866ca3e02c8288b17c9b714f71f5f0_720w.jpg">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.7k 字
+                  4.8k 字
                 </span>
               
 
@@ -393,57 +393,68 @@
 
       
         <p>上一篇说到在特征选取的时候，我们选择了最简单的方式完成特征提取的工作。除了简单的把整个图作为特征提取外，还有一种更加精确的方式，即HOG.</p>
-<h2 id="一-HOG简介">一.HOG简介</h2>
+<h2 id="一.hog简介">一.HOG简介</h2>
 <p>方向梯度直方图（Histogram of Oriented Gradient, HOG）特征是一种在计算机视觉和图像处理中用来进行物体检测的特征描述子。HOG特征通过计算和统计图像局部区域的梯度方向直方图来构成特征。</p>
 <span id="more"></span>
-<h3 id="1-主要思想">1.主要思想</h3>
+<h3 id="主要思想">1.主要思想</h3>
 <p>在一副图像中，局部目标的表象和形状能够被梯度或边缘的方向密度分布很好地描述。其本质为：梯度的统计信息，而梯度主要存在于边缘的地方。Hog特征结合SVM分类器已经被广泛应用于图像识别中，尤其在行人检测中获得了极大的成功。</p>
 <p>下面是HOG+SVM的工作流程，首先对输入的图片进行预处理，然后计算像素点的梯度值，然后形成梯度直方图，然后对blocks进行normalize（归一化），最后收集到HOG feature（其实是一行高维的vector）放到SVM里进行监督学习，从而实现行人的检测。</p>
-<p><img src="https://pic3.zhimg.com/80/v2-c37cf0789b9cf790d4b4afe514f9c906_720w.jpg" alt="img"></p>
-<h3 id="2-实现方法">2.实现方法</h3>
+<figure>
+<img src="https://pic3.zhimg.com/80/v2-c37cf0789b9cf790d4b4afe514f9c906_720w.jpg" alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="实现方法">2.实现方法</h3>
 <p>首先将图像分成小的连通区域，这些连通区域被叫做细胞单元。然后采集细胞单元中各像素点的梯度的或边缘的方向直方图。最后把这些直方图组合起来，就可以构成特征描述符。</p>
-<h4 id="①图像预处理">①图像预处理</h4>
+<h4 id="图像预处理">①图像预处理</h4>
 <p>包括伽马校正和灰度化。这是可选的步骤，因为实验证明做不做影响不大。伽马校正是减少光度对实验的影响。灰度化是将彩色图片变成灰度图。其实彩色图片也可以直接处理。不过是分别对三通道的颜色值进行梯度计算，最后选择梯度最大的那个。为简单起见，假设输入为灰度图，同时大小是64*128。</p>
-<h4 id="②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）">②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）</h4>
-<p><img src="https://pic1.zhimg.com/80/v2-1d866ca3e02c8288b17c9b714f71f5f0_720w.jpg" alt="img"></p>
-<p>对于像素点A，要计算水平梯度和竖直梯度，如上图，水平梯度 <img src="https://www.zhihu.com/equation?tex=g_x" alt="[公式]"> =30-20=10,竖直梯度 <img src="https://www.zhihu.com/equation?tex=g_y" alt="[公式]"> =64-32=32.</p>
-<p>那么总的梯度强度值g和梯度方向 <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="[公式]"> 将按照以下公式计算：</p>
-<p><img src="https://www.zhihu.com/equation?tex=g%3D%5Csqrt%7Bg_x%5E2%2Bg_y%5E2%7D" alt="[公式]"></p>
-<p><img src="https://www.zhihu.com/equation?tex=%5Ctheta%3Darctan%7B%5Cfrac%7Bg_x%7D%7Bg_y%7D%7D" alt="[公式]"></p>
+<h4 id="计算每一个像素点的梯度值得到梯度图规模和原图大小一样">②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）</h4>
+<figure>
+<img src="https://pic1.zhimg.com/80/v2-1d866ca3e02c8288b17c9b714f71f5f0_720w.jpg" alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>对于像素点A，要计算水平梯度和竖直梯度，如上图，水平梯度 <img src="https://www.zhihu.com/equation?tex=g_x" alt="[公式]" /> =30-20=10,竖直梯度 <img src="https://www.zhihu.com/equation?tex=g_y" alt="[公式]" /> =64-32=32.</p>
+<p>那么总的梯度强度值g和梯度方向 <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="[公式]" /> 将按照以下公式计算：</p>
+<figure>
+<img src="https://www.zhihu.com/equation?tex=g%3D%5Csqrt%7Bg_x%5E2%2Bg_y%5E2%7D" alt="[公式]" /><figcaption aria-hidden="true">[公式]</figcaption>
+</figure>
+<figure>
+<img src="https://www.zhihu.com/equation?tex=%5Ctheta%3Darctan%7B%5Cfrac%7Bg_x%7D%7Bg_y%7D%7D" alt="[公式]" /><figcaption aria-hidden="true">[公式]</figcaption>
+</figure>
 <p>梯度方向将会取绝对值，因此梯度方向的范围是0-180度。取绝对值的原因是这样效果更好。</p>
-<h4 id="③计算梯度直方图">③计算梯度直方图</h4>
+<h4 id="计算梯度直方图">③计算梯度直方图</h4>
 <p>按照第二步的计算，每一个像素点都会有两个值：梯度强度/梯度方向。</p>
 <p>现在就计算梯度直方图，这是一个关键步骤也是HOG能够work的原因。</p>
 <p>梯度直方图是在一个8×8的cell里面计算的。那么在8×8的cell里面就会有8×8×2=128个值，2是包括了梯度强度和梯度方向。通过统计形成梯度直方图，128个值将会变成9个值，大大降低了计算量，同时又对光照等环境变化更加地robust。</p>
-<p>首先，我将0-180度分成9个bins，分别是0，20，40…160。然后统计每一个像素点所在的bin。请看下图：</p>
-<p><img src="https://pic1.zhimg.com/80/v2-8a48667c4af86625067fa656e27ac9e8_720w.jpg" alt="img"></p>
+<p>首先，我将0-180度分成9个bins，分别是0，20，40...160。然后统计每一个像素点所在的bin。请看下图：</p>
+<figure>
+<img src="https://pic1.zhimg.com/80/v2-8a48667c4af86625067fa656e27ac9e8_720w.jpg" alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>左上图是8*8的梯度方向值，右上图是8×8的梯度强度值，下图是9个bins。</p>
 <p>先看两个蓝色圈圈。因为蓝圈的方向是80度，大小是2，所以该点就投给80这个bin；</p>
 <p>再看两个红色圈圈。因为红色圈圈的方向是10，大小是4，因为10距离0点为10，距离20点为也为10，那么有一半的大小是投给0这个bin，还有一半的大小（即是2）投给20这个bin。</p>
 <p>那么统计完64个点的投票数以后，每个bin就会得到一个数值，可以得到一个直方图，在计算机里面就是一个大小为9的数组。</p>
-<p><img src="https://pic2.zhimg.com/80/v2-60eafba2db53f5cef77313b712a34315_720w.jpg" alt="img"></p>
+<figure>
+<img src="https://pic2.zhimg.com/80/v2-60eafba2db53f5cef77313b712a34315_720w.jpg" alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p><strong>从上图可以看到，更多的点的梯度方向是倾向于0度和160度，也就是说这些点的梯度方向是向上或者向下，表明图像这个位置存在比较明显的横向边缘。因此HOG是对边角敏感的，由于这样的统计方法，也是对部分像素值变化不敏感的，所以能够适应不同的环境。</strong></p>
-<h4 id="④对16×16大小的block归一化">④对16×16大小的block归一化</h4>
+<h4 id="对1616大小的block归一化">④对16×16大小的block归一化</h4>
 <p>归一化的目的是降低光照的影响。</p>
 <p>归一化的方法是向量的每一个值除以向量的模长。</p>
-<p>比如对于一个（128，64，32）的三维向量来说，模长是 <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B128%5E2%2B64%5E2%2B32%5E2%7D%3D146.64" alt="[公式]"></p>
+<p>比如对于一个（128，64，32）的三维向量来说，模长是 <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B128%5E2%2B64%5E2%2B32%5E2%7D%3D146.64" alt="[公式]" /></p>
 <p>那么归一化后的向量变成了（0.87，0.43，0.22）</p>
 <p>那么16×16大小的block是怎么来的？</p>
 <p>请看下图：</p>
-<p><img src="https://pic3.zhimg.com/v2-8b1272440a88b4ba792b59947c48d55a_b.webp" alt="img"></p>
+<figure>
+<img src="https://pic3.zhimg.com/v2-8b1272440a88b4ba792b59947c48d55a_b.webp" alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>绿色方块是8×8大小的cell，蓝色方块就是由4个cell组成的block。如果要对block进行normalize，那么由于一个cell就会有大小为9的vector，四个cell就有36大小的vector。对block进行normalize就是对这大小为36的vector进行归一化。</p>
 <p>而每一个block将按照上图篮框移动的方式进行迭代截取。</p>
-<h4 id="⑤得到HOG特征向量">⑤得到HOG特征向量</h4>
+<h4 id="得到hog特征向量">⑤得到HOG特征向量</h4>
 <p>每一个16×16大小的block将会得到36大小的vector。那么对于一个64×128大小的图像，按照上图的方式提取block，将会有7个水平位置和15个竖直位可以取得，所以一共有7×15=105个block，所以我们整合所有block的vector，形成一个大的一维vector的大小将会是36×105=3780。</p>
 <p>得到HOG特征向w量，就可以用来可视化和分类了。对于这么大的HOG特征，SVM就排上用场了。</p>
-<h3 id="3-性能提高">3.性能提高</h3>
+<h3 id="性能提高">3.性能提高</h3>
 <p>将这些局部直方图在图像的更大的范围内（叫做区间）进行对比度归一化，可以提高该算法的性能，所采用的方法是：先计算各直方图在这个区间中的密度，然后根据这个密度对区间中的各个细胞单元做归一化。通过这个归一化后，能对光照变化和阴影获得更好的效果。</p>
-<h2 id="二-HOG的优点">二.HOG的优点</h2>
-<p>与其他的特征描述方法相比，HOG有很多优点。<br>
-首先，由于HOG是 在图像的局部方格单元上操作，所以它对图像几何的和光学的形变都能保持很好的不变性，这两种形变只会出现在更大的空间领域上。<br>
-其次，在粗的空域抽样、精细 的方向抽样以及较强的局部光学归一化等条件下，只要行人大体上能够保持直立的姿势，可以容许行人有一些细微的肢体动作，这些细微的动作可以被忽略而不影响 检测效果。<br>
-因此HOG特征是特别适合于做图像中的人体检测的 。</p>
-<h2 id="三-HOG实现行人检测">三.HOG实现行人检测</h2>
+<h2 id="二.hog的优点">二.HOG的优点</h2>
+<p>与其他的特征描述方法相比，HOG有很多优点。 首先，由于HOG是 在图像的局部方格单元上操作，所以它对图像几何的和光学的形变都能保持很好的不变性，这两种形变只会出现在更大的空间领域上。 其次，在粗的空域抽样、精细 的方向抽样以及较强的局部光学归一化等条件下，只要行人大体上能够保持直立的姿势，可以容许行人有一些细微的肢体动作，这些细微的动作可以被忽略而不影响 检测效果。 因此HOG特征是特别适合于做图像中的人体检测的 。</p>
+<h2 id="三.hog实现行人检测">三.HOG实现行人检测</h2>
 <p>正样本来源是INRIA数据集中的96<em>160大小的人体图片，使用时上下左右都去掉16个像素，截取中间的64</em>128大小的人体。</p>
 <p>负样本是从不包含人体的图片中随机裁取的，大小同样是64<em>128(从完全不包含人体的图片中随机剪裁出64</em>128大小的用于人体检测的负样本)。</p>
 <p>SVM使用的是OpenCV自带的CvSVM类。</p>
@@ -577,7 +588,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -648,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-HOG%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">一.HOG简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.</span> <span class="nav-text">1.主要思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2.实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A0%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">①图像预处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A1%E8%AE%A1%E7%AE%97%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%83%8F%E7%B4%A0%E7%82%B9%E7%9A%84%E6%A2%AF%E5%BA%A6%E5%80%BC%EF%BC%8C%E5%BE%97%E5%88%B0%E6%A2%AF%E5%BA%A6%E5%9B%BE%EF%BC%88%E8%A7%84%E6%A8%A1%E5%92%8C%E5%8E%9F%E5%9B%BE%E5%A4%A7%E5%B0%8F%E4%B8%80%E6%A0%B7%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A2%E8%AE%A1%E7%AE%97%E6%A2%AF%E5%BA%A6%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.2.3.</span> <span class="nav-text">③计算梯度直方图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A3%E5%AF%B916%C3%9716%E5%A4%A7%E5%B0%8F%E7%9A%84block%E5%BD%92%E4%B8%80%E5%8C%96"><span class="nav-number">1.2.4.</span> <span class="nav-text">④对16×16大小的block归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A4%E5%BE%97%E5%88%B0HOG%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="nav-number">1.2.5.</span> <span class="nav-text">⑤得到HOG特征向量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%80%A7%E8%83%BD%E6%8F%90%E9%AB%98"><span class="nav-number">1.3.</span> <span class="nav-text">3.性能提高</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-HOG%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二.HOG的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-HOG%E5%AE%9E%E7%8E%B0%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">三.HOG实现行人检测</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80.hog%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">一.HOG简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.</span> <span class="nav-text">1.主要思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2.实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">①图像预处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%83%8F%E7%B4%A0%E7%82%B9%E7%9A%84%E6%A2%AF%E5%BA%A6%E5%80%BC%E5%BE%97%E5%88%B0%E6%A2%AF%E5%BA%A6%E5%9B%BE%E8%A7%84%E6%A8%A1%E5%92%8C%E5%8E%9F%E5%9B%BE%E5%A4%A7%E5%B0%8F%E4%B8%80%E6%A0%B7"><span class="nav-number">1.2.2.</span> <span class="nav-text">②计算每一个像素点的梯度值，得到梯度图（规模和原图大小一样）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%A2%AF%E5%BA%A6%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.2.3.</span> <span class="nav-text">③计算梯度直方图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B91616%E5%A4%A7%E5%B0%8F%E7%9A%84block%E5%BD%92%E4%B8%80%E5%8C%96"><span class="nav-number">1.2.4.</span> <span class="nav-text">④对16×16大小的block归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%97%E5%88%B0hog%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="nav-number">1.2.5.</span> <span class="nav-text">⑤得到HOG特征向量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%8F%90%E9%AB%98"><span class="nav-number">1.3.</span> <span class="nav-text">3.性能提高</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C.hog%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二.HOG的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89.hog%E5%AE%9E%E7%8E%B0%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">三.HOG实现行人检测</span></a></li></ol></div>
             
 
           </div>

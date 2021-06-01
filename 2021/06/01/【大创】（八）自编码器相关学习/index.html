@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="人群异常检测,深度学习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="自编码器（Autoencoder，AE），是一种利用反向传播算法使得输出值等于输入值的神经网络，它先将输入压缩成潜在空间表征，然后通过这种表征来重构输出。 自编码器由两部分组成： 编码器：这部分能将输入压缩成潜在空间表征，可以用编码函数\(y&#x3D;f(x)\)表示。 解码器：这部分能重构来自潜在空间表征的输入，可以用解码函数\(\hat{x}&#x3D;g(y)\)表示。 因此，整个自编码器可以用函数\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【大创】（八）自编码器相关学习">
+<meta property="og:url" content="https://chocofairy.github.io/2021/06/01/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E5%85%AB%EF%BC%89%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="自编码器（Autoencoder，AE），是一种利用反向传播算法使得输出值等于输入值的神经网络，它先将输入压缩成潜在空间表征，然后通过这种表征来重构输出。 自编码器由两部分组成： 编码器：这部分能将输入压缩成潜在空间表征，可以用编码函数\(y&#x3D;f(x)\)表示。 解码器：这部分能重构来自潜在空间表征的输入，可以用解码函数\(\hat{x}&#x3D;g(y)\)表示。 因此，整个自编码器可以用函数\">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/06/01/pbsqHMaPmi7oxIc.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/01/4SjZ6ft3MavpdAE.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/06/01/SdgM1sLR7G9NJxv.jpg">
+<meta property="article:published_time" content="2021-06-01T06:29:05.000Z">
+<meta property="article:modified_time" content="2021-06-01T06:30:28.255Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="人群异常检测">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/06/01/pbsqHMaPmi7oxIc.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2021/06/01/【大创】（八）自编码器相关学习/"/>
+
+
+
+
+
+  <title>【大创】（八）自编码器相关学习 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/06/01/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E5%85%AB%EF%BC%89%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【大创】（八）自编码器相关学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-01T14:29:05+08:00">
+                2021-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%88%9B/" itemprop="url" rel="index">
+                    <span itemprop="name">大创</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.8k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>自编码器（Autoencoder，AE），是一种利用反向传播算法使得输出值等于输入值的神经网络，它先将输入压缩成潜在空间表征，然后通过这种表征来重构输出。</p>
+<p>自编码器由两部分组成：</p>
+<p><strong>编码器</strong>：这部分能将输入压缩成潜在空间表征，可以用编码函数<span class="math inline">\(y=f(x)\)</span>表示。</p>
+<p><strong>解码器</strong>：这部分能重构来自潜在空间表征的输入，可以用解码函数<span class="math inline">\(\hat{x}=g(y)\)</span>表示。</p>
+<p>因此，整个自编码器可以用函数<span class="math inline">\(g(f(x)) = \hat{x}\)</span>来描述，其中输出r与原始输入x相近。</p>
+<span id="more"></span>
+<h2 id="自编码简单模型介绍">自编码简单模型介绍</h2>
+<p>暂且不谈神经网络、深度学习等，仅仅是自编码器的话，其原理其实很简单。自编码器可以理解为一个试图去还原其原始输入的系统。自编码器模型如下图所示。</p>
+<p><img src="https://i.loli.net/2021/06/01/pbsqHMaPmi7oxIc.png" /></p>
+<p>从上图可以看出，自编码器模型主要由编码器（Encoder）和解码器（Decoder）组成，其主要目的是将输入<span class="math inline">\(x\)</span>转换成中间变量<span class="math inline">\(y\)</span>，然后再将<span class="math inline">\(y\)</span>转换成<span class="math inline">\(\hat{x}\)</span> ，然后对比输入<span class="math inline">\(x\)</span>和输出 <span class="math inline">\(\hat{x}\)</span> 使得他们两个无限接近。</p>
+<p><strong>为何要用输入来重构输出？</strong></p>
+<p>如果自编码器的唯一目的是让输出值等于输入值，那这个算法将毫无用处。事实上，我们希望通过训练输出值等于输入值的自编码器，<strong>让潜在表征y将具有价值属性</strong>。</p>
+<p>这可通过在重构任务中构建约束来实现。</p>
+<p>从自编码器获得有用特征的一种方法是，限制y的维度使其小于输入x，这种情况下称作有损自编码器。通过训练有损表征，使得自编码器能学习到数据中最重要的特征。</p>
+<p>如果自编码器的容量过大，它无需提取关于数据分布的任何有用信息，即可较好地执行重构任务。</p>
+<p>如果潜在表征的维度与输入相同，或是在过完备案例中潜在表征的维度大于输入，上述结果也会出现。</p>
+<p>在这些情况下，即使只使用线性编码器和线性解码器，也能很好地利用输入重构输出，且无需了解有关数据分布的任何有用信息。</p>
+<p>在理想情况下，根据要分配的数据复杂度，来准确选择编码器和解码器的编码维数和容量，就可以成功地训练出任何所需的自编码器结构。</p>
+<h2 id="自编码器用来干什么">自编码器用来干什么？</h2>
+<p>目前，自编码器的应用主要有两个方面，第一是<strong>数据去噪</strong>，第二是<strong>为进行可视化而降维</strong>。设置合适的维度和稀疏约束，自编码器可以学习到比PCA等技术更有意思的数据投影。</p>
+<p>自编码器能从数据样本中进行无监督学习，这意味着可将这个算法应用到某个数据集中，来取得良好的性能，且不需要任何新的特征工程，只需要适当地训练数据。</p>
+<p>但是，<strong>自编码器在图像压缩方面表现得不好</strong>。由于在某个给定数据集上训练自编码器，因此它在处理与训练集相类似的数据时可达到合理的压缩结果，但是在压缩差异较大的其他图像时效果不佳。这里，像JPEG这样的压缩技术在通用图像压缩方面会表现得更好。</p>
+<p>训练自编码器，可以使输入通过编码器和解码器后，保留尽可能多的信息，但也可以训练自编码器来使新表征具有多种不同的属性。不同类型的自编码器旨在实现不同类型的属性。下面将重点介绍四种不同的自编码器。</p>
+<h2 id="自编码器与神经网络">自编码器与神经网络</h2>
+<p>简单来讲，神经网络就是在对原始信号逐层地做非线性变换，如下图所示。</p>
+<p><img src="https://i.loli.net/2021/06/01/4SjZ6ft3MavpdAE.jpg" /></p>
+<p>该网络把输入层数据<span class="math inline">\(x∈R_n\)</span>转换到中间层（隐层）<span class="math inline">\(h∈R_p\)</span>，再转换到输出层<span class="math inline">\(y∈R_m\)</span>。图中的每个节点代表数据的一个维度（偏置项图中未标出）。每两层之间的变换都是“线性变化”+“非线性激活”，用公式表示即为 <span class="math display">\[
+h=f(W(1)x+b(1))
+y=f(W(2)h+b(2))
+\]</span> 神经网络往往用于分类，其目的是去逼近从输入层到输出层的变换函数。因此，我们会定义一个目标函数来衡量当前的输出和真实结果的差异，利用该函数去逐步调整（如梯度下降）系统的参数<span class="math inline">\(（W(1),b(1),W(2),b(2)）\)</span>，以使得整个网络尽可能去拟合训练数据。如果有正则约束的话，还同时要求模型尽量简单（防止过拟合）。</p>
+<p>那么，自编码器怎么表示呢？前面已说过，自编码器试图复现其原始输入，因此，在训练中，网络中的输出应与输入相同，即<span class="math inline">\(y=x\)</span>，因此，一个自编码器的输入、输出应有相同的结构，即</p>
+<p><img src="https://i.loli.net/2021/06/01/SdgM1sLR7G9NJxv.jpg" /></p>
+<p>我们利用训练数据训练这个网络,等训练结束后，这个网络即学习出了x-→h- &gt;x的能力。对我们来说，此时的h是至关重要的，因为它是在尽量不损失信息量的情况下，对原始数据的另-种表达。结合神经网络的惯例，我们再将自编码器的公式表示如下: (假设激活函数是<span class="math inline">\(sigmoid\)</span>, 用<span class="math inline">\(s\)</span>表示) <span class="math display">\[
+y=f_\theta(x)=s(Wx+b)\\
+\hat{x}=g_\theta^{&#39;}(y)=s(W&#39;y+b&#39;)\\
+L(x,\hat{x}) =L(x,g(f(x))
+\]</span> 其中，L表示损失函数,结合数据的不同形式，可以是二次误差(squared error loss)或交叉熵误差(cross entropy loss)。如果<span class="math inline">\(w&#39; = w^T\)</span>，一般称为tied weights。</p>
+<p>为了尽学到有意义的表达,我们会给隐层加入一定的约束。从数据维度来看,常见以下两种情况:</p>
+<ul>
+<li>n&gt;p,即隐层维度小于输入数据维度。也就是说从<span class="math inline">\(x→h\)</span>的变换是一种降维的操作，网络试图以更小的维度去描述原始数据而尽量不损失数据信息。实际上，当每两层之间的变换均为线性，且监督训练的误差是二次型误差时， 该网络等价于PCA。</li>
+<li>n&lt;p,即隐层维度大于输入数据维度。这又有什么用呢？其实不好说，但比如我们同时约束<span class="math inline">\(h\)</span>的表达尽量稀疏(有大量维度为0，未被激活)，此时的编码器便是大名鼎鼎的“稀疏自编码器”。可为什么稀疏的表达就是好的？这就说来话长了，有人试图从人脑机理对比，即人类神经系统在某刺激下，大部分神经元是被抑制的。个人觉得，从特征的角度来看更直观些,稀疏的表达意味着系统在尝试去特征选择,找出大量维度中真正重要的若干维。</li>
+</ul>
+<h2 id="神经网络自编码器三大特点">神经网络自编码器三大特点</h2>
+<ul>
+<li>自动编码器是数据相关的（data-specific 或 data-dependent），这意味着自动编码器只能压缩那些与训练数据类似的数据。比如，使用人脸训练出来的自动编码器在压缩别的图片，比如树木时性能很差，因为它学习到的特征是与人脸相关的。</li>
+<li>自动编码器是有损的，意思是解压缩的输出与原来的输入相比是退化的，MP3，JPEG等压缩算法也是如此。这与无损压缩算法不同。</li>
+<li>自动编码器是从数据样本中自动学习的，这意味着很容易对指定类的输入训练出一种特定的编码器，而不需要完成任何新工作。</li>
+</ul>
+<h3 id="自编码器autoencoder搭建">自编码器（Autoencoder）搭建</h3>
+<p>搭建一个自动编码器需要完成下面三样工作：搭建编码器，搭建解码器，设定一个损失函数，用以衡量由于压缩而损失掉的信息。编码器和解码器一般都是参数化的方程，并关于损失函数可导，典型情况是使用神经网络。编码器和解码器的参数可以通过最小化损失函数而优化，例如SGD。举个例子：根据上面介绍，自动编码器看作由两个级联网络组成。</p>
+<p>第一个网络是一个编码器，负责接收输入 <span class="math inline">\(x\)</span>，并将输入通过函数 <span class="math inline">\(h\)</span> 变换为信号 <span class="math inline">\(y\)</span>： <span class="math display">\[
+y=h(x)
+\]</span> 第二个网络将编码的信号 <span class="math inline">\(y\)</span> 作为其输入，通过函数<span class="math inline">\(f\)</span>得到重构的信号 <span class="math inline">\(r\)</span>： <span class="math display">\[
+r=f(y)=f(h(x))
+\]</span> 定义误差 <span class="math inline">\(e\)</span> 为原始输入 <span class="math inline">\(x\)</span> 与重构信号 <span class="math inline">\(r\)</span> 之差，<span class="math inline">\(e=x–r\)</span>，网络训练的目标是减少均方误差（MSE），同 MLP 一样，误差被反向传播回隐藏层。</p>
+<h2 id="四种不同的自编码器">四种不同的自编码器</h2>
+<p>本文将介绍以下四种不同的自编码器：</p>
+<ol type="1">
+<li>香草自编码器（基础自编码器）</li>
+<li>多层自编码器</li>
+<li>卷积自编码器</li>
+<li>正则自编码器</li>
+</ol>
+<p>为了说明不同类型的自编码器，推荐一个使用了Keras框架和MNIST数据集对每个类型分别创建了示例的代码：<a href="https://link.zhihu.com/?target=https%3A//github.com/Yaka12/Autoencoders">Yaka12/Autoencoders</a></p>
+<h3 id="香草自编码器">香草自编码器</h3>
+<p>在这种自编码器的最简单结构中，只有三个网络层，即只有一个隐藏层的神经网络。它的输入和输出是相同的，可通过使用Adam优化器和均方误差损失函数，来学习如何重构输入。</p>
+<p>在这里，如果隐含层维数（64）小于输入维数（784），则称这个编码器是有损的。通过这个约束，来迫使神经网络来学习数据的压缩表征。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">input_size = <span class="number">784</span></span><br><span class="line">hidden_size = <span class="number">64</span></span><br><span class="line">output_size = <span class="number">784</span></span><br><span class="line"></span><br><span class="line">x = Input(shape=(input_size,))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Encoder</span></span><br><span class="line">h = Dense(hidden_size, activation=<span class="string">&#x27;relu&#x27;</span>)(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Decoder</span></span><br><span class="line">r = Dense(output_size, activation=<span class="string">&#x27;sigmoid&#x27;</span>)(h)</span><br><span class="line"></span><br><span class="line">autoencoder = Model(<span class="built_in">input</span>=x, output=r)</span><br><span class="line">autoencoder.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="多层自编码器">多层自编码器</h3>
+<p>如果一个隐含层还不够，显然可以将自动编码器的隐含层数目进一步提高。</p>
+<p>在这里，实现中使用了3个隐含层，而不是只有一个。任意一个隐含层都可以作为特征表征，但是为了使网络对称，我们使用了最中间的网络层。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">input_size = <span class="number">784</span></span><br><span class="line">hidden_size = <span class="number">128</span></span><br><span class="line">code_size = <span class="number">64</span></span><br><span class="line"></span><br><span class="line">x = Input(shape=(input_size,))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Encoder</span></span><br><span class="line">hidden_1 = Dense(hidden_size, activation=<span class="string">&#x27;relu&#x27;</span>)(x)</span><br><span class="line">h = Dense(code_size, activation=<span class="string">&#x27;relu&#x27;</span>)(hidden_1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Decoder</span></span><br><span class="line">hidden_2 = Dense(hidden_size, activation=<span class="string">&#x27;relu&#x27;</span>)(h)</span><br><span class="line">r = Dense(input_size, activation=<span class="string">&#x27;sigmoid&#x27;</span>)(hidden_2)</span><br><span class="line"></span><br><span class="line">autoencoder = Model(<span class="built_in">input</span>=x, output=r)</span><br><span class="line">autoencoder.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="卷积自编码器">卷积自编码器</h3>
+<p>你可能有个疑问，除了全连接层，自编码器应用到卷积层吗？</p>
+<p>答案是肯定的，原理是一样的，但是要使用3D矢量（如图像）而不是展平后的一维矢量。对输入图像进行下采样，以提供较小维度的潜在表征，来迫使自编码器从压缩后的数据进行学习。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">x = Input(shape=(<span class="number">28</span>, <span class="number">28</span>,<span class="number">1</span>)) </span><br><span class="line"></span><br><span class="line"><span class="comment"># Encoder</span></span><br><span class="line">conv1_1 = Conv2D(<span class="number">16</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(x)</span><br><span class="line">pool1 = MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>), padding=<span class="string">&#x27;same&#x27;</span>)(conv1_1)</span><br><span class="line">conv1_2 = Conv2D(<span class="number">8</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(pool1)</span><br><span class="line">pool2 = MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>), padding=<span class="string">&#x27;same&#x27;</span>)(conv1_2)</span><br><span class="line">conv1_3 = Conv2D(<span class="number">8</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(pool2)</span><br><span class="line">h = MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>), padding=<span class="string">&#x27;same&#x27;</span>)(conv1_3)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Decoder</span></span><br><span class="line">conv2_1 = Conv2D(<span class="number">8</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(h)</span><br><span class="line">up1 = UpSampling2D((<span class="number">2</span>, <span class="number">2</span>))(conv2_1)</span><br><span class="line">conv2_2 = Conv2D(<span class="number">8</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(up1)</span><br><span class="line">up2 = UpSampling2D((<span class="number">2</span>, <span class="number">2</span>))(conv2_2)</span><br><span class="line">conv2_3 = Conv2D(<span class="number">16</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>)(up2)</span><br><span class="line">up3 = UpSampling2D((<span class="number">2</span>, <span class="number">2</span>))(conv2_3)</span><br><span class="line">r = Conv2D(<span class="number">1</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;sigmoid&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(up3)</span><br><span class="line"></span><br><span class="line">autoencoder = Model(<span class="built_in">input</span>=x, output=r)</span><br><span class="line">autoencoder.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="正则自编码器">正则自编码器</h3>
+<p>除了施加一个比输入维度小的隐含层，一些其他方法也可用来约束自编码器重构，如正则自编码器。</p>
+<p>正则自编码器不需要使用浅层的编码器和解码器以及小的编码维数来限制模型容量，而是使用损失函数来鼓励模型学习其他特性（除了将输入复制到输出）。这些特性包括稀疏表征、小导数表征、以及对噪声或输入缺失的鲁棒性。</p>
+<p>即使模型容量大到足以学习一个无意义的恒等函数，非线性且过完备的正则自编码器仍然能够从数据中学到一些关于数据分布的有用信息。</p>
+<p>在实际应用中，常用到两种正则自编码器，分别是稀疏自编码器和降噪自编码器。</p>
+<h4 id="稀疏自编码器">稀疏自编码器：</h4>
+<p>一般用来学习特征，以便用于像分类这样的任务。稀疏正则化的自编码器必须反映训练数据集的独特统计特征，而不是简单地充当恒等函数。以这种方式训练，执行附带稀疏惩罚的复现任务可以得到能学习有用特征的模型。</p>
+<p>还有一种用来约束自动编码器重构的方法，是对其损失函数施加约束。比如，可对损失函数添加一个正则化约束，这样能使自编码器学习到数据的稀疏表征。</p>
+<p>要注意，在隐含层中，我们还加入了L1正则化，作为优化阶段中损失函数的惩罚项。与香草自编码器相比，这样操作后的数据表征更为稀疏。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">input_size = <span class="number">784</span></span><br><span class="line">hidden_size = <span class="number">64</span></span><br><span class="line">output_size = <span class="number">784</span></span><br><span class="line"></span><br><span class="line">x = Input(shape=(input_size,))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Encoder</span></span><br><span class="line">h = Dense(hidden_size, activation=<span class="string">&#x27;relu&#x27;</span>, activity_regularizer=regularizers.l1(<span class="number">10e-5</span>))(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Decoder</span></span><br><span class="line">r = Dense(output_size, activation=<span class="string">&#x27;sigmoid&#x27;</span>)(h)</span><br><span class="line"></span><br><span class="line">autoencoder = Model(<span class="built_in">input</span>=x, output=r)</span><br><span class="line">autoencoder.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="降噪自编码器">降噪自编码器：</h4>
+<p>这里不是通过对损失函数施加惩罚项，而是通过改变损失函数的重构误差项来学习一些有用信息。</p>
+<p>向训练数据加入噪声，并使自编码器学会去除这种噪声来获得没有被噪声污染过的真实输入。因此，这就迫使编码器学习提取最重要的特征并学习输入数据中更加鲁棒的表征，这也是它的泛化能力比一般编码器强的原因。</p>
+<p>这种结构可以通过梯度下降算法来训练。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">x = Input(shape=(<span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Encoder</span></span><br><span class="line">conv1_1 = Conv2D(<span class="number">32</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(x)</span><br><span class="line">pool1 = MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>), padding=<span class="string">&#x27;same&#x27;</span>)(conv1_1)</span><br><span class="line">conv1_2 = Conv2D(<span class="number">32</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(pool1)</span><br><span class="line">h = MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>), padding=<span class="string">&#x27;same&#x27;</span>)(conv1_2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Decoder</span></span><br><span class="line">conv2_1 = Conv2D(<span class="number">32</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(h)</span><br><span class="line">up1 = UpSampling2D((<span class="number">2</span>, <span class="number">2</span>))(conv2_1)</span><br><span class="line">conv2_2 = Conv2D(<span class="number">32</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(up1)</span><br><span class="line">up2 = UpSampling2D((<span class="number">2</span>, <span class="number">2</span>))(conv2_2)</span><br><span class="line">r = Conv2D(<span class="number">1</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;sigmoid&#x27;</span>, padding=<span class="string">&#x27;same&#x27;</span>)(up2)</span><br><span class="line"></span><br><span class="line">autoencoder = Model(<span class="built_in">input</span>=x, output=r)</span><br><span class="line">autoencoder.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" rel="tag"># 人群异常检测</a>
+          
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/30/%E3%80%90%E8%AE%BA%E6%96%87%E3%80%91%E7%BF%BB%E8%AF%91%EF%BC%9A%E5%9F%BA%E4%BA%8E%E9%A1%B6%E7%82%B9%E6%9D%83%E9%87%8D%E7%9A%84-p-center-%E9%97%AE%E9%A2%98%E7%A6%81%E5%BF%8C%E6%90%9C%E7%B4%A2/" rel="next" title="【论文】翻译：基于顶点权重的 p-center 问题禁忌搜索">
+                <i class="fa fa-chevron-left"></i> 【论文】翻译：基于顶点权重的 p-center 问题禁忌搜索
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E7%BC%96%E7%A0%81%E7%AE%80%E5%8D%95%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">自编码简单模型介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8%E7%94%A8%E6%9D%A5%E5%B9%B2%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">自编码器用来干什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">3.</span> <span class="nav-text">自编码器与神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%89%E5%A4%A7%E7%89%B9%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">神经网络自编码器三大特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8autoencoder%E6%90%AD%E5%BB%BA"><span class="nav-number">4.1.</span> <span class="nav-text">自编码器（Autoencoder）搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">四种不同的自编码器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%99%E8%8D%89%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">5.1.</span> <span class="nav-text">香草自编码器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">5.2.</span> <span class="nav-text">多层自编码器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">5.3.</span> <span class="nav-text">卷积自编码器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">5.4.</span> <span class="nav-text">正则自编码器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">5.4.1.</span> <span class="nav-text">稀疏自编码器：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%8D%E5%99%AA%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">5.4.2.</span> <span class="nav-text">降噪自编码器：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
