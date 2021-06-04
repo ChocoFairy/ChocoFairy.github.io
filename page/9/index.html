@@ -381,16 +381,14 @@
 
       
         
-          <h2 id="一，基本配置">一，基本配置</h2>
-<p>一个小程序里边有下列不同类型的文件：</p>
+          <h2 id="一，基本配置"><a href="#一，基本配置" class="headerlink" title="一，基本配置"></a>一，基本配置</h2><p>一个小程序里边有下列不同类型的文件：</p>
 <ol>
 <li>.json后缀的JSON配置文件</li>
 <li>.wxml后缀的WXML模板文件</li>
 <li>.wxss后缀的WXSS样式文件</li>
 <li>.js后缀的JS脚本逻辑文件</li>
 </ol>
-<h3 id="JSON配置">JSON配置</h3>
-<p>JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。</p>
+<h3 id="JSON配置"><a href="#JSON配置" class="headerlink" title="JSON配置"></a>JSON配置</h3><p>JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。</p>
 <p><strong>app.json</strong>中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -569,7 +567,7 @@
 
       
         
-          <p>最近准备重新学习学习C++，因为之前也都是上课学习，其实很多细节自己还是没有掌握地很好，现在时间比较充裕，乘着这个窗口期赶紧再充实一下自己。这系列的文章既是每周的总结也是希望跟读者们共同进步，相互学习。</p>
+          <p>﻿最近准备重新学习学习C++，因为之前也都是上课学习，其实很多细节自己还是没有掌握地很好，现在时间比较充裕，乘着这个窗口期赶紧再充实一下自己。这系列的文章既是每周的总结也是希望跟读者们共同进步，相互学习。</p>
 <p>这篇文章并不是讲C++的语法，而是C++学习的预热。内容看起来很杂，其实是一些自己感觉很熟的东西中容易忽略的地方。主要是建立学习C++的好奇与兴趣。正如某位大佬所说：“技术领域并不缺少神奇，只是缺少发现神奇的眼睛。”</p>
 <p>主要内容包括：c++工程开发规范；编译链接的具体过程；如何在c++工程中引入第三方模块以及预处理。</p>
           <!--noindex-->
@@ -727,7 +725,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  35 分钟
+                  34 分钟
                 </span>
               
             </div>
@@ -749,20 +747,14 @@
 
       
         
-          <h1>Java小学期笔记</h1>
-<h2 id="Java-vs-C">Java vs C++</h2>
-<h5 id="1-数据类型">1, 数据类型</h5>
-<p>​	*基本数据类型：byte(8bits)   short(16bits)   int(43bits)   long(64bits)   float(32bits)   double(64bits)  char(16bits)   boolean</p>
-<p>​	char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等</p>
+          <h1 id="Java小学期笔记"><a href="#Java小学期笔记" class="headerlink" title="Java小学期笔记"></a>Java小学期笔记</h1><h2 id="Java-vs-C"><a href="#Java-vs-C" class="headerlink" title="Java vs C++"></a>Java vs C++</h2><h5 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1, 数据类型"></a>1, 数据类型</h5><p>​    *基本数据类型：byte(8bits)   short(16bits)   int(43bits)   long(64bits)   float(32bits)   double(64bits)  char(16bits)   boolean</p>
+<p>​    char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="string">&#x27;\u0065&#x27;</span>;</span><br><span class="line"><span class="comment">// 禁止 大数据类型给小数据类型赋值-syntax error</span></span><br><span class="line"><span class="keyword">float</span> f = <span class="number">3.14F</span>;   <span class="comment">// (数值类型默认double)</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">011</span>;    <span class="comment">// 八进制</span></span><br></pre></td></tr></table></figure>
-<p>​	*引用数据类型： Object （every thing is Object ）</p>
-<h5 id="2-参数传递">2, 参数传递</h5>
-<p>​	只有传值一种方式</p>
-<h5 id="3-对象存储与访问">3, 对象存储与访问</h5>
-<p>​	除非用new创建对象，否则，实际上并未获得任何对象</p>
-<p>​	对象全部存储在堆中，栈中没有对象，  访问对象的唯一方法是 ‘引用’（引用的大小：8byte）</p>
-<h5 id="4-对象回收">4, 对象回收</h5>
-<p>​	没有引用的对象 是垃圾对象，JVM的垃圾回收机制将自动回收，但不知道何时进行。（System.gc()仅是发一个回收请求，并不立刻进行）</p>
+<p>​    *引用数据类型： Object （every thing is Object ）</p>
+<h5 id="2-参数传递"><a href="#2-参数传递" class="headerlink" title="2, 参数传递"></a>2, 参数传递</h5><p>​    只有传值一种方式 </p>
+<h5 id="3-对象存储与访问"><a href="#3-对象存储与访问" class="headerlink" title="3, 对象存储与访问"></a>3, 对象存储与访问</h5><p>​    除非用new创建对象，否则，实际上并未获得任何对象</p>
+<p>​    对象全部存储在堆中，栈中没有对象，  访问对象的唯一方法是 ‘引用’（引用的大小：8byte）</p>
+<h5 id="4-对象回收"><a href="#4-对象回收" class="headerlink" title="4, 对象回收"></a>4, 对象回收</h5><p>​    没有引用的对象 是垃圾对象，JVM的垃圾回收机制将自动回收，但不知道何时进行。（System.gc()仅是发一个回收请求，并不立刻进行）</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/10/16/java%E7%AC%94%E8%AE%B0/#more" rel="contents">
