@@ -83,7 +83,7 @@
 <meta property="og:description" content="Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。 博客部署  安装git  到git官网上下载（https:&#x2F;&#x2F;gitforwindows.org&#x2F;）  下载node.js  windows直接进入这个网址（https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;download&#x2F;），选择wi">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-01-02T12:58:54.000Z">
-<meta property="article:modified_time" content="2021-03-30T01:34:25.424Z">
+<meta property="article:modified_time" content="2021-03-30T01:34:26.000Z">
 <meta property="article:author" content="wlz">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -388,13 +388,15 @@
 <ol start="2" type="1">
 <li>下载node.js</li>
 </ol>
-<p>windows直接进入这个网址（https://nodejs.org/en/download/），选择windows Installer一路下载就可以了。</p>
+<p>windows直接进入这个网址（https://nodejs.org/en/download/），选择windows
+Installer一路下载就可以了。</p>
 <p>检查以下命令，以判断node.js是否安装成功：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 <ol start="3" type="1">
 <li>安装Hexo</li>
 </ol>
-<p>先在某个目录下创建一个文件夹blog，然后cd到这个文件夹下。git bash进入命令行，输入：</p>
+<p>先在某个目录下创建一个文件夹blog，然后cd到这个文件夹下。git
+bash进入命令行，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <p>检查以下命令，以判断Hexo是否安装成功：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
@@ -413,7 +415,8 @@
 <p>创建Github账号，<code>new repository</code>，创建一个名为：<code>用户名.github.io</code>的仓库。</p>
 <p>然后检查邮箱，用户名配置以及添加SSH：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;youremail&quot;</span></span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
-<p>这样就在电脑中生成.ssh文件夹了，找到它，然后在github的设置中，找到SSH Keys的设置，点击<code>new SSH Key</code>，把<code>id_rsa.pub</code>的信息复制进去。检查是否成功：</p>
+<p>这样就在电脑中生成.ssh文件夹了，找到它，然后在github的设置中，找到SSH
+Keys的设置，点击<code>new SSH Key</code>，把<code>id_rsa.pub</code>的信息复制进去。检查是否成功：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <ol start="6" type="1">
 <li>将Hexo部署到Github</li>
@@ -424,7 +427,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>最后：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p>这样，过一会就可以在<code>https://yourname.github.io</code> 这个网站看到你的博客了！</p>
+<p>这样，过一会就可以在<code>https://yourname.github.io</code>
+这个网站看到你的博客了！</p>
 <h2 id="博客个性化">博客个性化</h2>
 <p>原来默认的Hexo博客必然不是我们所喜欢的，我们可以通过各种个性化配置，来美化博客。</p>
 <h3 id="更换主题">2.1 更换主题</h3>
@@ -474,10 +478,12 @@
 </ol>
 <h3 id="个人域名配置">2.3 个人域名配置</h3>
 <p>参考：https://xiangzhihong.blog.csdn.net/article/details/53355036</p>
-<p>注意：需要在/source/下自己新建CNAME文件，写入购买的域名，再将hexo推到github上。否则直接修改github page，在hexo下次部署时，github自动创建的CNAME文件被删除，就会链接失败。</p>
+<p>注意：需要在/source/下自己新建CNAME文件，写入购买的域名，再将hexo推到github上。否则直接修改github
+page，在hexo下次部署时，github自动创建的CNAME文件被删除，就会链接失败。</p>
 <h2 id="功能简介">功能简介</h2>
 <p>（1）发布/删除文章</p>
-<p>发布/删除只需要在hexo根目录中的<code>source/_post/</code>文件夹下创建/删除 md文件，并输入 <code>hexo d -g</code> 就可以了。</p>
+<p>发布/删除只需要在hexo根目录中的<code>source/_post/</code>文件夹下创建/删除
+md文件，并输入 <code>hexo d -g</code> 就可以了。</p>
 <p>发布也可以用 <code>hexo new "文章名"</code> 来创建。</p>
 <p>（2）写文章时插入图片</p>
 <p>在本地写makedown的时候能看到图片，但是部署之后，在网页上却看不到</p>
@@ -631,7 +637,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +648,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -722,7 +728,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

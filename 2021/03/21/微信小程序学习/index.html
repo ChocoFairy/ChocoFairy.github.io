@@ -75,18 +75,18 @@
 
 
 
-<meta name="description" content="一，基本配置 一个小程序里边有下列不同类型的文件：  .json后缀的JSON配置文件 .wxml后缀的WXML模板文件 .wxss后缀的WXSS样式文件 .js后缀的JS脚本逻辑文件  JSON配置 JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。 app.json中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab">
+<meta name="description" content="一，基本配置 一个小程序里边有下列不同类型的文件：  .json后缀的JSON配置文件 .wxml后缀的WXML模板文件 .wxss后缀的WXSS样式文件 .js后缀的JS脚本逻辑文件  JSON配置 JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。 app.json中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【微信小程序】微信小程序学习笔记">
 <meta property="og:url" content="https://chocofairy.github.io/2021/03/21/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="一，基本配置 一个小程序里边有下列不同类型的文件：  .json后缀的JSON配置文件 .wxml后缀的WXML模板文件 .wxss后缀的WXSS样式文件 .js后缀的JS脚本逻辑文件  JSON配置 JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。 app.json中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab">
+<meta property="og:description" content="一，基本配置 一个小程序里边有下列不同类型的文件：  .json后缀的JSON配置文件 .wxml后缀的WXML模板文件 .wxss后缀的WXSS样式文件 .js后缀的JS脚本逻辑文件  JSON配置 JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。 app.json中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab">
 <meta property="og:locale">
 <meta property="og:image" content="https://chocofairy.github.io/images/1582438221515.png">
 <meta property="og:image" content="https://chocofairy.github.io/images/1582438446115.png">
 <meta property="og:image" content="https://chocofairy.github.io/images/1582425605881.png">
 <meta property="article:published_time" content="2021-03-21T08:55:49.000Z">
-<meta property="article:modified_time" content="2021-04-12T08:59:11.454Z">
+<meta property="article:modified_time" content="2021-04-12T08:59:12.000Z">
 <meta property="article:author" content="wlz">
 <meta property="article:tag" content="微信小程序">
 <meta name="twitter:card" content="summary">
@@ -393,7 +393,8 @@
 </ol>
 <h3 id="json配置">JSON配置</h3>
 <p>JSON是一种数据格式，并不是编程语言，在小程序中，JSON扮演静态配置的角色。</p>
-<p><strong>app.json</strong>中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
+<p><strong>app.json</strong>中进行全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部
+tab 等。</p>
 <span id="more"></span>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;pages&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;pages/index/index&quot;</span>, </span><br><span class="line">    <span class="string">&quot;pages/logs/logs&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pages/weixin/weixin&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pages/wo/wo&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;window&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;navigationBarBackgroundColor&quot;</span>: <span class="string">&quot;#FFCF00&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;navigationBarTitleText&quot;</span>: <span class="string">&quot;我的应用&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;navigationBarTextStyle&quot;</span>: <span class="string">&quot;black&quot;</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="attr">&quot;enablePullDownRefresh&quot;</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;backgroundColor&quot;</span>: <span class="string">&quot;pink&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;backgroundTextStyle&quot;</span>: <span class="string">&quot;dark&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;tabBar&quot;</span>:&#123;</span><br><span class="line">    <span class="attr">&quot;color&quot;</span>: <span class="string">&quot;#000000&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;selectedColor&quot;</span>: <span class="string">&quot;#ddd&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;list&quot;</span>:[</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;text&quot;</span>:<span class="string">&quot;微信&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;iconPath&quot;</span>:<span class="string">&quot;images/weixin.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;selectedIconPath&quot;</span>:<span class="string">&quot;images/weixin2.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;pagePath&quot;</span>:<span class="string">&quot;pages/index/index&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;我&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;iconPath&quot;</span>: <span class="string">&quot;images/wo.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;selectedIconPath&quot;</span>: <span class="string">&quot;images/wo2.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;pagePath&quot;</span>: <span class="string">&quot;pages/wo/wo&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;style&quot;</span>: <span class="string">&quot;v2&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sitemapLocation&quot;</span>: <span class="string">&quot;sitemap.json&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意：</p>
@@ -408,7 +409,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 数字，包含浮点数和整数</span><br><span class="line">2. 字符串，需要包裹在双引号中</span><br><span class="line">3. Bool值，true或false</span><br><span class="line">4. 数组，需要包裹在方括号中[]</span><br><span class="line">5. 对象，需要包裹在大括号中&#123;&#125;</span><br><span class="line">6. Null</span><br></pre></td></tr></table></figure>
 <h3 id="wxml模板">WXML模板</h3>
 <p>WXML充当类似HTML的角色。将<code>div</code>标签替换为<code>view</code>标签。</p>
-<p>多了wx:if 之类的渲染语法，以及<code>&#123;&#123; &#125;&#125;</code>表达式。将渲染与逻辑分离。比如：</p>
+<p>多了wx:if
+之类的渲染语法，以及<code>&#123;&#123; &#125;&#125;</code>表达式。将渲染与逻辑分离。比如：</p>
 <p><strong>1, 数据绑定</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--WXML--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*JS*/</span></span><br><span class="line"><span class="built_in">this</span>.setData(&#123;<span class="attr">msg</span>:<span class="string">&quot;Hello World&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
@@ -423,22 +425,29 @@
 <h3 id="wxss样式">WXSS样式</h3>
 <p>WXSS具有CSS大部分的特性，小程序在WXSS也做了一些扩充与修改。</p>
 <ol type="1">
-<li><p><code>WXSS</code> 在底层支持新的尺寸单位 <code>rpx</code> ，开发者可以免去换算像素的烦恼。规定所有的屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。</p>
+<li><p><code>WXSS</code> 在底层支持新的尺寸单位 <code>rpx</code>
+，开发者可以免去换算像素的烦恼。规定所有的屏幕宽为750rpx。如在 iPhone6
+上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px =
+750物理像素，1rpx = 0.5px = 1物理像素。</p>
 <figure>
-<img src="/images/1582438221515.png" alt="1582438221515" /><figcaption aria-hidden="true">1582438221515</figcaption>
+<img src="/images/1582438221515.png" alt="1582438221515" />
+<figcaption aria-hidden="true">1582438221515</figcaption>
 </figure></li>
-<li><p>提供了全局的样式和局部样式，支持样式导入（<span class="citation" data-cites="import语句">@import语句</span>）</p>
+<li><p>提供了全局的样式和局部样式，支持样式导入（<span class="citation"
+data-cites="import语句">@import语句</span>）</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** common.wxss **/</span></span><br><span class="line"><span class="selector-class">.small-p</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** app.wxss **/</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;common.wxss&quot;</span>;</span><br><span class="line"><span class="selector-class">.middle-p</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>常见的选择器有且不限于以下几种：</p>
 <figure>
-<img src="/images/1582438446115.png" alt="1582438446115" /><figcaption aria-hidden="true">1582438446115</figcaption>
+<img src="/images/1582438446115.png" alt="1582438446115" />
+<figcaption aria-hidden="true">1582438446115</figcaption>
 </figure>
 <h3 id="js逻辑交互">JS逻辑交互</h3>
 <p>仅有界面展示是不够的，通过编写JS脚本文件来处理用户的操作。比如：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">bindtap</span>=<span class="string">&quot;clickMe&quot;</span>&gt;</span>点击我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>点击button按钮时，我们希望把上面msg的内容显示成"Hello World"，于是我们在button上声明一个属性bindtap，在JS文件中声明了clickMe方法来响应这次点击操作：</p>
+<p>点击button按钮时，我们希望把上面msg的内容显示成"Hello
+World"，于是我们在button上声明一个属性bindtap，在JS文件中声明了clickMe方法来响应这次点击操作：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  clickMe: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.setData(&#123; <span class="attr">msg</span>: <span class="string">&quot;Hello World&quot;</span> &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="二小程序宿主环境">二，小程序宿主环境</h2>
 <p>我们称微信客户端给小程序所提供的环境为宿主环境。小程序借助宿主环境提供的能力，可以完成许多普通网页无法完成的功能。</p>
@@ -447,7 +456,8 @@
 <p>小程序的渲染层和逻辑层分别由两个线程管理：渲染层界面使用WebView进行渲染；逻辑层采用JsCore线程运行JS脚本。一个小程序存在多个界面，所以渲染层存在多个WebView线程。</p>
 <p>这两个线程的通信会经由微信客户端（下文中也会采用Native来代指微信客户端）做中转，逻辑层发送网络请求也经由Native转发，小程序的通信模型下图所示。</p>
 <figure>
-<img src="/images/1582425605881.png" alt="1582425605881" /><figcaption aria-hidden="true">1582425605881</figcaption>
+<img src="/images/1582425605881.png" alt="1582425605881" />
+<figcaption aria-hidden="true">1582425605881</figcaption>
 </figure>
 <p>通过app.json的pages字段可以知道当前小程序的所有页面路径：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;pages&quot;</span>: [</span><br><span class="line">   	    <span class="string">&quot;pages/index/index&quot;</span>, </span><br><span class="line">   	    <span class="string">&quot;pages/logs/logs&quot;</span>,</span><br><span class="line">        <span class="string">&quot;pages/weixin/weixin&quot;</span>,</span><br><span class="line">   	    <span class="string">&quot;pages/wo/wo&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -462,8 +472,10 @@
 <h3 id="组件">组件</h3>
 <p>小程序提供了丰富的基础组件给开发者，开发者可以像搭积木一样，组合各种组件拼合成自己的小程序。</p>
 <h3 id="api">API</h3>
-<p>为了让开发者可以很方便的调起微信提供的能力，例如获取用户信息、微信支付等等，小程序提供了很多 API 给开发者去使用。</p>
-<p>需要注意的是：多数 API 的回调都是异步，你需要处理好代码逻辑的异步问题。</p>
+<p>为了让开发者可以很方便的调起微信提供的能力，例如获取用户信息、微信支付等等，小程序提供了很多
+API 给开发者去使用。</p>
+<p>需要注意的是：多数 API
+的回调都是异步，你需要处理好代码逻辑的异步问题。</p>
 <h2 id="三事件">三，事件</h2>
 <h3 id="什么是事件">什么是事件？</h3>
 <ul>
@@ -488,6 +500,11 @@
 </ol>
 <p>WXML冒泡事件列表：</p>
 <table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 69%" />
+<col style="width: 9%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>类型</th>
@@ -563,25 +580,42 @@
 <p>在组件节点中可以附加一些自定义数据。这样，在事件中可以获取这些自定义的节点数据，用于事件的逻辑处理。在WXML中，这些自定义数据以data-开头，多个单词由连字符-连接。</p>
 <p>这种写法中，连字符写法会转换成驼峰写法，而大写子符会自动转成小写字符，如：</p>
 <ul>
-<li>data-element-type，最终呈现为 event.currentTarget.dataset.elementType;</li>
-<li>data-elementType，最终呈现为 event.currentTarget.dataset.elementtype.</li>
+<li>data-element-type，最终呈现为
+event.currentTarget.dataset.elementType;</li>
+<li>data-elementType，最终呈现为
+event.currentTarget.dataset.elementtype.</li>
 </ul>
 <h2 id="四云开发">四，云开发</h2>
-<p>云开发为开发者提供完整的原生云端支持和微信服务支持，弱化后端和运维概念，无需搭建服务器，使用平台提供的 API 进行核心业务开发，即可实现快速上线和迭代，同时这一能力，同开发者已经使用的云服务相互兼容，并不互斥。</p>
+<p>云开发为开发者提供完整的原生云端支持和微信服务支持，弱化后端和运维概念，无需搭建服务器，使用平台提供的
+API
+进行核心业务开发，即可实现快速上线和迭代，同时这一能力，同开发者已经使用的云服务相互兼容，并不互斥。</p>
 <h3 id="初始化云程序">初始化云程序</h3>
 <ol type="1">
-<li><p>在project.config.json中添加"cloudfunctionRoot": "<云函数目录>/"</p></li>
+<li><p>在project.config.json中添加"cloudfunctionRoot":
+"<云函数目录>/"</p></li>
 <li><p>项目根目录处创建文件夹 <云函数目录>，并配置当前环境</p></li>
 <li><p>在app.js的onLaunch中进行云函数初始化</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 云开发初始化</span></span><br><span class="line"><span class="keyword">if</span> (!wx.cloud) &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">&#x27;请使用 2.2.3 或以上的基础库以使用云能力&#x27;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  wx.cloud.init(&#123;</span><br><span class="line">    env: <span class="string">&#x27;zzmine-3cgx9&#x27;</span>,</span><br><span class="line">    traceUser: <span class="literal">true</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="云数据库">云数据库</h3>
-<p>云开发提供了一个 <strong>JSON 数据库</strong>，顾名思义，数据库中的每条记录都是一个 JSON 格式的对象。</p>
-<p>一个数据库可以有多个集合（相当于关系型数据中的表），集合可看做一个 JSON 数组，数组中的每个对象就是一条记录，记录的格式是 JSON 对象。每个数据表都有权限设置。</p>
-<p>每条记录都有一个 <code>_id</code> 字段用以唯一标志一条记录、一个 <code>_openid</code> 字段用以标志记录的创建者，即小程序的用户。<strong>需要特别注意的是，在管理端（控制台和云函数）中创建的不会有 <code>_openid</code> 字段，因为这是属于管理员创建的记录。</strong></p>
-<p>数据库 API 分为小程序端和服务端两部分，小程序端 API 拥有严格的调用权限控制，开发者可在小程序内直接调用 API 进行非敏感数据的操作。对于有更高安全要求的数据，可在<strong>云函数内通过服务端 API 进行操作</strong>。云函数的环境是与客户端完全隔离的，在云函数上可以私密且安全的操作数据库。</p>
+<p>云开发提供了一个 <strong>JSON
+数据库</strong>，顾名思义，数据库中的每条记录都是一个 JSON
+格式的对象。</p>
+<p>一个数据库可以有多个集合（相当于关系型数据中的表），集合可看做一个
+JSON 数组，数组中的每个对象就是一条记录，记录的格式是 JSON
+对象。每个数据表都有权限设置。</p>
+<p>每条记录都有一个 <code>_id</code> 字段用以唯一标志一条记录、一个
+<code>_openid</code>
+字段用以标志记录的创建者，即小程序的用户。<strong>需要特别注意的是，在管理端（控制台和云函数）中创建的不会有
+<code>_openid</code> 字段，因为这是属于管理员创建的记录。</strong></p>
+<p>数据库 API 分为小程序端和服务端两部分，小程序端 API
+拥有严格的调用权限控制，开发者可在小程序内直接调用 API
+进行非敏感数据的操作。对于有更高安全要求的数据，可在<strong>云函数内通过服务端
+API
+进行操作</strong>。云函数的环境是与客户端完全隔离的，在云函数上可以私密且安全的操作数据库。</p>
 <p><strong>注意</strong>：在小程序端直接使用数据库API一次最多拿到20条数据；要一次取出超过20条数据那么就得写成云函数（云函数中没有wx前缀）</p>
-<p>使用 API 操作数据库只需三步：获取数据库引用、构造查询/更新条件、发出请求。以下是一个在小程序中查询数据库的发表于美国的图书记录的例子：</p>
+<p>使用 API
+操作数据库只需三步：获取数据库引用、构造查询/更新条件、发出请求。以下是一个在小程序中查询数据库的发表于美国的图书记录的例子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 获取数据库引用</span></span><br><span class="line"><span class="keyword">const</span> db = wx.cloud.database()</span><br><span class="line"><span class="comment">// 2. 构造查询语句</span></span><br><span class="line"><span class="comment">// collection 方法获取一个集合的引用</span></span><br><span class="line"><span class="comment">// where 方法传入一个对象，数据库返回集合中字段等于指定值的 JSON 文档。API 也支持高级的查询条件（比如大于、小于、in 等），具体见文档查看支持列表</span></span><br><span class="line"><span class="comment">// get 方法会触发网络请求，往数据库取数据</span></span><br><span class="line">db.collection(<span class="string">&#x27;books&#x27;</span>).where(&#123;</span><br><span class="line">  publishInfo: &#123;</span><br><span class="line">    country: <span class="string">&#x27;United States&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;).get(&#123;</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 输出 [&#123; &quot;title&quot;: &quot;The Catcher in the Rye&quot;, ... &#125;]</span></span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>上传数据至云数据库：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> DB = wx.cloud.database().collection(<span class="string">&quot;list&quot;</span>)</span><br><span class="line">addData:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    DB.add(&#123;</span><br><span class="line">      data:&#123;</span><br><span class="line">        name:<span class="built_in">this</span>.data.name,</span><br><span class="line">        age:<span class="built_in">this</span>.data.age</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="title">success</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;添加成功&quot;</span>,res)</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="title">fail</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;添加失败&quot;</span>,res)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -602,7 +636,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">uploadImage:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="built_in">this</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;文件上传&quot;</span>)</span><br><span class="line">    <span class="comment">// 图片选择</span></span><br><span class="line">    wx.chooseImage(&#123;</span><br><span class="line">      count: <span class="number">1</span>,</span><br><span class="line">      sizeType: [<span class="string">&#x27;original&#x27;</span>, <span class="string">&#x27;compressed&#x27;</span>],</span><br><span class="line">      sourceType: [<span class="string">&#x27;album&#x27;</span>, <span class="string">&#x27;camera&#x27;</span>],</span><br><span class="line">      success (res) &#123;</span><br><span class="line">        <span class="comment">// tempFilePath可以作为img标签的src属性显示图片</span></span><br><span class="line">        <span class="keyword">const</span> tempFilePaths = res.tempFilePaths</span><br><span class="line">        <span class="built_in">console</span>.log(tempFilePaths)</span><br><span class="line">        <span class="keyword">let</span> timestamp = (<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf() <span class="comment">// 时间戳</span></span><br><span class="line">        wx.cloud.uploadFile(&#123;</span><br><span class="line">          cloudPath: timestamp+<span class="string">&#x27;.png&#x27;</span>, <span class="comment">// 上传至云端的路径</span></span><br><span class="line">          filePath: tempFilePaths[<span class="number">0</span>], <span class="comment">// 小程序临时文件路径</span></span><br><span class="line">          success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 返回文件 ID</span></span><br><span class="line">            <span class="built_in">console</span>.log(res.fileID)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;文件上传成功&quot;</span>)</span><br><span class="line">            that.setData(&#123;<span class="attr">imageFileId</span>:res.fileID&#125;)</span><br><span class="line">            <span class="comment">// 上传成功后会获得文件唯一标识符，即文件 ID，后续操作(如回显)都基于文件 ID 而不是 URL</span></span><br><span class="line">          &#125;,</span><br><span class="line">          fail: <span class="built_in">console</span>.error</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>视频上传：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">uploadVideo:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="built_in">this</span></span><br><span class="line">    <span class="comment">// 选择视频</span></span><br><span class="line">    wx.chooseVideo(&#123;</span><br><span class="line">      sourceType: [<span class="string">&#x27;album&#x27;</span>,<span class="string">&#x27;camera&#x27;</span>],</span><br><span class="line">      maxDuration: <span class="number">60</span>,   <span class="comment">//最长时长 单位 s </span></span><br><span class="line">      camera: <span class="string">&#x27;back&#x27;</span>,</span><br><span class="line">      <span class="function"><span class="title">success</span>(<span class="params">res</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;选择视频成功&quot;</span>,res.tempFilePath)</span><br><span class="line">        wx.cloud.uploadFile(&#123;</span><br><span class="line">          cloudPath:  <span class="string">&#x27;video.mp4&#x27;</span>, <span class="comment">// 上传至云端的路径</span></span><br><span class="line">          filePath: res.tempFilePath, <span class="comment">// 小程序临时文件路径</span></span><br><span class="line">          success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 返回文件 ID</span></span><br><span class="line">            <span class="built_in">console</span>.log(res.fileID)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;文件视频成功&quot;</span>)</span><br><span class="line">            that.setData(&#123;<span class="attr">imageFileId</span>:res.fileID&#125;)</span><br><span class="line">            <span class="comment">// 上传成功后会获得文件唯一标识符，即文件 ID，后续操作(如回显)都基于文件 ID 而不是 URL</span></span><br><span class="line">          &#125;,</span><br><span class="line">          fail: <span class="built_in">console</span>.error</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="带有云后台的小程序进行多人协作">带有云后台的小程序进行多人协作</h2>
+<h2
+id="带有云后台的小程序进行多人协作">带有云后台的小程序进行多人协作</h2>
 <ol type="1">
 <li>将所有开发者在微信小程序后台里面设置权限</li>
 <li>在微信开发工具导入项目的时候使用同一个appid（wx9e2d10f6dc0c617f）</li>
@@ -612,7 +647,9 @@
 <p>注意：上传多张图片到云后台需要加同步锁Promise</p>
 <h2 id="穷举获取云函数的ip">穷举获取云函数的ip</h2>
 <p>有时我们希望能够获取到服务器的公网IP，比如用于IP地址的白名单，或者想根据IP查询到服务器所在的地址，ipify就是一个免费好用的依赖，通过它我们也可以获取到云函数所在服务器的公网IP。</p>
-<p>建立云函数getip, 然后输入以下代码。同时在package.json的”dependencies”里新增 "ipify":"latest"。</p>
+<p>建立云函数getip,
+然后输入以下代码。同时在package.json的”dependencies”里新增
+"ipify":"latest"。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cloud = <span class="built_in">require</span>(<span class="string">&#x27;wx-server-sdk&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> ipify = <span class="built_in">require</span>(<span class="string">&#x27;ipify&#x27;</span>);</span><br><span class="line">cloud.init(&#123;</span><br><span class="line">  env: <span class="string">&quot;自己的云环境id&quot;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">exports</span>.main = <span class="keyword">async</span> (event, context) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> ipify(&#123; <span class="attr">useIPv6</span>: <span class="literal">false</span> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -738,7 +775,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -749,7 +786,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -829,7 +866,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

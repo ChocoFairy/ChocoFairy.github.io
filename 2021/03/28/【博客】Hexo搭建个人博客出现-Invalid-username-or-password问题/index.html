@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="GitHub开启二次验证后会导致博客提交hexo deploy的时候密码错误，无法提交至GitHub。具体提示如下： 1234567891011121314Logon failed, use ctrl+c to cancel basic credential prompt.Username for &#39;https:&#x2F;&#x2F;github.com&#39;: usernamer">
+<meta name="description" content="GitHub开启二次验证后会导致博客提交hexo deploy的时候密码错误，无法提交至GitHub。具体提示如下： 1234567891011121314Logon failed, use ctrl+c to cancel basic credential prompt.Username for &#39;https:&#x2F;&#x2F;github.com&#39;: username">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【博客】Hexo搭建个人博客出现 Invalid username or password问题">
 <meta property="og:url" content="https://chocofairy.github.io/2021/03/28/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%87%BA%E7%8E%B0-Invalid-username-or-password%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="GitHub开启二次验证后会导致博客提交hexo deploy的时候密码错误，无法提交至GitHub。具体提示如下： 1234567891011121314Logon failed, use ctrl+c to cancel basic credential prompt.Username for &#39;https:&#x2F;&#x2F;github.com&#39;: usernamer">
+<meta property="og:description" content="GitHub开启二次验证后会导致博客提交hexo deploy的时候密码错误，无法提交至GitHub。具体提示如下： 1234567891011121314Logon failed, use ctrl+c to cancel basic credential prompt.Username for &#39;https:&#x2F;&#x2F;github.com&#39;: username">
 <meta property="og:locale">
 <meta property="og:image" content="https://chocofairy.github.io/images/userbar-account-settings.png">
 <meta property="og:image" content="https://chocofairy.github.io/images/developer-settings.png">
@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://chocofairy.github.io/images/generate_token.png">
 <meta property="og:image" content="https://chocofairy.github.io/images/personal_access_tokens.png">
 <meta property="article:published_time" content="2021-03-28T12:59:31.000Z">
-<meta property="article:modified_time" content="2021-03-29T11:49:05.125Z">
+<meta property="article:modified_time" content="2021-03-29T11:49:06.000Z">
 <meta property="article:author" content="wlz">
 <meta property="article:tag" content="环境配置">
 <meta name="twitter:card" content="summary">
@@ -388,14 +388,19 @@
       
 
       
-        <p>GitHub开启<strong>二次验证</strong>后会导致博客提交<strong>hexo deploy</strong>的时候密码错误，无法提交至GitHub。具体提示如下：</p>
+        <p>GitHub开启<strong>二次验证</strong>后会导致博客提交<strong>hexo
+deploy</strong>的时候密码错误，无法提交至GitHub。具体提示如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Logon failed, use ctrl+c to cancel basic credential prompt.</span><br><span class="line">Username for &#39;https:&#x2F;&#x2F;github.com&#39;: username</span><br><span class="line">remote: Invalid username or password.</span><br><span class="line">fatal: Authentication failed for &#39;https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;username.github.io.git&#x2F;&#39;</span><br><span class="line">FATAL &#123;</span><br><span class="line">  err: Error: Spawn failed</span><br><span class="line">      at ChildProcess.&lt;anonymous&gt; (D:\Mine\blog\node_modules\hexo-util\lib\spawn.js:51:21)</span><br><span class="line">      at ChildProcess.emit (events.js:315:20)</span><br><span class="line">      at ChildProcess.cp.emit (D:\Mine\blog\node_modules\cross-spawn\lib\enoent.js:34:29)</span><br><span class="line">      at Process.ChildProcess._handle.onexit (internal&#x2F;child_process.js:277:12) &#123;</span><br><span class="line">    code: 128</span><br><span class="line">  &#125;</span><br><span class="line">&#125; Something&#39;s wrong. Maybe you can find the solution here: %s https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;troubleshooting.html</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这是由于在GitHub中开启了 <strong>Two-factor authentication（二次验证）</strong>导致。</p>
+<p>这是由于在GitHub中开启了 <strong>Two-factor
+authentication（二次验证）</strong>导致。</p>
 <span id="more"></span>
-<p>网上搜到的通常有两种解决办法，一种是<strong>关闭二次验证</strong>，还有一种是<strong>生成 Personal access tokens 令牌码，使用该码作为密码登录</strong>。这里我选择的是第二种方法，原因：</p>
+<p>网上搜到的通常有两种解决办法，一种是<strong>关闭二次验证</strong>，还有一种是<strong>生成
+Personal access tokens
+令牌码，使用该码作为密码登录</strong>。这里我选择的是第二种方法，原因：</p>
 <ul>
 <li><p><em>开启二次验证虽然在某些时候增加了一些麻烦，但是极大的提高了账户的安全性，我觉得这是值得的</em>。</p></li>
-<li><p><em>使用第二种方法之后，在后面的博客创作过程中如果再次用到hexo deploy命令则不需要再重复输入用户名和密码</em>。</p></li>
+<li><p><em>使用第二种方法之后，在后面的博客创作过程中如果再次用到hexo
+deploy命令则不需要再重复输入用户名和密码</em>。</p></li>
 </ul>
 <h2 id="创建个人访问令牌">创建个人访问令牌：</h2>
 <ol type="1">
@@ -408,7 +413,8 @@
 </ol>
 <p><img src="/images/developer-settings.png" /></p>
 <ol start="4" type="1">
-<li>在左侧边栏中，单击 <strong>Personal access tokens（个人访问令牌）</strong>。</li>
+<li>在左侧边栏中，单击 <strong>Personal access
+tokens（个人访问令牌）</strong>。</li>
 </ol>
 <p><img src="/images/personal_access_tokens_tab.png" /></p>
 <ol start="5" type="1">
@@ -420,7 +426,8 @@
 </ol>
 <p><img src="/images/token_description.png" /></p>
 <ol start="7" type="1">
-<li>选择要授予此令牌的作用域或权限。 要使用令牌从命令行访问仓库，请选择 <strong>repo（仓库）</strong>。</li>
+<li>选择要授予此令牌的作用域或权限。 要使用令牌从命令行访问仓库，请选择
+<strong>repo（仓库）</strong>。</li>
 </ol>
 <p><img src="/images/token_scopes.gif" /></p>
 <ol start="8" type="1">
@@ -428,16 +435,25 @@
 </ol>
 <p><img src="/images/generate_token.png" /></p>
 <ol start="9" type="1">
-<li>单击复制小按钮将令牌复制到剪贴板。 出于安全原因，离开此页面后，您将<strong>无法再次看到令牌</strong>。</li>
+<li>单击复制小按钮将令牌复制到剪贴板。
+出于安全原因，离开此页面后，您将<strong>无法再次看到令牌</strong>。</li>
 </ol>
 <p><img src="/images/personal_access_tokens.png" /></p>
-<p><strong>警告：</strong> 像对待密码一样对待您的令牌，确保其机密性。 使用 API 时，应将令牌用作环境变量，而不是将其硬编码到程序中。</p>
-<p>如果您有令牌，则可以在通过 HTTPS 执行 Git 操作时输入令牌，而不是密码。例如，在命令行中输入以下内容：</p>
+<p><strong>警告：</strong> 像对待密码一样对待您的令牌，确保其机密性。
+使用 API 时，应将令牌用作环境变量，而不是将其硬编码到程序中。</p>
+<p>如果您有令牌，则可以在通过 HTTPS 执行 Git
+操作时输入令牌，而不是密码。例如，在命令行中输入以下内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;repo.git</span><br><span class="line">Username: your_username</span><br><span class="line">Password: your_token</span><br></pre></td></tr></table></figure>
-<p>个人访问令牌只能用于 HTTPS Git 操作。 如果您的仓库使用 SSH 远程 URL，则需要<a target="_blank" rel="noopener" href="https://docs.github.com/cn/github/getting-started-with-github/managing-remote-repositories/#switching-remote-urls-from-ssh-to-https">将远程 URL 从 SSH 切换到 HTTPS</a>。</p>
-<p>如果没有提示您输入用户名和密码，说明您的凭据可能已缓存在计算机上。 您可以<a target="_blank" rel="noopener" href="https://docs.github.com/cn/articles/updating-credentials-from-the-osx-keychain">在密钥链中更新您的凭据</a>，用令牌替换您的旧密码。</p>
+<p>个人访问令牌只能用于 HTTPS Git 操作。 如果您的仓库使用 SSH 远程
+URL，则需要<a
+target="_blank" rel="noopener" href="https://docs.github.com/cn/github/getting-started-with-github/managing-remote-repositories/#switching-remote-urls-from-ssh-to-https">将远程
+URL 从 SSH 切换到 HTTPS</a>。</p>
+<p>如果没有提示您输入用户名和密码，说明您的凭据可能已缓存在计算机上。
+您可以<a
+target="_blank" rel="noopener" href="https://docs.github.com/cn/articles/updating-credentials-from-the-osx-keychain">在密钥链中更新您的凭据</a>，用令牌替换您的旧密码。</p>
 <ol start="10" type="1">
-<li>保存好生成的令牌码，该码即为使用<strong>hexo deploy</strong>后提示输入密码时使用的密码</li>
+<li>保存好生成的令牌码，该码即为使用<strong>hexo
+deploy</strong>后提示输入密码时使用的密码</li>
 </ol>
 <h2 id="关闭二次验证不推荐">关闭二次验证（不推荐）：</h2>
 <ol type="1">
@@ -573,7 +589,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,7 +600,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -664,7 +680,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

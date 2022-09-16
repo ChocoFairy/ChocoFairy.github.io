@@ -82,14 +82,11 @@
 <meta property="og:site_name" content="巧克力梦工厂">
 <meta property="og:description" content="最近准备重新学习学习C++，因为之前也都是上课学习，其实很多细节自己还是没有掌握地很好，现在时间比较充裕，乘着这个窗口期赶紧再充实一下自己。这系列的文章既是每周的总结也是希望跟读者们共同进步，相互学习。 这篇文章并不是讲C++的语法，而是C++学习的预热。内容看起来很杂，其实是一些自己感觉很熟的东西中容易忽略的地方。主要是建立学习C++的好奇与兴趣。正如某位大佬所说：“技术领域并不缺少神奇，只">
 <meta property="og:locale">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201024100631866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201024100657949.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-10-24T08:25:49.000Z">
-<meta property="article:modified_time" content="2021-04-12T09:04:07.142Z">
+<meta property="article:modified_time" content="2021-04-12T09:04:08.000Z">
 <meta property="article:author" content="wlz">
 <meta property="article:tag" content="c++基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201024100631866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -403,14 +400,18 @@
 <p>可以实现连续赋值的操作，如==，+=，&lt;&lt;等。这里就是说，cout&lt;&lt;a之后仍返回一个ostream的实例。</p>
 <p>更简单的解释是：下面这个例子</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">5</span>,b=<span class="number">7</span>;</span><br><span class="line">(a=b)=<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//result: a=10, b=7</span></span><br></pre></td></tr></table></figure>
-<p>具体过程：b先赋值给a，返回一个int对象的引用（a的引用），然后再将10赋值给这个引用，所以最终才会有这个答案。若（a=b）返回的不是左值引用，而仅仅是一个值，那么int值=10就<strong>编译</strong>不通过了（报错为：error: left value required as left operand of assignment）。</p>
+<p>具体过程：b先赋值给a，返回一个int对象的引用（a的引用），然后再将10赋值给这个引用，所以最终才会有这个答案。若（a=b）返回的不是左值引用，而仅仅是一个值，那么int值=10就<strong>编译</strong>不通过了（报错为：error:
+left value required as left operand of assignment）。</p>
 <p><strong>小结</strong>：连续运算符的重载应返回左值引用</p></li>
 <li><p>为什么第二个参数要为const类型？</p>
 <ul>
 <li>不希望对类成员变量进行修改。</li>
-<li>加上const，对于const和非const的实参，函数都能接受。但不加的话，就只能接受非const的实参。编译不能通过（报错为：error: no match for ‘operator&lt;&lt;’ (operand types are ‘std::ostream {aka std::basic_ostream<char>}’ and ‘const Point’)）</li>
+<li>加上const，对于const和非const的实参，函数都能接受。但不加的话，就只能接受非const的实参。编译不能通过（报错为：error:
+no match for ‘operator&lt;&lt;’ (operand types are ‘std::ostream {aka
+std::basic_ostream<char>}’ and ‘const Point’)）</li>
 </ul>
-<p>同时补充一下，使用引用&amp;Point 是因为 可以避免在函数调用时对实参的一次拷贝，提高了效率。</p></li>
+<p>同时补充一下，使用引用&amp;Point 是因为
+可以避免在函数调用时对实参的一次拷贝，提高了效率。</p></li>
 </ol>
 <p><strong><工程开发规范></strong></p>
 <p>对于<运算符重载>部分的代码：</p>
@@ -422,7 +423,8 @@
 </ol>
 <p>修改如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">//using namespace std;</span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::ostream;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Point(<span class="keyword">int</span> x,<span class="keyword">int</span> y);</span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out,<span class="keyword">const</span> Point &amp;p);    <span class="comment">// 若私有变量需要被外部函数使用，那么可以使用友元函数。</span></span><br><span class="line"><span class="keyword">private</span>:        <span class="comment">// 保护类的成员变量</span></span><br><span class="line">    <span class="keyword">int</span> x,y;    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Point::Point(<span class="keyword">int</span> x,<span class="keyword">int</span> y):x(x),y(y)&#123;&#125;    <span class="comment">// 分离类的声明与定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//重载运算符</span></span><br><span class="line">ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Point &amp;p)&#123;</span><br><span class="line">    out&lt;&lt;<span class="string">&quot;(&quot;</span>&lt;&lt;p.x&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;p.y&lt;&lt;<span class="string">&quot;)&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">Point <span class="title">a</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;hello world&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>但是注意，类的成员变量若是私有，外部需要访问就需要将 使用了这个私有成员变量的函数 声明为友元函数。</p>
+<p>但是注意，类的成员变量若是私有，外部需要访问就需要将
+使用了这个私有成员变量的函数 声明为友元函数。</p>
 <p><strong>&lt;c++为什么难学&gt;</strong></p>
 <p>有以下几个原因：</p>
 <ul>
@@ -436,7 +438,10 @@
 <h2 id="c程序执行的过程">C程序执行的过程</h2>
 <p>C源码变成可执行文件的重点的两个过程（一共有6个过程）：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20201024100631866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+<img
+src="https://img-blog.csdnimg.cn/20201024100631866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>对象文件中，存放的是“<strong>定义</strong>”</p>
 <p>多个C源码被编译为多个对象文件，然后将多个对象文件链接成一个可执行文件。</p>
@@ -457,9 +462,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nm -C main.o</span><br></pre></td></tr></table></figure>
 <p>得到以下的结果：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20201024100657949.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+<img
+src="https://img-blog.csdnimg.cn/20201024100657949.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FsaWVvbg==,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
-<p>其中，前面有一串数字以及T字母的 这些方法是当前文件中定义的；没有数字的 表示那些方法的定义是在外部进行查找的。</p>
+<p>其中，前面有一串数字以及T字母的
+这些方法是当前文件中定义的；没有数字的
+表示那些方法的定义是在外部进行查找的。</p>
 <p>思考：那些需要外部查找定义的函数是如何被找到的呢？</p>
 <p>注意：编译阶段不需要知道所声明函数的定义</p>
 <p><strong><链接阶段></strong></p>
@@ -478,7 +488,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./a.out</span><br><span class="line"></span><br><span class="line">-----result------</span><br><span class="line">add(3,4)=7</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong><小结></strong></p>
 <ol type="1">
-<li>编译阶段主要在做 <strong>语法检查</strong>， 而链接阶段主要在做 <strong>定义匹配</strong>。</li>
+<li>编译阶段主要在做 <strong>语法检查</strong>， 而链接阶段主要在做
+<strong>定义匹配</strong>。</li>
 <li>声明作用于编译阶段，帮助源程序通过编译（编译期间出现的错误主要有：符号未定义/找不到，语法错误等）；定义作用在链接阶段，帮助对象文件完成定义的匹配（链接阶段出现的错误主要有：定义不存在或者定义冲突）</li>
 <li>声明主要放在头文件中，定义主要放在源文件中</li>
 </ol>
@@ -490,7 +501,8 @@
 <p>googletest提供的是cmake方法进行编译，那么新建build文件夹并对googletest模块进行编译，得到如下结果：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">zzmine@ubuntu:~/myLibs/googletest/build<span class="variable">$cmake</span> ../</span><br><span class="line">zzmine@ubuntu:~/myLibs/googletest/build$ make</span><br><span class="line">Scanning dependencies of target gtest</span><br><span class="line">[ 12%] Building CXX object googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o</span><br><span class="line">[ 25%] Linking CXX static library ../lib/libgtest.a</span><br><span class="line">Scanning dependencies of target gmock</span><br><span class="line">[ 37%] Building CXX object googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o</span><br><span class="line">[ 50%] Linking CXX static library ../lib/libgmock.a</span><br><span class="line">Scanning dependencies of target gmock_main</span><br><span class="line">[ 62%] Building CXX object googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o</span><br><span class="line">[ 75%] Linking CXX static library ../lib/libgmock_main.a</span><br><span class="line">[ 75%] Built target gmock_main</span><br><span class="line">Scanning dependencies of target gtest_main</span><br><span class="line">[ 87%] Building CXX object googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o</span><br><span class="line">[100%] Linking CXX static library ../lib/libgtest_main.a</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>注意这里生成了4个.a文件，并且有一个lib文件夹，这个就是第三方模块googletest中方法的定义！</p>
-<p>然后在xxx/googletest/googletest/ 中可以找到include文件，这就是第三方模块googletest中方法的声明！</p>
+<p>然后在xxx/googletest/googletest/
+中可以找到include文件，这就是第三方模块googletest中方法的声明！</p>
 <p>接着就可以使用googletest编写C++程序了：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;gtest/gtest.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(test,add1)&#123;</span><br><span class="line">    EXPECT_EQ(add(<span class="number">3</span>,<span class="number">4</span>),<span class="number">8</span>);</span><br><span class="line">    EXPECT_EQ(add(<span class="number">3</span>,<span class="number">4</span>),<span class="number">7</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(test,add2)&#123;</span><br><span class="line">    EXPECT_LT(add(<span class="number">3</span>,<span class="number">4</span>),<span class="number">7</span>);</span><br><span class="line">    EXPECT_LT(add(<span class="number">3</span>,<span class="number">4</span>),<span class="number">8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;add(3,4)=&quot;</span>&lt;&lt;add(<span class="number">3</span>,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>但是，在执行编译过程时，发生以下报错：</p>
@@ -498,7 +510,8 @@
 <p>说明，其实在默认的头文件搜索路径中，没有包括googletest的include文件夹。</p>
 <p>所以需要告诉g++编译器，在编译搜索目录时需要加上googletest的include路径。执行（这里我把googletest的include路径拷贝到当前目录中了）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -I./include -c main.cpp </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>完成了编译过程，此时在当前目录中生成了一个main.o文件。用nm -C main.o查看对象文件内容，发现有大量的外部符号链接。</p>
+<p>完成了编译过程，此时在当前目录中生成了一个main.o文件。用nm -C
+main.o查看对象文件内容，发现有大量的外部符号链接。</p>
 <p>接下来进行链接过程，将main.o与之前生成的googletest静态链接库文件进行链接。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -L./lib main.o -lgtest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>最后，执行可执行文件 ./a.out 获得想要的输出结果。</p>
@@ -692,7 +705,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +716,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -783,7 +796,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

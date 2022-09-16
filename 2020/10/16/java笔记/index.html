@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="Java小学期笔记 Java vs C++ 1, 数据类型 ​ *基本数据类型：byte(8bits) short(16bits) int(43bits) long(64bits) float(32bits) double(64bits) char(16bits) boolean ​ char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等 1234ch">
+<meta name="description" content="Java小学期笔记 Java vs C++ 1, 数据类型 ​ *基本数据类型：byte(8bits) short(16bits) int(43bits) long(64bits) float(32bits) double(64bits) char(16bits) boolean ​ char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等 1234">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【java】java笔记">
 <meta property="og:url" content="https://chocofairy.github.io/2020/10/16/java%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="Java小学期笔记 Java vs C++ 1, 数据类型 ​ *基本数据类型：byte(8bits) short(16bits) int(43bits) long(64bits) float(32bits) double(64bits) char(16bits) boolean ​ char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等 1234ch">
+<meta property="og:description" content="Java小学期笔记 Java vs C++ 1, 数据类型 ​ *基本数据类型：byte(8bits) short(16bits) int(43bits) long(64bits) float(32bits) double(64bits) char(16bits) boolean ​ char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等 1234">
 <meta property="og:locale">
 <meta property="og:image" content="https://chocofairy.github.io/images/1568274579253.png">
 <meta property="og:image" content="https://chocofairy.github.io/images/1577624122812.png">
@@ -88,7 +88,7 @@
 <meta property="og:image" content="https://chocofairy.github.io/images/1570858700925.png">
 <meta property="og:image" content="https://chocofairy.github.io/images/1577616911675.png">
 <meta property="article:published_time" content="2020-10-16T13:02:59.000Z">
-<meta property="article:modified_time" content="2021-04-12T08:59:22.952Z">
+<meta property="article:modified_time" content="2021-04-12T08:59:24.000Z">
 <meta property="article:author" content="wlz">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -388,30 +388,40 @@
         <h1 id="java小学期笔记">Java小学期笔记</h1>
 <h2 id="java-vs-c">Java vs C++</h2>
 <h5 id="数据类型">1, 数据类型</h5>
-<p>​ *基本数据类型：byte(8bits) short(16bits) int(43bits) long(64bits) float(32bits) double(64bits) char(16bits) boolean</p>
-<p>​ char string 用unicode编码格式(双字节编码) -可表示字母 汉字 日文等</p>
+<p>​ *基本数据类型：byte(8bits) short(16bits) int(43bits) long(64bits)
+float(32bits) double(64bits) char(16bits) boolean</p>
+<p>​ char string 用unicode编码格式(双字节编码) -可表示字母 汉字
+日文等</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="string">&#x27;\u0065&#x27;</span>;</span><br><span class="line"><span class="comment">// 禁止 大数据类型给小数据类型赋值-syntax error</span></span><br><span class="line"><span class="keyword">float</span> f = <span class="number">3.14F</span>;   <span class="comment">// (数值类型默认double)</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">011</span>;    <span class="comment">// 八进制</span></span><br></pre></td></tr></table></figure>
 <p>​ *引用数据类型： Object （every thing is Object ）</p>
 <h5 id="参数传递">2, 参数传递</h5>
 <p>​ 只有传值一种方式</p>
 <h5 id="对象存储与访问">3, 对象存储与访问</h5>
 <p>​ 除非用new创建对象，否则，实际上并未获得任何对象</p>
-<p>​ 对象全部存储在堆中，栈中没有对象， 访问对象的唯一方法是 ‘引用’（引用的大小：8byte）</p>
+<p>​ 对象全部存储在堆中，栈中没有对象， 访问对象的唯一方法是
+‘引用’（引用的大小：8byte）</p>
 <h5 id="对象回收">4, 对象回收</h5>
-<p>​ 没有引用的对象 是垃圾对象，JVM的垃圾回收机制将自动回收，但不知道何时进行。（System.gc()仅是发一个回收请求，并不立刻进行）</p>
+<p>​ 没有引用的对象
+是垃圾对象，JVM的垃圾回收机制将自动回收，但不知道何时进行。（System.gc()仅是发一个回收请求，并不立刻进行）</p>
 <span id="more"></span>
 <h2 id="java中的运算">Java中的运算</h2>
 <h5 id="算术运算">1, 算术运算</h5>
-<p>+； -； *； /； %； ++； --；&gt;&gt; (右移，保证符号位不变); <strong>&gt;&gt;&gt;</strong> (无符号右移，最高位只补零。注意：负数移位会变成正数); &amp; (与); | (或)；^ (异或); ~ (按位取反);</p>
+<p>+； -； *； /； %； ++； --；&gt;&gt; (右移，保证符号位不变);
+<strong>&gt;&gt;&gt;</strong>
+(无符号右移，最高位只补零。注意：负数移位会变成正数); &amp; (与); |
+(或)；^ (异或); ~ (按位取反);</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = -<span class="number">1</span>;</span><br><span class="line">i = i &gt;&gt; <span class="number">99</span>;</span><br><span class="line"><span class="comment">// -1的补码是全1，右移保证符号，故i移位后仍为-1</span></span><br><span class="line"><span class="keyword">int</span> j = <span class="number">17</span>;</span><br><span class="line">j = j &lt;&lt; <span class="number">33</span>;    <span class="comment">// int只占32位，编译器会自动给33取32的模，于是等价于 j&lt;&lt;1</span></span><br><span class="line"><span class="comment">/*若是byte,short,char类型（是int型兼容的）进行算术运算，会自动进行类型提升，至int*/</span></span><br><span class="line"><span class="comment">// 故 byte，short，char的移位运算，移的位数仍然模32，而不是8，16</span></span><br><span class="line"><span class="keyword">short</span> s = <span class="number">5</span>;</span><br><span class="line">s = (<span class="keyword">short</span>) (s + (<span class="keyword">byte</span>)<span class="number">9f</span>);</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">byte</span> b = (<span class="keyword">byte</span>)i;    <span class="comment">// 输出-24  （截断后最高为为1，则为负数）</span></span><br><span class="line"><span class="comment">//两个byte相与，类型为int，还需转换类型</span></span><br></pre></td></tr></table></figure>
-<p>特别地，对于 = (赋值运算)，基本类型的赋值运算就是普通的内容复制；而对象的赋值实际上是将“引用”从一个地方复制到另一个地方，操纵的是“引用”</p>
+<p>特别地，对于 =
+(赋值运算)，基本类型的赋值运算就是普通的内容复制；而对象的赋值实际上是将“引用”从一个地方复制到另一个地方，操纵的是“引用”</p>
 <h5 id="关系运算">2, 关系运算</h5>
 <p>&lt;; &gt;; &lt;=; &gt;=; ==; !=; instanceof;</p>
-<p>instanceof用来在运行时指出对象是否是特定类(自己定义的)的一个实例。通过返回一个布尔值来指出，这个对象是否是这个<em>特定类或者是它的子类</em>的一个实例。（任何 对象 instanceof Object 结果为true，除了null）</p>
+<p>instanceof用来在运行时指出对象是否是特定类(自己定义的)的一个实例。通过返回一个布尔值来指出，这个对象是否是这个<em>特定类或者是它的子类</em>的一个实例。（任何
+对象 instanceof Object 结果为true，除了null）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Unit u = <span class="keyword">new</span> Unit();</span><br><span class="line"><span class="keyword">if</span>(u <span class="keyword">instanceof</span> Object) &#123;</span><br><span class="line">System.out.println(<span class="string">&quot;True&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">System.out.println(<span class="string">&quot;False&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 True</span></span><br></pre></td></tr></table></figure>
 <h5 id="逻辑运算">3, 逻辑运算</h5>
 <p>&amp;&amp;（逻辑与）; ||（短路）; &amp; (与); | (或)；^ (异或);</p>
-<p>(思考：位与运算&amp;和逻辑与&amp;&amp;的区别， 位或运算|和短路运算||的区别)</p>
+<p>(思考：位与运算&amp;和逻辑与&amp;&amp;的区别，
+位或运算|和短路运算||的区别)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">false</span> &amp; i++ &gt; <span class="number">10</span></span><br><span class="line"><span class="keyword">false</span> &amp;&amp; i++ &gt; <span class="number">10</span></span><br><span class="line"><span class="comment">//两者的区别是 最终的i值不同</span></span><br><span class="line"><span class="comment">//常见的安全代码-利用||处理空指针异常</span></span><br><span class="line">String username;</span><br><span class="line"><span class="keyword">if</span>(username == <span class="keyword">null</span> || username.length()==<span class="number">0</span>)&#123;<span class="comment">//发出警告&#125;</span></span><br></pre></td></tr></table></figure>
 <p>*桶排序 进制问题</p>
 <h2 id="static关键字">static关键字</h2>
@@ -424,18 +434,23 @@
 </ul>
 <h2 id="包">包</h2>
 <p>用于进行类的组织，处理命名冲突。<strong>包的命名须全小写（规范</strong>），不能以系统包名开头。</p>
-<p>如果有包名，那么javac编译必须要加 -d 表示建立 package a.b; 中的 a.b 对应的文件夹 a (点) 表示 在当前路径下</p>
+<p>如果有包名，那么javac编译必须要加 -d 表示建立 package a.b; 中的 a.b
+对应的文件夹 a (点) 表示 在当前路径下</p>
 <p>java命令中给出 -classpath 选项，将在指定目录下去找class文件运行</p>
 <p>jar 命令用于归档打包</p>
 <p>*mainfest文件， 清单</p>
 <h2 id="继承多态接口">继承，多态，接口</h2>
 <p>java中的继承是单一继承，若不显示指示则继承于Object</p>
-<p>super 特指继承下来的父类（可多级），super() 仅能用于子类构造函数中，而super. 方法可以在子类其他函数中使用</p>
+<p>super 特指继承下来的父类（可多级），super()
+仅能用于子类构造函数中，而super. 方法可以在子类其他函数中使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	A() &#123; <span class="keyword">this</span>.init(); &#125;    <span class="comment">// 2，此时调用的不是A的init()函数，而是B重写的init()</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;    </span><br><span class="line">	    System.out.println(<span class="string">&quot;q&quot;</span>);</span><br><span class="line">		j = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> j;</span><br><span class="line">   B(<span class="keyword">int</span> j) &#123; <span class="keyword">this</span>.j = j; &#125;   <span class="comment">// 1，子类构造函数在基类构造之后，其实j赋值之前 默认有super()</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;     <span class="comment">// 3，此时调用该函数时，j并没有被赋值，默认初值为0</span></span><br><span class="line">	   System.out.println(<span class="string">&quot;p&quot;</span>);</span><br><span class="line">	   System.out.println(j);</span><br><span class="line">	   j = <span class="number">4</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] a)</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="keyword">new</span> B(<span class="number">5</span>).j);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最终的输出是 p 0 5</span></span><br></pre></td></tr></table></figure>
-<p>多态分为静态多态和动态多态。静态多态也叫重载，即同名函数，参数不同；Override 重写，在继承过程中，子类重写覆盖父类中的函数。 加final 或static 明确地在编译的时候确定，该函数在继承过程中将不进行重写，可提升性能。</p>
+<p>多态分为静态多态和动态多态。静态多态也叫重载，即同名函数，参数不同；Override
+重写，在继承过程中，子类重写覆盖父类中的函数。 加final 或static
+明确地在编译的时候确定，该函数在继承过程中将不进行重写，可提升性能。</p>
 <p>函数覆盖的三个原则：</p>
 <p>​ 覆盖函数的访问权限不能比被覆盖的函数低</p>
-<p>​ 覆盖函数抛出的检查异常不能更多（不能抛出未声明的检查异常，运行异常如NullPointerException可以）</p>
+<p>​
+覆盖函数抛出的检查异常不能更多（不能抛出未声明的检查异常，运行异常如NullPointerException可以）</p>
 <p>​ static，final函数不能被覆盖</p>
 <h2 id="集合">集合</h2>
 <p>java.util包下</p>
@@ -448,22 +463,28 @@
 <h2 id="泛型">泛型</h2>
 <h2 id="文件操作">文件操作</h2>
 <p>*为了保证灵活性和可扩展性，尽量少用常量（如文件名，且不用绝对路径）。</p>
-<p>File f = new File("a.dat"); 并不是创建了一个文件，而是在内存中创建了一个File对象</p>
+<p>File f = new File("a.dat");
+并不是创建了一个文件，而是在内存中创建了一个File对象</p>
 <p>RandomAccessFile可进行读写，seek</p>
 <p>流对象： 输入输出流</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 流连接</span></span><br><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(args[<span class="number">0</span>]);</span><br><span class="line">BufferInputStream bis = <span class="keyword">new</span> BufferInputStream(fis);</span><br><span class="line">DataInputStream dis = <span class="keyword">new</span> DataInputStream(bis);</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> d = dis.readDouble();</span><br></pre></td></tr></table></figure>
 <p>windows 是小端，而mac 大端（不同操作系统，大小端可能也不同）</p>
 <p>*ObjectInputStream</p>
-<p>java.io.Serializable 序列化接口，没有抽象方法（即标签接口），只是声明一下该对象是可序列化的，jvm可以在流中输出该对象</p>
+<p>java.io.Serializable
+序列化接口，没有抽象方法（即标签接口），只是声明一下该对象是可序列化的，jvm可以在流中输出该对象</p>
 <p>对象的.clone()是浅复制，若要自己实现深复制则可以利用文件（ObjectOutputStream）的序列化和反序列化来实现</p>
-<p>文本文件 .dat .txt .docx .pdf 等。 汉字编码2字节， 编码格式GB2312---GBK---GB18030</p>
-<p>Unicode字符编码，2字节，java是统一编码Unicode; utf-8 是可变长编码 基本的Unicode占1字节，中文3字节</p>
-<p>FileReader fr = new FileReader("a.txt"); 这个类使用的编码是与平台有关的（平台默认的编码）</p>
+<p>文本文件 .dat .txt .docx .pdf 等。 汉字编码2字节，
+编码格式GB2312---GBK---GB18030</p>
+<p>Unicode字符编码，2字节，java是统一编码Unicode; utf-8 是可变长编码
+基本的Unicode占1字节，中文3字节</p>
+<p>FileReader fr = new FileReader("a.txt");
+这个类使用的编码是与平台有关的（平台默认的编码）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通常的方法</span></span><br><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputSreamReader(fis));</span><br></pre></td></tr></table></figure>
 <p>write时, ，可以使用PrintWriter的println函数跨平台地去处理换行</p>
 <p>Properties 实现配置文件的读写</p>
 <h2 id="异常处理">异常处理</h2>
-<p>Exception, Error 继承于Throwable, Error是致命的错误，机器直接停止运行/宕机，不说去处理它而出现异常，需要去处理。</p>
+<p>Exception, Error 继承于Throwable,
+Error是致命的错误，机器直接停止运行/宕机，不说去处理它而出现异常，需要去处理。</p>
 <p>对RuntimeException 编译器不做任何语法检查：</p>
 <ul>
 <li>NullPointerException（空指针异常）</li>
@@ -480,7 +501,8 @@
 <li>...</li>
 </ul>
 <h2 id="多线程编程">多线程编程</h2>
-<p>必要的时候，经常进行一下Thread.sleep(), 睡眠时间可能会长于规定的时间，因为sleep()后线程重新向处理器请求调度</p>
+<p>必要的时候，经常进行一下Thread.sleep(),
+睡眠时间可能会长于规定的时间，因为sleep()后线程重新向处理器请求调度</p>
 <p>创建线程的两种方法：</p>
 <ol type="1">
 <li>实现Runnable接口传入Thread构造函数</li>
@@ -489,10 +511,13 @@
 <p>多线程的同步：synchronized 每一个对象都有一个对象锁</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Objecct lock1 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">synchronized</span>（Obejct o）&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>wait() 封装在Obejct中，调用该函数的对象必须持有该对象的对象锁</p>
-<p>notify() 与 notifyAll() : 唤醒当前对象锁处于wait()状态的线程 * 进入wait()的条件(阻塞条件)应该用while</p>
-<p>notifyAll() 唤醒所有处于阻塞状态的线程，但进入阻塞是用的while，可以带来更好的安全性</p>
+<p>notify() 与 notifyAll() : 唤醒当前对象锁处于wait()状态的线程 *
+进入wait()的条件(阻塞条件)应该用while</p>
+<p>notifyAll()
+唤醒所有处于阻塞状态的线程，但进入阻塞是用的while，可以带来更好的安全性</p>
 <p>*对象池 Object 的wait() , notify() , notifyAll()</p>
-<p>ThreadLocal类，内部用Map来存储不同的线程变量，key: 线程 value: 变量。 可以用来隐含地参数传递。</p>
+<p>ThreadLocal类，内部用Map来存储不同的线程变量，key: 线程 value: 变量。
+可以用来隐含地参数传递。</p>
 <ul>
 <li></li>
 </ul>
@@ -500,82 +525,127 @@
 <p>*派生属性占用内存，而且致命的是派生属性的同步问题！！</p>
 <h2 id="网络编程">网络编程</h2>
 <p>Socket 以流的方式进行数据传输 （json数据格式）</p>
-<p>服务器端，ServerSocket 指定监听的端口， .accept() 接收客户端请求，实施监听进行阻塞</p>
-<p>（可先发一个整数，在服务器端进行功能选择） 传送文件之前， 先把文件名， 文件长度发给对方</p>
+<p>服务器端，ServerSocket 指定监听的端口， .accept()
+接收客户端请求，实施监听进行阻塞</p>
+<p>（可先发一个整数，在服务器端进行功能选择） 传送文件之前，
+先把文件名， 文件长度发给对方</p>
 <p>readFully() 缓冲区数据有多长就读多少</p>
 <p>&amp;小技巧：“upload”.equals(command) 有效防止了空指针异常</p>
 <p>*工厂模式</p>
-<p>服务器支持多并发：while 中不停地接收请求创建Socket， 创建的每一个Socket给一个线程（提前创建线程池）去处理。线程由线程池中取出，提高效率。 线程中run() 第一条应该是wait() , 收到请求后处理相应的逻辑</p>
-<p>HashMap 是线程不安全的， HashTable 是线程安全的。 可用下面方法将集合转换成线程安全的</p>
+<p>服务器支持多并发：while 中不停地接收请求创建Socket，
+创建的每一个Socket给一个线程（提前创建线程池）去处理。线程由线程池中取出，提高效率。
+线程中run() 第一条应该是wait() , 收到请求后处理相应的逻辑</p>
+<p>HashMap 是线程不安全的， HashTable 是线程安全的。
+可用下面方法将集合转换成线程安全的</p>
 <p>Map map = Collections.synchronizedMap(map);</p>
-<p>TreeSet, TreeMap 中若有自定义的对象，则对象要实现Comparable接口，以进行比较</p>
+<p>TreeSet, TreeMap
+中若有自定义的对象，则对象要实现Comparable接口，以进行比较</p>
 <h2 id="事件处理机制">事件处理机制</h2>
 <p>event (接口), event source (事件源)</p>
 <p>ActionEvent, MouseEvent, KeyEvent, FocusEvent</p>
 <p>event都有一个函数getSource()方法</p>
-<p>*java 命令行参数 -D可以设置系统属性 ，如用FileReader来读文件是与平台有关的，若想在日文系统中读中文文本，则可以 java -Dfile.encoding=gbk 类 来运行</p>
+<p>*java 命令行参数 -D可以设置系统属性
+，如用FileReader来读文件是与平台有关的，若想在日文系统中读中文文本，则可以
+java -Dfile.encoding=gbk 类 来运行</p>
 <p>*装饰者模式</p>
 <h2 id="注解">注解</h2>
-<p>常用的注解：<span class="citation" data-cites="Override">@Override</span> <span class="citation" data-cites="Deprecated">@Deprecated</span> <span class="citation" data-cites="SuppressWarnings">@SuppressWarnings</span> （用于压制程序中的警告，有{“unchecked", "Deprecated"}等）</p>
+<p>常用的注解：<span class="citation"
+data-cites="Override">@Override</span> <span class="citation"
+data-cites="Deprecated">@Deprecated</span> <span class="citation"
+data-cites="SuppressWarnings">@SuppressWarnings</span>
+（用于压制程序中的警告，有{“unchecked", "Deprecated"}等）</p>
 <p>使用@interface Annotation{ }</p>
 <p>一个@Annotation注解，一个注解是一个类</p>
-<p>动态地根据类名创建实例：（类名）Beans.instantiate(ClassLoad cl, String className)</p>
+<p>动态地根据类名创建实例：（类名）Beans.instantiate(ClassLoad cl,
+String className)</p>
 <p>参考：https://blog.csdn.net/liuwenbo0920/article/details/7290586</p>
-<p>import static 类 ：表示导入该类所有的静态方法(原来Math.abs()，现在只用abs() )</p>
+<p>import static 类
+：表示导入该类所有的静态方法(原来Math.abs()，现在只用abs() )</p>
 <p>*java.lang.reflect</p>
 <p>*TLV (TAG-LENGTH-VALUE) 变长数据传输的一种报文格式</p>
 <h2 id="jdbc">JDBC</h2>
-<p>创建完Connection之后，java会自动进行事务提交(con.commit())，若要自己提交事务则要在此处设置 con.setAutoCommit(false);</p>
+<p>创建完Connection之后，java会自动进行事务提交(con.commit())，若要自己提交事务则要在此处设置
+con.setAutoCommit(false);</p>
 <p>分布式事务（例子：跨行取钱），使用2PC来支持分布式事务</p>
 <p>o/r mapping 对象关系 映射</p>
-<p>*软件设计的一些原则： 开闭原则，依赖倒置原则，里氏替换原则，接口隔离原则</p>
+<p>*软件设计的一些原则：
+开闭原则，依赖倒置原则，里氏替换原则，接口隔离原则</p>
 <h1 id="j2ee笔记">J2EE笔记</h1>
 <p>tel: 18640857288 qq: 1458233700 email: jgh@dlut.edu.cn</p>
 <h2 id="介绍">介绍</h2>
-<p>j2ee是java se 的扩展，包名均以javax开头。java SE（桌面应用）, java EE（企业应用）, java ME （嵌入式应用）</p>
+<p>j2ee是java se 的扩展，包名均以javax开头。java SE（桌面应用）, java
+EE（企业应用）, java ME （嵌入式应用）</p>
 <p>javaEE平台很多都是接口，是一个抽象的平台称为“定义平台”。</p>
-<p><strong>基于组件的开发</strong>，组件（如servlet）在容器中被调用。应用服务器软件：开源免费: Apache-tomcat, 收费：IBM-WebSphere Application Server （WAS ）； Bea WebLogic</p>
+<p><strong>基于组件的开发</strong>，组件（如servlet）在容器中被调用。应用服务器软件：开源免费:
+Apache-tomcat, 收费：IBM-WebSphere Application Server （WAS ）； Bea
+WebLogic</p>
 <p>没有main函数，需要将项目部署(deploy)到Web服务器。打包成.war文件。</p>
-<p>*URL的格式（三个部分）：<strong>协议+主机(IP+端口)+文件路径</strong> (例如： https://127.0.0.1:8080/SearchPage/index.html?username=zzmine&amp;password=123456)。 url地址中？后面的内容叫作 查询字符串(Query String)</p>
+<p>*URL的格式（三个部分）：<strong>协议+主机(IP+端口)+文件路径</strong>
+(例如：
+https://127.0.0.1:8080/SearchPage/index.html?username=zzmine&amp;password=123456)。
+url地址中？后面的内容叫作 查询字符串(Query String)</p>
 <p>request和response的组成：headers和content，用两次回车换行分隔()</p>
 <h2 id="servlet">Servlet</h2>
 <p>[interface] 用于处理请求和发送响应，实现动态页面。</p>
-<p>组件不能自己写构造函数，应用服务器会使用默认构造函数！！若要构造，应该<strong>重写</strong>其init(ServletConfig config)函数。HttpServlet已经实现了init()方法。</p>
+<p>组件不能自己写构造函数，应用服务器会使用默认构造函数！！若要构造，应该<strong>重写</strong>其init(ServletConfig
+config)函数。HttpServlet已经实现了init()方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两种init方法</span></span><br><span class="line"><span class="comment">//1,带参数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span></span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.init(config);</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2,不带参数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Servlet的service()方法，参数，返回类型以及抛出什么异常。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">    HttpServletRequest req = (HttpServletRequest)request;</span><br><span class="line">    HttpServletResponse res = (HttpServletResponse)response;</span><br><span class="line">	<span class="comment">// HttpServletReuqest的getMethod方法可以获得用户请求的方式(GET,POST等)</span></span><br><span class="line">    String method = req.getMethod();</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">&quot;GET&quot;</span>.equals(method))&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;POST&quot;</span>.equals(method))&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    res.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">    PrintWriter out = res.getWriter();</span><br><span class="line">    out.print(<span class="string">&quot;&lt;p&gt;Hello World&lt;/p&gt;&quot;</span>);</span><br><span class="line">    <span class="comment">// 不建议写流的关闭，还有其他程序需要输出</span></span><br><span class="line">    <span class="comment">// 输出形式为jpeg图片</span></span><br><span class="line">    res.setContentType(<span class="string">&quot;image/jpeg;charset=utf-8&quot;</span>);</span><br><span class="line">    OutputStream out = res.getOutputStream();</span><br><span class="line">    out.write(...);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Servlet的生命周期</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(1)web容器加载Servlet,生命周期开始。（仅调用一次）说明Servlet是单实例的</span><br><span class="line">(2)调用servlet的init()方法，servlet初始化。（仅调用一次）</span><br><span class="line">(3)调用service()方式，处理请求（被多次调用）</span><br><span class="line">(4)结束服务，web容器调用servlet的destory()方法（仅调用一次）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>部署(deploy)的方法:</p>
-<p>1, 将web应用(HelloServlet)直接复制在Tomcat的WebApps文件夹下, 则用户访问路径：http://localhost:8080/HelloServlet/abc/h.html</p>
-<p>2, 在Tomcat配置中的server.xml下部署：在Host元素下建子标签<content path="/abc" docBase="..."> 。path是url，docBase是文件的物理地址。则用户访问路径: http://localhost:8080/abc/abc/h.html</p>
+<p>1, 将web应用(HelloServlet)直接复制在Tomcat的WebApps文件夹下,
+则用户访问路径：http://localhost:8080/HelloServlet/abc/h.html</p>
+<p>2,
+在Tomcat配置中的server.xml下部署：在Host元素下建子标签<content path="/abc" docBase="...">
+。path是url，docBase是文件的物理地址。则用户访问路径:
+http://localhost:8080/abc/abc/h.html</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloWorld<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.a.HelloWorld<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--备注:同一个Servlet可以被映射到多个URL上，配置多个servlet-mapping--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloWorld<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	url-pattern可以使用通配符，但既有斜杠又有扩展名是不合法的，如/*.html</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>*javax.websocket包下，Endpoint, Encoder, Decoder。双向发送数据，而Servlet是请求应答式单向的服务。</p>
+<p>*javax.websocket包下，Endpoint, Encoder,
+Decoder。双向发送数据，而Servlet是请求应答式单向的服务。</p>
 <p><strong>ServletConfig, ServletContext</strong></p>
 <p>ServletConfig有两个重要的方法：</p>
 <ul>
-<li>getInitParameter(String name) -获得初始化参数name的值，若没有对应于name的参数，那么返回null</li>
+<li>getInitParameter(String name)
+-获得初始化参数name的值，若没有对应于name的参数，那么返回null</li>
 <li>getServletContext() -获得代表应用全局的ServletContext类</li>
 </ul>
 <p>ServletContext中有一系列add，set，get方法，用于Servlet与container的交流，<strong>可以当成一个web应用中所有构件的共享资源</strong></p>
-<p>该对象代表当前的web应用，可以从中获取到该web应用的各种信息 ① 配置，获取 web应用的初始化参数 该初始化参数可以被所有Servlet获取，而Servlet的初始化参数只供那个Servlet获取 在&lt; web-app&gt; 中配置 &lt; context-param&gt; servletContext.getInitParameter()</p>
-<p>② 获取当前web应用某个文件<strong>在服务器上</strong>的绝对路径，而不是部署前的路径： getRealPath(String path)</p>
-<p>③ 获取当前web应用的名称： getContextPath() 若web应用直接放在root目录下，则request.getContextPath()返回为空串。</p>
-<p>④ 获取当前web应用的某一个文件对应的输入流 getResourceAsStream(String path) path的 / 是相对于当前web应用的根目录</p>
+<p>该对象代表当前的web应用，可以从中获取到该web应用的各种信息 ①
+配置，获取 web应用的初始化参数
+该初始化参数可以被所有Servlet获取，而Servlet的初始化参数只供那个Servlet获取
+在&lt; web-app&gt; 中配置 &lt; context-param&gt;
+servletContext.getInitParameter()</p>
+<p>②
+获取当前web应用某个文件<strong>在服务器上</strong>的绝对路径，而不是部署前的路径：
+getRealPath(String path)</p>
+<p>③ 获取当前web应用的名称： getContextPath()
+若web应用直接放在root目录下，则request.getContextPath()返回为空串。</p>
+<p>④ 获取当前web应用的某一个文件对应的输入流 getResourceAsStream(String
+path) path的 / 是相对于当前web应用的根目录</p>
 <p>⑤ 跟attribute相关的几个方法</p>
-<p>https://blog.csdn.net/wangqing84411433/article/details/71131608 1、在web.xml配置文件中，对个servlet的配置里，有一项&lt; load-on-startup&gt; &lt; /load-on-startup&gt;，它的含义是：标记容器是否在启动的时候就加载这个servlet。当值为0或者大于0时，表示容器在应用启动时就加载这个servlet；当是一个负数时或者没有指定时，则指示容器在该servlet被选择时才加载。正数的值越小，启动该servlet的优先级越高。</p>
+<p>https://blog.csdn.net/wangqing84411433/article/details/71131608
+1、在web.xml配置文件中，对个servlet的配置里，有一项&lt;
+load-on-startup&gt; &lt;
+/load-on-startup&gt;，它的含义是：标记容器是否在启动的时候就加载这个servlet。当值为0或者大于0时，表示容器在应用启动时就加载这个servlet；当是一个负数时或者没有指定时，则指示容器在该servlet被选择时才加载。正数的值越小，启动该servlet的优先级越高。</p>
 <p>servlet_2虽然配置在servlet_1后面，但是它的load-on-startup为0，启动的优先级高于servlet_1，所以servlet_2先启动。</p>
-<p>2、获取ServletContext的两种方式，直接获取 this.getServletContext()和间接获取config.getServletContext，得到的对象都是同一个。同时在servlet1和servlet2中取得的ServletContext对象都是同一个对象，<strong>说明整个web应用都只有一个唯一的ServletContext实例</strong>；</p>
+<p>2、获取ServletContext的两种方式，直接获取
+this.getServletContext()和间接获取config.getServletContext，得到的对象都是同一个。同时在servlet1和servlet2中取得的ServletContext对象都是同一个对象，<strong>说明整个web应用都只有一个唯一的ServletContext实例</strong>；</p>
 <p>3、servlet1与servlet2的serveletConfig对象是不一样的，说明ServletConfig对象的作用范围仅在servlet中。</p>
-<p><strong>HttpServlet </strong>[abstract class]: 不去重写service()方法，而是去override doGet(), doPost()之类的方法。在多线程中注意并发资源的保护</p>
+<p><strong>HttpServlet </strong>[abstract class]:
+不去重写service()方法，而是去override doGet(),
+doPost()之类的方法。在多线程中注意并发资源的保护</p>
 <p>在doGet()方法中注意处理content type以及encoding</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException</span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException</span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest req, ServletResponse res)</span> <span class="keyword">throws</span> ServletException, IOException</span>&#123; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>ServletRequest</strong> [interface]:</p>
-<p><strong>HttpServletRequest</strong> [interface]: 继承ServletRequest，为Http servlet提供请求信息。</p>
+<p><strong>HttpServletRequest</strong> [interface]:
+继承ServletRequest，为Http servlet提供请求信息。</p>
 <p>该对象提供的数据包括，参数名称和值，属性以及输入流</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Object <span class="title">getAttribute</span><span class="params">(String name)</span></span>&#123; &#125;   <span class="comment">// 从request域中取出对应name的数据</span></span><br><span class="line"><span class="function">String <span class="title">getParameter</span><span class="params">(String name)</span></span>&#123; &#125;   <span class="comment">// 从url中获取对应name的查询字符串的值，如果name参数不存在则返回null</span></span><br><span class="line">String[] getParameterValues(String name)&#123;&#125;  <span class="comment">// 对应name的多个值</span></span><br><span class="line"><span class="function">String <span class="title">getMethod</span><span class="params">()</span></span>&#123;&#125;                  <span class="comment">// 获得请求方式</span></span><br><span class="line"><span class="function">HttpSession <span class="title">getSession</span><span class="params">()</span></span>&#123;&#125;			 <span class="comment">// 返回Session</span></span><br><span class="line"><span class="function">ServletContext <span class="title">getServletContext</span><span class="params">()</span></span>&#123;&#125;  <span class="comment">// ServletRequest中的方法</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>ServletResponse</strong> [interface]:</p>
-<p><strong>HttpServletResponse</strong> [interface]: 继承ServletResponse，在发送响应式提供特定于http的功能。</p>
+<p><strong>HttpServletResponse</strong> [interface]:
+继承ServletResponse，在发送响应式提供特定于http的功能。</p>
 <p>用于向客户端返回数据。若要返回字符数据，可以通过getWriter()方法返回的PrintWriter对象来操作，它的write()方法不会抛出异常</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setCharacterEncoding</span><span class="params">(String charset)</span></span>&#123;&#125;    <span class="comment">// 设置response的字符编码，如utf-8</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setContentType</span><span class="params">(String type)</span></span>&#123; &#125;    <span class="comment">// 设置response的内容格式，给定的内容可以包含字符编码规范。例如 “text/html;charset=utf-8”   如果在调用getWriter之前调用此方法，则仅从给定的内容类型设置响应的字符编码</span></span><br><span class="line"><span class="comment">// 注意： This method has no effect if called after the response has been committed. It does not set the response&#x27;s character encoding if it is called after getWriter has been called or after the response has been committed.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="session">Session</h2>
@@ -590,7 +660,8 @@
 <li>URL重写(rewrite) (浏览器不支持cookie时，可以用URL重写来代替)</li>
 <li>隐藏表单域 （form表单有一个隐藏的input）</li>
 </ol>
-<p><strong>Annotation</strong>: 参考https://j2eereference.com/webservlet-annotations/</p>
+<p><strong>Annotation</strong>:
+参考https://j2eereference.com/webservlet-annotations/</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.*;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@WebServlet(value=&quot;/hello&quot;,</span></span><br><span class="line"><span class="meta">initParams = &#123;</span></span><br><span class="line"><span class="meta">   @WebInitParam(name=&quot;param1&quot;, value=&quot;Hello &quot;),</span></span><br><span class="line"><span class="meta">   @WebInitParam(name=&quot;param2&quot;, value=&quot; World!&quot;)</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet</span> <span class="keyword">extends</span> <span class="title">GenericServlet</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest req, ServletResponse res)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> IOException, ServletException</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		PrintWriter out = res.getWriter();</span><br><span class="line">		out.println(getInitParameter(<span class="string">&quot;param1&quot;</span>));</span><br><span class="line">		out.println(getInitParameter(<span class="string">&quot;param2&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="requestdispatcher">RequestDispatcher</h2>
 <p>用于请求转发，页面重定向。</p>
@@ -620,7 +691,8 @@
 <p>分页功能，List的subList方法，取出子集合</p>
 <h2 id="listener">listener</h2>
 <figure>
-<img src="/images/1577624122812.png" alt="1577624122812" /><figcaption aria-hidden="true">1577624122812</figcaption>
+<img src="/images/1577624122812.png" alt="1577624122812" />
+<figcaption aria-hidden="true">1577624122812</figcaption>
 </figure>
 <p>构造listener，要么适用WebListener进行注解声明，要么使用ServletContext的addListener()方法进行添加。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebListener</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationIntializer</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span></span>&#123;</span><br><span class="line">    <span class="comment">//在filter以及servlet之前，ServletContextListener会收到servlet</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent sce)</span></span>&#123;</span><br><span class="line">        ServletContext context = (ServletContext)sce.getServletContext();</span><br><span class="line">        </span><br><span class="line">        DataSource ds = ...;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent sce)</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -630,7 +702,8 @@
 <h2 id="jsp">Jsp</h2>
 <p>Jsp本质上是Servlet，是服务器中的组件。tomcat运行jsp时将其转化为.java再编译为.class文件。</p>
 <p>JspPage类的生命周期：jspInit(), jspDestroy()</p>
-<p>HttpJspPage的服务函数，_jspService(HttpServletRequest request, HttpSerletResponse response){}</p>
+<p>HttpJspPage的服务函数，_jspService(HttpServletRequest request,
+HttpSerletResponse response){}</p>
 <p>二加一方法：</p>
 <p>_jspService()方法依赖于特定的协议，因此在java中并不是通用的方法</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// time.jsp</span></span><br><span class="line">&lt;%= <span class="keyword">new</span> java.util.Date()%&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -638,7 +711,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@     %&gt;				jsp指令的语法（三大指令：page,include,taglib）</span><br><span class="line">&lt;%&#x3D;     %&gt;				jsp表达式的语法</span><br><span class="line">&lt;%!     %&gt;				jsp声明的语法</span><br><span class="line">&lt;%--    --%&gt;			jsp注释</span><br><span class="line">&lt;%      %&gt;				jsp中内嵌java代码 ()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>（必考）jsp的九个隐式对象：</p>
 <figure>
-<img src="/images/1569217469521.png" alt="1569217469521" /><figcaption aria-hidden="true">1569217469521</figcaption>
+<img src="/images/1569217469521.png" alt="1569217469521" />
+<figcaption aria-hidden="true">1569217469521</figcaption>
 </figure>
 <p>exception用在错误处理页面，在声明了isErrorPage="true"时，才能使用</p>
 <p>（重点1）JspWriter</p>
@@ -648,19 +722,25 @@
 <li>out对象存在一个新的缓冲区</li>
 </ol>
 <p>（重点2）PageContext</p>
-<p>fascade pattern 门面模式，将复杂的系统功能抽象为一个“门面”——更加友好的接口。PageContext封装了jsp在运行过程中使用的所有对象。将jsp的对象传给java只需要一个pageContext，由此可以获得其他八个隐式对象。</p>
+<p>fascade pattern
+门面模式，将复杂的系统功能抽象为一个“门面”——更加友好的接口。PageContext封装了jsp在运行过程中使用的所有对象。将jsp的对象传给java只需要一个pageContext，由此可以获得其他八个隐式对象。</p>
 <p>（注意）下面的程序可能会有NullPointerException</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	String parameter = request.getParameter(<span class="string">&quot;page&quot;</span>);</span><br><span class="line">	<span class="keyword">int</span> page = Integer.paraseInt(parameter);</span><br><span class="line">%&gt;</span><br><span class="line"><span class="comment">// http://localhost:8080/SearchPage?page=&amp;id=22</span></span><br><span class="line"><span class="comment">// 若url中有page=但没有参数，那么返回空串；若没有page=则返回null</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>（注意）jsp声明一般不声明变量，因为在并发情况下这些变量是不安全的，除非加上syncronized修饰</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 页面转发</span></span><br><span class="line">&lt;jsp:forward page=<span class="string">&quot;/servlet/a&quot;</span> /&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	request.getRequestDispatcher(<span class="string">&quot;/servlet/a&quot;</span>).forward(request,response);</span><br><span class="line">	pageContext.forward(<span class="string">&quot;/servlet/a&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>（考）<jsp:include page="/serlvet/a" /> 与 &lt;%@ include file="/serlvet/a"%&gt;的区别，第二个是在编译时包含——静态包含，只能包含静态文件，在jsp转换到serlvet过程中进行包含；而第一个是动态包含。</p>
+<p>（考）<jsp:include page="/serlvet/a" /> 与 &lt;%@ include
+file="/serlvet/a"%&gt;的区别，第二个是在编译时包含——静态包含，只能包含静态文件，在jsp转换到serlvet过程中进行包含；而第一个是动态包含。</p>
 <p>*useBean转换到java代码</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:useBean id=<span class="string">&quot;a&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;com.abc.bean.Student&quot;</span> scope=<span class="string">&quot;page|request|session|application&quot;</span> /&gt;</span><br><span class="line"><span class="comment">// 猜数游戏的javaBean应该在session域中</span></span><br><span class="line"><span class="comment">// jsp中取对象属性</span></span><br><span class="line">&lt;jsp:getProperty name=<span class="string">&quot;a&quot;</span> property=<span class="string">&quot;age&quot;</span> /&gt;</span><br><span class="line">&lt;%= a.getAge() %&gt;</span><br><span class="line">$&#123;a.age&#125;</span><br><span class="line"><span class="comment">// 设置属性</span></span><br><span class="line">&lt;jsp:setProperty name=<span class="string">&quot;a&quot;</span> property=<span class="string">&quot;age&quot;</span> value=<span class="string">&quot;26&quot;</span>/&gt;</span><br><span class="line">&lt;jsp:setProperty name=<span class="string">&quot;a&quot;</span> property=<span class="string">&quot;*&quot;</span> /&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>注意：javaBean的属性都是小写开头！</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// (考试坑)</span></span><br><span class="line">&lt;input name=&quot;Age&quot;&gt;&lt;/intput&gt;</span><br><span class="line">&lt;jsp:setProperty name=<span class="string">&quot;a&quot;</span> property=<span class="string">&quot;age&quot;</span> param=<span class="string">&quot;Age&quot;</span>/&gt;</span><br><span class="line"><span class="comment">// 注意param与html中name的大小写！</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>另外，jsp也支持简化的表达式语言（EL)，使输出数据更方便${expression}</p>
-<p>脚本变量从pageContext, request, session, application这四个作用域中自动依次寻找，如果没有定义，就什么也不输出，不报错。</p>
-<p>pageContext：属性作用范围仅限于当前JSP页面 request：属性作用范围仅限于同一个请求 session：属性作用范围限于一次会话，浏览器打开直到关闭称之为一次会话（在此期间会话不失效） application：属性作用范围限于当前web应用，是范围最大的属性作用范围</p>
+<p>脚本变量从pageContext, request, session,
+application这四个作用域中自动依次寻找，如果没有定义，就什么也不输出，不报错。</p>
+<p>pageContext：属性作用范围仅限于当前JSP页面
+request：属性作用范围仅限于同一个请求
+session：属性作用范围限于一次会话，浏览器打开直到关闭称之为一次会话（在此期间会话不失效）
+application：属性作用范围限于当前web应用，是范围最大的属性作用范围</p>
 <p>EL表达式预定于了11个对象，除了pageContext对象是PageContext类型（考试重点），其余都是Map类型（考试必考）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pageContext</span><br><span class="line">param</span><br><span class="line">paramValues</span><br><span class="line">header</span><br><span class="line">headerValues</span><br><span class="line">cookie</span><br><span class="line">initParam</span><br><span class="line">pageScope</span><br><span class="line">requestScope</span><br><span class="line">sessionScope</span><br><span class="line">applicationScope</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>*MVC(模型-视图-控制器)</p>
@@ -675,12 +755,15 @@
 <p>（问答题）与数据库建立连接时，两种类加载方式的区别：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1, 这种方式需要在编译前就把类放到classpath中</span></span><br><span class="line">Driver driver = <span class="keyword">new</span> com.mysql.jdbc.Driver();</span><br><span class="line"><span class="comment">// 2, 通过反射机制</span></span><br><span class="line">Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="jndi">JNDI</h2>
-<p>（必考）Java命名和目录接口（Java Naming and Directory Interface ，JNDI）。主要功能：注册，查找.</p>
+<p>（必考）Java命名和目录接口（Java Naming and Directory Interface
+，JNDI）。主要功能：注册，查找.</p>
 <p>JNDI的功能简单说就是可以用简单的方式去查找某种资源。JNDI提供一套标准，服务商去实现SPI，去实现技术细节；程序员去调用API中的方法，不用关心怎么实现的功能。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 利用命名服务来获得DataSource</span></span><br><span class="line">Context ctx = <span class="keyword">new</span> InitialContext();</span><br><span class="line">DataSource ds = (DataSource)ctx.lookup(<span class="string">&quot;java:comp/env/jdbc/ExamDB&quot;</span>);</span><br><span class="line"><span class="comment">// lookup中填写的是 java计算机环境变量  其中“java:comp/env/”为命名前缀</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="structs-1">Structs 1</h2>
-<p>a rapid framework for web development based on JavaEE，基于MVC设计模式。降低软件的粒度，提高了Controller的复用性。分为前端控制器和后端控制器。</p>
-<p>（曾经考题）structs 框架的配置文件名 不一定要叫 structs-config.xml</p>
+<p>a rapid framework for web development based on
+JavaEE，基于MVC设计模式。降低软件的粒度，提高了Controller的复用性。分为前端控制器和后端控制器。</p>
+<p>（曾经考题）structs 框架的配置文件名 不一定要叫
+structs-config.xml</p>
 <p>前端控制器（ActionServlet），后端控制器（Action）。控制器功能写在execute()函数中。控制器的另一个功能：选择视图输出。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">前端控制器名称：org.apache.structs.action.ActionServlet</span><br><span class="line">后端控制器名称：org.apache.structs.action.Action</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Structs1开发步骤：</p>
@@ -697,12 +780,17 @@
 <p>*（考）DispatchAction (由汇聚到支流)，降低Action数量</p>
 <p>Struts1的工作流程:</p>
 <ul>
-<li>客户端发送请求（Http Request），被struts1的核心控件器ActionServlet接收，ActionServlet根据 struts-config.xml里的映射关系找到对应的Action，若找不到就返回500错误到JSP页面。若有就在 Action里的 excute()方法里执行相应的逻辑操作，比如调用Model层的方法，然后通过ActionForward，跳转到对应的JSP页面。</li>
+<li>客户端发送请求（Http
+Request），被struts1的核心控件器ActionServlet接收，ActionServlet根据
+struts-config.xml里的映射关系找到对应的Action，若找不到就返回500错误到JSP页面。若有就在
+Action里的
+excute()方法里执行相应的逻辑操作，比如调用Model层的方法，然后通过ActionForward，跳转到对应的JSP页面。</li>
 </ul>
 <h2 id="structs-2">Structs 2</h2>
 <p>使用structs 2 的步骤：</p>
 <ol type="1">
-<li>创建文件夹目录结构：<img src="/images/1570858700925.png" alt="1570858700925" /></li>
+<li>创建文件夹目录结构：<img src="/images/1570858700925.png"
+alt="1570858700925" /></li>
 <li>导入structs2，import struct 2</li>
 <li>config, deployment</li>
 </ol>
@@ -716,7 +804,8 @@
 <p>（考试）什么是IoC，DI?</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IoC(Inversion of Control)控制反转：将对象的生命周期控制，交给第三方容器</span><br><span class="line">DI(Dependency injection)依赖注入：组件之间的依赖关系由容器在运行期决定，即	由容器动态地将某种依赖关系注入到组件之中</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>*工厂模式， 工厂方法模式， 抽象工厂模式</p>
-<p>（考）ClassPathXmlApplicationContext ,FileSystemXmlApplicationContext 前者的xml文件在classpath中（支持打包），后者通过绝对路径指定xml文件。</p>
+<p>（考）ClassPathXmlApplicationContext ,FileSystemXmlApplicationContext
+前者的xml文件在classpath中（支持打包），后者通过绝对路径指定xml文件。</p>
 <p>web应用中创建spring容器，使用XmlWebApplicationContext。听众接口：ServletContextListener，其中两个事件处理函数，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 必考要记</span><br><span class="line">public void contextInitialized(ServletContextEvent sce)&#123;</span><br><span class="line">	Context ctx &#x3D; new InitialContext();</span><br><span class="line">	DataSource ds &#x3D; (DataSource)ctx.lookup(&quot;java:comp&#x2F;env&#x2F;jdbc&#x2F;ExamDB&quot;);</span><br><span class="line">	sce.getServletContext().setAttribute(&quot;ds&quot;,ds);</span><br><span class="line">&#125;</span><br><span class="line">public void contextDestroyed(ServletContextEvent sce)&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>*（必考）web.xml中声明一个组件：</p>
@@ -724,11 +813,13 @@
 <p>AOP编程</p>
 <p>（任务）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">理解BeanFactory</span><br><span class="line">理解ApplicationContext</span><br><span class="line">理解FileSystemXmlApplicationContext</span><br><span class="line">理解ClassPathXmlApplicationContext</span><br><span class="line">理解XmlWebApplicationContext</span><br><span class="line">重点理解JavaEE Web Application如何集成Spring框架</span><br><span class="line">理解Spring framework的配置</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>spring mvc 前端控制器的mapping 不要使用/* , 而应该使用/ (优先级最低) ,否则会拦截.jsp</p>
+<p>spring mvc 前端控制器的mapping 不要使用/* , 而应该使用/ (优先级最低)
+,否则会拦截.jsp</p>
 <h2 id="springmvc">SpringMVC</h2>
 <p>基本处理流程：</p>
 <figure>
-<img src="/images/1577616911675.png" alt="1577616911675" /><figcaption aria-hidden="true">1577616911675</figcaption>
+<img src="/images/1577616911675.png" alt="1577616911675" />
+<figcaption aria-hidden="true">1577616911675</figcaption>
 </figure>
 <ol type="1">
 <li>用户请求首先发送到前端控制器DispatcherServlet，DispatcherServlet根据请求的信息来决定使用哪个页面控制器Controller来处理该请求。找到控制器之后，DispatcherServlet将请求委托给控制器去处理。</li>
@@ -738,7 +829,8 @@
 </ol>
 <p>备注：</p>
 <ol type="1">
-<li>DispatcherServlet相当于前端控制器: org.springframework.web.servlet.DispatcherServlet</li>
+<li>DispatcherServlet相当于前端控制器:
+org.springframework.web.servlet.DispatcherServlet</li>
 <li>Handler（需要自己开发）是继DispatcherServlet前端控制器的后端控制器，在DispatcherServlet的控制下Handler对具体的用户请求进行处理。</li>
 <li>前端控制器的url-pattern应该是/，而不是/*</li>
 </ol>
@@ -873,7 +965,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -884,7 +976,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -964,7 +1056,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
