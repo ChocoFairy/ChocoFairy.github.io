@@ -382,692 +382,189 @@
       
         <p>常用方法：自编码器，LSTM，CNN，SVM等</p>
 <span id="more"></span>
-<h2
-id="学习深度事件模型以检测人群异常">学习深度事件模型以检测人群异常</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231216310980">Learning
-deep event models for crowd anomaly detection</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231216310980#!">YachuangFeng</a>，<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231216310980#!">YuanYuan</a>，<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231216310980#!">XiaoqiangLu</a></p>
+<h2 id="学习深度事件模型以检测人群异常"><a href="#学习深度事件模型以检测人群异常" class="headerlink" title="学习深度事件模型以检测人群异常"></a>学习深度事件模型以检测人群异常</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231216310980">Learning deep event models for crowd anomaly detection</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231216310980#!">YachuangFeng</a>，<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231216310980#!">YuanYuan</a>，<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231216310980#!">XiaoqiangLu</a></p>
 <p><strong>发表时间</strong>：2017年1月5日</p>
 <p><strong>被引用次数</strong>：116</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>Abnormal event detection in video surveillance is extremely
-important, especially for crowded scenes. In recent years, many
-algorithms have been proposed based on hand-crafted features. However,
-it still remains challenging to decide which kind of feature is suitable
-for a specific situation. In addition, it is hard and time-consuming to
-design an effective descriptor. In this paper, video events are
-automatically represented and modeled in unsupervised fashions.
-Specifically, appearance and motion features are simultaneously
-extracted using a PCANet from 3D gradients. In order to model event
-patterns, a deep Gaussian mixture model (GMM) is constructed with
-observed normal events. The deep GMM is a scalable deep generative model
-which stacks multiple GMM-layers on top of each other. As a result, the
-proposed method acquires competitive performance with relatively few
-parameters. In the testing phase, the likelihood is calculated to judge
-whether a video event is abnormal or not. In this paper, the proposed
-method is verified on two publicly available datasets and compared with
-state-of-the-art algorithms. Experimental results show that the deep
-model is effective for abnormal event detection in video
-surveillance.</p>
+<p>Abnormal event detection in video surveillance is extremely important, especially for crowded scenes. In recent years, many algorithms have been proposed based on hand-crafted features. However, it still remains challenging to decide which kind of feature is suitable for a specific situation. In addition, it is hard and time-consuming to design an effective descriptor. In this paper, video events are automatically represented and modeled in unsupervised fashions. Specifically, appearance and motion features are simultaneously extracted using a PCANet from 3D gradients. In order to model event patterns, a deep Gaussian mixture model (GMM) is constructed with observed normal events. The deep GMM is a scalable deep generative model which stacks multiple GMM-layers on top of each other. As a result, the proposed method acquires competitive performance with relatively few parameters. In the testing phase, the likelihood is calculated to judge whether a video event is abnormal or not. In this paper, the proposed method is verified on two publicly available datasets and compared with state-of-the-art algorithms. Experimental results show that the deep model is effective for abnormal event detection in video surveillance.</p>
 </blockquote>
 <p>视频监视中的异常事件检测非常重要，尤其是在拥挤的场景中。近年来，已经提出了许多基于手工特征的算法。但是，确定哪种功能适合于特定情况仍然具有挑战性。另外，设计有效的描述符既困难又费时。在本文中，视频事件以无监督的方式自动表示和建模。具体而言，<strong>使用PCANet从3D渐变中同时提取外观和运动特征</strong>。为了对事件模式进行建模，使用观察到的正常事件构造了一个<strong>深高斯混合模型（GMM）</strong>。深度GMM是可扩展的深度生成模型，该模型将多个GMM层彼此堆叠。结果，所提出的方法以相对较少的参数获得了竞争性能。在测试阶段，计算似然性以判断视频事件是否异常。在本文中，该方法在两个公开可用的数据集上得到了验证，并与最新算法进行了比较。实验结果表明，该深度模型对于视频监控中的异常事件检测是有效的。</p>
-<p><strong>关键词</strong>：Deep neural network、PCANet、Deep
-GMM、Crowded scene、Abnormal event detection、Video surveillance</p>
-<h2
-id="resnetcrowd残余深度学习架构用于人群计数暴力行为检测和人群密度等级分类">ResnetCrowd：残余深度学习架构，用于人群计数，暴力行为检测和人群密度等级分类</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8078482">ResnetCrowd:
-A residual deep learning architecture for crowd counting, violent
-behaviour detection and crowd density level classification</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086102759">Mark Marsden</a>;
-<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37658140400">Kevin
-McGuinness</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085649021">Suzanne
-Little</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37285012200">Noel E.
-O'Connor</a></p>
+<p><strong>关键词</strong>：Deep neural network、PCANet、Deep GMM、Crowded scene、Abnormal event detection、Video surveillance</p>
+<h2 id="ResnetCrowd：残余深度学习架构，用于人群计数，暴力行为检测和人群密度等级分类"><a href="#ResnetCrowd：残余深度学习架构，用于人群计数，暴力行为检测和人群密度等级分类" class="headerlink" title="ResnetCrowd：残余深度学习架构，用于人群计数，暴力行为检测和人群密度等级分类"></a>ResnetCrowd：残余深度学习架构，用于人群计数，暴力行为检测和人群密度等级分类</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8078482">ResnetCrowd: A residual deep learning architecture for crowd counting, violent behaviour detection and crowd density level classification</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086102759">Mark Marsden</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37658140400">Kevin McGuinness</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085649021">Suzanne Little</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37285012200">Noel E. O’Connor</a></p>
 <p><strong>发表日期</strong>：2017年10月23日</p>
 <p><strong>被引用次数</strong>：79</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>In this paper we propose ResnetCrowd, a deep residual architecture
-for simultaneous crowd counting, violent behaviour detection and crowd
-density level classification. To train and evaluate the proposed
-multi-objective technique, a new 100 image dataset referred to as Multi
-Task Crowd is constructed. This new dataset is the first computer vision
-dataset fully annotated for crowd counting, violent behaviour detection
-and density level classification. Our experiments show that a multi-task
-approach boosts individual task performance for all tasks and most
-notably for violent behaviour detection which receives a 9% boost in ROC
-curve AUC (Area under the curve). The trained ResnetCrowd model is also
-evaluated on several additional benchmarks highlighting the superior
-generalisation of crowd analysis models trained for multiple
-objectives.</p>
+<p>In this paper we propose ResnetCrowd, a deep residual architecture for simultaneous crowd counting, violent behaviour detection and crowd density level classification. To train and evaluate the proposed multi-objective technique, a new 100 image dataset referred to as Multi Task Crowd is constructed. This new dataset is the first computer vision dataset fully annotated for crowd counting, violent behaviour detection and density level classification. Our experiments show that a multi-task approach boosts individual task performance for all tasks and most notably for violent behaviour detection which receives a 9% boost in ROC curve AUC (Area under the curve). The trained ResnetCrowd model is also evaluated on several additional benchmarks highlighting the superior generalisation of crowd analysis models trained for multiple objectives.</p>
 </blockquote>
-<p>在本文中，我们提出了ResnetCrowd，<strong>这是一种用于同时进行人群计数，暴力行为检测和人群密度等级分类的深层残差架构。</strong>
-为了训练和评估所提出的多目标技术，构建了一个新的100个图像数据集，称为多任务人群。
-这个新数据集是第一个完全注释的计算机视觉数据集，用于人群计数，暴力行为检测和密度等级分类。
-我们的实验表明，多任务方法可以提高所有任务的单个任务性能，尤其是对于暴力行为检测，可以将ROC曲线AUC（曲线下的面积）提高9％。
-训练有素的ResnetCrowd模型也将在其他几个基准上进行评估，以突出说明针对多个目标训练的人群分析模型的卓越综合性。</p>
+<p>在本文中，我们提出了ResnetCrowd，<strong>这是一种用于同时进行人群计数，暴力行为检测和人群密度等级分类的深层残差架构。</strong> 为了训练和评估所提出的多目标技术，构建了一个新的100个图像数据集，称为多任务人群。 这个新数据集是第一个完全注释的计算机视觉数据集，用于人群计数，暴力行为检测和密度等级分类。 我们的实验表明，多任务方法可以提高所有任务的单个任务性能，尤其是对于暴力行为检测，可以将ROC曲线AUC（曲线下的面积）提高9％。 训练有素的ResnetCrowd模型也将在其他几个基准上进行评估，以突出说明针对多个目标训练的人群分析模型的卓越综合性。</p>
 <p><strong>关键词</strong>：</p>
-<p>Heating systems,Urban areas,Image recognition,Estimation,Neural
-networks,Computer architecture</p>
-<h2
-id="使用深度学习分类器的高效异常检测系统">使用深度学习分类器的高效异常检测系统</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007%2Fs11760-016-0935-0">An
-efficient system for anomaly detection using deep learning
-classifier</a></p>
+<p>Heating systems,Urban areas,Image recognition,Estimation,Neural networks,Computer architecture</p>
+<h2 id="使用深度学习分类器的高效异常检测系统"><a href="#使用深度学习分类器的高效异常检测系统" class="headerlink" title="使用深度学习分类器的高效异常检测系统"></a>使用深度学习分类器的高效异常检测系统</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007%2Fs11760-016-0935-0">An efficient system for anomaly detection using deep learning classifier</a></p>
 <p><strong>作者</strong>：A.R.Revathi&amp;Dhananjay Kumar</p>
 <p><strong>发表日期</strong>：2016年8月19日</p>
 <p><strong>被引用次数</strong>：52</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>In this paper, a deep learning-based anomaly detection (DLAD) system
-is proposed to improve the recognition problem in video processing. Our
-system achieves complete detection of abnormal events by involving the
-following significant proposed modules a Background Estimation (BE)
-Module, an Object Segmentation (OS) Module, a Feature Extraction (FE)
-Module, and an Activity Recognition (AR) Module. At first, we have
-presented a BE (Background Estimation) module that generated an accurate
-background in which two-phase model is generated to compute the
-background estimation. After a high-quality background is generated, the
-OS model is developed to extract the object from videos, and then,
-object tracking process is used to track the object through the
-overlapping detection scheme. From the tracked objects, the FE module is
-extracted for some useful features such as shape, wavelet, and histogram
-to the abnormal event detection. For the final step, the proposed AR
-module is classified as abnormal or normal event using the deep learning
-classifier. Experiments are performed on the USCD benchmark dataset of
-abnormal activities, and comparisons with the state-of-the-art methods
-validate the advantages of our algorithm. We can see that the proposed
-activity recognition system has outperformed by achieving better EER of
-0.75 % when compared with the existing systems (20 %). Also, it shows
-that the proposed method achieves 85 % precision rate in the frame-level
-performance.</p>
+<p>In this paper, a deep learning-based anomaly detection (DLAD) system is proposed to improve the recognition problem in video processing. Our system achieves complete detection of abnormal events by involving the following significant proposed modules a Background Estimation (BE) Module, an Object Segmentation (OS) Module, a Feature Extraction (FE) Module, and an Activity Recognition (AR) Module. At first, we have presented a BE (Background Estimation) module that generated an accurate background in which two-phase model is generated to compute the background estimation. After a high-quality background is generated, the OS model is developed to extract the object from videos, and then, object tracking process is used to track the object through the overlapping detection scheme. From the tracked objects, the FE module is extracted for some useful features such as shape, wavelet, and histogram to the abnormal event detection. For the final step, the proposed AR module is classified as abnormal or normal event using the deep learning classifier. Experiments are performed on the USCD benchmark dataset of abnormal activities, and comparisons with the state-of-the-art methods validate the advantages of our algorithm. We can see that the proposed activity recognition system has outperformed by achieving better EER of 0.75 % when compared with the existing systems (20 %). Also, it shows that the proposed method achieves 85 % precision rate in the frame-level performance.</p>
 </blockquote>
 <p>本文提出了一种<strong>基于深度学习的异常检测（DLAD）系统</strong>，以改善视频处理中的识别问题。我们的系统通过涉及以下重要的建议模块，包括<strong>背景估计（BE）模块，对象分割（OS）模块，特征提取（FE）模块和活动识别（AR）模块，来实现对异常事件的完整检测</strong>。首先，我们介绍了一个BE（背景估计）模块，该模块生成了准确的背景，其中生成了两阶段模型以计算背景估计。生成高质量背景后，开发OS模型以从视频中提取对象，然后使用对象跟踪过程通过重叠检测方案来跟踪对象。从跟踪的对象中，提取FE模块以获得一些有用的功能，例如形状，小波和直方图，以进行异常事件检测。对于最后一步，使用深度学习分类器将建议的AR模块分类为异常事件或正常事件。在USCD异常活动的基准数据集上进行了实验，并与最新方法进行了比较，验证了我们算法的优势。我们可以看到，与现有系统（20％）相比，拟议的活动识别系统的EER达到了0.75％的更高，因此其性能优于其他系统。而且，它表明，所提出的方法在帧级性能上达到了85％的准确率。</p>
 <p><strong>关键词</strong>：</p>
-<p>Abnormal detection、EER、Deep learning、Background model、Video
-surveillance</p>
-<h2 id="人群监测和分类调查">人群监测和分类：调查</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-981-10-3770-2_3">Crowd
-Monitoring and Classification: A Survey</a></p>
+<p>Abnormal detection、EER、Deep learning、Background model、Video surveillance</p>
+<h2 id="人群监测和分类：调查"><a href="#人群监测和分类：调查" class="headerlink" title="人群监测和分类：调查"></a>人群监测和分类：调查</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-981-10-3770-2_3">Crowd Monitoring and Classification: A Survey</a></p>
 <p><strong>作者</strong>：Neeta Nain,Sonu Lamba</p>
 <p><strong>发表日期</strong>：2017年5月28日</p>
 <p><strong>被引用次数</strong>：19</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>Crowd monitoring on public places is very demanding endeavor to
-accomplish. Huge population and assortment of human actions enforces the
-crowded scenes to be more continual. Enormous challenges occur into
-crowd management including proper crowd analysis, identification,
-monitoring and anomalous activity detection. Due to severe clutter and
-occlusions, conventional methods for dealing with crowd are not very
-effective. This paper highlights the various issues involved in
-analyzing crowd behavior and its dynamics along with classification of
-crowd analysis techniques. This review summarizes the shortcomings,
-strength and applicability of existing methods in different
-environmental scenarios. Furthermore, it overlays the path to device a
-proficient method of crowd monitoring and classification which can deal
-with most of the challenges related to this area.</p>
+<p>Crowd monitoring on public places is very demanding endeavor to accomplish. Huge population and assortment of human actions enforces the crowded scenes to be more continual. Enormous challenges occur into crowd management including proper crowd analysis, identification, monitoring and anomalous activity detection. Due to severe clutter and occlusions, conventional methods for dealing with crowd are not very effective. This paper highlights the various issues involved in analyzing crowd behavior and its dynamics along with classification of crowd analysis techniques. This review summarizes the shortcomings, strength and applicability of existing methods in different environmental scenarios. Furthermore, it overlays the path to device a proficient method of crowd monitoring and classification which can deal with most of the challenges related to this area.</p>
 </blockquote>
-<p>在公共场所对人群进行监控是非常艰巨的工作。
-庞大的人口和各种各样的人类行为迫使拥挤的场面变得更加连续。
-人群管理中出现了巨大的挑战，包括适当的人群分析，识别，监视和异常活动检测。
-由于严重的混乱和阻塞，传统的人群处理方法不是很有效。
-本文重点介绍了分析人群行为及其动态的各种问题，以及人群分析技术的分类。
-这篇综述总结了现有方法在不同环境下的缺点，优势和适用性。
-此外，它覆盖了通向设备的一种有效的人群监视和分类方法，该方法可以应对与该领域有关的大多数挑战。</p>
+<p>在公共场所对人群进行监控是非常艰巨的工作。 庞大的人口和各种各样的人类行为迫使拥挤的场面变得更加连续。 人群管理中出现了巨大的挑战，包括适当的人群分析，识别，监视和异常活动检测。 由于严重的混乱和阻塞，传统的人群处理方法不是很有效。 本文重点介绍了分析人群行为及其动态的各种问题，以及人群分析技术的分类。 这篇综述总结了现有方法在不同环境下的缺点，优势和适用性。 此外，它覆盖了通向设备的一种有效的人群监视和分类方法，该方法可以应对与该领域有关的大多数挑战。</p>
 <p><strong>关键词</strong>：</p>
-<p>Crowd monitoring、Behaviour analysis、Crowd classification</p>
-<h2
-id="人群运动的智能监视和侦察全动态视频自动异常检测机载应用的系统要求">人群运动的智能监视和侦察全动态视频自动异常检测：机载应用的系统要求</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://apps.dtic.mil/sti/citations/AD1054570">Intelligence
-Surveillance And Reconnaissance Full Motion Video Automatic Anomaly
-Detection Of Crowd Movements: System Requirements For Airborne
-Application</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://discover.dtic.mil/results/?q=%22Yarovinskiy%2C+Aleksandr%22">Yarovinskiy,
-Aleksandr</a></p>
+<p>Crowd monitoring、Behaviour analysis、Crowd classification </p>
+<h2 id="人群运动的智能监视和侦察全动态视频自动异常检测：机载应用的系统要求"><a href="#人群运动的智能监视和侦察全动态视频自动异常检测：机载应用的系统要求" class="headerlink" title="人群运动的智能监视和侦察全动态视频自动异常检测：机载应用的系统要求"></a>人群运动的智能监视和侦察全动态视频自动异常检测：机载应用的系统要求</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://apps.dtic.mil/sti/citations/AD1054570">Intelligence Surveillance And Reconnaissance Full Motion Video Automatic Anomaly Detection Of Crowd Movements: System Requirements For Airborne Application</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://discover.dtic.mil/results/?q=&quot;Yarovinskiy%2C+Aleksandr&quot;">Yarovinskiy, Aleksandr</a></p>
 <p><strong>发表日期</strong>：2017年10月1日</p>
 <p><strong>被引用次数</strong>：1</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>The collection of Intelligence, Surveillance, and Reconnaissance ISR
-Full Motion Video FMV is growing at an exponential rate, and the manual
-processing of it cannot keep up with its growth. The purpose of this
-study is to develop automatic solutions to help analysts produce
-actionable intelligence for the warfighter. This paper will address the
-question of how can automatic pattern extraction, based on computer
-vision, extract anomalies in crowd behavior in ISR imagery. This paper
-will overview recent advances in automatic crowd anomaly detection
-techniques and the current technology necessary to implement them in the
-field. Assumptions are made for linear and ideal scaling of crowd
-anomaly detection techniques, using current technology, for field
-applications. The end product is a proposed pod system for airborne
-applications capable of processing an area the size of a small city for
-all crowd anomalies, and transmission of results to a ground node.
-Further study is required to optimize the proposed system for efficiency
-of scale.</p>
+<p>The collection of Intelligence, Surveillance, and Reconnaissance ISR Full Motion Video FMV is growing at an exponential rate, and the manual processing of it cannot keep up with its growth. The purpose of this study is to develop automatic solutions to help analysts produce actionable intelligence for the warfighter. This paper will address the question of how can automatic pattern extraction, based on computer vision, extract anomalies in crowd behavior in ISR imagery. This paper will overview recent advances in automatic crowd anomaly detection techniques and the current technology necessary to implement them in the field. Assumptions are made for linear and ideal scaling of crowd anomaly detection techniques, using current technology, for field applications. The end product is a proposed pod system for airborne applications capable of processing an area the size of a small city for all crowd anomalies, and transmission of results to a ground node. Further study is required to optimize the proposed system for efficiency of scale.</p>
 </blockquote>
 <p>情报，监视和侦察ISR全动态视频FMV的收集呈指数增长，并且对其进行手动处理无法跟上其增长的步伐。这项研究的目的是开发自动解决方案，以帮助分析人员为战士提供可操作的情报。本文将解决如何基于计算机视觉自动提取模式的问题，以提取ISR图像中人群行为的异常情况。本文将概述自动人群异常检测技术的最新进展以及在现场实施这些技术所必需的当前技术。使用现在的技术，对人群异常检测技术的线性和理想比例进行了假设。最终产品是一种针对机载应用的拟议吊舱系统，能够处理所有人群异常情况下小城市大小的区域，并将结果传输到地面节点。需要进一步研究以优化所提出的系统的规模效率。</p>
 <p><strong>关键词</strong>：</p>
-<p>artificial neural networks、computers、image processing、central
-processing units、computer programming、computer programs、graphics
-processing unit、aircrafts、anomaly detection、artificial
-intelligence、change detection、computer vision、detection、improvised
-explosive devices、air force、area coverage、computing system
-architectures、detectors、algorithms、computer architecture</p>
-<h2
-id="时空自动编码器用于视频异常检测">时空自动编码器，用于视频异常检测</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/3123266.3123451">Spatio-Temporal
-AutoEncoder for Video Anomaly Detection</a></p>
-<p><strong>作者</strong>：Yiru Zhao, Bing Deng, Chen Shen, Yao Liu,
-Hongtao Lu, Xian-Sheng Hua</p>
+<p>artificial neural networks、computers、image processing、central processing units、computer programming、computer programs、graphics processing unit、aircrafts、anomaly detection、artificial intelligence、change detection、computer vision、detection、improvised explosive devices、air force、area coverage、computing system architectures、detectors、algorithms、computer architecture</p>
+<h2 id="时空自动编码器，用于视频异常检测"><a href="#时空自动编码器，用于视频异常检测" class="headerlink" title="时空自动编码器，用于视频异常检测"></a>时空自动编码器，用于视频异常检测</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/3123266.3123451">Spatio-Temporal AutoEncoder for Video Anomaly Detection</a></p>
+<p><strong>作者</strong>：Yiru Zhao, Bing Deng, Chen Shen, Yao Liu, Hongtao Lu, Xian-Sheng Hua</p>
 <p><strong>发表日期</strong>：2017年10月</p>
 <p><strong>被引用次数</strong>：128</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>Anomalous events detection in real-world video scenes is a
-challenging problem due to the complexity of "anomaly" as well as the
-cluttered backgrounds, objects and motions in the scenes. Most existing
-methods use hand-crafted features in local spatial regions to identify
-anomalies. In this paper, we propose a novel model called
-Spatio-Temporal AutoEncoder (ST AutoEncoder or STAE), which utilizes
-deep neural networks to learn video representation automatically and
-extracts features from both spatial and temporal dimensions by
-performing 3-dimensional convolutions. In addition to the reconstruction
-loss used in existing typical autoencoders, we introduce a
-weight-decreasing prediction loss for generating future frames, which
-enhances the motion feature learning in videos. Since most anomaly
-detection datasets are restricted to appearance anomalies or unnatural
-motion anomalies, we collected a new challenging dataset comprising a
-set of real-world traffic surveillance videos. Several experiments are
-performed on both the public benchmarks and our traffic dataset, which
-show that our proposed method remarkably outperforms the
-state-of-the-art approaches.</p>
+<p>Anomalous events detection in real-world video scenes is a challenging problem due to the complexity of “anomaly” as well as the cluttered backgrounds, objects and motions in the scenes. Most existing methods use hand-crafted features in local spatial regions to identify anomalies. In this paper, we propose a novel model called Spatio-Temporal AutoEncoder (ST AutoEncoder or STAE), which utilizes deep neural networks to learn video representation automatically and extracts features from both spatial and temporal dimensions by performing 3-dimensional convolutions. In addition to the reconstruction loss used in existing typical autoencoders, we introduce a weight-decreasing prediction loss for generating future frames, which enhances the motion feature learning in videos. Since most anomaly detection datasets are restricted to appearance anomalies or unnatural motion anomalies, we collected a new challenging dataset comprising a set of real-world traffic surveillance videos. Several experiments are performed on both the public benchmarks and our traffic dataset, which show that our proposed method remarkably outperforms the state-of-the-art approaches.</p>
 </blockquote>
-<p>由于“异常”的复杂性以及场景中背景，对象和动作的混乱，现实世界中视频场景中异常事件的检测是一个具有挑战性的问题。大多数现有方法在局部空间区域中使用手工制作的特征来识别异常。<strong>在本文中，我们提出了一种称为时空自动编码器（ST
-AutoEncoder或STAE）的新型模型，该模型利用深度神经网络自动学习视频表示，并通过执行3维卷积从时空维度提取特征。</strong>除了在现有的典型自动编码器中使用的重建损失之外，我们还引入了用于减少将来帧生成的权重减小的预测损失，从而增强了视频中的运动特征学习能力。由于大多数异常检测数据集仅限于外观异常或非自然运动异常，因此我们收集了一个新的具有挑战性的数据集，其中包含一组现实世界的交通监控视频。在公共基准和流量数据集上进行了几次实验，结果表明，我们提出的方法明显优于最新方法。</p>
-<h2
-id="deep-cascade级联的3d深层神经网络用于在拥挤的场景中快速进行异常检测和定位">Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7858798">Deep-Cascade:
-Cascading 3D Deep Neural Networks for Fast Anomaly Detection and
-Localization in Crowded Scenes</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/38234848300">Mohammad
-Sabokrou</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085346567">Mohsen Fayyaz</a>;
-<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085342278">Mahmood
-Fathy</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37270732100">Reinhard
-Klette</a></p>
+<p>由于“异常”的复杂性以及场景中背景，对象和动作的混乱，现实世界中视频场景中异常事件的检测是一个具有挑战性的问题。大多数现有方法在局部空间区域中使用手工制作的特征来识别异常。<strong>在本文中，我们提出了一种称为时空自动编码器（ST AutoEncoder或STAE）的新型模型，该模型利用深度神经网络自动学习视频表示，并通过执行3维卷积从时空维度提取特征。</strong>除了在现有的典型自动编码器中使用的重建损失之外，我们还引入了用于减少将来帧生成的权重减小的预测损失，从而增强了视频中的运动特征学习能力。由于大多数异常检测数据集仅限于外观异常或非自然运动异常，因此我们收集了一个新的具有挑战性的数据集，其中包含一组现实世界的交通监控视频。在公共基准和流量数据集上进行了几次实验，结果表明，我们提出的方法明显优于最新方法。 </p>
+<h2 id="Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位"><a href="#Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位" class="headerlink" title="Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位"></a>Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7858798">Deep-Cascade: Cascading 3D Deep Neural Networks for Fast Anomaly Detection and Localization in Crowded Scenes</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/38234848300">Mohammad Sabokrou</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085346567">Mohsen Fayyaz</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085342278">Mahmood Fathy</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37270732100">Reinhard Klette</a></p>
 <p><strong>发表日期</strong>：2017年2月17日</p>
 <p><strong>被引用次数</strong>：187</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>This paper proposes a fast and reliable method for anomaly detection
-and localization in video data showing crowded scenes. Time-efficient
-anomaly localization is an ongoing challenge and subject of this paper.
-We propose a cubic-patch-based method, characterised by a cascade of
-classifiers, which makes use of an advanced feature-learning approach.
-Our cascade of classifiers has two main stages. First, a light but deep
-3D auto-encoder is used for early identification of “many” normal cubic
-patches. This deep network operates on small cubic patches as being the
-first stage, before carefully resizing the remaining candidates of
-interest, and evaluating those at the second stage using a more complex
-and deeper 3D convolutional neural network (CNN). We divide the deep
-auto-encoder and the CNN into multiple sub-stages, which operate as
-cascaded classifiers. Shallow layers of the cascaded deep networks
-(designed as Gaussian classifiers, acting as weak single-class
-classifiers) detect “simple” normal patches, such as background patches
-and more complex normal patches, are detected at deeper layers. It is
-shown that the proposed novel technique (a cascade of two cascaded
-classifiers) performs comparable to current top-performing detection and
-localization methods on standard benchmarks, but outperforms those in
-general with respect to required computation time.</p>
+<p>This paper proposes a fast and reliable method for anomaly detection and localization in video data showing crowded scenes. Time-efficient anomaly localization is an ongoing challenge and subject of this paper. We propose a cubic-patch-based method, characterised by a cascade of classifiers, which makes use of an advanced feature-learning approach. Our cascade of classifiers has two main stages. First, a light but deep 3D auto-encoder is used for early identification of “many” normal cubic patches. This deep network operates on small cubic patches as being the first stage, before carefully resizing the remaining candidates of interest, and evaluating those at the second stage using a more complex and deeper 3D convolutional neural network (CNN). We divide the deep auto-encoder and the CNN into multiple sub-stages, which operate as cascaded classifiers. Shallow layers of the cascaded deep networks (designed as Gaussian classifiers, acting as weak single-class classifiers) detect “simple” normal patches, such as background patches and more complex normal patches, are detected at deeper layers. It is shown that the proposed novel technique (a cascade of two cascaded classifiers) performs comparable to current top-performing detection and localization methods on standard benchmarks, but outperforms those in general with respect to required computation time.</p>
 </blockquote>
 <p>本文提出了一种快速可靠的方法，用于显示拥挤场景的视频数据中的异常检测和定位。时间高效的异常本地化是一个持续的挑战，也是本文的主题。<strong>我们提出了一种基于立方补丁的方法，其特征在于使用了高级的特征学习方法，该方法以级联的分类器为特征。</strong>我们的分类器级联有两个主要阶段。首先，一个轻而深的3D自动编码器用于早期识别“许多”正常立方块。在仔细调整其余感兴趣的候选对象的大小，并在第二阶段使用更复杂，更深入的3D卷积神经网络（CNN）评估这些候选对象之前，该深层网络在第一阶段以小型立方块为基础进行操作。我们将深度自动编码器和CNN分为多个子阶段，作为级联分类器。级联深度网络的浅层（设计为高斯分类器，充当弱的单类分类器）在较深的层上检测到“简单”的常规补丁，例如背景补丁和更复杂的常规补丁。结果表明，所提出的新技术（两个级联分类器的级联）在标准基准上的性能可与当前性能最佳的检测和定位方法相媲美，但在所需的计算时间方面却总体上优于那些。</p>
 <p><strong>关键词</strong>：</p>
-<p><a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Feature%20extraction&amp;newsearch=true">Feature
-extraction</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Hidden%20Markov%20models&amp;newsearch=true">Hidden
-Markov models</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Neural%20networks&amp;newsearch=true">Neural
-networks</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Training&amp;newsearch=true">Training</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Context&amp;newsearch=true">Context</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Complexity%20theory&amp;newsearch=true">Complexity
-theory</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Detectors&amp;newsearch=true">Detectors</a></p>
-<h2
-id="使用卷积自动编码器和一类支持向量机检测视频异常">使用卷积自动编码器和一类支持向量机检测视频异常</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="http://abricom.org.br/wp-content/uploads/2018/09/cbic-paper-49.pdf">Detection
-of Video Anomalies Using Convolutional Autoencoders and One-Class
-Support Vector Machines</a></p>
-<p><strong>作者</strong>：Matheus Gutoski, Nelson Marcelo Romero
-Aquino，Manass´es Ribeiro , Andr´e Engˆenio Lazzaretti, Heitor Silv´erio
-Lopes</p>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Feature extraction&amp;newsearch=true">Feature extraction</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Hidden Markov models&amp;newsearch=true">Hidden Markov models</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Neural networks&amp;newsearch=true">Neural networks</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Training&amp;newsearch=true">Training</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Context&amp;newsearch=true">Context</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Complexity theory&amp;newsearch=true">Complexity theory</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Detectors&amp;newsearch=true">Detectors</a></p>
+<h2 id="使用卷积自动编码器和一类支持向量机检测视频异常"><a href="#使用卷积自动编码器和一类支持向量机检测视频异常" class="headerlink" title="使用卷积自动编码器和一类支持向量机检测视频异常"></a>使用卷积自动编码器和一类支持向量机检测视频异常</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="http://abricom.org.br/wp-content/uploads/2018/09/cbic-paper-49.pdf">Detection of Video Anomalies Using Convolutional Autoencoders and One-Class Support Vector Machines</a></p>
+<p><strong>作者</strong>：Matheus Gutoski, Nelson Marcelo Romero Aquino，Manass´es Ribeiro , Andr´e Engˆenio Lazzaretti, Heitor Silv´erio Lopes</p>
 <p><strong>发表日期</strong>：2017年</p>
 <p><strong>被引用次数</strong>：18</p>
 <p><strong>摘要</strong>：</p>
-<p>With the growth of image data being generated by surveillance
-cameras, automated video analysis has become necessary in order to
-detect unusual events. Recently, Deep Learning methods have achieved the
-state of the art results in many tasks related to computer vision. Among
-Deep Learning methods, the Autoencoder is commonly used for anomaly
-detection tasks. This work presents a method to classify frames of four
-different well known video datasets as normal or anomalous by using
-reconstruction errors as features for a classifier. To perform this
-task, Convolutional Autoencoders and One-Class SVMs were employed.
-Results suggest that the method is capable of detecting anomalies across
-the four different benchmark datasets. We also present a comparison with
-the state of the art approaches and data visualization.</p>
-<p>随着监视摄像机生成的图像数据的增长，为了检测异常事件，自动视频分析变得很有必要。
-最近，深度学习方法在许多与计算机视觉有关的任务中取得了最先进的成果。
-在深度学习方法中，自动编码器通常用于异常检测任务。
-<strong>这项工作提出了一种方法，通过使用重建误差作为分类器的特征，将四个不同的知名视频数据集的帧分类为正常或异常。
-为了执行此任务，使用了卷积自动编码器和一类SVM。</strong>
-结果表明，该方法能够检测四个不同基准数据集的异常。
-我们还介绍了与最先进的方法和数据可视化的比较。</p>
-<h2
-id="使用新颖的基于光流的功能进行异常人群行为检测">使用新颖的基于光流的功能进行异常人群行为检测</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8078503">Abnormal
-crowd behavior detection using novel optical flow-based features</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/38551232800">Cem Direkoglu</a>;
-<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086241133">Melike Sah</a>;
-<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37285012200">Noel E.
-O'Connor</a></p>
+<p>With the growth of image data being generated by surveillance cameras, automated video analysis has become necessary in order to detect unusual events. Recently, Deep Learning methods have achieved the state of the art results in many tasks related to computer vision. Among Deep Learning methods, the Autoencoder is commonly used for anomaly detection tasks. This work presents a method to classify frames of four different well known video datasets as normal or anomalous by using reconstruction errors as features for a classifier. To perform this task, Convolutional Autoencoders and One-Class SVMs were employed. Results suggest that the method is capable of detecting anomalies across the four different benchmark datasets. We also present a comparison with the state of the art approaches and data visualization.</p>
+<p>随着监视摄像机生成的图像数据的增长，为了检测异常事件，自动视频分析变得很有必要。 最近，深度学习方法在许多与计算机视觉有关的任务中取得了最先进的成果。 在深度学习方法中，自动编码器通常用于异常检测任务。 <strong>这项工作提出了一种方法，通过使用重建误差作为分类器的特征，将四个不同的知名视频数据集的帧分类为正常或异常。 为了执行此任务，使用了卷积自动编码器和一类SVM。</strong> 结果表明，该方法能够检测四个不同基准数据集的异常。 我们还介绍了与最先进的方法和数据可视化的比较。</p>
+<h2 id="使用新颖的基于光流的功能进行异常人群行为检测"><a href="#使用新颖的基于光流的功能进行异常人群行为检测" class="headerlink" title="使用新颖的基于光流的功能进行异常人群行为检测"></a>使用新颖的基于光流的功能进行异常人群行为检测</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8078503">Abnormal crowd behavior detection using novel optical flow-based features</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/38551232800">Cem Direkoglu</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086241133">Melike Sah</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37285012200">Noel E. O’Connor</a></p>
 <p><strong>发表日期</strong>：2017年8月-9月</p>
 <p><strong>被引用次数</strong>：30</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>In this paper, we propose a novel optical flow based features for
-abnormal crowd behaviour detection. The proposed feature is mainly based
-on the angle difference computed between the optical flow vectors in the
-current frame and in the previous frame at each pixel location. The
-angle difference information is also combined with the optical flow
-magnitude to produce new, effective and direction invariant event
-features. A one-class SVM is utilized to learn normal crowd behavior. If
-a test sample deviates significantly from the normal behavior, it is
-detected as abnormal crowd behavior. Although there are many optical
-flow based features for crowd behaviour analysis, this is the first time
-the angle difference between optical flow vectors in the current frame
-and in the previous frame is considered as a anomaly feature.
-Evaluations on UMN and PETS2009 datasets show that the proposed method
-performs competitive results compared to the state-of-the-art
-methods.</p>
+<p>In this paper, we propose a novel optical flow based features for abnormal crowd behaviour detection. The proposed feature is mainly based on the angle difference computed between the optical flow vectors in the current frame and in the previous frame at each pixel location. The angle difference information is also combined with the optical flow magnitude to produce new, effective and direction invariant event features. A one-class SVM is utilized to learn normal crowd behavior. If a test sample deviates significantly from the normal behavior, it is detected as abnormal crowd behavior. Although there are many optical flow based features for crowd behaviour analysis, this is the first time the angle difference between optical flow vectors in the current frame and in the previous frame is considered as a anomaly feature. Evaluations on UMN and PETS2009 datasets show that the proposed method performs competitive results compared to the state-of-the-art methods.</p>
 </blockquote>
 <p>在本文中，我们提出了一种新颖的基于光流的特征，用于异常人群行为检测。<strong>所提出的特征主要基于在每个像素位置处的当前帧和前一帧中的光流矢量之间计算出的角度差。</strong>角度差信息还与光流大小相结合，以产生新的，有效的和方向不变的事件特征。一类SVM用于学习正常人群行为。如果测试样品明显偏离正常行为，则将其检测为异常人群行为。尽管有很多基于光流的特征可用于人群行为分析，但这是第一次将当前帧和前一帧中的光流矢量之间的角度差视为异常特征。对UMN和PETS2009数据集的评估表明，与最新方法相比，该方法具有竞争优势。</p>
 <p><strong>关键词</strong>：</p>
-<p><a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Feature%20extraction&amp;newsearch=true">Feature
-extraction</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Support%20vector%20machines&amp;newsearch=true">Support
-vector machines</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Videos&amp;newsearch=true">Videos</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Noise%20measurement&amp;newsearch=true">Noise
-measurement</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Surveillance&amp;newsearch=true">Surveillance</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Force&amp;newsearch=true">Force</a></p>
-<h2 id="卷积dlstm用于人群场景理解">卷积DLSTM用于人群场景理解</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8241582">Convolutional
-DLSTM for Crowd Scene Understanding</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085684861">Naifan Zhuang</a>;
-<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086190796">Jun Ye</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086071259">Kien A.
-Hua</a></p>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Feature extraction&amp;newsearch=true">Feature extraction</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Support vector machines&amp;newsearch=true">Support vector machines</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Videos&amp;newsearch=true">Videos</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Noise measurement&amp;newsearch=true">Noise measurement</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Surveillance&amp;newsearch=true">Surveillance</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Force&amp;newsearch=true">Force</a></p>
+<h2 id="卷积DLSTM用于人群场景理解"><a href="#卷积DLSTM用于人群场景理解" class="headerlink" title="卷积DLSTM用于人群场景理解"></a>卷积DLSTM用于人群场景理解</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8241582">Convolutional DLSTM for Crowd Scene Understanding</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085684861">Naifan Zhuang</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086190796">Jun Ye</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086071259">Kien A. Hua</a></p>
 <p><strong>发表日期</strong>：2017年12月</p>
 <p><strong>被引用次数</strong>：15</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>With the growth of crowd phenomena in the real world, crowd scene
-understanding is becoming an important task in anomaly detection and
-public security. Visual ambiguities and occlusions, high density, low
-mobility and scene semantics, however, make this problem a great
-challenge. In this paper, we propose an end-to-end deep architecture,
-Convolutional DLSTM (ConvDLSTM), for crowd scene understanding.
-ConvDLSTM consists of GoogleNet Inception V3 convolutional neural
-networks (CNN) and stacked differential long short-term memory (DLSTM)
-networks. Different from traditional non-end-to-end solutions which
-separate the steps of feature extraction and parameter learning,
-ConvDLSTM utilizes a unified deep model to optimize the parameters of
-CNN and RNN hand in hand. It thus has the potential of generating a more
-harmonious model. The proposed architecture takes sequential raw image
-data as input, and does not rely on tracklet or trajectory detection. It
-thus has clear advantages over the traditional flow-based and
-trajectory-based methods, especially in challenging crowd scenarios of
-high density and low mobility. Taking advantage of the semantic
-representation of CNN and the memory states of LSTM, ConvDLSTM can
-effectively analyze both the crowd scene and motion information.
-Existing LSTM-based crowd scene solutions explore deep temporal
-information and are claimed to be "deep in time". ConvDLSTM, however,
-models the spatial and temporal information in a unified architecture
-and achieves "deep in space and time". Extensive performance studies on
-the Violent-Flows and CUHK Crowd datasets show that the proposed
-technique significantly outperforms state-of-the-art methods.</p>
+<p>With the growth of crowd phenomena in the real world, crowd scene understanding is becoming an important task in anomaly detection and public security. Visual ambiguities and occlusions, high density, low mobility and scene semantics, however, make this problem a great challenge. In this paper, we propose an end-to-end deep architecture, Convolutional DLSTM (ConvDLSTM), for crowd scene understanding. ConvDLSTM consists of GoogleNet Inception V3 convolutional neural networks (CNN) and stacked differential long short-term memory (DLSTM) networks. Different from traditional non-end-to-end solutions which separate the steps of feature extraction and parameter learning, ConvDLSTM utilizes a unified deep model to optimize the parameters of CNN and RNN hand in hand. It thus has the potential of generating a more harmonious model. The proposed architecture takes sequential raw image data as input, and does not rely on tracklet or trajectory detection. It thus has clear advantages over the traditional flow-based and trajectory-based methods, especially in challenging crowd scenarios of high density and low mobility. Taking advantage of the semantic representation of CNN and the memory states of LSTM, ConvDLSTM can effectively analyze both the crowd scene and motion information. Existing LSTM-based crowd scene solutions explore deep temporal information and are claimed to be “deep in time”. ConvDLSTM, however, models the spatial and temporal information in a unified architecture and achieves “deep in space and time”. Extensive performance studies on the Violent-Flows and CUHK Crowd datasets show that the proposed technique significantly outperforms state-of-the-art methods.</p>
 </blockquote>
-<p>随着现实世界中人群现象的增长，对人群场景的了解已成为异常检测和公共安全中的重要任务。视觉上的歧义和遮挡，高密度，低移动性和场景语义使这个问题成为一个巨大的挑战。<strong>在本文中，我们提出了一种端到端的深度架构卷积DLSTM（ConvDLSTM），用于了解人群场景。
-ConvDLSTM由GoogleNet Inception
-V3卷积神经网络（CNN）和堆叠式差分长期短期记忆（DLSTM）网络组成。</strong>与传统的将特征提取和参数学习步骤分开的非端到端解决方案不同，ConvDLSTM利用统一的深度模型来优化CNN和RNN的参数。因此，它具有生成更和谐模型的潜力。所提出的体系结构将顺序的原始图像数据作为输入，并且不依赖于小波或轨迹检测。因此，与传统的基于流和基于轨迹的方法相比，它具有明显的优势，尤其是在高密度和低移动性的挑战性人群场景中。利用CNN的语义表示和LSTM的存储状态，ConvDLSTM可以有效地分析人群场景和运动信息。现有的基于LSTM的人群场景解决方案可探索深层的时间信息，并被称为“深层时间”。但是，ConvDLSTM在统一的体系结构中对空间和时间信息进行建模，并实现了“深度的空间和时间”。对暴力流和中大人群数据集的大量性能研究表明，所提出的技术明显优于最新方法。</p>
+<p>随着现实世界中人群现象的增长，对人群场景的了解已成为异常检测和公共安全中的重要任务。视觉上的歧义和遮挡，高密度，低移动性和场景语义使这个问题成为一个巨大的挑战。<strong>在本文中，我们提出了一种端到端的深度架构卷积DLSTM（ConvDLSTM），用于了解人群场景。 ConvDLSTM由GoogleNet Inception V3卷积神经网络（CNN）和堆叠式差分长期短期记忆（DLSTM）网络组成。</strong>与传统的将特征提取和参数学习步骤分开的非端到端解决方案不同，ConvDLSTM利用统一的深度模型来优化CNN和RNN的参数。因此，它具有生成更和谐模型的潜力。所提出的体系结构将顺序的原始图像数据作为输入，并且不依赖于小波或轨迹检测。因此，与传统的基于流和基于轨迹的方法相比，它具有明显的优势，尤其是在高密度和低移动性的挑战性人群场景中。利用CNN的语义表示和LSTM的存储状态，ConvDLSTM可以有效地分析人群场景和运动信息。现有的基于LSTM的人群场景解决方案可探索深层的时间信息，并被称为“深层时间”。但是，ConvDLSTM在统一的体系结构中对空间和时间信息进行建模，并实现了“深度的空间和时间”。对暴力流和中大人群数据集的大量性能研究表明，所提出的技术明显优于最新方法。</p>
 <p><strong>关键词</strong>：</p>
-<p><a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Tracking&amp;newsearch=true">Tracking</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Feature%20extraction&amp;newsearch=true">Feature
-extraction</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Trajectory&amp;newsearch=true">Trajectory</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Computer%20architecture&amp;newsearch=true">Computer
-architecture</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Semantics&amp;newsearch=true">Semantics</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Image%20analysis&amp;newsearch=true">Image
-analysis</a></p>
-<h2
-id="使用卷积winner-take-all自动编码器进行异常检测">使用卷积Winner-Take-All自动编码器进行异常检测</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://eprints.whiterose.ac.uk/121891/">Anomaly Detection using a
-Convolutional Winner-Take-All Autoencoder</a></p>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Tracking&amp;newsearch=true">Tracking</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Feature extraction&amp;newsearch=true">Feature extraction</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Trajectory&amp;newsearch=true">Trajectory</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Computer architecture&amp;newsearch=true">Computer architecture</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Semantics&amp;newsearch=true">Semantics</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Image analysis&amp;newsearch=true">Image analysis</a></p>
+<h2 id="使用卷积Winner-Take-All自动编码器进行异常检测"><a href="#使用卷积Winner-Take-All自动编码器进行异常检测" class="headerlink" title="使用卷积Winner-Take-All自动编码器进行异常检测"></a>使用卷积Winner-Take-All自动编码器进行异常检测</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://eprints.whiterose.ac.uk/121891/">Anomaly Detection using a Convolutional Winner-Take-All Autoencoder</a></p>
 <p><strong>作者</strong>：Tran, HTM、Hogg, D</p>
 <p><strong>发表日期</strong>：2017年9月4日</p>
 <p><strong>被引用次数</strong>：41</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>We propose a method for video anomaly detection using a
-winner-take-all convolutional autoencoder that has recently been shown
-to give competitive results in learning for classification task. The
-method builds on state of the art approaches to anomaly detection using
-a convolutional autoencoder and a one-class SVM to build a model of
-normality. The key novelties are (1) using the motion-feature encoding
-extracted from a convolutional autoencoder as input to a one-class SVM
-rather than exploiting reconstruction error of the convolutional
-autoencoder, and (2) introducing a spatial winner-take-all step after
-the final encoding layer during training to introduce a high degree of
-sparsity. We demonstrate an improvement in performance over the state of
-the art on UCSD and Avenue (CUHK) datasets.</p>
+<p>We propose a method for video anomaly detection using a winner-take-all convolutional autoencoder that has recently been shown to give competitive results in learning for classification task. The method builds on state of the art approaches to anomaly detection using a convolutional autoencoder and a one-class SVM to build a model of normality. The key novelties are (1) using the motion-feature encoding extracted from a convolutional autoencoder as input to a one-class SVM rather than exploiting reconstruction error of the convolutional autoencoder, and (2) introducing a spatial winner-take-all step after the final encoding layer during training to introduce a high degree of sparsity. We demonstrate an improvement in performance over the state of the art on UCSD and Avenue (CUHK) datasets.</p>
 </blockquote>
-<p>我们提出了一种使用获胜者通吃（winner-take-all）卷积自动编码器进行视频异常检测的方法，该方法最近被证明可以在学习分类任务时提供有竞争力的结果。
-<strong>该方法建立在使用卷积自动编码器和一类SVM来建立正常性模型的最新异常检测方法的基础上。</strong>
-关键的新颖性是（1）使用从卷积自动编码器提取的运动特征编码作为一类SVM的输入，而不是利用卷积自动编码器的重构误差，以及（2）在引入空间赢家通吃步骤之后
-训练过程中的最终编码层引入了高度的稀疏性。
-我们在UCSD和Avenue（CUHK）数据集上展示了超过现有技术的性能改进。</p>
-<h2
-id="对抗式自动编码器用于图像中的异常事件检测">对抗式自动编码器，用于图像中的异常事件检测</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://scholarworks.iupui.edu/handle/1805/12352">Adversarial
-autoencoders for anomalous event detection in images</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://scholarworks.iupui.edu/discover?filtertype=author&amp;filter_relational_operator=equals&amp;filter=Dimokranitou,%20Asimenia">Dimokranitou,
-Asimenia</a></p>
+<p>我们提出了一种使用获胜者通吃（winner-take-all）卷积自动编码器进行视频异常检测的方法，该方法最近被证明可以在学习分类任务时提供有竞争力的结果。 <strong>该方法建立在使用卷积自动编码器和一类SVM来建立正常性模型的最新异常检测方法的基础上。</strong> 关键的新颖性是（1）使用从卷积自动编码器提取的运动特征编码作为一类SVM的输入，而不是利用卷积自动编码器的重构误差，以及（2）在引入空间赢家通吃步骤之后 训练过程中的最终编码层引入了高度的稀疏性。 我们在UCSD和Avenue（CUHK）数据集上展示了超过现有技术的性能改进。 </p>
+<h2 id="对抗式自动编码器，用于图像中的异常事件检测"><a href="#对抗式自动编码器，用于图像中的异常事件检测" class="headerlink" title="对抗式自动编码器，用于图像中的异常事件检测"></a>对抗式自动编码器，用于图像中的异常事件检测</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://scholarworks.iupui.edu/handle/1805/12352">Adversarial autoencoders for anomalous event detection in images</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://scholarworks.iupui.edu/discover?filtertype=author&amp;filter_relational_operator=equals&amp;filter=Dimokranitou, Asimenia">Dimokranitou, Asimenia</a></p>
 <p><strong>发表日期</strong>：2017年</p>
 <p><strong>被引用次数</strong>：29</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>Detection of anomalous events in image sequences is a problem in
-computer vision with various applications, such as public security,
-health monitoring and intrusion detection. Despite the various
-applications, anomaly detection remains an ill-defined problem. Several
-definitions exist, the most commonly used defines an anomaly as a low
-probability event. Anomaly detection is a challenging problem mainly
-because of the lack of abnormal observations in the data. Thus, usually
-it is considered an unsupervised learning problem. Our approach is based
-on autoencoders in combination with Generative Adversarial Networks. The
-method is called Adversarial Autoencoders [1], and it is a probabilistic
-autoencoder, that attempts to match the aggregated posterior of the
-hidden code vector of the autoencoder, with an arbitrary prior
-distribution. The adversarial error of the learned autoencoder is low
-for regular events and high for irregular events. We compare our
-approach with state of the art methods and describe our results with
-respect to accuracy and efficiency.</p>
+<p>Detection of anomalous events in image sequences is a problem in computer vision with various applications, such as public security, health monitoring and intrusion detection. Despite the various applications, anomaly detection remains an ill-defined problem. Several definitions exist, the most commonly used defines an anomaly as a low probability event. Anomaly detection is a challenging problem mainly because of the lack of abnormal observations in the data. Thus, usually it is considered an unsupervised learning problem. Our approach is based on autoencoders in combination with Generative Adversarial Networks. The method is called Adversarial Autoencoders [1], and it is a probabilistic autoencoder, that attempts to match the aggregated posterior of the hidden code vector of the autoencoder, with an arbitrary prior distribution. The adversarial error of the learned autoencoder is low for regular events and high for irregular events. We compare our approach with state of the art methods and describe our results with respect to accuracy and efficiency.</p>
 </blockquote>
-<p>对抗式自动编码器，用于图像中的异常事件检测
-图像序列中异常事件的检测是计算机视觉在各种应用（例如公共安全，健康监控和入侵检测）中的问题。尽管有各种各样的应用，但是异常检测仍然是一个不确定的问题。存在几种定义，最常用的定义是将异常定义为低概率事件。异常检测是一个具有挑战性的问题，主要是因为数据中缺少异常观察。因此，通常认为它是无监督的学习问题。<strong>我们的方法基于结合了对抗性网络的自动编码器。该方法称为对抗自动编码器[1]，它是一种概率自动编码器，它尝试将自动编码器的隐藏代码矢量的聚合后验与任意先验分布进行匹配。</strong>对于常规事件，学习到的自动编码器的对抗性误差较低，而对于不规则事件，则具有较高的对抗性误差。我们将我们的方法与最先进的方法进行比较，并就准确性和效率描述我们的结果。</p>
-<h2
-id="crowd-11用于细粒度人群行为分析的数据集">Crowd-11：用于细粒度人群行为分析的数据集</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_cvpr_2017_workshops/w37/html/Dupont_Crowd-11_A_Dataset_CVPR_2017_paper.html">Crowd-11:
-A Dataset for Fine Grained Crowd Behaviour Analysis</a></p>
-<p><strong>作者</strong>：Camille Dupont, Luis Tobias, Bertrand
-Luvison</p>
+<p>对抗式自动编码器，用于图像中的异常事件检测 图像序列中异常事件的检测是计算机视觉在各种应用（例如公共安全，健康监控和入侵检测）中的问题。尽管有各种各样的应用，但是异常检测仍然是一个不确定的问题。存在几种定义，最常用的定义是将异常定义为低概率事件。异常检测是一个具有挑战性的问题，主要是因为数据中缺少异常观察。因此，通常认为它是无监督的学习问题。<strong>我们的方法基于结合了对抗性网络的自动编码器。该方法称为对抗自动编码器[1]，它是一种概率自动编码器，它尝试将自动编码器的隐藏代码矢量的聚合后验与任意先验分布进行匹配。</strong>对于常规事件，学习到的自动编码器的对抗性误差较低，而对于不规则事件，则具有较高的对抗性误差。我们将我们的方法与最先进的方法进行比较，并就准确性和效率描述我们的结果。 </p>
+<h2 id="Crowd-11：用于细粒度人群行为分析的数据集"><a href="#Crowd-11：用于细粒度人群行为分析的数据集" class="headerlink" title="Crowd-11：用于细粒度人群行为分析的数据集"></a>Crowd-11：用于细粒度人群行为分析的数据集</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_cvpr_2017_workshops/w37/html/Dupont_Crowd-11_A_Dataset_CVPR_2017_paper.html">Crowd-11: A Dataset for Fine Grained Crowd Behaviour Analysis</a></p>
+<p><strong>作者</strong>：Camille Dupont, Luis Tobias, Bertrand Luvison</p>
 <p><strong>发表日期</strong>：2017年</p>
 <p><strong>被引用次数</strong>：13</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>Crowd behaviour analysis is a challenging task in computer vision,
-mainly due to the high complexity of the interactions between groups and
-individuals. This task is particularly crucial given the magnitude of
-manual monitoring required for effective crowd management. Within this
-context, a key challenge is to conceive a highly generic, fine and
-context-independent characterisation of crowd behaviours. Since current
-datasets answer only partially to this problem, a new dataset is
-generated, with a total of 11 crowd motion patterns and over 6000 video
-clips with an average length of 100 frames per sequence. We establish
-the first baseline of crowd characterisation with an extensive
-evaluation on shallow and deep methods. This characterisation is
-expected to be useful in multiple crowd analysis circumstances, we
-present a new deep architecture for crowd characterisation and
-demonstrate its application in the context of anomaly
-classification.</p>
+<p>Crowd behaviour analysis is a challenging task in computer vision, mainly due to the high complexity of the interactions between groups and individuals. This task is particularly crucial given the magnitude of manual monitoring required for effective crowd management. Within this context, a key challenge is to conceive a highly generic, fine and context-independent characterisation of crowd behaviours. Since current datasets answer only partially to this problem, a new dataset is generated, with a total of 11 crowd motion patterns and over 6000 video clips with an average length of 100 frames per sequence. We establish the first baseline of crowd characterisation with an extensive evaluation on shallow and deep methods. This characterisation is expected to be useful in multiple crowd analysis circumstances, we present a new deep architecture for crowd characterisation and demonstrate its application in the context of anomaly classification.</p>
 </blockquote>
 <p>人群行为分析是计算机视觉中一项具有挑战性的任务，这主要是由于群体与个人之间交互的高度复杂性。考虑到有效人群管理所需的手动监控量，此任务尤其重要。在这种情况下，一个关键的挑战是要构思出一种高度通用，精细且与上下文无关的人群行为表征。由于当前的数据集仅部分解决了该问题，因此生成了一个新的数据集，该数据集共有11种人群运动模式和6000多个视频剪辑，每个序列的平均长度为100帧。我们通过对浅层和深层方法的广泛评估来建立人群表征的第一个基线。预期该表征在多种人群分析情况下将是有用的，我们提出了一种用于人群表征的新的深层体系结构，并展示了其在异常分类的背景下的应用。</p>
-<h2
-id="通过学习外观和动作的深度表示来检测视频中的异常事件">通过学习外观和动作的深度表示来检测视频中的异常事件</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618">Detecting
-anomalous events in videos by learning deep representations of
-appearance and motion</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618#!">DanXua</a>、<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618#!">YanYand</a>、<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618#!">ElisaRiccibc</a>、<a
-target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618#!">NicuSebe</a></p>
+<h2 id="通过学习外观和动作的深度表示来检测视频中的异常事件"><a href="#通过学习外观和动作的深度表示来检测视频中的异常事件" class="headerlink" title="通过学习外观和动作的深度表示来检测视频中的异常事件"></a>通过学习外观和动作的深度表示来检测视频中的异常事件</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618">Detecting anomalous events in videos by learning deep representations of appearance and motion</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618#!">DanXua</a>、<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618#!">YanYand</a>、<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618#!">ElisaRiccibc</a>、<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1077314216301618#!">NicuSebe</a></p>
 <p><strong>发表日期</strong>：2017年3月</p>
 <p><strong>被引用次数</strong>：211</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>Anomalous event detection is of utmost importance in intelligent
-video surveillance. Currently, most approaches for the automatic
-analysis of complex video scenes typically rely on hand-crafted
-appearance and motion features. However, adopting user defined
-representations is clearly suboptimal, as it is desirable to learn
-descriptors specific to the scene of interest. To cope with this need,
-in this paper we propose Appearance and Motion DeepNet (AMDN), a novel
-approach based on deep neural networks to automatically learn feature
-representations. To exploit the complementary information of both
-appearance and motion patterns, we introduce a novel double fusion
-framework, combining the benefits of traditional early fusion and late
-fusion strategies. Specifically, stacked denoising autoencoders are
-proposed to separately learn both appearance and motion features as well
-as a joint representation (early fusion). Then, based on the learned
-features, multiple one-class SVM models are used to predict the anomaly
-scores of each input. Finally, a novel late fusion strategy is proposed
-to combine the computed scores and detect abnormal events. The proposed
-ADMN is extensively evaluated on publicly available video surveillance
-datasets including UCSD pedestian, Subway, and Train, showing
-competitive performance with respect to state of the art approaches.</p>
+<p>Anomalous event detection is of utmost importance in intelligent video surveillance. Currently, most approaches for the automatic analysis of complex video scenes typically rely on hand-crafted appearance and motion features. However, adopting user defined representations is clearly suboptimal, as it is desirable to learn descriptors specific to the scene of interest. To cope with this need, in this paper we propose Appearance and Motion DeepNet (AMDN), a novel approach based on deep neural networks to automatically learn feature representations. To exploit the complementary information of both appearance and motion patterns, we introduce a novel double fusion framework, combining the benefits of traditional early fusion and late fusion strategies. Specifically, stacked denoising autoencoders are proposed to separately learn both appearance and motion features as well as a joint representation (early fusion). Then, based on the learned features, multiple one-class SVM models are used to predict the anomaly scores of each input. Finally, a novel late fusion strategy is proposed to combine the computed scores and detect abnormal events. The proposed ADMN is extensively evaluated on publicly available video surveillance datasets including UCSD pedestian, Subway, and Train, showing competitive performance with respect to state of the art approaches.</p>
 </blockquote>
 <p>异常事件检测在智能视频监控中至关重要。当前，大多数用于自动分析复杂视频场景的方法通常依赖于手工制作的外观和运动特征。然而，采用用户定义的表示显然次优，因为希望学习特定于感兴趣场景的描述符。为了满足这种需求，<strong>在本文中，我们提出了外观和运动DeepNet（AMDN），这是一种基于深度神经网络的自动学习特征表示的新颖方法。为了利用外观和运动模式的互补信息，我们引入了一种新颖的双重融合框架，结合了传统早期融合和晚期融合策略的优势。</strong>具体而言，提出了堆叠式<strong>去噪自动编码器</strong>，以分别学习外观和运动特征以及联合表示（早期融合）。然后，基于学习到的功能，使用<strong>多个一类SVM模型</strong>来预测每个输入的异常分数。最后，提出了一种新颖的后期融合策略，以结合计算出的分数并检测异常事件。拟议的ADMN已在包括UCSD行人，地铁和火车在内的公共视频监控数据集上进行了广泛评估，显示出在最新技术方法方面的竞争优势。</p>
 <p><strong>关键词</strong>：</p>
-<p>Video surveillance、Abnormal event detection、Unsupervised
-learning、Stacked denoising auto-encoders、Feature fusion</p>
-<h2
-id="使用时空自动编码器的视频异常事件检测">使用时空自动编码器的视频异常事件检测</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-3-319-59081-3_23">Abnormal
-Event Detection in Videos Using Spatiotemporal Autoencoder</a></p>
+<p>Video surveillance、Abnormal event detection、Unsupervised learning、Stacked denoising auto-encoders、Feature fusion</p>
+<h2 id="使用时空自动编码器的视频异常事件检测"><a href="#使用时空自动编码器的视频异常事件检测" class="headerlink" title="使用时空自动编码器的视频异常事件检测"></a>使用时空自动编码器的视频异常事件检测</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-3-319-59081-3_23">Abnormal Event Detection in Videos Using Spatiotemporal Autoencoder</a></p>
 <p><strong>作者</strong>：Yong Shean Chong、Yong Haur Tay</p>
 <p><strong>发表日期</strong>：2017年5月31日</p>
 <p><strong>被引用次数</strong>：272</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>We present an efficient method for detecting anomalies in videos.
-Recent applications of convolutional neural networks have shown promises
-of convolutional layers for object detection and recognition, especially
-in images. However, convolutional neural networks are supervised and
-require labels as learning signals. We propose a spatiotemporal
-architecture for anomaly detection in videos including crowded scenes.
-Our architecture includes two main components, one for spatial feature
-representation, and one for learning the temporal evolution of the
-spatial features. Experimental results on Avenue, Subway and UCSD
-benchmarks confirm that the detection accuracy of our method is
-comparable to state-of-the-art methods at a considerable speed of up to
-140 fps.</p>
+<p>We present an efficient method for detecting anomalies in videos. Recent applications of convolutional neural networks have shown promises of convolutional layers for object detection and recognition, especially in images. However, convolutional neural networks are supervised and require labels as learning signals. We propose a spatiotemporal architecture for anomaly detection in videos including crowded scenes. Our architecture includes two main components, one for spatial feature representation, and one for learning the temporal evolution of the spatial features. Experimental results on Avenue, Subway and UCSD benchmarks confirm that the detection accuracy of our method is comparable to state-of-the-art methods at a considerable speed of up to 140 fps.</p>
 </blockquote>
-<p>我们提出了一种检测视频异常的有效方法。
-卷积神经网络的最新应用显示了卷积层用于物体检测和识别的前景，特别是在图像中。
-但是，卷积神经网络受到监督，并且需要标签作为学习信号。
-<strong>我们提出了一种时空架构，用于在拥挤的场景中进行视频异常检测。
-我们的体系结构包括两个主要组件，一个用于空间特征表示，一个用于学习空间特征的时间演变。</strong>
-在Avenue，Subway和UCSD基准测试中的实验结果证实，在高达140
-fps的可观速度下，我们的方法的检测精度可与最新方法媲美。</p>
+<p>我们提出了一种检测视频异常的有效方法。 卷积神经网络的最新应用显示了卷积层用于物体检测和识别的前景，特别是在图像中。 但是，卷积神经网络受到监督，并且需要标签作为学习信号。 <strong>我们提出了一种时空架构，用于在拥挤的场景中进行视频异常检测。 我们的体系结构包括两个主要组件，一个用于空间特征表示，一个用于学习空间特征的时间演变。</strong> 在Avenue，Subway和UCSD基准测试中的实验结果证实，在高达140 fps的可观速度下，我们的方法的检测精度可与最新方法媲美。</p>
 <p><strong>关键词</strong>：</p>
-<p>Anomaly detection、Feature learning、Regularity、Autoencoder</p>
-<h2
-id="基于高斯混合模型的人群异常行为实时检测算法">基于高斯混合模型的人群异常行为实时检测算法</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8085486">Real-time
-detection algorithm of abnormal behavior in crowds based on Gaussian
-mixture model</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086256806">Zhaohui Luo</a>;
-<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086254052">Weisheng
-He</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085505812">Minghui
-Liwang</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37405928400">Lianfen Huang</a>;
-<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085641282">Yifeng
-Zhao</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086257757">Jun
-Geng</a></p>
+<p>Anomaly detection、Feature learning、Regularity、Autoencoder </p>
+<h2 id="基于高斯混合模型的人群异常行为实时检测算法"><a href="#基于高斯混合模型的人群异常行为实时检测算法" class="headerlink" title="基于高斯混合模型的人群异常行为实时检测算法"></a>基于高斯混合模型的人群异常行为实时检测算法</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8085486">Real-time detection algorithm of abnormal behavior in crowds based on Gaussian mixture model</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086256806">Zhaohui Luo</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086254052">Weisheng He</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085505812">Minghui Liwang</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37405928400">Lianfen Huang</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37085641282">Yifeng Zhao</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086257757">Jun Geng</a></p>
 <p><strong>发表日期</strong>：2017年8月</p>
 <p><strong>被引用次数</strong>：4</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>Recently, abnormal evens detection in crowds has received
-considerable attention in the field of public safety. Most existing
-studies do not account for the processing time and the continuity of
-abnormal behavior characteristics. In this paper, we present a new
-motion feature descriptor, called the sensitive movement point (SMP).
-Gaussian Mixture Model (GMM) is used for modeling the abnormal crowd
-behavior with full consideration of the characteristics of crowd
-abnormal behavior. First, we analyze the video with GMM, to extract
-sensitive movement point in certain speed by setting update threshold
-value of GMM. Then, analyze the sensitive movement point of video frame
-with temporal and spatial modeling. Identify abnormal behavior through
-the analysis of mutation duration occurs in temporal and spatial model,
-and the density, distribution and mutative acceleration of sensitive
-movement point in blocks. The algorithm can be implemented with
-automatic adapt to environmental change and online learning, without
-tracking individuals of crowd and large scale training in detection
-process. Experiments involving the UMN datasets and the videos taken by
-us show that the proposed algorithm can real-time effectively identify
-various types of anomalies and that the recognition results and
-processing time are better than existing algorithms.</p>
+<p>Recently, abnormal evens detection in crowds has received considerable attention in the field of public safety. Most existing studies do not account for the processing time and the continuity of abnormal behavior characteristics. In this paper, we present a new motion feature descriptor, called the sensitive movement point (SMP). Gaussian Mixture Model (GMM) is used for modeling the abnormal crowd behavior with full consideration of the characteristics of crowd abnormal behavior. First, we analyze the video with GMM, to extract sensitive movement point in certain speed by setting update threshold value of GMM. Then, analyze the sensitive movement point of video frame with temporal and spatial modeling. Identify abnormal behavior through the analysis of mutation duration occurs in temporal and spatial model, and the density, distribution and mutative acceleration of sensitive movement point in blocks. The algorithm can be implemented with automatic adapt to environmental change and online learning, without tracking individuals of crowd and large scale training in detection process. Experiments involving the UMN datasets and the videos taken by us show that the proposed algorithm can real-time effectively identify various types of anomalies and that the recognition results and processing time are better than existing algorithms.</p>
 </blockquote>
 <p>近来，在公共安全领域中，人群中的异常偶数检测已引起相当大的关注。现有的大多数研究都没有考虑处理时间和异常行为特征的连续性。在本文中，<strong>我们提出了一个新的运动特征描述符，称为敏感运动点（SMP）。高斯混合模型（GMM）用于在充分考虑人群异常行为特征的情况下对人群异常行为进行建模。</strong>首先，我们使用GMM对视频进行分析，通过设置GMM的更新阈值来提取特定速度下的敏感运动点。然后，通过时空建模分析视频帧的敏感运动点。通过分析时空模型中发生的突变持续时间以及块中敏感运动点的密度，分布和突变加速度来识别异常行为。该算法可以自动适应环境变化和在线学习来实现，而无需在检测过程中跟踪人群并进行大规模培训。包含UMN数据集和我们拍摄的视频的实验表明，该算法可以实时有效地识别各种类型的异常，并且识别结果和处理时间比现有算法要好。</p>
 <p><strong>关键词</strong>：</p>
-<p>Feature extraction,Analytical models,Real-time systems,Switched mode
-power supplies,Gaussian mixture mode,Adaptation models</p>
-<h2
-id="使用卷积神经网络和1类svm分类器进行异常事件检测">使用卷积神经网络和1类SVM分类器进行异常事件检测</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://digital-library.theiet.org/content/conferences/10.1049/ic.2017.0040">Abnormal
-Event Detection Using Convolutional Neural Networks and 1-Class SVM
-classifier</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://digital-library.theiet.org/search;jsessionid=v45k1j84bmdk.x-iet-live-01?value1=&amp;option1=all&amp;value2=S.+Bouindour&amp;option2=author">S.
-Bouindour</a> ; <a
-target="_blank" rel="noopener" href="https://digital-library.theiet.org/search;jsessionid=v45k1j84bmdk.x-iet-live-01?value1=&amp;option1=all&amp;value2=M.M.+Hittawe&amp;option2=author">M.M.
-Hittawe</a> ; <a
-target="_blank" rel="noopener" href="https://digital-library.theiet.org/search;jsessionid=v45k1j84bmdk.x-iet-live-01?value1=&amp;option1=all&amp;value2=S.+Mahfouz&amp;option2=author">S.
-Mahfouz</a> ; <a
-target="_blank" rel="noopener" href="https://digital-library.theiet.org/search;jsessionid=v45k1j84bmdk.x-iet-live-01?value1=&amp;option1=all&amp;value2=H.+Snoussi&amp;option2=author">H.
-Snoussi</a></p>
+<p>Feature extraction,Analytical models,Real-time systems,Switched mode power supplies,Gaussian mixture mode,Adaptation models</p>
+<h2 id="使用卷积神经网络和1类SVM分类器进行异常事件检测"><a href="#使用卷积神经网络和1类SVM分类器进行异常事件检测" class="headerlink" title="使用卷积神经网络和1类SVM分类器进行异常事件检测"></a>使用卷积神经网络和1类SVM分类器进行异常事件检测</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://digital-library.theiet.org/content/conferences/10.1049/ic.2017.0040">Abnormal Event Detection Using Convolutional Neural Networks and 1-Class SVM classifier</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://digital-library.theiet.org/search;jsessionid=v45k1j84bmdk.x-iet-live-01?value1=&amp;option1=all&amp;value2=S.+Bouindour&amp;option2=author">S. Bouindour</a>  ; <a target="_blank" rel="noopener" href="https://digital-library.theiet.org/search;jsessionid=v45k1j84bmdk.x-iet-live-01?value1=&amp;option1=all&amp;value2=M.M.+Hittawe&amp;option2=author">M.M. Hittawe</a>  ; <a target="_blank" rel="noopener" href="https://digital-library.theiet.org/search;jsessionid=v45k1j84bmdk.x-iet-live-01?value1=&amp;option1=all&amp;value2=S.+Mahfouz&amp;option2=author">S. Mahfouz</a>  ; <a target="_blank" rel="noopener" href="https://digital-library.theiet.org/search;jsessionid=v45k1j84bmdk.x-iet-live-01?value1=&amp;option1=all&amp;value2=H.+Snoussi&amp;option2=author">H. Snoussi</a> </p>
 <p><strong>发表日期</strong>：2017年</p>
 <p><strong>被引用次数</strong>：16</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>In this paper, we present a method based on deep learning for
-detection and localization of spatial and temporal abnormal events in
-surveillance videos using training samples containing only normal
-events. This work is divided into two stages, the first one is feature
-extraction for each patch of the input image using the first two
-convolution layers extracted from a pretrained CNN. In second stage,
-one-class SVM is trained with resultant features. The SVM classifier
-allows a fast and robust abnormal detection with respect to the presence
-of outliers in the training dataset. Experimental tests have conducted
-on UCSD Ped2 dataset, this dataset is considered as complex due to low
-resolution and presence of many occlusions. Our results showed high
-performance and were compared with state-of-the art methods.</p>
+<p>In this paper, we present a method based on deep learning for detection and localization of spatial and temporal abnormal events in surveillance videos using training samples containing only normal events. This work is divided into two stages, the first one is feature extraction for each patch of the input image using the first two convolution layers extracted from a pretrained CNN. In second stage, one-class SVM is trained with resultant features. The SVM classifier allows a fast and robust abnormal detection with respect to the presence of outliers in the training dataset. Experimental tests have conducted on UCSD Ped2 dataset, this dataset is considered as complex due to low resolution and presence of many occlusions. Our results showed high performance and were compared with state-of-the art methods.</p>
 </blockquote>
-<p>在本文中，我们提出了一种基于深度学习的方法，该方法使用仅包含正常事件的训练样本来检测和定位监视视频中的时空异常事件。
-这项工作分为两个阶段，<strong>第一个阶段是使用从预训练的CNN中提取的前两个卷积层对输入图像的每个面片进行特征提取。
-在第二阶段，将对一类SVM进行最终功能训练。</strong>
-SVM分类器允许针对训练数据集中存在异常值进行快速而强大的异常检测。 在UCSD
-Ped2数据集上进行了实验测试，由于分辨率低且存在许多遮挡，因此该数据集被认为是复杂的。
-我们的结果显示出很高的性能，并与最先进的方法进行了比较。</p>
-<h2 id="视频监控中的异常检测技术分析">视频监控中的异常检测技术分析</h2>
-<p><strong>题目</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8389240">Analysis of
-anomaly detection techniques in video surveillance</a></p>
-<p><strong>作者</strong>：<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086400101">Karuna B.
-Ovhal</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086399444">Sonal S.
-Patange</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086398167">Reshma S.
-Shinde</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086398041">Vaishnavi K.
-Tarange</a>; <a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086128232">Vijay A.
-Kotkar</a></p>
+<p>在本文中，我们提出了一种基于深度学习的方法，该方法使用仅包含正常事件的训练样本来检测和定位监视视频中的时空异常事件。 这项工作分为两个阶段，<strong>第一个阶段是使用从预训练的CNN中提取的前两个卷积层对输入图像的每个面片进行特征提取。 在第二阶段，将对一类SVM进行最终功能训练。</strong> SVM分类器允许针对训练数据集中存在异常值进行快速而强大的异常检测。 在UCSD Ped2数据集上进行了实验测试，由于分辨率低且存在许多遮挡，因此该数据集被认为是复杂的。 我们的结果显示出很高的性能，并与最先进的方法进行了比较。</p>
+<h2 id="视频监控中的异常检测技术分析"><a href="#视频监控中的异常检测技术分析" class="headerlink" title="视频监控中的异常检测技术分析"></a>视频监控中的异常检测技术分析</h2><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8389240">Analysis of anomaly detection techniques in video surveillance</a></p>
+<p><strong>作者</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086400101">Karuna B. Ovhal</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086399444">Sonal S. Patange</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086398167">Reshma S. Shinde</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086398041">Vaishnavi K. Tarange</a>; <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/author/37086128232">Vijay A. Kotkar</a></p>
 <p><strong>发表日期</strong>：2017年6月21日</p>
 <p><strong>被引用次数</strong>：7</p>
 <p><strong>摘要</strong>：</p>
 <blockquote>
-<p>Abnormal activity detection plays a decisive role in surveillance
-applications. To capture abnormal body of human without the intervention
-of system i.e. automatically captures the video can be implemented.
-Human fall detection, suddenly jumping down which has an important
-application in the field of safety and security. Proposed system use for
-detecting road side human activity or behavior by using Probabilistic
-Neural Network (PNN) method for classifying activities or behavior
-between training dataset and testing videos. The partitions between
-classes of normal activities have also been learned using multi-PNNs.
-Local Binary Pattern (LBP) to track the object by using blob analysis.
-The proposed system is used to recognize and detecting outcome that are
-equivalent to or better than previous methods.</p>
+<p>Abnormal activity detection plays a decisive role in surveillance applications. To capture abnormal body of human without the intervention of system i.e. automatically captures the video can be implemented. Human fall detection, suddenly jumping down which has an important application in the field of safety and security. Proposed system use for detecting road side human activity or behavior by using Probabilistic Neural Network (PNN) method for classifying activities or behavior between training dataset and testing videos. The partitions between classes of normal activities have also been learned using multi-PNNs. Local Binary Pattern (LBP) to track the object by using blob analysis. The proposed system is used to recognize and detecting outcome that are equivalent to or better than previous methods.</p>
 </blockquote>
-<p>异常活动检测在监视应用中起决定性作用。
-在没有系统干预的情况下捕获人的异常身体，即，可以实现视频的自动捕获。
-人体跌倒检测，突然跳下，在安全保障领域具有重要的应用。
-<strong>提议的系统用于通过使用概率神经网络（PNN）方法对路边的人类活动或行为进行检测的方法，以对训练数据集和测试视频之间的活动或行为进行分类。</strong>
-正常活动类别之间的划分也已使用多PNN进行了学习。
-本地二进制模式（LBP）通过使用斑点分析来跟踪对象。
-所提出的系统用于识别和检测等同于或优于先前方法的结果。</p>
+<p>异常活动检测在监视应用中起决定性作用。 在没有系统干预的情况下捕获人的异常身体，即，可以实现视频的自动捕获。 人体跌倒检测，突然跳下，在安全保障领域具有重要的应用。 <strong>提议的系统用于通过使用概率神经网络（PNN）方法对路边的人类活动或行为进行检测的方法，以对训练数据集和测试视频之间的活动或行为进行分类。</strong> 正常活动类别之间的划分也已使用多PNN进行了学习。 本地二进制模式（LBP）通过使用斑点分析来跟踪对象。 所提出的系统用于识别和检测等同于或优于先前方法的结果。</p>
 <p><strong>关键词</strong>：</p>
-<p><a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Anomaly%20detection&amp;newsearch=true">Anomaly
-detection</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Feature%20extraction&amp;newsearch=true">Feature
-extraction</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Video%20surveillance&amp;newsearch=true">Video
-surveillance</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Cameras&amp;newsearch=true">Cameras</a>,<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=%22Index%20Terms%22:Tracking&amp;newsearch=true">Tracking</a></p>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Anomaly detection&amp;newsearch=true">Anomaly detection</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Feature extraction&amp;newsearch=true">Feature extraction</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Video surveillance&amp;newsearch=true">Video surveillance</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Cameras&amp;newsearch=true">Cameras</a>,<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&amp;queryText=&quot;Index Terms&quot;:Tracking&amp;newsearch=true">Tracking</a></p>
 
       
     </div>
@@ -1194,7 +691,7 @@ target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchre
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1216,7 +713,7 @@ target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchre
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1265,7 +762,7 @@ target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/search/searchre
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B%E4%BB%A5%E6%A3%80%E6%B5%8B%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8"><span class="nav-number">1.</span> <span class="nav-text">学习深度事件模型以检测人群异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#resnetcrowd%E6%AE%8B%E4%BD%99%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%9E%B6%E6%9E%84%E7%94%A8%E4%BA%8E%E4%BA%BA%E7%BE%A4%E8%AE%A1%E6%95%B0%E6%9A%B4%E5%8A%9B%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B%E5%92%8C%E4%BA%BA%E7%BE%A4%E5%AF%86%E5%BA%A6%E7%AD%89%E7%BA%A7%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">ResnetCrowd：残余深度学习架构，用于人群计数，暴力行为检测和人群密度等级分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB%E5%99%A8%E7%9A%84%E9%AB%98%E6%95%88%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">使用深度学习分类器的高效异常检测系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E7%9B%91%E6%B5%8B%E5%92%8C%E5%88%86%E7%B1%BB%E8%B0%83%E6%9F%A5"><span class="nav-number">4.</span> <span class="nav-text">人群监测和分类：调查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E8%BF%90%E5%8A%A8%E7%9A%84%E6%99%BA%E8%83%BD%E7%9B%91%E8%A7%86%E5%92%8C%E4%BE%A6%E5%AF%9F%E5%85%A8%E5%8A%A8%E6%80%81%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%9C%BA%E8%BD%BD%E5%BA%94%E7%94%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82"><span class="nav-number">5.</span> <span class="nav-text">人群运动的智能监视和侦察全动态视频自动异常检测：机载应用的系统要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E7%A9%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%E7%94%A8%E4%BA%8E%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">6.</span> <span class="nav-text">时空自动编码器，用于视频异常检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deep-cascade%E7%BA%A7%E8%81%94%E7%9A%843d%E6%B7%B1%E5%B1%82%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%94%A8%E4%BA%8E%E5%9C%A8%E6%8B%A5%E6%8C%A4%E7%9A%84%E5%9C%BA%E6%99%AF%E4%B8%AD%E5%BF%AB%E9%80%9F%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%92%8C%E5%AE%9A%E4%BD%8D"><span class="nav-number">7.</span> <span class="nav-text">Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%B7%E7%A7%AF%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%E5%92%8C%E4%B8%80%E7%B1%BB%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E6%A3%80%E6%B5%8B%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8"><span class="nav-number">8.</span> <span class="nav-text">使用卷积自动编码器和一类支持向量机检测视频异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B0%E9%A2%96%E7%9A%84%E5%9F%BA%E4%BA%8E%E5%85%89%E6%B5%81%E7%9A%84%E5%8A%9F%E8%83%BD%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">9.</span> <span class="nav-text">使用新颖的基于光流的功能进行异常人群行为检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AFdlstm%E7%94%A8%E4%BA%8E%E4%BA%BA%E7%BE%A4%E5%9C%BA%E6%99%AF%E7%90%86%E8%A7%A3"><span class="nav-number">10.</span> <span class="nav-text">卷积DLSTM用于人群场景理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%B7%E7%A7%AFwinner-take-all%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">11.</span> <span class="nav-text">使用卷积Winner-Take-All自动编码器进行异常检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8A%97%E5%BC%8F%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="nav-number">12.</span> <span class="nav-text">对抗式自动编码器，用于图像中的异常事件检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crowd-11%E7%94%A8%E4%BA%8E%E7%BB%86%E7%B2%92%E5%BA%A6%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">13.</span> <span class="nav-text">Crowd-11：用于细粒度人群行为分析的数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AD%A6%E4%B9%A0%E5%A4%96%E8%A7%82%E5%92%8C%E5%8A%A8%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%A1%A8%E7%A4%BA%E6%9D%A5%E6%A3%80%E6%B5%8B%E8%A7%86%E9%A2%91%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6"><span class="nav-number">14.</span> <span class="nav-text">通过学习外观和动作的深度表示来检测视频中的异常事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%97%B6%E7%A9%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%E7%9A%84%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="nav-number">15.</span> <span class="nav-text">使用时空自动编码器的视频异常事件检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E8%A1%8C%E4%B8%BA%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95"><span class="nav-number">16.</span> <span class="nav-text">基于高斯混合模型的人群异常行为实时检测算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%92%8C1%E7%B1%BBsvm%E5%88%86%E7%B1%BB%E5%99%A8%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="nav-number">17.</span> <span class="nav-text">使用卷积神经网络和1类SVM分类器进行异常事件检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90"><span class="nav-number">18.</span> <span class="nav-text">视频监控中的异常检测技术分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B%E4%BB%A5%E6%A3%80%E6%B5%8B%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8"><span class="nav-number">1.</span> <span class="nav-text">学习深度事件模型以检测人群异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResnetCrowd%EF%BC%9A%E6%AE%8B%E4%BD%99%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%9E%B6%E6%9E%84%EF%BC%8C%E7%94%A8%E4%BA%8E%E4%BA%BA%E7%BE%A4%E8%AE%A1%E6%95%B0%EF%BC%8C%E6%9A%B4%E5%8A%9B%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B%E5%92%8C%E4%BA%BA%E7%BE%A4%E5%AF%86%E5%BA%A6%E7%AD%89%E7%BA%A7%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">ResnetCrowd：残余深度学习架构，用于人群计数，暴力行为检测和人群密度等级分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB%E5%99%A8%E7%9A%84%E9%AB%98%E6%95%88%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">使用深度学习分类器的高效异常检测系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E7%9B%91%E6%B5%8B%E5%92%8C%E5%88%86%E7%B1%BB%EF%BC%9A%E8%B0%83%E6%9F%A5"><span class="nav-number">4.</span> <span class="nav-text">人群监测和分类：调查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E8%BF%90%E5%8A%A8%E7%9A%84%E6%99%BA%E8%83%BD%E7%9B%91%E8%A7%86%E5%92%8C%E4%BE%A6%E5%AF%9F%E5%85%A8%E5%8A%A8%E6%80%81%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%9A%E6%9C%BA%E8%BD%BD%E5%BA%94%E7%94%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82"><span class="nav-number">5.</span> <span class="nav-text">人群运动的智能监视和侦察全动态视频自动异常检测：机载应用的系统要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E7%A9%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">6.</span> <span class="nav-text">时空自动编码器，用于视频异常检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Cascade%EF%BC%9A%E7%BA%A7%E8%81%94%E7%9A%843D%E6%B7%B1%E5%B1%82%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%9C%A8%E6%8B%A5%E6%8C%A4%E7%9A%84%E5%9C%BA%E6%99%AF%E4%B8%AD%E5%BF%AB%E9%80%9F%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%92%8C%E5%AE%9A%E4%BD%8D"><span class="nav-number">7.</span> <span class="nav-text">Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%B7%E7%A7%AF%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%E5%92%8C%E4%B8%80%E7%B1%BB%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E6%A3%80%E6%B5%8B%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8"><span class="nav-number">8.</span> <span class="nav-text">使用卷积自动编码器和一类支持向量机检测视频异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B0%E9%A2%96%E7%9A%84%E5%9F%BA%E4%BA%8E%E5%85%89%E6%B5%81%E7%9A%84%E5%8A%9F%E8%83%BD%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">9.</span> <span class="nav-text">使用新颖的基于光流的功能进行异常人群行为检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AFDLSTM%E7%94%A8%E4%BA%8E%E4%BA%BA%E7%BE%A4%E5%9C%BA%E6%99%AF%E7%90%86%E8%A7%A3"><span class="nav-number">10.</span> <span class="nav-text">卷积DLSTM用于人群场景理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%B7%E7%A7%AFWinner-Take-All%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">11.</span> <span class="nav-text">使用卷积Winner-Take-All自动编码器进行异常检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8A%97%E5%BC%8F%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="nav-number">12.</span> <span class="nav-text">对抗式自动编码器，用于图像中的异常事件检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Crowd-11%EF%BC%9A%E7%94%A8%E4%BA%8E%E7%BB%86%E7%B2%92%E5%BA%A6%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">13.</span> <span class="nav-text">Crowd-11：用于细粒度人群行为分析的数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AD%A6%E4%B9%A0%E5%A4%96%E8%A7%82%E5%92%8C%E5%8A%A8%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%A1%A8%E7%A4%BA%E6%9D%A5%E6%A3%80%E6%B5%8B%E8%A7%86%E9%A2%91%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6"><span class="nav-number">14.</span> <span class="nav-text">通过学习外观和动作的深度表示来检测视频中的异常事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%97%B6%E7%A9%BA%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8%E7%9A%84%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="nav-number">15.</span> <span class="nav-text">使用时空自动编码器的视频异常事件检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E8%A1%8C%E4%B8%BA%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95"><span class="nav-number">16.</span> <span class="nav-text">基于高斯混合模型的人群异常行为实时检测算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%92%8C1%E7%B1%BBSVM%E5%88%86%E7%B1%BB%E5%99%A8%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="nav-number">17.</span> <span class="nav-text">使用卷积神经网络和1类SVM分类器进行异常事件检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90"><span class="nav-number">18.</span> <span class="nav-text">视频监控中的异常检测技术分析</span></a></li></ol></div>
             
 
           </div>

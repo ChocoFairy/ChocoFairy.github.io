@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="摘要 容量限制聚类问题（Capacitated Clustering Problem, CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable neighborhood search algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略">
+<meta name="description" content="摘要容量限制聚类问题（Capacitated Clustering Problem, CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable neighborhood search algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【论文】利用邻域分解驱动的变量邻域搜索解决容量限制聚类问题">
 <meta property="og:url" content="https://chocofairy.github.io/2022/09/17/%E3%80%90%E8%AE%BA%E6%96%87%E3%80%91%E5%88%A9%E7%94%A8%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%8F%98%E9%87%8F%E9%82%BB%E5%9F%9F%E6%90%9C%E7%B4%A2%E8%A7%A3%E5%86%B3%E5%AE%B9%E9%87%8F%E9%99%90%E5%88%B6%E8%81%9A%E7%B1%BB%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="摘要 容量限制聚类问题（Capacitated Clustering Problem, CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable neighborhood search algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略">
+<meta property="og:description" content="摘要容量限制聚类问题（Capacitated Clustering Problem, CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable neighborhood search algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-09-17T02:27:40.000Z">
 <meta property="article:modified_time" content="2022-09-17T02:33:02.661Z">
@@ -379,174 +379,42 @@
       
 
       
-        <h2 id="摘要">摘要</h2>
-<p>容量限制聚类问题（Capacitated Clustering Problem,
-CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable
-neighborhood search
-algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>容量限制聚类问题（Capacitated Clustering Problem, CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable neighborhood search algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略</p>
 <span id="more"></span>
-<h2 id="介绍">介绍</h2>
-<p>聚类问题代表了一类具有各种实际应用的相关模型。聚类模型的目标是将一组给定的项目分组为若干固定的或者变化的变量K（K&gt;=2）聚类，然后在可能的约束下优化目标函数。eg.半监督图聚类（semi-supervised
-graph clustering）、生物网络约束图聚类（constrained graph clustering in
-biological networks ）、图划分（graph partirioning）、各种p-center
-和p-median问题.</p>
-<p>CCP包含三个NP难问题：图划分（CPP）、移交最小化问题（handover
-minimization problem）、最大多样性分组问题（maximally diverse grouping
-problem, MDGP）</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>聚类问题代表了一类具有各种实际应用的相关模型。聚类模型的目标是将一组给定的项目分组为若干固定的或者变化的变量K（K&gt;=2）聚类，然后在可能的约束下优化目标函数。eg.半监督图聚类（semi-supervised graph clustering）、生物网络约束图聚类（constrained graph clustering in biological networks ）、图划分（graph partirioning）、各种p-center 和p-median问题.</p>
+<p>CCP包含三个NP难问题：图划分（CPP）、移交最小化问题（handover minimization problem）、最大多样性分组问题（maximally diverse grouping problem, MDGP）</p>
 <p>CCP问题描述：</p>
-<p>给定：加权完全图 <span
-class="math inline">\(G=(V,E,c,w)\)</span>和正整数<span
-class="math inline">\(K\)</span></p>
-<p>其中<span class="math inline">\(V=\{v_1,v_2,...,v_N\}\)</span>是<span
-class="math inline">\(N\)</span>个顶点的集合，<span
-class="math inline">\(E\)</span>代表<span
-class="math inline">\(N*(N-1)/2\)</span>条边的集合，<span
-class="math inline">\(c=\{c_{ij}\geq0:\{v_i,v_j\}\in
-E\}\)</span>是边的权重集合，<span
-class="math inline">\(w=\{w_i\geq0:v_i\in E\}\)</span>是顶点权重集合</p>
-<p>将<span class="math inline">\(V\)</span>划分成<span
-class="math inline">\(K\)</span>个不相交的类<span
-class="math inline">\(C_1,C_2,……C_K\)</span>，使得每个类<span
-class="math inline">\(C_g(g-1,2,……，K)\)</span>中点的权重和（即<span
-class="math inline">\(\sum_{v\in C_g}w(v)\)</span>）处于给定区间<span
-class="math inline">\([L,U]\)</span>中，同时最大化相同类中边的权重和。<span
-class="math inline">\(L\)</span>和<span
-class="math inline">\(U\)</span>被称为每个类的容量的上届和下届。</p>
-<p>CCP表述如下： <span class="math display">\[
-(CCP)\quad Maxmize\quad
-f=\sum^K_{g=1}\sum^{N-1}_{i=1}\sum^N_{j=i+1}c_{ij}X_{ig}X_{jg}\\
+<p>给定：加权完全图 $G=(V,E,c,w)$和正整数$K$</p>
+<p>其中$V=\{v_1,v_2,…,v_N\}$是$N$个顶点的集合，$E$代表$N*(N-1)/2$条边的集合，$c=\{c_{ij}\geq0:\{v_i,v_j\}\in E\}$是边的权重集合，$w=\{w_i\geq0:v_i\in E\}$是顶点权重集合</p>
+<p>将$V$划分成$K$个不相交的类$C_1,C_2,……C_K$，使得每个类$C_g(g-1,2,……，K)$中点的权重和（即$\sum_{v\in C_g}w(v)$）处于给定区间$[L,U]$中，同时最大化相同类中边的权重和。$L$和$U$被称为每个类的容量的上届和下届。</p>
+<p>CCP表述如下：</p>
+<script type="math/tex; mode=display">
+(CCP)\quad Maxmize\quad f=\sum^K_{g=1}\sum^{N-1}_{i=1}\sum^N_{j=i+1}c_{ij}X_{ig}X_{jg}\\
 Subject\quad to \qquad \sum^K_{g=1}X_{ig}=1,i=1,2,...,N\\
 L\leq \sum^N_{i=1}w_iX_{ig}\leq U,g=1,2,...,K\\
-X_{ig}\in \{0,1\},i=1,2,...,N;g=1,2,...,K
-\]</span> 其中，<span
-class="math inline">\(X_{ig}\)</span>是一个二进制变量，如果顶点<span
-class="math inline">\(V_i\)</span>位于类<span
-class="math inline">\(C_g\)</span>中则值为1，否则为0。因此，要最大化目标函数<span
-class="math inline">\(f\)</span>，需要将两个端点i和j属于同一个类<span
-class="math inline">\(C_g(X_{ig}=X_{jg}=1)\)</span>的边的权重<span
-class="math inline">\(c_{ij}\)</span>相加。约束（2）保证了每个顶点只属于一个聚类，约束（3）强制每个聚类的顶点权值之和在区间<span
-class="math inline">\([L,U]\)</span>中。</p>
-<h2 id="文献评估">文献评估</h2>
-<p>文献综述表明，性能最好的CCP算法都是迭代搜索一个或多个邻域（eg.插入邻域，交换邻域，2-1交换邻域）。具体来说，对于一个给定的邻域，这样的算法需要在每次迭代中检查部分或全部邻域的解决方案，以找到有效的解决方案（例如所有邻域中的最佳解决方案或者比当前解决方案更优的改进的解决方案）。当邻域包含很多邻域解决方案时（通常是交换邻域或者2-1交换邻域的情况）搜索就会变得耗时。因此，对所考虑的邻域进行快速检查的问题变得非常重要，且能够直接影响到搜索算法的性能。</p>
+X_{ig}\in \{0,1\},i=1,2,...,N;g=1,2,...,K</script><p>其中，$X_{ig}$是一个二进制变量，如果顶点$V_i$位于类$C_g$中则值为1，否则为0。因此，要最大化目标函数$f$，需要将两个端点i和j属于同一个类$C_g(X_{ig}=X_{jg}=1)$的边的权重$c_{ij}$相加。约束（2）保证了每个顶点只属于一个聚类，约束（3）强制每个聚类的顶点权值之和在区间$[L,U]$中。</p>
+<h2 id="文献评估"><a href="#文献评估" class="headerlink" title="文献评估"></a>文献评估</h2><p>文献综述表明，性能最好的CCP算法都是迭代搜索一个或多个邻域（eg.插入邻域，交换邻域，2-1交换邻域）。具体来说，对于一个给定的邻域，这样的算法需要在每次迭代中检查部分或全部邻域的解决方案，以找到有效的解决方案（例如所有邻域中的最佳解决方案或者比当前解决方案更优的改进的解决方案）。当邻域包含很多邻域解决方案时（通常是交换邻域或者2-1交换邻域的情况）搜索就会变得耗时。因此，对所考虑的邻域进行快速检查的问题变得非常重要，且能够直接影响到搜索算法的性能。</p>
 <p>在本工作中，为了加速邻域搜索，我们设计了一种CPP邻域分解策略。该策略将给定的邻域划分为多个邻域解的不相交子集（称为邻域块）并识别出每个带有0-1个状态变量的有希望的邻域块。这种分解通过只检查有希望的邻域块来加速邻域搜索。大部分文献中的算法都没有区分有希望和没有希望的邻域解，浪费了大量的计算时间在没有希望的邻域解上。</p>
-<h2 id="邻域分解驱动的变量邻域搜索">邻域分解驱动的变量邻域搜索</h2>
-<p>提出的邻域分解驱动的变量邻域搜索算法（NDVNS）基于一般的变量邻域搜索元启发式算法。该算法的主要创新部分包括它的邻域分解策略设计来加速搜索过程，以及概率扰动策略来控制搜索强化和多样化之间的平衡。</p>
-<p>当前的邻域分解策略动态地将一个邻域划分为多个不相交的邻域块，并能够使用搜索算法仅检查有0-1状态值标识的有希望的邻域块。通过忽视其他邻域块，算法显著提高检索效率。当前的邻域分解策略与早期基于候选列表的邻域分解策略和不看位（don't
-look
-bits）技术有关。候选列表把一个给定的邻域分解成协调子集，使搜搜算法只关注一些有希理想特征的子集。不看位技术适用于二次分配问题（quadratic
-assignment problem,
-QAP）。以QAP为例，为了避免扫描一个完整的邻域，不看位技术使用了一个动态更新的0-1向量来区分有希望和没有希望的块，然后只检查有希望的块，大大提高了算法速度。与这些早期方法不同的是，当前的分解策略不使用任何候选列表，而是用一个简单的0-1状态矩阵来识别不包含改进解决方案的子集。</p>
-<p>对于一个给定的问题实例，即一个双加权完全图<span
-class="math inline">\(G=(V,E,c,w)\)</span>，一个正整数<span
-class="math inline">\(K\)</span>，类的容量的下届<span
-class="math inline">\(L\)</span>和上届<span
-class="math inline">\(U\)</span>，提出的算法搜索了由所有可行的K个满足类容量约束的顶点集V的分区搜索空间<span
-class="math inline">\(\Omega\)</span>，当<span
-class="math inline">\(|C_g|=\sum _{v\in C_g}w(v)\)</span>，<span
-class="math inline">\(\Omega
-=\{\{C_1,C_2,...,C_K\}:V=\cup^{i=K}_{i=1}C_i,C_i\cap
-C_j=\varnothing,\forall i\neq j,L\leq |C_g|\leq U,\forall g
-\}\)</span>。</p>
-<h3 id="ndvns算法主要框架">NDVNS算法主要框架</h3>
-<p>NDVNS算法结合了一个生成可行解的初始化过程、两个局部搜索过程（NDVND2和NDVND3）和一个增加搜索过程多样性的扰动过程。</p>
-<h3 id="ndvns算法的局部搜索方法">NDVNS算法的局部搜索方法</h3>
-<h4 id="变邻域下降法的一般方法">变邻域下降法的一般方法</h4>
-<p>变邻域下降法（VND）是一种局部搜索方法，它探索具有几个有序邻域<span
-class="math inline">\(N_\theta(\theta=1,2,...,\theta_{max})\)</span>的局部最优解。</p>
-<p>具体来说，VND从第一个邻域<span
-class="math inline">\(N_\theta(\theta=1)\)</span>开始，然后得到当前邻域<span
-class="math inline">\(N_\theta\)</span>的局部最优解时切换到下一个邻域<span
-class="math inline">\(N_{\theta+1}\)</span>。</p>
-<p>一旦找到改进的解决方案，VND立即从当前邻域<span
-class="math inline">\(N_\theta\)</span>切换到第一个邻域<span
-class="math inline">\(N_1\)</span>。</p>
-<p>最后，当搜索过程到达最后一个邻域<span
-class="math inline">\(N_{\theta_{max}}\)</span>时,VND停止，<span
-class="math inline">\(N_{\theta_{max}}\)</span>中找不到改进的解决方案。</p>
-<h4 id="邻域和邻域分解">邻域和邻域分解</h4>
-<p>NDVNS算法采用了三个互补的邻域，插入邻域<span
-class="math inline">\(N_1\)</span>，交换邻域<span
-class="math inline">\(N_2\)</span>，2-1交换邻域<span
-class="math inline">\(N_3\)</span>。<span
-class="math inline">\(M_{\theta}[i][j]\)</span>表示邻域<span
-class="math inline">\(B_{\theta}[i][j]\)</span>是否被检查出有改进解，0表示已经检查，并且没有改进解。</p>
-<p><span class="math inline">\(N_1\)</span>：由操作符<span
-class="math inline">\(OneMove\)</span>生成。给定一个解决方案<span
-class="math inline">\(s=\{C_1,C_2,...,C_K\}\)</span>，<span
-class="math inline">\(OneMove\)</span>从当前类<span
-class="math inline">\(C_i\)</span>转移节点<span
-class="math inline">\(v\)</span>到另一个类<span
-class="math inline">\(C_j(1\leq j\neq i\leq
-K)\)</span>,这样产生的解决方案<span
-class="math inline">\(s⊕&lt;v,C_i,C_j&gt;\)</span>仍是可行解。因此，邻域<span
-class="math inline">\(N_1(s)\)</span>由所有的由<span
-class="math inline">\(OneMove\)</span>在s上应用得到的可行解组成。<span
-class="math inline">\(N_1(s)\)</span>的大小为<span
-class="math inline">\(O(N×K)\)</span>。</p>
-<p>因此<span class="math inline">\(N_1(s)\)</span>可以划分为<span
-class="math inline">\(K×(K-1)\)</span>个不相交的邻域块<span
-class="math inline">\(B_1[i][j](s)(1\leq i\neq j\leq K)\)</span>。</p>
-<p><span class="math inline">\(M_1\)</span>状态矩阵大小为<span
-class="math inline">\(K×K\)</span>，对角线值为0。</p>
-<p><span class="math inline">\(N_2\)</span>：由交换算子<span
-class="math inline">\(Swap(·,·)\)</span>生成。给定当前解决方案<span
-class="math inline">\(s=\{C_1,C_2,...,C_K\}\)</span>中的两个位于不同类的点<span
-class="math inline">\(v\)</span>和<span
-class="math inline">\(u\)</span>，如果交换的动作可行，<span
-class="math inline">\(Swap(v,u)\)</span>通过交换<span
-class="math inline">\(v\)</span>和<span
-class="math inline">\(u\)</span>的得到一个<span
-class="math inline">\(s\)</span>的邻域解。<span
-class="math inline">\(N_2(s)\)</span>的大小为<span
-class="math inline">\(O(N^2)\)</span>。</p>
-<p>因此<span class="math inline">\(N_2(s)\)</span>可以划分为<span
-class="math inline">\(K×K\)</span>个不相交的邻域块<span
-class="math inline">\(B_2[i][j](s)(1\leq i\neq j\leq K)\)</span>。</p>
-<p><span class="math inline">\(N_3\)</span>:由2-1交换操作符<span
-class="math inline">\(Exchange(·,·,·)\)</span>生成的。给定当前解决方案<span
-class="math inline">\(s=\{C_1,C_2,...,C_K\}\)</span>中的三个点<span
-class="math inline">\(v,u,z\)</span>，其中<span
-class="math inline">\(v\)</span>和<span
-class="math inline">\(u\)</span>位于同一个类<span
-class="math inline">\(C_i\)</span>，<span
-class="math inline">\(z\)</span>位于另一个类<span
-class="math inline">\(C_j\)</span>。<span
-class="math inline">\(Exchange(·,·,·)\)</span>将<span
-class="math inline">\(v\)</span>、<span
-class="math inline">\(u\)</span>与<span
-class="math inline">\(z\)</span>交换，这样产生的解决方案仍然是可行的。<span
-class="math inline">\(N_3(s)\)</span>的大小为<span
-class="math inline">\(O(N^3)\)</span>。</p>
-<p>因此<span class="math inline">\(N_3(s)\)</span>可以划分为<span
-class="math inline">\(K×(K-1)\)</span>个不相交的邻域块<span
-class="math inline">\(B_3[i][j](s)(1\leq i\neq j\leq K)\)</span>。</p>
-<h4 id="邻域分解驱动的vnd">邻域分解驱动的VND</h4>
-<h4 id="状态矩阵的更新及相关原理">状态矩阵的更新及相关原理</h4>
-<p>在NDVNS算法中，所有三个邻域<span
-class="math inline">\(N_1、N_2\)</span>和<span
-class="math inline">\(N_3\)</span>都会被逐块检查，如算法3和算法4所示，相关的状态矩阵<span
-class="math inline">\(M_1、M_2\)</span>和<span
-class="math inline">\(M_3\)</span>会随着搜索的进行而相应更新。</p>
-<p>这些状态矩阵的更新规则可以描述如下。对于一个邻域<span
-class="math inline">\(N_\theta(s)(\theta=1,2,3)\)</span>，当检查了邻域块<span
-class="math inline">\(B_\theta[i][j]\)</span>后， <span
-class="math inline">\(M_\theta[i][j](i\neq
-j)\)</span>首先被设置为0。然后如果在<span
-class="math inline">\(B_\theta[i][j](s)\)</span>中找到改进解，则<span
-class="math inline">\(M_\theta[i][t]、M_\theta[t][i]、M_\theta[t][j]、M_\theta[j][t](1\leq
-t\leq K,t\neq i,j)\)</span>全部被设为1，否则保持不变。时间复杂度为<span
-class="math inline">\(O(K)\)</span>。</p>
-<p>根据CCP的目标，移动值<span
-class="math inline">\(\Delta_f\)</span>只随着少数邻域块的移动而变化。此外，考虑到<span
-class="math inline">\(M_\theta[i][j]=0(\theta=1,2,3,i\neq
-j)\)</span>的块<span
-class="math inline">\(B_\theta[i][j](s)\)</span>已经被检查过，但没有找到任何改进的解决方案，忽略这些邻域块中包含的候选解决方案将节省大量的计算量。这说明当类的数量K很大时，邻域分解技术的优势更加明显，速度更快。</p>
-<h3 id="扰动程序">扰动程序</h3>
-<p>扰动程序用于扰动由NDVND2返回的解。它由<span
-class="math inline">\(k\)</span>个连续的交换操作组成，其中<span
-class="math inline">\(k\)</span>为扰动强度，在搜索过程中进行概率调整。对于每个交换操作，首先随机选择位于不同类中的两个顶点<span
-class="math inline">\(v\)</span>和<span
-class="math inline">\(u\)</span>，然后交换它们的位置，生成可行解。</p>
+<h2 id="邻域分解驱动的变量邻域搜索"><a href="#邻域分解驱动的变量邻域搜索" class="headerlink" title="邻域分解驱动的变量邻域搜索"></a>邻域分解驱动的变量邻域搜索</h2><p>提出的邻域分解驱动的变量邻域搜索算法（NDVNS）基于一般的变量邻域搜索元启发式算法。该算法的主要创新部分包括它的邻域分解策略设计来加速搜索过程，以及概率扰动策略来控制搜索强化和多样化之间的平衡。</p>
+<p>当前的邻域分解策略动态地将一个邻域划分为多个不相交的邻域块，并能够使用搜索算法仅检查有0-1状态值标识的有希望的邻域块。通过忽视其他邻域块，算法显著提高检索效率。当前的邻域分解策略与早期基于候选列表的邻域分解策略和不看位（don’t look bits）技术有关。候选列表把一个给定的邻域分解成协调子集，使搜搜算法只关注一些有希理想特征的子集。不看位技术适用于二次分配问题（quadratic assignment problem, QAP）。以QAP为例，为了避免扫描一个完整的邻域，不看位技术使用了一个动态更新的0-1向量来区分有希望和没有希望的块，然后只检查有希望的块，大大提高了算法速度。与这些早期方法不同的是，当前的分解策略不使用任何候选列表，而是用一个简单的0-1状态矩阵来识别不包含改进解决方案的子集。</p>
+<p>对于一个给定的问题实例，即一个双加权完全图$G=(V,E,c,w)$，一个正整数$K$，类的容量的下届$L$和上届$U$，提出的算法搜索了由所有可行的K个满足类容量约束的顶点集V的分区搜索空间$\Omega$，当$|C_g|=\sum _{v\in C_g}w(v)$，$\Omega =\{\{C_1,C_2,…,C_K\}:V=\cup^{i=K}_{i=1}C_i,C_i\cap C_j=\varnothing,\forall i\neq j,L\leq |C_g|\leq U,\forall g \}$。</p>
+<h3 id="NDVNS算法主要框架"><a href="#NDVNS算法主要框架" class="headerlink" title="NDVNS算法主要框架"></a>NDVNS算法主要框架</h3><p>NDVNS算法结合了一个生成可行解的初始化过程、两个局部搜索过程（NDVND2和NDVND3）和一个增加搜索过程多样性的扰动过程。</p>
+<h3 id="NDVNS算法的局部搜索方法"><a href="#NDVNS算法的局部搜索方法" class="headerlink" title="NDVNS算法的局部搜索方法"></a>NDVNS算法的局部搜索方法</h3><h4 id="变邻域下降法的一般方法"><a href="#变邻域下降法的一般方法" class="headerlink" title="变邻域下降法的一般方法"></a>变邻域下降法的一般方法</h4><p>变邻域下降法（VND）是一种局部搜索方法，它探索具有几个有序邻域$N_\theta(\theta=1,2,…,\theta_{max})$的局部最优解。</p>
+<p>具体来说，VND从第一个邻域$N_\theta(\theta=1)$开始，然后得到当前邻域$N_\theta$的局部最优解时切换到下一个邻域$N_{\theta+1}$。</p>
+<p>一旦找到改进的解决方案，VND立即从当前邻域$N_\theta$切换到第一个邻域$N_1$。</p>
+<p>最后，当搜索过程到达最后一个邻域$N_{\theta_{max}}$时,VND停止，$N_{\theta_{max}}$中找不到改进的解决方案。</p>
+<h4 id="邻域和邻域分解"><a href="#邻域和邻域分解" class="headerlink" title="邻域和邻域分解"></a>邻域和邻域分解</h4><p>NDVNS算法采用了三个互补的邻域，插入邻域$N_1$，交换邻域$N_2$，2-1交换邻域$N_3$。$M_{\theta}[i][j]$表示邻域$B_{\theta}[i][j]$是否被检查出有改进解，0表示已经检查，并且没有改进解。</p>
+<p>$N_1$：由操作符$OneMove$生成。给定一个解决方案$s=\{C_1,C_2,…,C_K\}$，$OneMove$从当前类$C_i$转移节点$v$到另一个类$C_j(1\leq j\neq i\leq K)$,这样产生的解决方案$s⊕<v,C_i,C_j>$仍是可行解。因此，邻域$N_1(s)$由所有的由$OneMove$在s上应用得到的可行解组成。$N_1(s)$的大小为$O(N×K)$。</p>
+<p>因此$N_1(s)$可以划分为$K×(K-1)$个不相交的邻域块$B_1[i]<a href="s">j</a>(1\leq i\neq j\leq K)$。</p>
+<p>$M_1$状态矩阵大小为$K×K$，对角线值为0。</p>
+<p>$N_2$：由交换算子$Swap(·,·)$生成。给定当前解决方案$s=\{C_1,C_2,…,C_K\}$中的两个位于不同类的点$v$和$u$，如果交换的动作可行，$Swap(v,u)$通过交换$v$和$u$的得到一个$s$的邻域解。$N_2(s)$的大小为$O(N^2)$。</p>
+<p>因此$N_2(s)$可以划分为$K×K$个不相交的邻域块$B_2[i]<a href="s">j</a>(1\leq i\neq j\leq K)$。</p>
+<p>$N_3$:由2-1交换操作符$Exchange(·,·,·)$生成的。给定当前解决方案$s=\{C_1,C_2,…,C_K\}$中的三个点$v,u,z$，其中$v$和$u$位于同一个类$C_i$，$z$位于另一个类$C_j$。$Exchange(·,·,·)$将$v$、$u$与$z$交换，这样产生的解决方案仍然是可行的。$N_3(s)$的大小为$O(N^3)$。</p>
+<p>因此$N_3(s)$可以划分为$K×(K-1)$个不相交的邻域块$B_3[i]<a href="s">j</a>(1\leq i\neq j\leq K)$。</p>
+<h4 id="邻域分解驱动的VND"><a href="#邻域分解驱动的VND" class="headerlink" title="邻域分解驱动的VND"></a>邻域分解驱动的VND</h4><h4 id="状态矩阵的更新及相关原理"><a href="#状态矩阵的更新及相关原理" class="headerlink" title="状态矩阵的更新及相关原理"></a>状态矩阵的更新及相关原理</h4><p>在NDVNS算法中，所有三个邻域$N_1、N_2$和$N_3$都会被逐块检查，如算法3和算法4所示，相关的状态矩阵$M_1、M_2$和$M_3$会随着搜索的进行而相应更新。</p>
+<p>这些状态矩阵的更新规则可以描述如下。对于一个邻域$N_\theta(s)(\theta=1,2,3)$，当检查了邻域块$B_\theta[i][j]$后， $M_\theta[i]<a href="i\neq j">j</a>$首先被设置为0。然后如果在$B_\theta[i]<a href="s">j</a>$中找到改进解，则$M_\theta[i][t]、M_\theta[t][i]、M_\theta[t][j]、M_\theta[j]<a href="1\leq t\leq K,t\neq i,j">t</a>$全部被设为1，否则保持不变。时间复杂度为$O(K)$。</p>
+<p>根据CCP的目标，移动值$\Delta_f$只随着少数邻域块的移动而变化。此外，考虑到$M_\theta[i][j]=0(\theta=1,2,3,i\neq j)$的块$B_\theta[i]<a href="s">j</a>$已经被检查过，但没有找到任何改进的解决方案，忽略这些邻域块中包含的候选解决方案将节省大量的计算量。这说明当类的数量K很大时，邻域分解技术的优势更加明显，速度更快。</p>
+<h3 id="扰动程序"><a href="#扰动程序" class="headerlink" title="扰动程序"></a>扰动程序</h3><p>扰动程序用于扰动由NDVND2返回的解。它由$k$个连续的交换操作组成，其中$k$为扰动强度，在搜索过程中进行概率调整。对于每个交换操作，首先随机选择位于不同类中的两个顶点$v$和$u$，然后交换它们的位置，生成可行解。</p>
 
       
     </div>
@@ -587,6 +455,10 @@ class="math inline">\(u\)</span>，然后交换它们的位置，生成可行解
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/09/17/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91Markdown%E5%B8%B8%E8%A7%81%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/" rel="prev" title="【博客】Markdown常见公式语法">
+                【博客】Markdown常见公式语法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -667,7 +539,7 @@ class="math inline">\(u\)</span>，然后交换它们的位置，生成可行解
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +561,7 @@ class="math inline">\(u\)</span>，然后交换它们的位置，生成可行解
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -738,7 +610,7 @@ class="math inline">\(u\)</span>，然后交换它们的位置，生成可行解
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E8%AF%84%E4%BC%B0"><span class="nav-number">3.</span> <span class="nav-text">文献评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%8F%98%E9%87%8F%E9%82%BB%E5%9F%9F%E6%90%9C%E7%B4%A2"><span class="nav-number">4.</span> <span class="nav-text">邻域分解驱动的变量邻域搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ndvns%E7%AE%97%E6%B3%95%E4%B8%BB%E8%A6%81%E6%A1%86%E6%9E%B6"><span class="nav-number">4.1.</span> <span class="nav-text">NDVNS算法主要框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndvns%E7%AE%97%E6%B3%95%E7%9A%84%E5%B1%80%E9%83%A8%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">NDVNS算法的局部搜索方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%82%BB%E5%9F%9F%E4%B8%8B%E9%99%8D%E6%B3%95%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.1.</span> <span class="nav-text">变邻域下降法的一般方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%92%8C%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3"><span class="nav-number">4.2.2.</span> <span class="nav-text">邻域和邻域分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84vnd"><span class="nav-number">4.2.3.</span> <span class="nav-text">邻域分解驱动的VND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9B%B4%E6%96%B0%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.4.</span> <span class="nav-text">状态矩阵的更新及相关原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B0%E5%8A%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.3.</span> <span class="nav-text">扰动程序</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E8%AF%84%E4%BC%B0"><span class="nav-number">3.</span> <span class="nav-text">文献评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%8F%98%E9%87%8F%E9%82%BB%E5%9F%9F%E6%90%9C%E7%B4%A2"><span class="nav-number">4.</span> <span class="nav-text">邻域分解驱动的变量邻域搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NDVNS%E7%AE%97%E6%B3%95%E4%B8%BB%E8%A6%81%E6%A1%86%E6%9E%B6"><span class="nav-number">4.1.</span> <span class="nav-text">NDVNS算法主要框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NDVNS%E7%AE%97%E6%B3%95%E7%9A%84%E5%B1%80%E9%83%A8%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">NDVNS算法的局部搜索方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%82%BB%E5%9F%9F%E4%B8%8B%E9%99%8D%E6%B3%95%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.1.</span> <span class="nav-text">变邻域下降法的一般方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%92%8C%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3"><span class="nav-number">4.2.2.</span> <span class="nav-text">邻域和邻域分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84VND"><span class="nav-number">4.2.3.</span> <span class="nav-text">邻域分解驱动的VND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9B%B4%E6%96%B0%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.4.</span> <span class="nav-text">状态矩阵的更新及相关原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B0%E5%8A%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.3.</span> <span class="nav-text">扰动程序</span></a></li></ol></li></ol></div>
             
 
           </div>
