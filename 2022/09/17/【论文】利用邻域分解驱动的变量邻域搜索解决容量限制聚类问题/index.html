@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="CCP," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="摘要 容量限制聚类问题（Capacitated Clustering Problem, CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable neighborhood search algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【论文】利用邻域分解驱动的变量邻域搜索解决容量限制聚类问题">
+<meta property="og:url" content="https://chocofairy.github.io/2022/09/17/%E3%80%90%E8%AE%BA%E6%96%87%E3%80%91%E5%88%A9%E7%94%A8%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%8F%98%E9%87%8F%E9%82%BB%E5%9F%9F%E6%90%9C%E7%B4%A2%E8%A7%A3%E5%86%B3%E5%AE%B9%E9%87%8F%E9%99%90%E5%88%B6%E8%81%9A%E7%B1%BB%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="摘要 容量限制聚类问题（Capacitated Clustering Problem, CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable neighborhood search algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-09-17T02:27:40.000Z">
+<meta property="article:modified_time" content="2022-09-17T02:33:02.661Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="CCP">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2022/09/17/【论文】利用邻域分解驱动的变量邻域搜索解决容量限制聚类问题/"/>
+
+
+
+
+
+  <title>【论文】利用邻域分解驱动的变量邻域搜索解决容量限制聚类问题 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2022/09/17/%E3%80%90%E8%AE%BA%E6%96%87%E3%80%91%E5%88%A9%E7%94%A8%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%8F%98%E9%87%8F%E9%82%BB%E5%9F%9F%E6%90%9C%E7%B4%A2%E8%A7%A3%E5%86%B3%E5%AE%B9%E9%87%8F%E9%99%90%E5%88%B6%E8%81%9A%E7%B1%BB%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【论文】利用邻域分解驱动的变量邻域搜索解决容量限制聚类问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-17T10:27:40+08:00">
+                2022-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="摘要">摘要</h2>
+<p>容量限制聚类问题（Capacitated Clustering Problem,
+CCP）是一种适用于并行计算和超大规模集成设计领域的重要应用的通用模型。然而，这个问题是NP难问题，因此在计算上具有挑战性。本文提出了一种原始且高效的变量邻域搜索算法（Variable
+neighborhood search
+algorithm）来解决该问题，算法具有邻域分解技术和基于概率的多样化策略</p>
+<span id="more"></span>
+<h2 id="介绍">介绍</h2>
+<p>聚类问题代表了一类具有各种实际应用的相关模型。聚类模型的目标是将一组给定的项目分组为若干固定的或者变化的变量K（K&gt;=2）聚类，然后在可能的约束下优化目标函数。eg.半监督图聚类（semi-supervised
+graph clustering）、生物网络约束图聚类（constrained graph clustering in
+biological networks ）、图划分（graph partirioning）、各种p-center
+和p-median问题.</p>
+<p>CCP包含三个NP难问题：图划分（CPP）、移交最小化问题（handover
+minimization problem）、最大多样性分组问题（maximally diverse grouping
+problem, MDGP）</p>
+<p>CCP问题描述：</p>
+<p>给定：加权完全图 <span
+class="math inline">\(G=(V,E,c,w)\)</span>和正整数<span
+class="math inline">\(K\)</span></p>
+<p>其中<span class="math inline">\(V=\{v_1,v_2,...,v_N\}\)</span>是<span
+class="math inline">\(N\)</span>个顶点的集合，<span
+class="math inline">\(E\)</span>代表<span
+class="math inline">\(N*(N-1)/2\)</span>条边的集合，<span
+class="math inline">\(c=\{c_{ij}\geq0:\{v_i,v_j\}\in
+E\}\)</span>是边的权重集合，<span
+class="math inline">\(w=\{w_i\geq0:v_i\in E\}\)</span>是顶点权重集合</p>
+<p>将<span class="math inline">\(V\)</span>划分成<span
+class="math inline">\(K\)</span>个不相交的类<span
+class="math inline">\(C_1,C_2,……C_K\)</span>，使得每个类<span
+class="math inline">\(C_g(g-1,2,……，K)\)</span>中点的权重和（即<span
+class="math inline">\(\sum_{v\in C_g}w(v)\)</span>）处于给定区间<span
+class="math inline">\([L,U]\)</span>中，同时最大化相同类中边的权重和。<span
+class="math inline">\(L\)</span>和<span
+class="math inline">\(U\)</span>被称为每个类的容量的上届和下届。</p>
+<p>CCP表述如下： <span class="math display">\[
+(CCP)\quad Maxmize\quad
+f=\sum^K_{g=1}\sum^{N-1}_{i=1}\sum^N_{j=i+1}c_{ij}X_{ig}X_{jg}\\
+Subject\quad to \qquad \sum^K_{g=1}X_{ig}=1,i=1,2,...,N\\
+L\leq \sum^N_{i=1}w_iX_{ig}\leq U,g=1,2,...,K\\
+X_{ig}\in \{0,1\},i=1,2,...,N;g=1,2,...,K
+\]</span> 其中，<span
+class="math inline">\(X_{ig}\)</span>是一个二进制变量，如果顶点<span
+class="math inline">\(V_i\)</span>位于类<span
+class="math inline">\(C_g\)</span>中则值为1，否则为0。因此，要最大化目标函数<span
+class="math inline">\(f\)</span>，需要将两个端点i和j属于同一个类<span
+class="math inline">\(C_g(X_{ig}=X_{jg}=1)\)</span>的边的权重<span
+class="math inline">\(c_{ij}\)</span>相加。约束（2）保证了每个顶点只属于一个聚类，约束（3）强制每个聚类的顶点权值之和在区间<span
+class="math inline">\([L,U]\)</span>中。</p>
+<h2 id="文献评估">文献评估</h2>
+<p>文献综述表明，性能最好的CCP算法都是迭代搜索一个或多个邻域（eg.插入邻域，交换邻域，2-1交换邻域）。具体来说，对于一个给定的邻域，这样的算法需要在每次迭代中检查部分或全部邻域的解决方案，以找到有效的解决方案（例如所有邻域中的最佳解决方案或者比当前解决方案更优的改进的解决方案）。当邻域包含很多邻域解决方案时（通常是交换邻域或者2-1交换邻域的情况）搜索就会变得耗时。因此，对所考虑的邻域进行快速检查的问题变得非常重要，且能够直接影响到搜索算法的性能。</p>
+<p>在本工作中，为了加速邻域搜索，我们设计了一种CPP邻域分解策略。该策略将给定的邻域划分为多个邻域解的不相交子集（称为邻域块）并识别出每个带有0-1个状态变量的有希望的邻域块。这种分解通过只检查有希望的邻域块来加速邻域搜索。大部分文献中的算法都没有区分有希望和没有希望的邻域解，浪费了大量的计算时间在没有希望的邻域解上。</p>
+<h2 id="邻域分解驱动的变量邻域搜索">邻域分解驱动的变量邻域搜索</h2>
+<p>提出的邻域分解驱动的变量邻域搜索算法（NDVNS）基于一般的变量邻域搜索元启发式算法。该算法的主要创新部分包括它的邻域分解策略设计来加速搜索过程，以及概率扰动策略来控制搜索强化和多样化之间的平衡。</p>
+<p>当前的邻域分解策略动态地将一个邻域划分为多个不相交的邻域块，并能够使用搜索算法仅检查有0-1状态值标识的有希望的邻域块。通过忽视其他邻域块，算法显著提高检索效率。当前的邻域分解策略与早期基于候选列表的邻域分解策略和不看位（don't
+look
+bits）技术有关。候选列表把一个给定的邻域分解成协调子集，使搜搜算法只关注一些有希理想特征的子集。不看位技术适用于二次分配问题（quadratic
+assignment problem,
+QAP）。以QAP为例，为了避免扫描一个完整的邻域，不看位技术使用了一个动态更新的0-1向量来区分有希望和没有希望的块，然后只检查有希望的块，大大提高了算法速度。与这些早期方法不同的是，当前的分解策略不使用任何候选列表，而是用一个简单的0-1状态矩阵来识别不包含改进解决方案的子集。</p>
+<p>对于一个给定的问题实例，即一个双加权完全图<span
+class="math inline">\(G=(V,E,c,w)\)</span>，一个正整数<span
+class="math inline">\(K\)</span>，类的容量的下届<span
+class="math inline">\(L\)</span>和上届<span
+class="math inline">\(U\)</span>，提出的算法搜索了由所有可行的K个满足类容量约束的顶点集V的分区搜索空间<span
+class="math inline">\(\Omega\)</span>，当<span
+class="math inline">\(|C_g|=\sum _{v\in C_g}w(v)\)</span>，<span
+class="math inline">\(\Omega
+=\{\{C_1,C_2,...,C_K\}:V=\cup^{i=K}_{i=1}C_i,C_i\cap
+C_j=\varnothing,\forall i\neq j,L\leq |C_g|\leq U,\forall g
+\}\)</span>。</p>
+<h3 id="ndvns算法主要框架">NDVNS算法主要框架</h3>
+<p>NDVNS算法结合了一个生成可行解的初始化过程、两个局部搜索过程（NDVND2和NDVND3）和一个增加搜索过程多样性的扰动过程。</p>
+<h3 id="ndvns算法的局部搜索方法">NDVNS算法的局部搜索方法</h3>
+<h4 id="变邻域下降法的一般方法">变邻域下降法的一般方法</h4>
+<p>变邻域下降法（VND）是一种局部搜索方法，它探索具有几个有序邻域<span
+class="math inline">\(N_\theta(\theta=1,2,...,\theta_{max})\)</span>的局部最优解。</p>
+<p>具体来说，VND从第一个邻域<span
+class="math inline">\(N_\theta(\theta=1)\)</span>开始，然后得到当前邻域<span
+class="math inline">\(N_\theta\)</span>的局部最优解时切换到下一个邻域<span
+class="math inline">\(N_{\theta+1}\)</span>。</p>
+<p>一旦找到改进的解决方案，VND立即从当前邻域<span
+class="math inline">\(N_\theta\)</span>切换到第一个邻域<span
+class="math inline">\(N_1\)</span>。</p>
+<p>最后，当搜索过程到达最后一个邻域<span
+class="math inline">\(N_{\theta_{max}}\)</span>时,VND停止，<span
+class="math inline">\(N_{\theta_{max}}\)</span>中找不到改进的解决方案。</p>
+<h4 id="邻域和邻域分解">邻域和邻域分解</h4>
+<p>NDVNS算法采用了三个互补的邻域，插入邻域<span
+class="math inline">\(N_1\)</span>，交换邻域<span
+class="math inline">\(N_2\)</span>，2-1交换邻域<span
+class="math inline">\(N_3\)</span>。<span
+class="math inline">\(M_{\theta}[i][j]\)</span>表示邻域<span
+class="math inline">\(B_{\theta}[i][j]\)</span>是否被检查出有改进解，0表示已经检查，并且没有改进解。</p>
+<p><span class="math inline">\(N_1\)</span>：由操作符<span
+class="math inline">\(OneMove\)</span>生成。给定一个解决方案<span
+class="math inline">\(s=\{C_1,C_2,...,C_K\}\)</span>，<span
+class="math inline">\(OneMove\)</span>从当前类<span
+class="math inline">\(C_i\)</span>转移节点<span
+class="math inline">\(v\)</span>到另一个类<span
+class="math inline">\(C_j(1\leq j\neq i\leq
+K)\)</span>,这样产生的解决方案<span
+class="math inline">\(s⊕&lt;v,C_i,C_j&gt;\)</span>仍是可行解。因此，邻域<span
+class="math inline">\(N_1(s)\)</span>由所有的由<span
+class="math inline">\(OneMove\)</span>在s上应用得到的可行解组成。<span
+class="math inline">\(N_1(s)\)</span>的大小为<span
+class="math inline">\(O(N×K)\)</span>。</p>
+<p>因此<span class="math inline">\(N_1(s)\)</span>可以划分为<span
+class="math inline">\(K×(K-1)\)</span>个不相交的邻域块<span
+class="math inline">\(B_1[i][j](s)(1\leq i\neq j\leq K)\)</span>。</p>
+<p><span class="math inline">\(M_1\)</span>状态矩阵大小为<span
+class="math inline">\(K×K\)</span>，对角线值为0。</p>
+<p><span class="math inline">\(N_2\)</span>：由交换算子<span
+class="math inline">\(Swap(·,·)\)</span>生成。给定当前解决方案<span
+class="math inline">\(s=\{C_1,C_2,...,C_K\}\)</span>中的两个位于不同类的点<span
+class="math inline">\(v\)</span>和<span
+class="math inline">\(u\)</span>，如果交换的动作可行，<span
+class="math inline">\(Swap(v,u)\)</span>通过交换<span
+class="math inline">\(v\)</span>和<span
+class="math inline">\(u\)</span>的得到一个<span
+class="math inline">\(s\)</span>的邻域解。<span
+class="math inline">\(N_2(s)\)</span>的大小为<span
+class="math inline">\(O(N^2)\)</span>。</p>
+<p>因此<span class="math inline">\(N_2(s)\)</span>可以划分为<span
+class="math inline">\(K×K\)</span>个不相交的邻域块<span
+class="math inline">\(B_2[i][j](s)(1\leq i\neq j\leq K)\)</span>。</p>
+<p><span class="math inline">\(N_3\)</span>:由2-1交换操作符<span
+class="math inline">\(Exchange(·,·,·)\)</span>生成的。给定当前解决方案<span
+class="math inline">\(s=\{C_1,C_2,...,C_K\}\)</span>中的三个点<span
+class="math inline">\(v,u,z\)</span>，其中<span
+class="math inline">\(v\)</span>和<span
+class="math inline">\(u\)</span>位于同一个类<span
+class="math inline">\(C_i\)</span>，<span
+class="math inline">\(z\)</span>位于另一个类<span
+class="math inline">\(C_j\)</span>。<span
+class="math inline">\(Exchange(·,·,·)\)</span>将<span
+class="math inline">\(v\)</span>、<span
+class="math inline">\(u\)</span>与<span
+class="math inline">\(z\)</span>交换，这样产生的解决方案仍然是可行的。<span
+class="math inline">\(N_3(s)\)</span>的大小为<span
+class="math inline">\(O(N^3)\)</span>。</p>
+<p>因此<span class="math inline">\(N_3(s)\)</span>可以划分为<span
+class="math inline">\(K×(K-1)\)</span>个不相交的邻域块<span
+class="math inline">\(B_3[i][j](s)(1\leq i\neq j\leq K)\)</span>。</p>
+<h4 id="邻域分解驱动的vnd">邻域分解驱动的VND</h4>
+<h4 id="状态矩阵的更新及相关原理">状态矩阵的更新及相关原理</h4>
+<p>在NDVNS算法中，所有三个邻域<span
+class="math inline">\(N_1、N_2\)</span>和<span
+class="math inline">\(N_3\)</span>都会被逐块检查，如算法3和算法4所示，相关的状态矩阵<span
+class="math inline">\(M_1、M_2\)</span>和<span
+class="math inline">\(M_3\)</span>会随着搜索的进行而相应更新。</p>
+<p>这些状态矩阵的更新规则可以描述如下。对于一个邻域<span
+class="math inline">\(N_\theta(s)(\theta=1,2,3)\)</span>，当检查了邻域块<span
+class="math inline">\(B_\theta[i][j]\)</span>后， <span
+class="math inline">\(M_\theta[i][j](i\neq
+j)\)</span>首先被设置为0。然后如果在<span
+class="math inline">\(B_\theta[i][j](s)\)</span>中找到改进解，则<span
+class="math inline">\(M_\theta[i][t]、M_\theta[t][i]、M_\theta[t][j]、M_\theta[j][t](1\leq
+t\leq K,t\neq i,j)\)</span>全部被设为1，否则保持不变。时间复杂度为<span
+class="math inline">\(O(K)\)</span>。</p>
+<p>根据CCP的目标，移动值<span
+class="math inline">\(\Delta_f\)</span>只随着少数邻域块的移动而变化。此外，考虑到<span
+class="math inline">\(M_\theta[i][j]=0(\theta=1,2,3,i\neq
+j)\)</span>的块<span
+class="math inline">\(B_\theta[i][j](s)\)</span>已经被检查过，但没有找到任何改进的解决方案，忽略这些邻域块中包含的候选解决方案将节省大量的计算量。这说明当类的数量K很大时，邻域分解技术的优势更加明显，速度更快。</p>
+<h3 id="扰动程序">扰动程序</h3>
+<p>扰动程序用于扰动由NDVND2返回的解。它由<span
+class="math inline">\(k\)</span>个连续的交换操作组成，其中<span
+class="math inline">\(k\)</span>为扰动强度，在搜索过程中进行概率调整。对于每个交换操作，首先随机选择位于不同类中的两个顶点<span
+class="math inline">\(v\)</span>和<span
+class="math inline">\(u\)</span>，然后交换它们的位置，生成可行解。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CCP/" rel="tag"># CCP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/09/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%B9%9D%EF%BC%89Deep-Cascade%EF%BC%9A%E7%BA%A7%E8%81%94%E7%9A%843D%E6%B7%B1%E5%B1%82%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%9C%A8%E6%8B%A5%E6%8C%A4%E7%9A%84%E5%9C%BA%E6%99%AF%E4%B8%AD%E5%BF%AB%E9%80%9F%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%92%8C%E5%AE%9A%E4%BD%8D-%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/" rel="next" title="【大创】（九）Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位(未完待续...)">
+                <i class="fa fa-chevron-left"></i> 【大创】（九）Deep-Cascade：级联的3D深层神经网络，用于在拥挤的场景中快速进行异常检测和定位(未完待续...)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E8%AF%84%E4%BC%B0"><span class="nav-number">3.</span> <span class="nav-text">文献评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%8F%98%E9%87%8F%E9%82%BB%E5%9F%9F%E6%90%9C%E7%B4%A2"><span class="nav-number">4.</span> <span class="nav-text">邻域分解驱动的变量邻域搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ndvns%E7%AE%97%E6%B3%95%E4%B8%BB%E8%A6%81%E6%A1%86%E6%9E%B6"><span class="nav-number">4.1.</span> <span class="nav-text">NDVNS算法主要框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndvns%E7%AE%97%E6%B3%95%E7%9A%84%E5%B1%80%E9%83%A8%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">NDVNS算法的局部搜索方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%82%BB%E5%9F%9F%E4%B8%8B%E9%99%8D%E6%B3%95%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.1.</span> <span class="nav-text">变邻域下降法的一般方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%92%8C%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3"><span class="nav-number">4.2.2.</span> <span class="nav-text">邻域和邻域分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%82%BB%E5%9F%9F%E5%88%86%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%9A%84vnd"><span class="nav-number">4.2.3.</span> <span class="nav-text">邻域分解驱动的VND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9B%B4%E6%96%B0%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.4.</span> <span class="nav-text">状态矩阵的更新及相关原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B0%E5%8A%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.3.</span> <span class="nav-text">扰动程序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
