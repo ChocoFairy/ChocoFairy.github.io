@@ -349,7 +349,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  628 字
+                  646 字
                 </span>
               
 
@@ -388,30 +388,62 @@
       
         <p>单链表反转，就是将链表中所有节点的指向改变方向，具体可以有四种方式。</p>
 <span id="more"></span>
-<h2 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h2><p>迭代法的思想很直接，每次改变一个节点的next指向，依次迭代到尾节点。</p>
+<h2 id="迭代法">迭代法</h2>
+<p>迭代法的思想很直接，每次改变一个节点的next指向，依次迭代到尾节点。</p>
 <p>需要3个辅助节点：beg，mid，end</p>
-<p><img src="https://i.loli.net/2021/04/04/D5JU9ghVlwkqsIc.gif" alt="0U23460R-2.png"></p>
-<p>每次将mid指向beg，然后beg, mid, end整体向后移动一个单位，直到完成反转。</p>
+<figure>
+<img src="https://i.loli.net/2021/04/04/D5JU9ghVlwkqsIc.gif"
+alt="0U23460R-2.png" />
+<figcaption aria-hidden="true">0U23460R-2.png</figcaption>
+</figure>
+<p>每次将mid指向beg，然后beg, mid,
+end整体向后移动一个单位，直到完成反转。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="literal">NULL</span> || head-&gt;next==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode *beg=<span class="literal">NULL</span>, *mid=head, *end=head-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        mid-&gt;next = beg;</span><br><span class="line">        <span class="keyword">if</span>(end==<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        beg = mid;</span><br><span class="line">        mid = end;</span><br><span class="line">        end = end-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h2><p>递归法的思想跟迭代法正好相反，且不易理解。从尾链表开始依次向前遍历，过程中改变每个节点的指向。</p>
+<h2 id="递归法">递归法</h2>
+<p>递归法的思想跟迭代法正好相反，且不易理解。从尾链表开始依次向前遍历，过程中改变每个节点的指向。</p>
 <p>先给出代码，再做解释：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> head;</span><br><span class="line">	&#125;</span><br><span class="line">    ListNode *new_node = reverseList(head-&gt;next);</span><br><span class="line">    head-&gt;next-&gt;next = head;</span><br><span class="line">    head-&gt;next = <span class="literal">NULL</span>; </span><br><span class="line">    <span class="comment">// 将新的头指针返回上层</span></span><br><span class="line">    <span class="keyword">return</span> new_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>每次执行到new_node处时，都会深入链表一步，直到<code>head-&gt;next==NULL</code>时才不继续深入，此时返回的是链表反转之后的新头节点，并且该节点作为每步递归的返回值，一直在不断地向上层递归返回。</p>
-<p>在过程中的操作可以用下面的简图来表示，1，2步分别代表着 <code>head-&gt;next-&gt;next=head</code> 以及 <code>head-&gt;next=NULL</code> 。</p>
-<p><img src="https://i.loli.net/2021/04/04/mqbe6xW7A9MiXpJ.gif" alt="0U23413F-8.gif"></p>
+<p>在过程中的操作可以用下面的简图来表示，1，2步分别代表着
+<code>head-&gt;next-&gt;next=head</code> 以及
+<code>head-&gt;next=NULL</code> 。</p>
+<figure>
+<img src="https://i.loli.net/2021/04/04/mqbe6xW7A9MiXpJ.gif"
+alt="0U23413F-8.gif" />
+<figcaption aria-hidden="true">0U23413F-8.gif</figcaption>
+</figure>
 <p>再一次返回上层时，new_head仍然是4号节点，但是把3的next指向到2。</p>
-<p><img src="https://i.loli.net/2021/04/04/yBupAWeIU9sHRon.gif" alt="0U234D49-9.gif"></p>
+<figure>
+<img src="https://i.loli.net/2021/04/04/yBupAWeIU9sHRon.gif"
+alt="0U234D49-9.gif" />
+<figcaption aria-hidden="true">0U234D49-9.gif</figcaption>
+</figure>
 <p>依次向上层返回，过程中不断修改节点指向，从而完成链表反转。</p>
-<h2 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h2><p>头插法的思路也比较简单，设置一个<code>哑节点</code>，然后迭代地将链表中的节点插入到哑节点后，最后返回哑节点的next节点。</p>
+<h2 id="头插法">头插法</h2>
+<p>头插法的思路也比较简单，设置一个<code>哑节点</code>，然后迭代地将链表中的节点插入到哑节点后，最后返回哑节点的next节点。</p>
 <p>构建哑节点：</p>
-<p><img src="https://i.loli.net/2021/04/04/WZQ2MDJmKb6oy1V.gif" alt="0U2342546-11.gif"></p>
+<figure>
+<img src="https://i.loli.net/2021/04/04/WZQ2MDJmKb6oy1V.gif"
+alt="0U2342546-11.gif" />
+<figcaption aria-hidden="true">0U2342546-11.gif</figcaption>
+</figure>
 <p>将1节点插入到哑节点后：</p>
-<p><img src="https://i.loli.net/2021/04/04/7Il1oOtfpRuXAsx.gif" alt="0U2342R3-12.gif"></p>
+<figure>
+<img src="https://i.loli.net/2021/04/04/7Il1oOtfpRuXAsx.gif"
+alt="0U2342R3-12.gif" />
+<figcaption aria-hidden="true">0U2342R3-12.gif</figcaption>
+</figure>
 <p>这样也很容易写出代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">    <span class="function">ListNode <span class="title">dummy</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    ListNode *curr=head, *nxt;</span><br><span class="line">    <span class="keyword">while</span>(curr)&#123;</span><br><span class="line">        nxt = curr-&gt;next;</span><br><span class="line">        curr-&gt;next = dummy.next;</span><br><span class="line">        dummy.next = curr;</span><br><span class="line">        curr = nxt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="原地置换法"><a href="#原地置换法" class="headerlink" title="原地置换法"></a>原地置换法</h2><p>所谓原地，就是直接对原链表进行修改。在过程中需要借助两个指针 beg 和 end。</p>
+<h2 id="原地置换法">原地置换法</h2>
+<p>所谓原地，就是直接对原链表进行修改。在过程中需要借助两个指针 beg 和
+end。</p>
 <p>过程可以参考简图：</p>
-<p><img src="https://i.loli.net/2021/04/04/i8vtmnHslBcKZL4.gif" alt="0U2341592-16.gif"></p>
+<figure>
+<img src="https://i.loli.net/2021/04/04/i8vtmnHslBcKZL4.gif"
+alt="0U2341592-16.gif" />
+<figcaption aria-hidden="true">0U2341592-16.gif</figcaption>
+</figure>
 <p>代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode *beg, *end;</span><br><span class="line">    beg = head;</span><br><span class="line">    <span class="keyword">while</span>(beg-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        end = beg-&gt;next;</span><br><span class="line">        beg-&gt;next = end-&gt;next;</span><br><span class="line">        end-&gt;next = head;</span><br><span class="line">        head = end;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以上四种方法建议熟记！！</p>

@@ -382,410 +382,1350 @@
       
         <p>2013年~2014年的人群异常检测相关论文。</p>
 <span id="more"></span>
-<h4 id="基于结构分析的在线人群异常检测"><a href="#基于结构分析的在线人群异常检测" class="headerlink" title="基于结构分析的在线人群异常检测"></a>基于结构分析的在线人群异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6844850">Online Anomaly Detection in Crowd Scenes via Structure Analysis</a></p>
+<h4
+id="基于结构分析的在线人群异常检测">基于结构分析的在线人群异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6844850">Online
+Anomaly Detection in Crowd Scenes via Structure Analysis</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6221036">IEEE Transactions on Cybernetics</a> ( Volume: 45, <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=7041256">Issue: 3</a>, March 2015)</p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6221036">IEEE
+Transactions on Cybernetics</a> ( Volume: 45, <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=7041256">Issue:
+3</a>, March 2015)</p>
 <p><strong>Date of Publication:</strong> 26 June 2014</p>
 <p><strong>被引用次数</strong>：155</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Abnormal behavior detection in crowd scenes is continuously a challenge in the field of computer vision. For tackling this problem, this paper starts from a novel structure modeling of crowd behavior. We first propose an informative structural context descriptor (SCD) for describing the crowd individual, which originally introduces the potential energy function of particle’s interforce in solid-state physics to intuitively conduct vision contextual cueing. For computing the crowd SCD variation effectively, we then design a robust multi-object tracker to associate the targets in different frames, which employs the incremental analytical ability of the 3-D discrete cosine transform (DCT). By online spatial-temporal analyzing the SCD variation of the crowd, the abnormality is finally localized. Our contribution mainly lies on three aspects: 1) the new exploration of abnormal detection from structure modeling where the motion difference between individuals is computed by a novel selective histogram of optical flow that makes the proposed method can deal with more kinds of anomalies; 2) the SCD description that can effectively represent the relationship among the individuals; and 3) the 3-D DCT multi-object tracker that can robustly associate the limited number of (instead of all) targets which makes the tracking analysis in high density crowd situation feasible. Experimental results on several publicly available crowd video datasets verify the effectiveness of the proposed method.</p>
-<p>人群场景中的异常行为检测一直是计算机视觉领域的一个挑战。为了解决这个问题，本文从人群行为的<strong>新型结构建模</strong>入手。我们首先提出了一个用于描述人群个体的信息结构描述符（SCD），它最初引入了固体物理学中粒子相互作用的势能函数来直观地进行视觉情境提示。为了有效地计算人群的<strong>SCD变化</strong>，我们设计了一个强大的<strong>多目标跟踪器</strong>来关联不同帧中的目标，它采用了<strong>3-D离散余弦变换（DCT）的增量分析</strong>能力。通过对人群的SCD变化进行在线时空分析，最终对异常情况进行了定位。我们的贡献主要体现在三个方面。1）从结构建模的角度对异常检测进行了新的探索，其中个体之间的运动差异是通过新颖的选择性光流直方图来计算的，这使得所提出的方法可以处理更多种类的异常；2）SCD描述可以有效地代表个体之间的关系；3）3-D DCT多目标跟踪器可以稳健地关联有限数量（而不是全部）的目标，这使得在高密度人群情况下进行跟踪分析成为可行。在几个公开可用的人群视频数据集上的实验结果验证了所提方法的有效性。</p>
+<p>Abnormal behavior detection in crowd scenes is continuously a
+challenge in the field of computer vision. For tackling this problem,
+this paper starts from a novel structure modeling of crowd behavior. We
+first propose an informative structural context descriptor (SCD) for
+describing the crowd individual, which originally introduces the
+potential energy function of particle's interforce in solid-state
+physics to intuitively conduct vision contextual cueing. For computing
+the crowd SCD variation effectively, we then design a robust
+multi-object tracker to associate the targets in different frames, which
+employs the incremental analytical ability of the 3-D discrete cosine
+transform (DCT). By online spatial-temporal analyzing the SCD variation
+of the crowd, the abnormality is finally localized. Our contribution
+mainly lies on three aspects: 1) the new exploration of abnormal
+detection from structure modeling where the motion difference between
+individuals is computed by a novel selective histogram of optical flow
+that makes the proposed method can deal with more kinds of anomalies; 2)
+the SCD description that can effectively represent the relationship
+among the individuals; and 3) the 3-D DCT multi-object tracker that can
+robustly associate the limited number of (instead of all) targets which
+makes the tracking analysis in high density crowd situation feasible.
+Experimental results on several publicly available crowd video datasets
+verify the effectiveness of the proposed method.</p>
+<p>人群场景中的异常行为检测一直是计算机视觉领域的一个挑战。为了解决这个问题，本文从人群行为的<strong>新型结构建模</strong>入手。我们首先提出了一个用于描述人群个体的信息结构描述符（SCD），它最初引入了固体物理学中粒子相互作用的势能函数来直观地进行视觉情境提示。为了有效地计算人群的<strong>SCD变化</strong>，我们设计了一个强大的<strong>多目标跟踪器</strong>来关联不同帧中的目标，它采用了<strong>3-D离散余弦变换（DCT）的增量分析</strong>能力。通过对人群的SCD变化进行在线时空分析，最终对异常情况进行了定位。我们的贡献主要体现在三个方面。1）从结构建模的角度对异常检测进行了新的探索，其中个体之间的运动差异是通过新颖的选择性光流直方图来计算的，这使得所提出的方法可以处理更多种类的异常；2）SCD描述可以有效地代表个体之间的关系；3）3-D
+DCT多目标跟踪器可以稳健地关联有限数量（而不是全部）的目标，这使得在高密度人群情况下进行跟踪分析成为可行。在几个公开可用的人群视频数据集上的实验结果验证了所提方法的有效性。</p>
 <p><strong>keywords</strong>:</p>
-<p>Context, Trajectory, Computational modeling, Potential energy, Target tracking, Discrete cosine transforms, Visualization</p>
+<p>Context, Trajectory, Computational modeling, Potential energy, Target
+tracking, Discrete cosine transforms, Visualization</p>
 <p>环境, 轨迹, 计算模型, 势能, 目标追踪, 离散余弦变换, 视觉化</p>
-<h4 id="层次化的人群分析和异常检测"><a href="#层次化的人群分析和异常检测" class="headerlink" title="层次化的人群分析和异常检测"></a>层次化的人群分析和异常检测</h4><p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1045926X13000992">Hierarchical crowd analysis and anomaly detection</a></p>
+<h4 id="层次化的人群分析和异常检测">层次化的人群分析和异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1045926X13000992">Hierarchical
+crowd analysis and anomaly detection</a></p>
 <blockquote>
 <p><strong>Date of Publication:</strong> 2 December 2013</p>
 <p><strong>被引用次数</strong>：18</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Objective<br>This work proposes a novel approach to model the spatiotemporal distribution of crowd motions and detect anomalous events.</p>
-<p>Methods<br>We first learn the regions of interest (ROIs) which inform the behavioral patterns by trajectory analysis with Hierarchical Dirichlet Processes (HDP), so that the main trends of crowd motions can be modeled. Based on the ROIs, we then build a series of histograms both on global and local levels as the templates for the observed movement distribution, which statistically describes time-correlated crowd events. Once the template has been built hierarchically, we import real data containing the discrete trajectory observations from video surveillance and detect abnormal events for individuals and for crowds.</p>
-<p>Results<br>Experimental results show the effectiveness of our approach, which is able to analyze and extract the crowd motion information from observed trajectory dataset, and achieve the anomaly detection at the hierarchical levels.</p>
-<p>Conclusion<br>The proposed hierarchical approach can learn the moving trends of crowd both in global and local area and describe the crowd behaviors in statistical way, which build a template for pedestrian movement distribution that allows for the detection of time-correlated abnormal crowd events.</p>
-<p>目的<br>这项工作提出了一种新的方法来模拟人群运动的时空分布并检测异常事件。</p>
-<p>方法<br>我们首先学习<strong>regions of interest（ROI）</strong>，这些区域通过使用<strong>Hierarchical Dirichlet Processes（HDP）的轨迹分析</strong>来告知行为模式，这样就可以对人群运动的主要趋势进行建模。基于ROI，我们在全局和局部水平上建立一系列直方图，作为观察到的运动分布的模板，从统计学上描述时间相关的人群事件。一旦模板被分层建立，我们就导入包含视频监控中离散轨迹观测的真实数据，并检测个人和人群的异常事件。</p>
-<p>实验结果<br>实验结果表明，我们的方法是有效的，它能够分析和提取观察到的轨迹数据集中的人群运动信息，并在分层上实现异常检测。</p>
-<p>结论<br>所提出的分层方法能够学习人群在全局和局部区域的运动趋势，并以统计学的方式描述人群行为，从而建立一个行人运动分布的模板，可以对时间相关的异常人群事件进行检测。</p>
+<p>Objective This work proposes a novel approach to model the
+spatiotemporal distribution of crowd motions and detect anomalous
+events.</p>
+<p>Methods We first learn the regions of interest (ROIs) which inform
+the behavioral patterns by trajectory analysis with Hierarchical
+Dirichlet Processes (HDP), so that the main trends of crowd motions can
+be modeled. Based on the ROIs, we then build a series of histograms both
+on global and local levels as the templates for the observed movement
+distribution, which statistically describes time-correlated crowd
+events. Once the template has been built hierarchically, we import real
+data containing the discrete trajectory observations from video
+surveillance and detect abnormal events for individuals and for
+crowds.</p>
+<p>Results Experimental results show the effectiveness of our approach,
+which is able to analyze and extract the crowd motion information from
+observed trajectory dataset, and achieve the anomaly detection at the
+hierarchical levels.</p>
+<p>Conclusion The proposed hierarchical approach can learn the moving
+trends of crowd both in global and local area and describe the crowd
+behaviors in statistical way, which build a template for pedestrian
+movement distribution that allows for the detection of time-correlated
+abnormal crowd events.</p>
+<p>目的
+这项工作提出了一种新的方法来模拟人群运动的时空分布并检测异常事件。</p>
+<p>方法 我们首先学习<strong>regions of
+interest（ROI）</strong>，这些区域通过使用<strong>Hierarchical Dirichlet
+Processes（HDP）的轨迹分析</strong>来告知行为模式，这样就可以对人群运动的主要趋势进行建模。基于ROI，我们在全局和局部水平上建立一系列直方图，作为观察到的运动分布的模板，从统计学上描述时间相关的人群事件。一旦模板被分层建立，我们就导入包含视频监控中离散轨迹观测的真实数据，并检测个人和人群的异常事件。</p>
+<p>实验结果
+实验结果表明，我们的方法是有效的，它能够分析和提取观察到的轨迹数据集中的人群运动信息，并在分层上实现异常检测。</p>
+<p>结论
+所提出的分层方法能够学习人群在全局和局部区域的运动趋势，并以统计学的方式描述人群行为，从而建立一个行人运动分布的模板，可以对时间相关的异常人群事件进行检测。</p>
 <p><strong>keywords</strong>:</p>
-<p>Crowd analysis, Anomaly detection, Video surveillance, Hierarchical Dirichlet Process, Trajectory analysis</p>
+<p>Crowd analysis, Anomaly detection, Video surveillance, Hierarchical
+Dirichlet Process, Trajectory analysis</p>
 <p>人群分析,异常检测,视频监控,HDP,轨迹分析</p>
-<h4 id="实时人群异常检测"><a href="#实时人群异常检测" class="headerlink" title="实时人群异常检测"></a>实时人群异常检测</h4><p><a target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9026/902608/Real-time-anomaly-detection-in-dense-crowded-scenes/10.1117/12.2040521.short?SSO=1">Real-time anomaly detection in dense crowded scenes</a></p>
+<h4 id="实时人群异常检测">实时人群异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9026/902608/Real-time-anomaly-detection-in-dense-crowded-scenes/10.1117/12.2040521.short?SSO=1">Real-time
+anomaly detection in dense crowded scenes</a></p>
 <blockquote>
 <p><strong>Date of Publication:</strong> 5 March 2014</p>
 <p><strong>被引用次数</strong>：35</p>
 </blockquote>
-<p><strong>Abstract</strong><br>In this paper we propose a novel approach to detect anomalies in crowded scenes. This is achieved by analyzing the crowd behavior by extracting the corner features. For each corner feature we collect a set of motion features. The motion features are used to train an MLP neural network during the training stage, and the behavior of crowd is inferred on the test samples. Considering the difficulty of tracking individuals in dense crowds due to multiple occlusions and clutter, in this work we extract corner features and consider them as an approximate representation of the people motion. Corner features are then advected over a temporal window through optical flow tracking. Corner features well match the motion of individuals and their consistency, and accuracy is higher both in structured and unstructured crowded scenes compared to other detectors. In the current work, corner features are exploited to extract motion information, which is used as input prior to train the neural network. The MLP neural network is subsequently used to highlight the dominant corner features that can reveal an anomaly in the crowded scenes. The experimental evaluation is conducted on a set of benchmark video sequences commonly used for crowd motion analysis. In addition, we show that our approach outperforms a state of the art technique proposed in.</p>
+<p><strong>Abstract</strong> In this paper we propose a novel approach
+to detect anomalies in crowded scenes. This is achieved by analyzing the
+crowd behavior by extracting the corner features. For each corner
+feature we collect a set of motion features. The motion features are
+used to train an MLP neural network during the training stage, and the
+behavior of crowd is inferred on the test samples. Considering the
+difficulty of tracking individuals in dense crowds due to multiple
+occlusions and clutter, in this work we extract corner features and
+consider them as an approximate representation of the people motion.
+Corner features are then advected over a temporal window through optical
+flow tracking. Corner features well match the motion of individuals and
+their consistency, and accuracy is higher both in structured and
+unstructured crowded scenes compared to other detectors. In the current
+work, corner features are exploited to extract motion information, which
+is used as input prior to train the neural network. The MLP neural
+network is subsequently used to highlight the dominant corner features
+that can reveal an anomaly in the crowded scenes. The experimental
+evaluation is conducted on a set of benchmark video sequences commonly
+used for crowd motion analysis. In addition, we show that our approach
+outperforms a state of the art technique proposed in.</p>
 <p>在本文中，我们提出了一种新的方法来检测拥挤场景中的异常情况。这是通过<strong>提取角点特征</strong>来分析人群行为来实现的。对于每个角点特征，我们收集一组运动特征。在训练阶段，运动特征被用来训练MLP神经网络，并在测试样本上推断出人群的行为。考虑到由于多重遮挡和杂乱，在密集的人群中跟踪个人是很困难的，在这项工作中，我们提取角点特征，并将其视为人们运动的近似代表。然后，角点特征通过光流跟踪在一个时间窗口上进行平移。角点特征很好地匹配了个人的运动和他们的一致性，与其他检测器相比，在结构化和非结构化的拥挤场景中，准确性都更高。在目前的工作中，角点特征被用来提取运动信息，在训练神经网络之前将其作为输入。随后，MLP神经网络被用来突出能够揭示拥挤场景中异常情况的主导角点特征。实验评估是在一组常用于人群运动分析的基准视频序列上进行的。此外，我们表明，我们的方法优于在《中国社会科学》中提出的最先进的技术。</p>
-<h4 id="基于群体运动特征的人群异常检测"><a href="#基于群体运动特征的人群异常检测" class="headerlink" title="基于群体运动特征的人群异常检测"></a>基于群体运动特征的人群异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7025477">Swarm-based motion features for anomaly detection in crowds</a></p>
+<h4
+id="基于群体运动特征的人群异常检测">基于群体运动特征的人群异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7025477">Swarm-based
+motion features for anomaly detection in crowds</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6992914/proceeding">2014 IEEE International Conference on Image Processing (ICIP)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6992914/proceeding">2014
+IEEE International Conference on Image Processing (ICIP)</a></p>
 <p><strong>Date of Conference:</strong> 27-30 Oct. 2014</p>
 <p><strong>被引用次数</strong>：18</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>In this work we propose a novel approach to the detection of anomalous events occurring in crowded scenes. Swarm theory is applied for the creation of a motion feature first introduced in this work, the Histograms of Oriented Swarm Accelerations (HOSA), which are shown to effectively capture a scene’s motion dynamics. The HOSA, together with the well known Histograms of Oriented Gradients (HOGs) describing appearance, are combined to provide a final descriptor based on both motion and appearance, to effectively characterize a crowded scene. Appearance and motion features are only extracted within spatiotemporal volumes of moving pixels (regions of interest) to ensure robustness to local noise and allow the detection of anomalies occurring only in a small region of the frame. Experiments and comparisons with the State of the Art (SoA) on a variety of benchmark datasets demonstrate the effectiveness of the proposed method, its flexibility and applicability to different crowd environments, and its superiority over currently existing approaches.</p>
-<p>在这项工作中，我们提出了一种新颖的方法来检测拥挤场景中发生的异常事件。<strong>群体理论</strong>(Swarm theory )被应用于创建这项工作中首先引入的运动特征，即<strong>定向群体加速度直方图（HOSA）</strong>，该直方图被显示为有效地捕获了场景的运动动态。 HOSA与描述外观的众所周知的<strong>定向直方图（HOG）</strong>结合在一起，可以基于运动和外观提供最终的描述符，以有效地表征拥挤的场景。外观和运动特征仅在运动像素（感兴趣区域）的时空体积内提取，以确保对局部噪声的鲁棒性，并允许检测仅在帧的较小区域内发生的异常。在各种基准数据集上与最新技术（SoA）进行的实验和比较证明了该方法的有效性，其灵活性和对不同人群环境的适用性以及相对于现有方法的优越性。</p>
+<p>In this work we propose a novel approach to the detection of
+anomalous events occurring in crowded scenes. Swarm theory is applied
+for the creation of a motion feature first introduced in this work, the
+Histograms of Oriented Swarm Accelerations (HOSA), which are shown to
+effectively capture a scene's motion dynamics. The HOSA, together with
+the well known Histograms of Oriented Gradients (HOGs) describing
+appearance, are combined to provide a final descriptor based on both
+motion and appearance, to effectively characterize a crowded scene.
+Appearance and motion features are only extracted within spatiotemporal
+volumes of moving pixels (regions of interest) to ensure robustness to
+local noise and allow the detection of anomalies occurring only in a
+small region of the frame. Experiments and comparisons with the State of
+the Art (SoA) on a variety of benchmark datasets demonstrate the
+effectiveness of the proposed method, its flexibility and applicability
+to different crowd environments, and its superiority over currently
+existing approaches.</p>
+<p>在这项工作中，我们提出了一种新颖的方法来检测拥挤场景中发生的异常事件。<strong>群体理论</strong>(Swarm
+theory
+)被应用于创建这项工作中首先引入的运动特征，即<strong>定向群体加速度直方图（HOSA）</strong>，该直方图被显示为有效地捕获了场景的运动动态。
+HOSA与描述外观的众所周知的<strong>定向直方图（HOG）</strong>结合在一起，可以基于运动和外观提供最终的描述符，以有效地表征拥挤的场景。外观和运动特征仅在运动像素（感兴趣区域）的时空体积内提取，以确保对局部噪声的鲁棒性，并允许检测仅在帧的较小区域内发生的异常。在各种基准数据集上与最新技术（SoA）进行的实验和比较证明了该方法的有效性，其灵活性和对不同人群环境的适用性以及相对于现有方法的优越性。</p>
 <p><strong>keywords</strong>:</p>
-<p>Force, Histograms, Videos, Conferences, Computer vision, Dynamics, Pattern recognition</p>
+<p>Force, Histograms, Videos, Conferences, Computer vision, Dynamics,
+Pattern recognition</p>
 <p>力，直方图，视频，会议，计算机视觉，动力学，模式识别</p>
-<h4 id="H-264压缩视频中的实时异常检测"><a href="#H-264压缩视频中的实时异常检测" class="headerlink" title="H.264压缩视频中的实时异常检测"></a>H.264压缩视频中的实时异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6776164">Real time anomaly detection in H.264 compressed videos</a></p>
+<h4
+id="h.264压缩视频中的实时异常检测">H.264压缩视频中的实时异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6776164">Real
+time anomaly detection in H.264 compressed videos</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6765546/proceeding">2013 Fourth National Conference on Computer Vision, Pattern Recognition, Image Processing and Graphics (NCVPRIPG)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6765546/proceeding">2013
+Fourth National Conference on Computer Vision, Pattern Recognition,
+Image Processing and Graphics (NCVPRIPG)</a></p>
 <p><strong>Date of Conference:</strong> 18-21 Dec. 2013</p>
 <p><strong>被引用次数</strong>：42</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Real time anomaly detection is the need of the hour for any security applications. In this paper, we have proposed a real-time anomaly detection algorithm by utilizing cues from the motion vectors in H.264/AVC compressed domain. The discussed work is principally motivated by the observation that motion vectors (MVs) exhibit different characteristics during anomaly. We have observed that H.264 motion vector magnitude contains relevant information which can be used to model the usual behavior (UB) effectively. This is subsequently extended to detect abnormality/anomaly based on the probability of occurrence of a behavior. Additionally, we have suggested a hierarchical approach through Motion Pyramid for High Resolution videos to further increase the detection rate. The proposed algorithm has performed extremely well on UMN and Peds Anomaly Detection Video datasets, with a detection speed of &gt;150 and 65-75 frames per sec in respective datasets resulting in more than 200× speedup along with comparable accuracy to pixel domain state-of-the-art algorithms.</p>
-<p>实时异常检测对于任何安全应用程序来说都是以小时为单位的即时需求。在本文中，我们提出了一种<strong>利用H.264 / AVC压缩域</strong>中的<strong>运动矢量</strong>提示的实时异常检测算法。所讨论的工作主要是由于观察到运动矢量（MVs）在异常期间表现出不同的特性而引起的。我们已经观察到H.264运动矢量幅度包含相关信息，这些信息可用于有效地建模通常的行为（UB）。随后将其扩展为基于行为发生的概率来检测异常。此外，我们建议通过运动金字塔对高分辨率视频使用分层方法，以进一步提高检测率。所提出的算法在UMN和Peds异常检测视频数据集上表现非常出色，在各个数据集中的检测速度分别&gt; 150和65-75帧/秒，从而导致超过200倍的加速以及与像素域状态相当的精度最先进的算法。</p>
-<p><strong>Keywords</strong><br>Videos, Computer vision, Real-time systems, Training, Conferences, Accuracy, Histograms</p>
+<p>Real time anomaly detection is the need of the hour for any security
+applications. In this paper, we have proposed a real-time anomaly
+detection algorithm by utilizing cues from the motion vectors in
+H.264/AVC compressed domain. The discussed work is principally motivated
+by the observation that motion vectors (MVs) exhibit different
+characteristics during anomaly. We have observed that H.264 motion
+vector magnitude contains relevant information which can be used to
+model the usual behavior (UB) effectively. This is subsequently extended
+to detect abnormality/anomaly based on the probability of occurrence of
+a behavior. Additionally, we have suggested a hierarchical approach
+through Motion Pyramid for High Resolution videos to further increase
+the detection rate. The proposed algorithm has performed extremely well
+on UMN and Peds Anomaly Detection Video datasets, with a detection speed
+of &gt;150 and 65-75 frames per sec in respective datasets resulting in
+more than 200× speedup along with comparable accuracy to pixel domain
+state-of-the-art algorithms.</p>
+<p>实时异常检测对于任何安全应用程序来说都是以小时为单位的即时需求。在本文中，我们提出了一种<strong>利用H.264
+/
+AVC压缩域</strong>中的<strong>运动矢量</strong>提示的实时异常检测算法。所讨论的工作主要是由于观察到运动矢量（MVs）在异常期间表现出不同的特性而引起的。我们已经观察到H.264运动矢量幅度包含相关信息，这些信息可用于有效地建模通常的行为（UB）。随后将其扩展为基于行为发生的概率来检测异常。此外，我们建议通过运动金字塔对高分辨率视频使用分层方法，以进一步提高检测率。所提出的算法在UMN和Peds异常检测视频数据集上表现非常出色，在各个数据集中的检测速度分别&gt;
+150和65-75帧/秒，从而导致超过200倍的加速以及与像素域状态相当的精度最先进的算法。</p>
+<p><strong>Keywords</strong> Videos, Computer vision, Real-time systems,
+Training, Conferences, Accuracy, Histograms</p>
 <p>视频，计算机视觉，实时系统，培训，会议，准确性，直方图</p>
-<h4 id="基于时空上下文中的分层活动发现的视频异常检测"><a href="#基于时空上下文中的分层活动发现的视频异常检测" class="headerlink" title="基于时空上下文中的分层活动发现的视频异常检测"></a>基于时空上下文中的分层活动发现的视频异常检测</h4><p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S092523121400753X">Video anomaly detection based on a hierarchical activity discovery within spatio-temporal contexts</a></p>
+<h4
+id="基于时空上下文中的分层活动发现的视频异常检测">基于时空上下文中的分层活动发现的视频异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S092523121400753X">Video
+anomaly detection based on a hierarchical activity discovery within
+spatio-temporal contexts</a></p>
 <blockquote>
 <p><strong>Date of Publication:</strong> 11 June 2014</p>
 <p>82</p>
 </blockquote>
 <p>Abstract</p>
-<p>In this paper, we present a novel approach for video-anomaly detection in crowded and complicated scenes. The proposed approach detects anomalies based on a hierarchical activity-pattern discovery framework, comprehensively considering both global and local spatio-temporal contexts. The discovery is a coarse-to-fine learning process with unsupervised methods for automatically constructing normal activity patterns at different levels. A unified anomaly energy function is designed based on these discovered activity patterns to identify the abnormal level of an input motion pattern. We demonstrate the effectiveness of the proposed method on the UCSD anomaly-detection datasets and compare the performance with existing work.</p>
-<p>在本文中，我们提出了一种在拥挤和复杂场景中进行视频异常检测的新颖方法。 所提出的方法<strong>基于分层活动模式</strong>发现框架检测异常，并全面考虑了<strong>全局和局部时空上下文</strong>。 该发现是从无到有的学习过程，采用<strong>无监督的方法</strong>来自动构建不同级别的正常活动模式。 基于这些发现的活动模式设计统一的异常能量函数，以识别输入运动模式的异常级别。 我们证明了该方法在UCSD异常检测数据集上的有效性，并将其性能与现有工作进行了比较。</p>
-<p><strong>Keywords</strong><br>Visual surveillance, Video anomaly detection, Hierarchical discovery, Energy function</p>
+<p>In this paper, we present a novel approach for video-anomaly
+detection in crowded and complicated scenes. The proposed approach
+detects anomalies based on a hierarchical activity-pattern discovery
+framework, comprehensively considering both global and local
+spatio-temporal contexts. The discovery is a coarse-to-fine learning
+process with unsupervised methods for automatically constructing normal
+activity patterns at different levels. A unified anomaly energy function
+is designed based on these discovered activity patterns to identify the
+abnormal level of an input motion pattern. We demonstrate the
+effectiveness of the proposed method on the UCSD anomaly-detection
+datasets and compare the performance with existing work.</p>
+<p>在本文中，我们提出了一种在拥挤和复杂场景中进行视频异常检测的新颖方法。
+所提出的方法<strong>基于分层活动模式</strong>发现框架检测异常，并全面考虑了<strong>全局和局部时空上下文</strong>。
+该发现是从无到有的学习过程，采用<strong>无监督的方法</strong>来自动构建不同级别的正常活动模式。
+基于这些发现的活动模式设计统一的异常能量函数，以识别输入运动模式的异常级别。
+我们证明了该方法在UCSD异常检测数据集上的有效性，并将其性能与现有工作进行了比较。</p>
+<p><strong>Keywords</strong> Visual surveillance, Video anomaly
+detection, Hierarchical discovery, Energy function</p>
 <p>视觉监控，视频异常检测，分层发现，能量函数</p>
-<h4 id="使用运动影响矩阵的人群行为表示异常检测"><a href="#使用运动影响矩阵的人群行为表示异常检测" class="headerlink" title="使用运动影响矩阵的人群行为表示异常检测"></a>使用运动影响矩阵的人群行为表示异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6778292">Crowd Behavior Representation Using Motion Influence Matrix for Anomaly Detection</a></p>
+<h4
+id="使用运动影响矩阵的人群行为表示异常检测">使用运动影响矩阵的人群行为表示异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6778292">Crowd
+Behavior Representation Using Motion Influence Matrix for Anomaly
+Detection</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6777805/proceeding">2013 2nd IAPR Asian Conference on Pattern Recognition</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6777805/proceeding">2013
+2nd IAPR Asian Conference on Pattern Recognition</a></p>
 <p><strong>Date of Conference:</strong> 5-8 Nov. 2013</p>
 <p><strong>被引用次数</strong>：9</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>In this paper, we propose a new method to detect abnormal behavior in crowd video. The motion influence matrix is proposed to represent crowd behaviors. It is generated based on concept of human perception with block-level motion vectors which describe actual crowd movement. Furthermore, a generalized framework is developed to detect abnormal crowd behavior using motion influence matrix. The proposed method has an advantage of that does not require any human detection or segmentation method which make it robust to human detection error by using optical flows which is extracted from two continuous frames. In this model, a normal behavior is presented by a low motion influence value. On the other hand, a high motion influence value indicates occurrence of abnormal behavior. Spatio-temporal cuboids are extracted from the motion influence matrix to measure the unusualness of the frame. Two different kinds of abnormal behaviors are dealt in this research: global abnormal behavior and local abnormal behavior. For t quantitative measurement of effectiveness of the proposed method, we evaluate our algorithm on two datasets: UMN and UCSD for global and local abnormal behavior, respectively. Experimental results show that the proposed method outperforms the competing methods.</p>
+<p>In this paper, we propose a new method to detect abnormal behavior in
+crowd video. The motion influence matrix is proposed to represent crowd
+behaviors. It is generated based on concept of human perception with
+block-level motion vectors which describe actual crowd movement.
+Furthermore, a generalized framework is developed to detect abnormal
+crowd behavior using motion influence matrix. The proposed method has an
+advantage of that does not require any human detection or segmentation
+method which make it robust to human detection error by using optical
+flows which is extracted from two continuous frames. In this model, a
+normal behavior is presented by a low motion influence value. On the
+other hand, a high motion influence value indicates occurrence of
+abnormal behavior. Spatio-temporal cuboids are extracted from the motion
+influence matrix to measure the unusualness of the frame. Two different
+kinds of abnormal behaviors are dealt in this research: global abnormal
+behavior and local abnormal behavior. For t quantitative measurement of
+effectiveness of the proposed method, we evaluate our algorithm on two
+datasets: UMN and UCSD for global and local abnormal behavior,
+respectively. Experimental results show that the proposed method
+outperforms the competing methods.</p>
 <p>在本文中，我们提出了一种检测人群视频中异常行为的新方法。提出了<strong>运动影响矩阵</strong>来表示人群行为。它是根据人类感知的概念以及描述实际人群运动的块级运动矢量生成的。此外，开发了一种通用框架来使用运动影响矩阵来检测异常人群行为。所提出的方法的优点在于不需要任何人类检测或分割方法，该方法通过使用从两个连续帧提取的<strong>光流</strong>使其对人类检测错误具有鲁棒性。在此模型中，正常行为是由<strong>低运动影响值</strong>表示的。另一方面，较高的运动影响值表示发生异常行为。从运动影响矩阵中提取时空长方体，以测量帧的异常情况。这项研究处理两种不同类型的异常行为：全局异常行为和局部异常行为。为了定量评估所提出方法的有效性，我们在两个数据集上评估了我们的算法：UMN和UCSD，分别用于全局和局部异常行为。实验结果表明，该方法优于竞争方法。</p>
-<p><strong>Keywords</strong><br>Vectors, Computer vision, Feature extraction, Force, Pattern recognition, Conferences, Legged locomotion</p>
+<p><strong>Keywords</strong> Vectors, Computer vision, Feature
+extraction, Force, Pattern recognition, Conferences, Legged
+locomotion</p>
 <p>向量，计算机视觉，特征提取，力，模式识别，会议，步行运动</p>
-<h4 id="人群异常检测与定位"><a href="#人群异常检测与定位" class="headerlink" title="人群异常检测与定位"></a>人群异常检测与定位</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6531615">Anomaly Detection and Localization in Crowded Scenes</a></p>
+<h4 id="人群异常检测与定位">人群异常检测与定位</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6531615">Anomaly
+Detection and Localization in Crowded Scenes</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=34">IEEE Transactions on Pattern Analysis and Machine Intelligence</a> ( Volume: 36, <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=6674932">Issue: 1</a>, Jan. 2014)</p>
-<p><strong>Date of Publication:</strong> 13 June 2013 </p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=34">IEEE
+Transactions on Pattern Analysis and Machine Intelligence</a> ( Volume:
+36, <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=6674932">Issue:
+1</a>, Jan. 2014)</p>
+<p><strong>Date of Publication:</strong> 13 June 2013</p>
 <p><strong>被引用次数</strong>：662</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>The detection and localization of anomalous behaviors in crowded scenes is considered, and a joint detector of temporal and spatial anomalies is proposed. The proposed detector is based on a video representation that accounts for both appearance and dynamics, using a set of mixture of dynamic textures models. These models are used to implement 1) a center-surround discriminant saliency detector that produces spatial saliency scores, and 2) a model of normal behavior that is learned from training data and produces temporal saliency scores. Spatial and temporal anomaly maps are then defined at multiple spatial scales, by considering the scores of these operators at progressively larger regions of support. The multiscale scores act as potentials of a conditional random field that guarantees global consistency of the anomaly judgments. A data set of densely crowded pedestrian walkways is introduced and used to evaluate the proposed anomaly detector. Experiments on this and other data sets show that the latter achieves state-of-the-art anomaly detection results.</p>
+<p>The detection and localization of anomalous behaviors in crowded
+scenes is considered, and a joint detector of temporal and spatial
+anomalies is proposed. The proposed detector is based on a video
+representation that accounts for both appearance and dynamics, using a
+set of mixture of dynamic textures models. These models are used to
+implement 1) a center-surround discriminant saliency detector that
+produces spatial saliency scores, and 2) a model of normal behavior that
+is learned from training data and produces temporal saliency scores.
+Spatial and temporal anomaly maps are then defined at multiple spatial
+scales, by considering the scores of these operators at progressively
+larger regions of support. The multiscale scores act as potentials of a
+conditional random field that guarantees global consistency of the
+anomaly judgments. A data set of densely crowded pedestrian walkways is
+introduced and used to evaluate the proposed anomaly detector.
+Experiments on this and other data sets show that the latter achieves
+state-of-the-art anomaly detection results.</p>
 <p>考虑了拥挤场景中异常行为的检测和定位，提出了一种<strong>时空异常联合检测器</strong>。所提出的检测器基于使用动态纹理模型混合的一组视频，该视频表示同时考虑了外观和动态。这些模型用于实现1）产生空间显着性分数的中心周围判别显着性检测器，以及2）从训练数据中学习并产生时间显着性分数的正常行为模型。然后，通过考虑这些操作者在支持区域中逐渐增大的分数，可以在多个空间尺度上定义空间和时间异常图。多尺度得分可作为条件随机场的潜力，从而保证异常判断的整体一致性。引入了一个拥挤的人行道的数据集，并用于评估提出的异常检测器。在该数据集和其他数据集上进行的实验表明，后者可实现最新的异常检测结果。</p>
 <p><strong>Keywords</strong></p>
-<p>Video analysis, surveillance, anomaly detection, crowded scene, dynamic texture, center-surround saliency</p>
+<p>Video analysis, surveillance, anomaly detection, crowded scene,
+dynamic texture, center-surround saliency</p>
 <p>视频分析，监视，异常检测，拥挤场景，动态纹理，中心周围显着性</p>
-<h4 id="基于人员流动和社交媒体的交通异常人群感知"><a href="#基于人员流动和社交媒体的交通异常人群感知" class="headerlink" title="基于人员流动和社交媒体的交通异常人群感知"></a>基于人员流动和社交媒体的交通异常人群感知</h4><p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2525314.2525343">Crowd sensing of traffic anomalies based on human mobility and social media</a></p>
+<h4
+id="基于人员流动和社交媒体的交通异常人群感知">基于人员流动和社交媒体的交通异常人群感知</h4>
+<p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2525314.2525343">Crowd
+sensing of traffic anomalies based on human mobility and social
+media</a></p>
 <blockquote>
-<p><strong>Publication:</strong>SIGSPATIAL’13: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems</p>
+<p><strong>Publication:</strong>SIGSPATIAL'13: Proceedings of the 21st
+ACM SIGSPATIAL International Conference on Advances in Geographic
+Information Systems</p>
 <p><strong>Date of Publication:</strong> November 2013</p>
 <p><strong>被引用次数</strong>：389</p>
 </blockquote>
-<p><strong>Abstract:</strong><br>The advances in mobile computing and social networking services enable people to probe the dynamics of a city. In this paper, we address the problem of detecting and describing traffic anomalies using crowd sensing with two forms of data, human mobility and social media. Traffic anomalies are caused by accidents, control, protests, sport events, celebrations, disasters and other events. Unlike existing traffic-anomaly-detection methods, we identify anomalies according to drivers’ routing behavior on an urban road network. Here, a detected anomaly is represented by a sub-graph of a road network where drivers’ routing behaviors significantly differ from their original patterns. We then try to describe the detected anomaly by mining representative terms from the social media that people posted when the anomaly happened. The system for detecting such traffic anomalies can benefit both drivers and transportation authorities, e.g., by notifying drivers approaching an anomaly and suggesting alternative routes, as well as supporting traffic jam diagnosis and dispersal. We evaluate our system with a GPS trajectory dataset generated by over 30,000 taxicabs over a period of 3 months in Beijing, and a dataset of tweets collected from WeiBo, a Twitter-like social site in China. The results demonstrate the effectiveness and efficiency of our system.</p>
+<p><strong>Abstract:</strong> The advances in mobile computing and
+social networking services enable people to probe the dynamics of a
+city. In this paper, we address the problem of detecting and describing
+traffic anomalies using crowd sensing with two forms of data, human
+mobility and social media. Traffic anomalies are caused by accidents,
+control, protests, sport events, celebrations, disasters and other
+events. Unlike existing traffic-anomaly-detection methods, we identify
+anomalies according to drivers' routing behavior on an urban road
+network. Here, a detected anomaly is represented by a sub-graph of a
+road network where drivers' routing behaviors significantly differ from
+their original patterns. We then try to describe the detected anomaly by
+mining representative terms from the social media that people posted
+when the anomaly happened. The system for detecting such traffic
+anomalies can benefit both drivers and transportation authorities, e.g.,
+by notifying drivers approaching an anomaly and suggesting alternative
+routes, as well as supporting traffic jam diagnosis and dispersal. We
+evaluate our system with a GPS trajectory dataset generated by over
+30,000 taxicabs over a period of 3 months in Beijing, and a dataset of
+tweets collected from WeiBo, a Twitter-like social site in China. The
+results demonstrate the effectiveness and efficiency of our system.</p>
 <p>移动计算和社交网络服务的进步使人们能够探索城市的动态。在本文中，我们解决了使用<strong>人群感知</strong>和两种形式的数据（<strong>人类流动性和社交媒体</strong>）来检测和描述交通异常的问题。交通异常是由事故，控制，抗议，体育赛事，庆典，灾难和其他事件引起的。与现有的交通异常检测方法不同，我们根据驾驶员在城市道路网络上的路线选择行为来识别异常。在此，检测到的异常由道路网络的子图表示，其中驾驶员的路线选择行为与其原始模式明显不同。然后，我们尝试通过挖掘人们在异常发生时发布的社交媒体中的代表性术语来描述检测到的异常。用于检测这种交通异常的系统可以例如通过通知驾驶员接近异常并建议替代路线以及支持交通拥堵诊断和分散来使驾驶员和运输当局都受益。我们通过在3个月的时间内在北京超过30,000个出租车生成的GPS轨迹数据集以及从类似Twitter的中国社交网站微博收集的推文数据集来评估我们的系统。结果证明了我们系统的有效性和效率。</p>
-<h4 id="高斯混合用于拥挤场景中的异常检测"><a href="#高斯混合用于拥挤场景中的异常检测" class="headerlink" title="高斯混合用于拥挤场景中的异常检测"></a>高斯混合用于拥挤场景中的异常检测</h4><p><a target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/8663/866303/Gaussian-mixtures-for-anomaly-detection-in-crowded-scenes/10.1117/12.2003893.short?SSO=1">Gaussian mixtures for anomaly detection in crowded scenes</a></p>
+<h4
+id="高斯混合用于拥挤场景中的异常检测">高斯混合用于拥挤场景中的异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/8663/866303/Gaussian-mixtures-for-anomaly-detection-in-crowded-scenes/10.1117/12.2003893.short?SSO=1">Gaussian
+mixtures for anomaly detection in crowded scenes</a></p>
 <blockquote>
 <p><strong>Date of Publication:</strong>19 March 2013</p>
 <p><strong>被引用次数</strong>：26</p>
 </blockquote>
 <p><strong>Abstract</strong></p>
-<p>In this paper, we propose a fast and robust framework for anomaly detection in crowed scenes. In our method, anomaly is adaptively modeled as a deviation from the normal behavior of crowd observed in the scene. For this purpose, we extract motion features by repeatedly initializing a grid of particles over a temporal window. These features are exploited in a real-time anomaly detection system. In order to model the ordinary behavior of the people moving in the crowd, we use the Gaussian mixture model (GMM) technique, which is robust enough to capture the scene dynamics. As opposed to explicitly modeling the values of all the pixels as a mixture of Gaussians, we adopted the GMM to learn the behavior of the motion features extracted from the particles. Based on the persistence and the variance of each Gaussian distribution, we determine which Gaussians can be associated to the normal behavior of the crowd. Particles with motion features that do not fit the distributions representing normal behavior are signaled as anomaly, until there is a Gaussian able to include them with sufficient evidence supporting it. Experiments are extensively conducted on publically available benchmark dataset, and also on a challenging dataset of video sequences we captured. The experimental results revealed that the proposed method performs effectively for anomaly detection.</p>
+<p>In this paper, we propose a fast and robust framework for anomaly
+detection in crowed scenes. In our method, anomaly is adaptively modeled
+as a deviation from the normal behavior of crowd observed in the scene.
+For this purpose, we extract motion features by repeatedly initializing
+a grid of particles over a temporal window. These features are exploited
+in a real-time anomaly detection system. In order to model the ordinary
+behavior of the people moving in the crowd, we use the Gaussian mixture
+model (GMM) technique, which is robust enough to capture the scene
+dynamics. As opposed to explicitly modeling the values of all the pixels
+as a mixture of Gaussians, we adopted the GMM to learn the behavior of
+the motion features extracted from the particles. Based on the
+persistence and the variance of each Gaussian distribution, we determine
+which Gaussians can be associated to the normal behavior of the crowd.
+Particles with motion features that do not fit the distributions
+representing normal behavior are signaled as anomaly, until there is a
+Gaussian able to include them with sufficient evidence supporting it.
+Experiments are extensively conducted on publically available benchmark
+dataset, and also on a challenging dataset of video sequences we
+captured. The experimental results revealed that the proposed method
+performs effectively for anomaly detection.</p>
 <p>在本文中，我们提出了一个快速而强大的框架，用于在拥挤的场景中进行异常检测。在我们的方法中，异常被自适应地建模为与在场景中观察到的人群正常行为的偏差。为此，我们通过在时间窗口上反复<strong>初始化粒子网格</strong>来提取运动特征。这些功能在实时异常检测系统中得到利用。为了模拟人群中人群的普通行为，我们使用了<strong>高斯混合模型</strong>（GMM）技术，该技术足够强大，可以捕获场景动态。与将所有像素的值显式地建模为高斯混合模型相反，我们采用GMM来学习从粒子提取的运动特征的行为。基于每个高斯分布的持续性和方差，我们确定哪些高斯可以与人群的正常行为相关联。具有不符合正常行为分布的运动特征的粒子会发出异常信号，直到高斯能够包含足够的证据支持它们为止。实验是在可公开获得的基准数据集以及我们捕获的具有挑战性的视频序列数据集上进行的。实验结果表明，该方法可以有效地进行异常检测。</p>
-<h4 id="基于七维流分析的新型异常检测系统"><a href="#基于七维流分析的新型异常检测系统" class="headerlink" title="基于七维流分析的新型异常检测系统"></a>基于七维流分析的新型异常检测系统</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6831160">A novel anomaly detection system based on seven-dimensional flow analysis</a></p>
+<h4
+id="基于七维流分析的新型异常检测系统">基于七维流分析的新型异常检测系统</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6831160">A
+novel anomaly detection system based on seven-dimensional flow
+analysis</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6821297/proceeding">2013 IEEE Global Communications Conference (GLOBECOM)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6821297/proceeding">2013
+IEEE Global Communications Conference (GLOBECOM)</a></p>
 <p><strong>Date of Conference:</strong> 9-13 Dec. 2013</p>
 <p><strong>被引用次数</strong>：19</p>
 </blockquote>
-<p><strong>Abstract:</strong><br>Anomaly detection in large-scale networks is not a simple task, although there are several studies in this area. The continuous expansion of computer networks results in increased complexity of management processes. Thus, simple and efficient anomaly detection mechanisms are required in order to assist the management of these networks. In this paper, we present an anomaly detection system using a seven-dimensional flow analysis. To accomplish this objective, we used the improved Holt-Winters forecasting method on the traffic characterization of each one of the different analyzed dimensions, here called Digital Signature of Network Segment using Flow analysis (DSNSF). The system not only warns the network administrator about the problem, but also provides the necessary information to solve it. Real data are collected and used by the system to measure its efficiency and accuracy.</p>
-<p>大规模网络中的异常检测不是一项简单的任务，尽管在该领域有数项研究。 计算机网络的不断扩展导致管理过程的复杂性增加。 因此，需要简单有效的异常检测机制，以辅助这些网络的管理。 在本文中，我们提出了一种使用<strong>七维流分析的异常检测系统</strong>。 为实现此目标，我们对每个不同分析维度的流量特征使用了改进的<strong>Holt-Winters预测方法</strong>，此处称为使用流量分析的网段数字签名（DSNSF）。 该系统不仅会警告网络管理员有关此问题的信息，而且还提供解决该问题的必要信息。 系统收集并使用实际数据来测量其效率和准确性。</p>
+<p><strong>Abstract:</strong> Anomaly detection in large-scale networks
+is not a simple task, although there are several studies in this area.
+The continuous expansion of computer networks results in increased
+complexity of management processes. Thus, simple and efficient anomaly
+detection mechanisms are required in order to assist the management of
+these networks. In this paper, we present an anomaly detection system
+using a seven-dimensional flow analysis. To accomplish this objective,
+we used the improved Holt-Winters forecasting method on the traffic
+characterization of each one of the different analyzed dimensions, here
+called Digital Signature of Network Segment using Flow analysis (DSNSF).
+The system not only warns the network administrator about the problem,
+but also provides the necessary information to solve it. Real data are
+collected and used by the system to measure its efficiency and
+accuracy.</p>
+<p>大规模网络中的异常检测不是一项简单的任务，尽管在该领域有数项研究。
+计算机网络的不断扩展导致管理过程的复杂性增加。
+因此，需要简单有效的异常检测机制，以辅助这些网络的管理。
+在本文中，我们提出了一种使用<strong>七维流分析的异常检测系统</strong>。
+为实现此目标，我们对每个不同分析维度的流量特征使用了改进的<strong>Holt-Winters预测方法</strong>，此处称为使用流量分析的网段数字签名（DSNSF）。
+该系统不仅会警告网络管理员有关此问题的信息，而且还提供解决该问题的必要信息。
+系统收集并使用实际数据来测量其效率和准确性。</p>
 <p><strong>keywords:</strong></p>
-<p>Equations, Mathematical model, Feature extraction, IP networks, Forecasting, Ports (Computers), Security</p>
+<p>Equations, Mathematical model, Feature extraction, IP networks,
+Forecasting, Ports (Computers), Security</p>
 <p>方程，数学模型，特征提取，IP网络，预测，端口（计算机），安全性</p>
-<h4 id="使用SIFT对人群视频监控进行实时全局异常检测"><a href="#使用SIFT对人群视频监控进行实时全局异常检测" class="headerlink" title="使用SIFT对人群视频监控进行实时全局异常检测"></a>使用SIFT对人群视频监控进行实时全局异常检测</h4><p><a target="_blank" rel="noopener" href="https://digital-library.theiet.org/content/conferences/10.1049/ic.2013.0263">Real-Time Global Anomaly Detection for Crowd Video Surveillance Using SIFT</a></p>
+<h4
+id="使用sift对人群视频监控进行实时全局异常检测">使用SIFT对人群视频监控进行实时全局异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://digital-library.theiet.org/content/conferences/10.1049/ic.2013.0263">Real-Time
+Global Anomaly Detection for Crowd Video Surveillance Using SIFT</a></p>
 <blockquote>
 <p><strong>被引用次数：</strong>6</p>
 </blockquote>
 <p><strong>Abstract</strong></p>
-<p>Automated analysis of crowd behaviour using surveillance videos is an important issue for public security as it allows detection of potentially dangerous situations in crowds. Although there is a considerable amount of study in crowd behaviour analysis, the majority are limited in several ways. A few problems to mention are: limited real-time considerations, requirement of pre-set rigid anomaly rules, and high algorithm complexity. In this paper, we propose a Scale Invariant Feature Transform (SIFT) based holistic approach which is able to run in real time to detect global anomalies. Events which deviate significantly from the normal behaviour in the data set (i.e people running away) were considered as anomalies in the context of this work. The results have shown that the proposed method is well-comparable with other methods in the literature while being less complex and able to run in real time.</p>
-<p>使用监视视频自动分析人群行为是公共安全的重要问题，因为它可以检测人群中潜在的危险情况。 尽管在人群行为分析方面有大量研究，但大多数都在几种方面受到限制。 需要提及的一些问题是：实时考虑因素有限，需要预先设置严格的刚性异常规则，并且算法复杂度很高。 在本文中，我们提出了一种<strong>基于尺度不变特征变换（SIFT）</strong>的整体方法，该方法能够<strong>实时运行</strong>以检测全局异常。 在这项工作中，与数据集的正常行为（即逃跑的人）明显不同的事件被视为异常。 结果表明，所提出的方法与文献中的其他方法具有很好的可比性，同时不那么复杂并且可以实时运行。 </p>
+<p>Automated analysis of crowd behaviour using surveillance videos is an
+important issue for public security as it allows detection of
+potentially dangerous situations in crowds. Although there is a
+considerable amount of study in crowd behaviour analysis, the majority
+are limited in several ways. A few problems to mention are: limited
+real-time considerations, requirement of pre-set rigid anomaly rules,
+and high algorithm complexity. In this paper, we propose a Scale
+Invariant Feature Transform (SIFT) based holistic approach which is able
+to run in real time to detect global anomalies. Events which deviate
+significantly from the normal behaviour in the data set (i.e people
+running away) were considered as anomalies in the context of this work.
+The results have shown that the proposed method is well-comparable with
+other methods in the literature while being less complex and able to run
+in real time.</p>
+<p>使用监视视频自动分析人群行为是公共安全的重要问题，因为它可以检测人群中潜在的危险情况。
+尽管在人群行为分析方面有大量研究，但大多数都在几种方面受到限制。
+需要提及的一些问题是：实时考虑因素有限，需要预先设置严格的刚性异常规则，并且算法复杂度很高。
+在本文中，我们提出了一种<strong>基于尺度不变特征变换（SIFT）</strong>的整体方法，该方法能够<strong>实时运行</strong>以检测全局异常。
+在这项工作中，与数据集的正常行为（即逃跑的人）明显不同的事件被视为异常。
+结果表明，所提出的方法与文献中的其他方法具有很好的可比性，同时不那么复杂并且可以实时运行。</p>
 <p><strong>keywords:</strong></p>
-<p>security; computational complexity; video surveillance; transforms</p>
+<p>security; computational complexity; video surveillance;
+transforms</p>
 <p>安全; 计算复杂度； 视频监控; 转换</p>
-<h4 id="利用粒子熵的异常人群行为检测"><a href="#利用粒子熵的异常人群行为检测" class="headerlink" title="利用粒子熵的异常人群行为检测"></a>利用粒子熵的异常人群行为检测</h4><p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0030402614001909">Abnormal crowd behavior detection by using the particle entropy</a></p>
+<h4 id="利用粒子熵的异常人群行为检测">利用粒子熵的异常人群行为检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0030402614001909">Abnormal
+crowd behavior detection by using the particle entropy</a></p>
 <blockquote>
 <p><strong>被引用次数：</strong>66</p>
 </blockquote>
 <p><strong>Abstract</strong></p>
-<p>The crowd distribution information is the crucial information for abnormal behaviors detection in the crowd scenes. In this paper, we firstly refer to the definition of the entropy and propose an algorithm effectively and accurately representing the crowd distribution information in the crowd scenes. The proposed algorithm not only avoids unstable foreground extraction, but also owns low computational complexity. To detect the abnormal crowd behaviors, we use the <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/topics/engineering/gaussian-mixture-model">Gaussian Mixture Model</a> (GMM) over the normal crowd behaviors to predict the abnormal crowd behaviors since GMM usually can deal well with the unbalanced problem. In this paper we simultaneously use the crowd distribution information and the crowd speed information to estimate the parameters of GMM over the normal crowd behaviors and predict abnormal crowd behaviors. Experiment conducted on publicly available dataset consisting of gathering and dispersion events validates that the proposed approach can preeminently reflect the crowd distribution information. In addition, experiments conducted on publicly UMN dataset demonstrate that the proposed abnormal crowd behavior detection method has an excellent performance and outperforms the <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/topics/engineering/state-of-the-art-method">state-of-the-art methods</a>.</p>
-<p>人群分布信息是检测人群场景中异常行为的关键信息。在本文中，我们首先参考熵的定义，提出一种有效，准确地表示人群场景中人群分布信息的算法。该算法不仅避免了不稳定的前景提取，而且具有较低的计算复杂度。为了检测异常人群行为，由于<strong>GMM通常可以很好地处理不平衡问题</strong>，因此我们对正常人群行为使用<strong>[Gaussian Mixture Model]（GMM）</strong>来预测异常人群行为。在本文中，我们同时使用<strong>人群分布信息</strong>和<strong>人群速度信息</strong>来估计正常人群行为上的GMM参数，并预测异常人群行为。在由收集和分散事件组成的公共可用数据集上进行的实验验证了所提出的方法可以出色地反映人群分布信息。此外，在公开的UMN数据集上进行的实验表明，所提出的异常人群行为检测方法具有出色的性能，并且优于[最新方法]</p>
+<p>The crowd distribution information is the crucial information for
+abnormal behaviors detection in the crowd scenes. In this paper, we
+firstly refer to the definition of the entropy and propose an algorithm
+effectively and accurately representing the crowd distribution
+information in the crowd scenes. The proposed algorithm not only avoids
+unstable foreground extraction, but also owns low computational
+complexity. To detect the abnormal crowd behaviors, we use the <a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/topics/engineering/gaussian-mixture-model">Gaussian
+Mixture Model</a> (GMM) over the normal crowd behaviors to predict the
+abnormal crowd behaviors since GMM usually can deal well with the
+unbalanced problem. In this paper we simultaneously use the crowd
+distribution information and the crowd speed information to estimate the
+parameters of GMM over the normal crowd behaviors and predict abnormal
+crowd behaviors. Experiment conducted on publicly available dataset
+consisting of gathering and dispersion events validates that the
+proposed approach can preeminently reflect the crowd distribution
+information. In addition, experiments conducted on publicly UMN dataset
+demonstrate that the proposed abnormal crowd behavior detection method
+has an excellent performance and outperforms the <a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/topics/engineering/state-of-the-art-method">state-of-the-art
+methods</a>.</p>
+<p>人群分布信息是检测人群场景中异常行为的关键信息。在本文中，我们首先参考熵的定义，提出一种有效，准确地表示人群场景中人群分布信息的算法。该算法不仅避免了不稳定的前景提取，而且具有较低的计算复杂度。为了检测异常人群行为，由于<strong>GMM通常可以很好地处理不平衡问题</strong>，因此我们对正常人群行为使用<strong>[Gaussian
+Mixture
+Model]（GMM）</strong>来预测异常人群行为。在本文中，我们同时使用<strong>人群分布信息</strong>和<strong>人群速度信息</strong>来估计正常人群行为上的GMM参数，并预测异常人群行为。在由收集和分散事件组成的公共可用数据集上进行的实验验证了所提出的方法可以出色地反映人群分布信息。此外，在公开的UMN数据集上进行的实验表明，所提出的异常人群行为检测方法具有出色的性能，并且优于[最新方法]</p>
 <p><strong>Keywords</strong></p>
-<p>Abnormal behaviors detection，GMM，Crowd distribution information，Crowd speed information</p>
+<p>Abnormal behaviors detection，GMM，Crowd distribution
+information，Crowd speed information</p>
 <p>异常行为检测，GMM，人群分布信息，人群速度信息</p>
-<h4 id="使用超球面聚类检测异常人群行为"><a href="#使用超球面聚类检测异常人群行为" class="headerlink" title="使用超球面聚类检测异常人群行为"></a>使用超球面聚类检测异常人群行为</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7008100">Detection of Anomalous Crowd Behaviour Using Hyperspherical Clustering</a></p>
+<h4
+id="使用超球面聚类检测异常人群行为">使用超球面聚类检测异常人群行为</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7008100">Detection
+of Anomalous Crowd Behaviour Using Hyperspherical Clustering</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/7005557/proceeding">2014 International Conference on Digital Image Computing: Techniques and Applications (DICTA)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/7005557/proceeding">2014
+International Conference on Digital Image Computing: Techniques and
+Applications (DICTA)</a></p>
 <p><strong>Date of Conference:</strong> 25-27 Nov. 2014</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 15 January 2015</p>
 <p><strong>被引用次数：</strong>14</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Analysis of crowd behaviour in public places is an indispensable tool for video surveillance. Automated detection of anomalous crowd behaviour is a critical problem with the increase in human population. Anomalous events may include a person loitering about a place for unusual amounts of time; people running and causing panic; the size of a group of people growing over time etc. In this work, to detect anomalous events and objects, two types of feature coding has been proposed: spatial features and spatio-temporal features. Spatial features comprises of contrast, correlation, energy and homogeneity, which are derived from Gray Level Co-occurrence Matrix (GLCM). Spatio-temporal feature includes the time spent by an object at different locations in the scene. Hyperspherical clustering has been employed to detect the anomalies. Spatial features revealed the anomalous frames by using contrast and homogeneity measures. Loitering behaviour of the people were detected as anomalous objects using the spatio-temporal coding.</p>
+<p>Analysis of crowd behaviour in public places is an indispensable tool
+for video surveillance. Automated detection of anomalous crowd behaviour
+is a critical problem with the increase in human population. Anomalous
+events may include a person loitering about a place for unusual amounts
+of time; people running and causing panic; the size of a group of people
+growing over time etc. In this work, to detect anomalous events and
+objects, two types of feature coding has been proposed: spatial features
+and spatio-temporal features. Spatial features comprises of contrast,
+correlation, energy and homogeneity, which are derived from Gray Level
+Co-occurrence Matrix (GLCM). Spatio-temporal feature includes the time
+spent by an object at different locations in the scene. Hyperspherical
+clustering has been employed to detect the anomalies. Spatial features
+revealed the anomalous frames by using contrast and homogeneity
+measures. Loitering behaviour of the people were detected as anomalous
+objects using the spatio-temporal coding.</p>
 <p>分析公共场所的人群行为是视频监控必不可少的工具。随着人群的增加，异常人群行为的自动检测是一个关键问题。异常事件可能包括一个人在一个地方闲逛了很长时间。人们奔跑并引起恐慌；在这项工作中，为了检测异常事件和物体，提出了两种类型的特征编码：<strong>空间特征和时空特征</strong>。空间特征包括对比度，相关性，能量和同质性，它们是从<strong>灰度共生矩阵（GLCM）</strong>派生而来的。时空特征包括<strong>对象在场景中不同位置所花费的时间</strong>。<strong>超球面聚类</strong>已用于检测异常。空间特征通过使用对比度和同质性度量揭示了异常帧。使用时空编码将人们的运动行为检测为异常对象。</p>
-<p><strong>Keywords</strong><br>Feature extraction, Encoding, Cameras, Hidden Markov models, Noise, Monitoring, Clustering algorithms</p>
+<p><strong>Keywords</strong> Feature extraction, Encoding, Cameras,
+Hidden Markov models, Noise, Monitoring, Clustering algorithms</p>
 <p>特征提取，编码，摄像机，隐马尔可夫模型，噪声，监控，聚类算法</p>
-<h4 id="人群逃逸行为检测的贝叶斯模型"><a href="#人群逃逸行为检测的贝叶斯模型" class="headerlink" title="人群逃逸行为检测的贝叶斯模型"></a>人群逃逸行为检测的贝叶斯模型</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6574248">A Bayesian Model for Crowd Escape Behavior Detection</a></p>
+<h4 id="人群逃逸行为检测的贝叶斯模型">人群逃逸行为检测的贝叶斯模型</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6574248">A
+Bayesian Model for Crowd Escape Behavior Detection</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=76">IEEE Transactions on Circuits and Systems for Video Technology</a> ( Volume: 24, <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=6702488">Issue: 1</a>, Jan. 2014)</p>
-<p><strong>Date of Publication:</strong> 02 August 2013 </p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=76">IEEE
+Transactions on Circuits and Systems for Video Technology</a> ( Volume:
+24, <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=6702488">Issue:
+1</a>, Jan. 2014)</p>
+<p><strong>Date of Publication:</strong> 02 August 2013</p>
 <p><strong>被引用次数：</strong>98</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>People naturally escape from a place when unexpected events happen. Based on this observation, efficient detection of crowd escape behavior in surveillance videos is a promising way to perform timely detection of anomalous situations. In this paper, we propose a Bayesian framework for escape detection by directly modeling crowd motion in both the presence and absence of escape events. Specifically, we introduce the concepts of potential destinations and divergent centers to characterize crowd motion in the above two cases respectively, and construct the corresponding class-conditional probability density functions of optical flow. Escape detection is finally performed based on the proposed Bayesian framework. Although only data associated with nonescape behavior are included in the training set, the density functions associated with the case of escape can also be adaptively updated using observed data. In addition, the identified divergent centers indicate possible locations at which the unexpected events occur. The performance of our proposed method is validated in a number of experiments on crowd escape detection in various scenarios.</p>
+<p>People naturally escape from a place when unexpected events happen.
+Based on this observation, efficient detection of crowd escape behavior
+in surveillance videos is a promising way to perform timely detection of
+anomalous situations. In this paper, we propose a Bayesian framework for
+escape detection by directly modeling crowd motion in both the presence
+and absence of escape events. Specifically, we introduce the concepts of
+potential destinations and divergent centers to characterize crowd
+motion in the above two cases respectively, and construct the
+corresponding class-conditional probability density functions of optical
+flow. Escape detection is finally performed based on the proposed
+Bayesian framework. Although only data associated with nonescape
+behavior are included in the training set, the density functions
+associated with the case of escape can also be adaptively updated using
+observed data. In addition, the identified divergent centers indicate
+possible locations at which the unexpected events occur. The performance
+of our proposed method is validated in a number of experiments on crowd
+escape detection in various scenarios.</p>
 <p>当发生意外事件时，人们自然会逃离某个地方。基于此观察，有效检测监视视频中的人群逃生行为是及时检测异常情况的一种有前途的方法。在本文中，我们通过直接<strong>模拟人群在有无逃生事件中的运动</strong>来提出一种用于逃生检测的<strong>贝叶斯框架</strong>。具体来说，我们引入潜在目的地和发散中心的概念来分别描述这两种情况下的人群运动，并构造<strong>相应的类别条件光流概率密度函数</strong>。最后，基于提出的贝叶斯框架执行逃生检测。尽管训练集中仅包含与非逃逸行为相关的数据，但是与逃逸情况相关的密度函数也可以使用观察到的数据进行自适应更新。另外，所识别的发散中心指示发生意外事件的可能位置。我们的方法的性能在各种场景下的人群逃生检测的大量实验中得到了验证。</p>
 <p><strong>Keywords</strong></p>
-<p>Videos,Bayes methods,Force,Optical scattering,Trajectory,Histograms，Training</p>
+<p>Videos,Bayes methods,Force,Optical
+scattering,Trajectory,Histograms，Training</p>
 <p>视频，贝叶斯方法，力，光学散射，轨迹，直方图，训练</p>
-<h4 id="基于光流和动态阈值的异常人群行为检测"><a href="#基于光流和动态阈值的异常人群行为检测" class="headerlink" title="基于光流和动态阈值的异常人群行为检测"></a>基于光流和动态阈值的异常人群行为检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7053189">Abnormal crowd behavior detection based on optical flow and dynamic threshold</a></p>
+<h4
+id="基于光流和动态阈值的异常人群行为检测">基于光流和动态阈值的异常人群行为检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7053189">Abnormal
+crowd behavior detection based on optical flow and dynamic
+threshold</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/7043694/proceeding">Proceeding of the 11th World Congress on Intelligent Control and Automation</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/7043694/proceeding">Proceeding
+of the 11th World Congress on Intelligent Control and Automation</a></p>
 <p><strong>Date of Conference:</strong> 29 June-4 July 2014</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 05 March 2015</p>
 <p><strong>被引用次数：</strong>12</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>In this paper, we introduce a novel method to detect abnormal crowd activity: crowd running suddenly. This method is based on the whole motion intensity of the crowd which can be obtained by accumulating all optical flow vectors of a frame. Then we can detect the abnormal crowd activity by setting a threshold to detect whether the motion intensity changed suddenly. However, the computation of the optical flow is sensitive to light conditions resulting in much false detection. Based on that, we present a method to set a dynamic threshold related to the unstable optical flow which can adapt to the changing light conditions. Without training process and priori knowledge to set a static threshold, this method can detect the abnormal crowd activity robustly without much computation.</p>
-<p>在本文中，我们介绍了一种检测异常人群活动的新颖方法：人群突然奔跑。 该方法基于人群的整体运动强度，可以通过<strong>累积一帧的所有光流矢量</strong>来获得运动强度。 然后，我们可以通过<strong>设置阈值来检测运动强度是否突然变化</strong>，从而检测人群的异常活动。 但是，光流的计算对光照条件很敏感，从而导致很多错误的检测。 基于此，我们提出了一种方法来<strong>设置与不稳定光流有关的动态阈值</strong>，该阈值可以适应不断变化的光照条件。 该方法<strong>无需训练过程和先验知识</strong>即可设置静态阈值，因此无需大量计算即可可靠地检测出异常人群活动。</p>
-<p><strong>Keywords</strong><br>Computer vision,Optical imaging,Image motion analysis,Optical sensors,Dynamics,Conferences,Cameras</p>
+<p>In this paper, we introduce a novel method to detect abnormal crowd
+activity: crowd running suddenly. This method is based on the whole
+motion intensity of the crowd which can be obtained by accumulating all
+optical flow vectors of a frame. Then we can detect the abnormal crowd
+activity by setting a threshold to detect whether the motion intensity
+changed suddenly. However, the computation of the optical flow is
+sensitive to light conditions resulting in much false detection. Based
+on that, we present a method to set a dynamic threshold related to the
+unstable optical flow which can adapt to the changing light conditions.
+Without training process and priori knowledge to set a static threshold,
+this method can detect the abnormal crowd activity robustly without much
+computation.</p>
+<p>在本文中，我们介绍了一种检测异常人群活动的新颖方法：人群突然奔跑。
+该方法基于人群的整体运动强度，可以通过<strong>累积一帧的所有光流矢量</strong>来获得运动强度。
+然后，我们可以通过<strong>设置阈值来检测运动强度是否突然变化</strong>，从而检测人群的异常活动。
+但是，光流的计算对光照条件很敏感，从而导致很多错误的检测。
+基于此，我们提出了一种方法来<strong>设置与不稳定光流有关的动态阈值</strong>，该阈值可以适应不断变化的光照条件。
+该方法<strong>无需训练过程和先验知识</strong>即可设置静态阈值，因此无需大量计算即可可靠地检测出异常人群活动。</p>
+<p><strong>Keywords</strong> Computer vision,Optical imaging,Image
+motion analysis,Optical sensors,Dynamics,Conferences,Cameras</p>
 <p>计算机视觉，光学成像，图像运动分析，光学传感器，动力学，会议，摄影机</p>
-<h4 id="一种基于生物启发的知识表示方法，用于认知视频监控系统中的异常检测"><a href="#一种基于生物启发的知识表示方法，用于认知视频监控系统中的异常检测" class="headerlink" title="一种基于生物启发的知识表示方法，用于认知视频监控系统中的异常检测"></a>一种基于生物启发的知识表示方法，用于认知视频监控系统中的异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6641284">A bio-inspired knowledge representation method for anomaly detection in cognitive Video Surveillance systems</a></p>
+<h4
+id="一种基于生物启发的知识表示方法用于认知视频监控系统中的异常检测">一种基于生物启发的知识表示方法，用于认知视频监控系统中的异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6641284">A
+bio-inspired knowledge representation method for anomaly detection in
+cognitive Video Surveillance systems</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6624143/proceeding">Proceedings of the 16th International Conference on Information Fusion</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6624143/proceeding">Proceedings
+of the 16th International Conference on Information Fusion</a></p>
 <p><strong>Date of Conference:</strong> 9-12 July 2013</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 21 October 2013</p>
 <p><strong>被引用次数：</strong>11</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Human behaviour analysis has important applications in the field of anomaly management, such as Intelligent Video Surveillance (IVS). As the number of individuals in a scene increases, however, new macroscopic complex behaviours emerge from the underlying interaction network among multiple agents. This phenomenon has lately been investigated by modelling such interaction through Social Forces.</p>
-<p>人类行为分析在异常管理领域具有重要的应用，例如智能视频监视（IVS）。 但是，随着场景中个体数量的增加，新的宏观复杂行为将从多个代理之间的基础交互网络中出现。 最近已经通过对通过社会力量进行的这种互动进行建模来研究这种现象。</p>
-<p><strong>Keywords</strong><br>Vectors,Biological system modeling,Video surveillance,Training,Probabilistic logic,Mathematical model</p>
+<p>Human behaviour analysis has important applications in the field of
+anomaly management, such as Intelligent Video Surveillance (IVS). As the
+number of individuals in a scene increases, however, new macroscopic
+complex behaviours emerge from the underlying interaction network among
+multiple agents. This phenomenon has lately been investigated by
+modelling such interaction through Social Forces.</p>
+<p>人类行为分析在异常管理领域具有重要的应用，例如智能视频监视（IVS）。
+但是，随着场景中个体数量的增加，新的宏观复杂行为将从多个代理之间的基础交互网络中出现。
+最近已经通过对通过社会力量进行的这种互动进行建模来研究这种现象。</p>
+<p><strong>Keywords</strong> Vectors,Biological system modeling,Video
+surveillance,Training,Probabilistic logic,Mathematical model</p>
 <p>向量，生物系统建模，视频监控，训练，概率逻辑，数学模型</p>
-<h4 id="通过在线学习检测人群场景中的异常"><a href="#通过在线学习检测人群场景中的异常" class="headerlink" title="通过在线学习检测人群场景中的异常"></a>通过在线学习检测人群场景中的异常</h4><p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2632856.2632862">Anomaly Detection in Crowd Scene via Online Learning</a></p>
+<h4
+id="通过在线学习检测人群场景中的异常">通过在线学习检测人群场景中的异常</h4>
+<p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2632856.2632862">Anomaly
+Detection in Crowd Scene via Online Learning</a></p>
 <blockquote>
-<p><strong>Publication</strong>:<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/proceedings/10.1145/2632856">ICIMCS ‘14: Proceedings of International Conference on Internet Multimedia Computing and Service</a></p>
-<p><strong>July 2014</strong> </p>
+<p><strong>Publication</strong>:<a
+target="_blank" rel="noopener" href="https://dl.acm.org/doi/proceedings/10.1145/2632856">ICIMCS '14:
+Proceedings of International Conference on Internet Multimedia Computing
+and Service</a></p>
+<p><strong>July 2014</strong></p>
 <p><strong>被引用次数：</strong>3</p>
 </blockquote>
 <p><strong>ABSTRACT</strong></p>
-<p>Anomaly detection in crowd scene has attracted an increasing attention in video surveillance, but a precise detection still remains a challenge. This paper presents a novel online learning method to automatically detect abnormal behaviors in crowd scene. Our focus is mainly on the deviation between the real motion and the predicted one. Through online defining experts, analyzing their motions, and dynamically updating the learned model, anomaly can be identified by the final expert joint decision. The outputs are represented as the anomaly probability of an examined frame. Compared with most of existing methods, the proposed one needs neither tracking each individual straight to the end nor requires any complex training procedure. We test the proposed method on public datasets, and the results show its effectiveness.</p>
-<p>人群场景中的异常检测在视频监控中已引起越来越多的关注，但是精确检测仍然是一个挑战。 本文提出了一种新颖的<strong>在线学习方法</strong>，可以<strong>自动检测人群场景中的异常行为</strong>。 我们的重点主要放在<strong>实际运动与预测运动之间的偏差</strong>上。 通过在线定义专家，分析他们的动作并动态更新学习的模型，可以通过最终的专家联合决策来识别异常。 输出表示为检查帧的异常概率。 与大多数现有方法相比，所提出的方法既不需要直接追踪每个人，也不需要任何复杂的训练过程。 我们在公共数据集上测试了该方法，结果表明了该方法的有效性。</p>
-<h4 id="拥挤场景中的异常检测：基于群体优化和社会力量建模的新型框架"><a href="#拥挤场景中的异常检测：基于群体优化和社会力量建模的新型框架" class="headerlink" title="拥挤场景中的异常检测：基于群体优化和社会力量建模的新型框架"></a>拥挤场景中的异常检测：基于群体优化和社会力量建模的新型框架</h4><p><a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-1-4614-8483-7_15">Anomaly Detection in Crowded Scenes: A Novel Framework Based on Swarm Optimization and Social Force Modeling</a></p>
+<p>Anomaly detection in crowd scene has attracted an increasing
+attention in video surveillance, but a precise detection still remains a
+challenge. This paper presents a novel online learning method to
+automatically detect abnormal behaviors in crowd scene. Our focus is
+mainly on the deviation between the real motion and the predicted one.
+Through online defining experts, analyzing their motions, and
+dynamically updating the learned model, anomaly can be identified by the
+final expert joint decision. The outputs are represented as the anomaly
+probability of an examined frame. Compared with most of existing
+methods, the proposed one needs neither tracking each individual
+straight to the end nor requires any complex training procedure. We test
+the proposed method on public datasets, and the results show its
+effectiveness.</p>
+<p>人群场景中的异常检测在视频监控中已引起越来越多的关注，但是精确检测仍然是一个挑战。
+本文提出了一种新颖的<strong>在线学习方法</strong>，可以<strong>自动检测人群场景中的异常行为</strong>。
+我们的重点主要放在<strong>实际运动与预测运动之间的偏差</strong>上。
+通过在线定义专家，分析他们的动作并动态更新学习的模型，可以通过最终的专家联合决策来识别异常。
+输出表示为检查帧的异常概率。
+与大多数现有方法相比，所提出的方法既不需要直接追踪每个人，也不需要任何复杂的训练过程。
+我们在公共数据集上测试了该方法，结果表明了该方法的有效性。</p>
+<h4
+id="拥挤场景中的异常检测基于群体优化和社会力量建模的新型框架">拥挤场景中的异常检测：基于群体优化和社会力量建模的新型框架</h4>
+<p><a
+target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-1-4614-8483-7_15">Anomaly
+Detection in Crowded Scenes: A Novel Framework Based on Swarm
+Optimization and Social Force Modeling</a></p>
 <blockquote>
 <p>First Online19 October 2013</p>
 <p><strong>被引用次数：</strong>12</p>
 </blockquote>
 <p><strong>Abstract</strong></p>
-<p>This chapter presents a novel scheme for analyzing the crowd behavior from visual crowded scenes. The proposed method starts from the assumption that the interaction force, as estimated by the Social Force Model (SFM), is a significant feature to analyze crowd behavior. We step forward this hypothesis by optimizing this force using Particle Swarm Optimization (PSO) to perform the advection of a particle population spread randomly over the image frames. The population of particles is drifted towards the areas of the main image motion, driven by the PSO fitness function aimed at minimizing the interaction force, so as to model the most diffused, normal behavior of the crowd. We then use this proposed particle advection scheme to detect both global and local anomaly events in the crowded scene. A large set of experiments are carried out on public available datasets and results show the consistent higher performances of the proposed method as compared to other state-of-the-art algorithms.</p>
-<p>本章提出了一种新颖的方案，用于从视觉拥挤的场景中分析人群的行为。 所提出的方法始于以下假设：<strong>社会力量模型（SFM）</strong>估计的相互作用力是分析人群行为的重要特征。 我们通过使用<strong>粒子群优化（PSO）</strong>优化此力以执行对散布在图像帧上的粒子总体的平流来推进这一假设。 在旨在最小化交互作用力的PSO适应度函数的驱动下，粒子群向主图像运动区域漂移，从而对人群中最分散，正常的行为进行建模。 然后，我们使用此提议的粒子对流方案来检测拥挤场景中的全局和局部异常事件。 在公共可用数据集上进行了大量实验，结果表明，与其他最新算法相比，该方法始终具有较高的性能。</p>
+<p>This chapter presents a novel scheme for analyzing the crowd behavior
+from visual crowded scenes. The proposed method starts from the
+assumption that the interaction force, as estimated by the Social Force
+Model (SFM), is a significant feature to analyze crowd behavior. We step
+forward this hypothesis by optimizing this force using Particle Swarm
+Optimization (PSO) to perform the advection of a particle population
+spread randomly over the image frames. The population of particles is
+drifted towards the areas of the main image motion, driven by the PSO
+fitness function aimed at minimizing the interaction force, so as to
+model the most diffused, normal behavior of the crowd. We then use this
+proposed particle advection scheme to detect both global and local
+anomaly events in the crowded scene. A large set of experiments are
+carried out on public available datasets and results show the consistent
+higher performances of the proposed method as compared to other
+state-of-the-art algorithms.</p>
+<p>本章提出了一种新颖的方案，用于从视觉拥挤的场景中分析人群的行为。
+所提出的方法始于以下假设：<strong>社会力量模型（SFM）</strong>估计的相互作用力是分析人群行为的重要特征。
+我们通过使用<strong>粒子群优化（PSO）</strong>优化此力以执行对散布在图像帧上的粒子总体的平流来推进这一假设。
+在旨在最小化交互作用力的PSO适应度函数的驱动下，粒子群向主图像运动区域漂移，从而对人群中最分散，正常的行为进行建模。
+然后，我们使用此提议的粒子对流方案来检测拥挤场景中的全局和局部异常事件。
+在公共可用数据集上进行了大量实验，结果表明，与其他最新算法相比，该方法始终具有较高的性能。</p>
 <p><strong>Keywords</strong></p>
-<p>Particle Swarm Optimization， Optical Flow， Interaction Force， Anomaly Detection， Latent Dirichlet Allocation </p>
+<p>Particle Swarm Optimization， Optical Flow， Interaction Force，
+Anomaly Detection， Latent Dirichlet Allocation</p>
 <p>粒子群优化，光流，相互作用力，异常检测，潜在狄利克雷分配</p>
-<h4 id="场景透视投影校正辅助下的人群异常检测"><a href="#场景透视投影校正辅助下的人群异常检测" class="headerlink" title="场景透视投影校正辅助下的人群异常检测"></a>场景透视投影校正辅助下的人群异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6920570">Anomaly detection in crowds assisted by scene perspective projection correction</a></p>
+<h4
+id="场景透视投影校正辅助下的人群异常检测">场景透视投影校正辅助下的人群异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6920570">Anomaly
+detection in crowds assisted by scene perspective projection
+correction</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6906542/proceeding">2014 4th IEEE International Conference on Information Science and Technology</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6906542/proceeding">2014
+4th IEEE International Conference on Information Science and
+Technology</a></p>
 <p><strong>Date of Conference:</strong> 26-28 April 2014</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 13 October 2014</p>
 <p><strong>被引用次数：</strong>4</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>In this paper, we propose a novel approach based on compensating for the perspective projection effect for anomaly detection in crowds. Video frames obtained by a camera have a common rule of perspective projection effect. The law of perspective projection makes anomaly detection a challenge task because of no consistency in each video frame. For the sake of overcoming the drawback caused by perspective projection, we innovatively design an approach based on compensating for images under perspective projection to eliminate the influence of perspective projection. Then a space Markov Random Field (MRF) is modeled to build normal behavior patterns considering both single node behavior and the correlation of adjacent nodes. An energy function is formulated as the evaluation criterion to detect anomaly. Experiments prove that our approach can detect abnormal events effectively and robustly.</p>
-<p>在本文中，我们提出了一种基于<strong>补偿透视投影效果</strong>的新颖方法，用于人群中的异常检测。 摄像机获得的视频帧具有透视投影效果的通用规则。 透视投影定律使异常检测成为一项挑战性任务，因为每个视频帧中的一致性都不高。 为了克服透视投影带来的缺点，我们创新地设计了一种基于对透视投影下的图像进行补偿的方法，以消除透视投影的影响。 然后，对<strong>空间马尔可夫随机场（MRF）进行建模</strong>，以同时考虑单节点行为和相邻节点的相关性来构建正常的行为模式。 将能量函数公式化为评估异常的评估标准。 实验证明，我们的方法可以有效，可靠地检测异常事件。 </p>
-<p><strong>Keywords</strong><br>Computer vision,Optical imaging,Image motion analysis,Adaptive optics,Trajectory,Feature extraction,Cameras</p>
+<p>In this paper, we propose a novel approach based on compensating for
+the perspective projection effect for anomaly detection in crowds. Video
+frames obtained by a camera have a common rule of perspective projection
+effect. The law of perspective projection makes anomaly detection a
+challenge task because of no consistency in each video frame. For the
+sake of overcoming the drawback caused by perspective projection, we
+innovatively design an approach based on compensating for images under
+perspective projection to eliminate the influence of perspective
+projection. Then a space Markov Random Field (MRF) is modeled to build
+normal behavior patterns considering both single node behavior and the
+correlation of adjacent nodes. An energy function is formulated as the
+evaluation criterion to detect anomaly. Experiments prove that our
+approach can detect abnormal events effectively and robustly.</p>
+<p>在本文中，我们提出了一种基于<strong>补偿透视投影效果</strong>的新颖方法，用于人群中的异常检测。
+摄像机获得的视频帧具有透视投影效果的通用规则。
+透视投影定律使异常检测成为一项挑战性任务，因为每个视频帧中的一致性都不高。
+为了克服透视投影带来的缺点，我们创新地设计了一种基于对透视投影下的图像进行补偿的方法，以消除透视投影的影响。
+然后，对<strong>空间马尔可夫随机场（MRF）进行建模</strong>，以同时考虑单节点行为和相邻节点的相关性来构建正常的行为模式。
+将能量函数公式化为评估异常的评估标准。
+实验证明，我们的方法可以有效，可靠地检测异常事件。</p>
+<p><strong>Keywords</strong> Computer vision,Optical imaging,Image
+motion analysis,Adaptive optics,Trajectory,Feature
+extraction,Cameras</p>
 <p>计算机视觉，光学成像，图像运动分析，自适应光学，轨迹，特征提取，相机</p>
-<h4 id="使用半参数扫描统计量的无监督异常人群活动检测"><a href="#使用半参数扫描统计量的无监督异常人群活动检测" class="headerlink" title="使用半参数扫描统计量的无监督异常人群活动检测"></a>使用半参数扫描统计量的无监督异常人群活动检测</h4><p><a target="_blank" rel="noopener" href="https://www.cv-foundation.org/openaccess/content_cvpr_workshops_2013/W22/html/Hu_Unsupervised_Abnormal_Crowd_2013_CVPR_paper.html">Unsupervised Abnormal Crowd Activity Detection Using Semiparametric Scan Statistic</a></p>
+<h4
+id="使用半参数扫描统计量的无监督异常人群活动检测">使用半参数扫描统计量的无监督异常人群活动检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.cv-foundation.org/openaccess/content_cvpr_workshops_2013/W22/html/Hu_Unsupervised_Abnormal_Crowd_2013_CVPR_paper.html">Unsupervised
+Abnormal Crowd Activity Detection Using Semiparametric Scan
+Statistic</a></p>
 <blockquote>
-<p><strong>Yang Hu, Yangmuzi Zhang, Larry S. Davis</strong>; Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops, 2013, pp. 767-774</p>
+<p><strong>Yang Hu, Yangmuzi Zhang, Larry S. Davis</strong>; Proceedings
+of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)
+Workshops, 2013, pp. 767-774</p>
 <p><strong>被引用次数：</strong>41</p>
 </blockquote>
 <p><strong>Abstract</strong></p>
-<p>We propose a fully unsupervised method for abnormal activity detection in crowded scenes. Neither normal nor abnormal training examples are needed before detection. By observing that in crowded scenes, normal activities are the behaviors performed by the majority of people and abnormalities are behaviors that occur rarely and are different from most others, we propose to use a scan statistic method to solve the problem. It scans a video with windows of variable shape and size. The abnormality of each window is measured by a likelihood ratio test statistic, which compares two hypotheses about whether or not the characteristics of the observations inside and outside the window are different. A semiparametric density ratio method is used to model the observations, which is applicable to a wide variety of data. To reduce the search complexity of the sliding window based scanning, a fast two-round scanning algorithm is proposed. We successfully applied our algorithm to detect activities that are anomalous in different ways, achieving performance competitive to other state-of-the-art methods which requiring supervision.</p>
+<p>We propose a fully unsupervised method for abnormal activity
+detection in crowded scenes. Neither normal nor abnormal training
+examples are needed before detection. By observing that in crowded
+scenes, normal activities are the behaviors performed by the majority of
+people and abnormalities are behaviors that occur rarely and are
+different from most others, we propose to use a scan statistic method to
+solve the problem. It scans a video with windows of variable shape and
+size. The abnormality of each window is measured by a likelihood ratio
+test statistic, which compares two hypotheses about whether or not the
+characteristics of the observations inside and outside the window are
+different. A semiparametric density ratio method is used to model the
+observations, which is applicable to a wide variety of data. To reduce
+the search complexity of the sliding window based scanning, a fast
+two-round scanning algorithm is proposed. We successfully applied our
+algorithm to detect activities that are anomalous in different ways,
+achieving performance competitive to other state-of-the-art methods
+which requiring supervision.</p>
 <p>我们提出了一种在拥挤的场景中进行异常活动检测的完全不受监督的方法。在检测之前，不需要正常或异常的训练实例。通过观察在拥挤的场景中，正常活动是大多数人执行的行为，而异常是很少发生且与大多数其他人不同的行为，我们建议使用<strong>扫描统计方法</strong>解决该问题。它使用<strong>形状和大小可变的窗口扫描视频</strong>。每个窗口的异常均通过<strong>似然比检验统计量</strong>来衡量，该统计量<strong>比较了两个关于窗口内部和外部观察的特征是否不同的假设</strong>。使用<strong>半参数密度比方法对观测值建模</strong>，适用于各种数据。为了降低基于滑动窗口的扫描的搜索复杂度，提出了一种<strong>快速的两轮扫描算法</strong>。我们成功地将我们的算法应用到以不同方式检测异常活动，从而实现了与其他需要监督的最新方法相比的性能。</p>
-<h4 id="基于光流统计特征的暴力人群行为检测"><a href="#基于光流统计特征的暴力人群行为检测" class="headerlink" title="基于光流统计特征的暴力人群行为检测"></a>基于光流统计特征的暴力人群行为检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6980896">Detection of violent crowd behavior based on statistical characteristics of the optical flow</a></p>
+<h4
+id="基于光流统计特征的暴力人群行为检测">基于光流统计特征的暴力人群行为检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6980896">Detection
+of violent crowd behavior based on statistical characteristics of the
+optical flow</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6962871/proceeding">2014 11th International Conference on Fuzzy Systems and Knowledge Discovery (FSKD)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6962871/proceeding">2014
+11th International Conference on Fuzzy Systems and Knowledge Discovery
+(FSKD)</a></p>
 <p><strong>Date of Conference:</strong> 19-21 Aug. 2014</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 11 December 2014</p>
 <p><strong>被引用次数：</strong>18</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Detection of violent crowd behavior is an important topic in crowd surveillance. Through a study on optical flow, we can find that when crowd violence occurs, the change of variance on optical flow is become large. Hence, we introduce a statistic method based on optical flow field to detect violent crowd behaviors. Our method considers the statistical characteristics of optical flow field and extracts a statistical characteristic of the optical flow (SCOF) descriptor from these characteristics to represent the sequences of video frames. The SCOF descriptors are then categorized as either normal or violence using linear Support Vector Machine. The experiments are conducted on Crowd Database and Hockey dataset. Experimental results show the SCOF descriptor is easy and can efficiently detect the crowd violence.</p>
-<p>暴力人群行为的检测是人群监视中的重要主题。 通过对光流的研究，我们可以发现，当发生人群暴力时，光流的方差变化会变得很大。 因此，我们引入了一种基于<strong>光流场的统计方法</strong>来检测暴力人群行为。 我们的方法考虑了光流场的统计特征，并从这些特征中提取了<strong>光流（SCOF）描述符的统计特征</strong>，以表示视频帧的序列。 然后使用<strong>线性支持向量机将SCOF描述符分类为正常或暴力</strong>。 实验在人群数据库和曲棍球数据集上进行。 实验结果表明，SCOF描述符很容易并且可以有效地检测出人群暴力。</p>
-<p><strong>Keywords</strong><br>Computer vision, Image motion analysis, Optical imaging, Vectors, Optical scattering, Feature extraction, Optical reflection</p>
+<p>Detection of violent crowd behavior is an important topic in crowd
+surveillance. Through a study on optical flow, we can find that when
+crowd violence occurs, the change of variance on optical flow is become
+large. Hence, we introduce a statistic method based on optical flow
+field to detect violent crowd behaviors. Our method considers the
+statistical characteristics of optical flow field and extracts a
+statistical characteristic of the optical flow (SCOF) descriptor from
+these characteristics to represent the sequences of video frames. The
+SCOF descriptors are then categorized as either normal or violence using
+linear Support Vector Machine. The experiments are conducted on Crowd
+Database and Hockey dataset. Experimental results show the SCOF
+descriptor is easy and can efficiently detect the crowd violence.</p>
+<p>暴力人群行为的检测是人群监视中的重要主题。
+通过对光流的研究，我们可以发现，当发生人群暴力时，光流的方差变化会变得很大。
+因此，我们引入了一种基于<strong>光流场的统计方法</strong>来检测暴力人群行为。
+我们的方法考虑了光流场的统计特征，并从这些特征中提取了<strong>光流（SCOF）描述符的统计特征</strong>，以表示视频帧的序列。
+然后使用<strong>线性支持向量机将SCOF描述符分类为正常或暴力</strong>。
+实验在人群数据库和曲棍球数据集上进行。
+实验结果表明，SCOF描述符很容易并且可以有效地检测出人群暴力。</p>
+<p><strong>Keywords</strong> Computer vision, Image motion analysis,
+Optical imaging, Vectors, Optical scattering, Feature extraction,
+Optical reflection</p>
 <p>计算机视觉，图像运动分析，光学成像，矢量，光学散射，特征提取，光学反射</p>
-<h4 id="一种无监督的人群视频异常检测方法"><a href="#一种无监督的人群视频异常检测方法" class="headerlink" title="一种无监督的人群视频异常检测方法"></a>一种无监督的人群视频异常检测方法</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6531292">An unsupervised method for anomaly detection from crowd videos</a></p>
+<h4
+id="一种无监督的人群视频异常检测方法">一种无监督的人群视频异常检测方法</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6531292">An
+unsupervised method for anomaly detection from crowd videos</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6521474/proceeding">2013 21st Signal Processing and Communications Applications Conference (SIU)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6521474/proceeding">2013
+21st Signal Processing and Communications Applications Conference
+(SIU)</a></p>
 <p><strong>Date of Conference:</strong> 24-26 April 2013</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 13 June 2013</p>
 <p><strong>被引用次数：</strong>2</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Anomaly detection from crowd videos is an issue that is becoming more important due to the difficulties in maintaining the public security in crowded places. Surveillance videos has a significant role for enabling the real time analysis of the captured events occurring in crowded places. This paper presents a method that detects anomalies in crowd in real-time using computer vision and machine learning techniques. The proposed method consists of extracting the crowd behavior properties (velocity, direction) by tracking scale invariant feature transform (SIFT) feature points and fitting the extracted behavior properties into a Gaussian Model. In this paper, only the global anomalies which occur on the overall video frame are handled. According to the test results, the method gives comparable results with the state-of-art methods and also can run in real-time. In addition, it is less complex than the compared state-of-art methods and works unsupervised.</p>
-<p>由于在拥挤的地方维护公共安全存在困难，因此从人群视频中进行异常检测变得越来越重要。 监视视频对于实时分析在拥挤的地方发生的捕获事件具有重要作用。 本文提出了一种使用<strong>计算机视觉和机器学习技术</strong>实时检测人群中异常情况的方法。 所提出的方法包括通过<strong>跟踪尺度不变特征变换（SIFT）特征点</strong>提取人群行为属性（速度，方向），并将提取的行为属性<strong>拟合到高斯模型</strong>中。 在本文中，仅处理在整个视频帧上发生的全局异常。 根据测试结果，该方法可提供与最新方法相当的结果，并且可以实时运行。 此外，它比现有的比较先进的方法复杂，并且不受监督。</p>
-<p><strong>Keywords</strong><br>Videos,Conferences,Computer vision,Feature extraction,Pattern recognition,Real-time systems,Computational modeling</p>
+<p>Anomaly detection from crowd videos is an issue that is becoming more
+important due to the difficulties in maintaining the public security in
+crowded places. Surveillance videos has a significant role for enabling
+the real time analysis of the captured events occurring in crowded
+places. This paper presents a method that detects anomalies in crowd in
+real-time using computer vision and machine learning techniques. The
+proposed method consists of extracting the crowd behavior properties
+(velocity, direction) by tracking scale invariant feature transform
+(SIFT) feature points and fitting the extracted behavior properties into
+a Gaussian Model. In this paper, only the global anomalies which occur
+on the overall video frame are handled. According to the test results,
+the method gives comparable results with the state-of-art methods and
+also can run in real-time. In addition, it is less complex than the
+compared state-of-art methods and works unsupervised.</p>
+<p>由于在拥挤的地方维护公共安全存在困难，因此从人群视频中进行异常检测变得越来越重要。
+监视视频对于实时分析在拥挤的地方发生的捕获事件具有重要作用。
+本文提出了一种使用<strong>计算机视觉和机器学习技术</strong>实时检测人群中异常情况的方法。
+所提出的方法包括通过<strong>跟踪尺度不变特征变换（SIFT）特征点</strong>提取人群行为属性（速度，方向），并将提取的行为属性<strong>拟合到高斯模型</strong>中。
+在本文中，仅处理在整个视频帧上发生的全局异常。
+根据测试结果，该方法可提供与最新方法相当的结果，并且可以实时运行。
+此外，它比现有的比较先进的方法复杂，并且不受监督。</p>
+<p><strong>Keywords</strong> Videos,Conferences,Computer vision,Feature
+extraction,Pattern recognition,Real-time systems,Computational
+modeling</p>
 <p>视频，会议，计算机视觉，特征提取，模式识别，实时系统，计算模型</p>
-<h4 id="社会属性感知力模型：利用交互的丰富性进行异常人群检测"><a href="#社会属性感知力模型：利用交互的丰富性进行异常人群检测" class="headerlink" title="社会属性感知力模型：利用交互的丰富性进行异常人群检测"></a>社会属性感知力模型：利用交互的丰富性进行异常人群检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6894168">Social Attribute-Aware Force Model: Exploiting Richness of Interaction for Abnormal Crowd Detection</a></p>
+<h4
+id="社会属性感知力模型利用交互的丰富性进行异常人群检测">社会属性感知力模型：利用交互的丰富性进行异常人群检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6894168">Social
+Attribute-Aware Force Model: Exploiting Richness of Interaction for
+Abnormal Crowd Detection</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=76">IEEE Transactions on Circuits and Systems for Video Technology</a> ( Volume: 25, <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=7140866">Issue: 7</a>, July 2015)</p>
-<p><strong>Date of Publication:</strong> 08 September 2014 </p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=76">IEEE
+Transactions on Circuits and Systems for Video Technology</a> ( Volume:
+25, <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=7140866">Issue:
+7</a>, July 2015)</p>
+<p><strong>Date of Publication:</strong> 08 September 2014</p>
 <p><strong>被引用次数：</strong>54</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Interactions among pedestrians usually play an important role in understanding crowd behavior. However, there are great challenges, such as occlusions, motion, and appearance variance, on accurate analysis of pedestrian interactions. In this paper, we introduce a novel social attribute-aware force model (SAFM) for detection of abnormal crowd events. The proposed model incorporates social characteristics of crowd behaviors to improve the description of interactive behaviors. To this end, we first efficiently estimate the scene scale in an unsupervised manner. Then, we introduce the concepts of social disorder and congestion attributes to characterize the interaction of social behaviors, and construct our crowd interaction model on the basis of social force by an online fusion strategy. These attributes encode social interaction characteristics and offer robustness against motion pattern variance. Abnormal event detection is finally performed based on the proposed SAFM. In addition, the attribute-aware interaction force indicates the possible locations of anomalous interactions. We validate our method on the publicly available data sets for abnormal detection, and the experimental results show promising performance compared with alternative and state-of-the-art methods.</p>
+<p>Interactions among pedestrians usually play an important role in
+understanding crowd behavior. However, there are great challenges, such
+as occlusions, motion, and appearance variance, on accurate analysis of
+pedestrian interactions. In this paper, we introduce a novel social
+attribute-aware force model (SAFM) for detection of abnormal crowd
+events. The proposed model incorporates social characteristics of crowd
+behaviors to improve the description of interactive behaviors. To this
+end, we first efficiently estimate the scene scale in an unsupervised
+manner. Then, we introduce the concepts of social disorder and
+congestion attributes to characterize the interaction of social
+behaviors, and construct our crowd interaction model on the basis of
+social force by an online fusion strategy. These attributes encode
+social interaction characteristics and offer robustness against motion
+pattern variance. Abnormal event detection is finally performed based on
+the proposed SAFM. In addition, the attribute-aware interaction force
+indicates the possible locations of anomalous interactions. We validate
+our method on the publicly available data sets for abnormal detection,
+and the experimental results show promising performance compared with
+alternative and state-of-the-art methods.</p>
 <p>行人之间的互动通常在理解人群行为方面起重要作用。但是，对行人互动的准确分析存在很大的挑战，例如遮挡，运动和外观变化。在本文中，我们介绍了一种用于<strong>检测异常人群事件的新型社会属性感知力模型（SAFM）</strong>。所提出的模型结合了人群行为的社会特征，以改进对交互行为的描述。为此，我们首先以无人监督的方式有效地估计场景比例。然后，我们介绍了<strong>社会混乱和拥挤属性</strong>的概念，以表征社会行为的相互作用，并通过<strong>在线融合策略在社会力量的基础上构建了我们的人群相互作用模型</strong>。这些属性编码社交互动特征，并提供针对运动模式差异的鲁棒性。最后，基于提出的SAFM执行异常事件检测。另外，属性感知的交互作用力指示异常交互作用的可能位置。我们在可公开获取的异常检测数据集上验证了我们的方法，并且实验结果表明，与替代方法和最新方法相比，该方法具有较好的性能。</p>
-<p><strong>Keywords</strong><br>Force,Semantics,Dynamics,Hidden Markov models,Analytical models,Bayes methods,Robustness</p>
+<p><strong>Keywords</strong> Force,Semantics,Dynamics,Hidden Markov
+models,Analytical models,Bayes methods,Robustness</p>
 <p>力，语义，动力学，隐马尔可夫模型，分析模型，贝叶斯方法，鲁棒性</p>
-<h4 id="异常人群跟踪和运动分析"><a href="#异常人群跟踪和运动分析" class="headerlink" title="异常人群跟踪和运动分析"></a>异常人群跟踪和运动分析</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7019309">Abnormal Crowd Tracking and motion analysis</a></p>
+<h4 id="异常人群跟踪和运动分析">异常人群跟踪和运动分析</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7019309">Abnormal
+Crowd Tracking and motion analysis</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6996691/proceeding">2014 IEEE International Conference on Advanced Communications, Control and Computing Technologies</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6996691/proceeding">2014
+IEEE International Conference on Advanced Communications, Control and
+Computing Technologies</a></p>
 <p><strong>Date of Conference:</strong> 8-10 May 2014</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 26 January 2015</p>
 <p><strong>被引用次数：</strong>14</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Automated analysis of crowd activities using surveillance videos is an important issue for communal security, as it allows detection of dangerous crowds and where they are headed. Public places such as shopping centres and airports are monitored using closed circuit television (CCTV) in order to ensure normal operating conditions. Computer vision based crowd analysis algorithm can be divided into three groups; people counting, people tracking and crowd behaviour analysis. In this paper the behaviour understanding will be used for crowd behaviour analysis. The purpose of these methods could lead to a better understanding of crowd activities, improved design of the built environment and increased pedestrian safety.</p>
-<p>使用监控视频自动分析人群活动是公共安全的重要问题，因为它可以检测到危险人群及其去向。 购物中心和机场等公共场所使用闭路电视（CCTV）进行监控，以确保正常的工作条件。 基于计算机视觉的人群分析算法可分为三类； 人员计数，人员跟踪和人群行为分析。 在本文中，行为理解将用于人群行为分析。 这些方法的目的可以使人们更好地了解人群活动，改善建筑环境的设计并提高行人安全性。</p>
+<p>Automated analysis of crowd activities using surveillance videos is
+an important issue for communal security, as it allows detection of
+dangerous crowds and where they are headed. Public places such as
+shopping centres and airports are monitored using closed circuit
+television (CCTV) in order to ensure normal operating conditions.
+Computer vision based crowd analysis algorithm can be divided into three
+groups; people counting, people tracking and crowd behaviour analysis.
+In this paper the behaviour understanding will be used for crowd
+behaviour analysis. The purpose of these methods could lead to a better
+understanding of crowd activities, improved design of the built
+environment and increased pedestrian safety.</p>
+<p>使用监控视频自动分析人群活动是公共安全的重要问题，因为它可以检测到危险人群及其去向。
+购物中心和机场等公共场所使用闭路电视（CCTV）进行监控，以确保正常的工作条件。
+基于计算机视觉的人群分析算法可分为三类；
+人员计数，人员跟踪和人群行为分析。
+在本文中，行为理解将用于人群行为分析。
+这些方法的目的可以使人们更好地了解人群活动，改善建筑环境的设计并提高行人安全性。</p>
 <p><strong>Keywords</strong></p>
-<p>Tracking,Semantics,Computational modeling,Optical imaging,Image recognition,Adaptation models,Visualization</p>
+<p>Tracking,Semantics,Computational modeling,Optical imaging,Image
+recognition,Adaptation models,Visualization</p>
 <p>跟踪，语义学，计算模型，光学成像，图像识别，适应模型，可视化</p>
-<h4 id="中层功能集，用于在拥挤的场景中进行特定事件和异常检测"><a href="#中层功能集，用于在拥挤的场景中进行特定事件和异常检测" class="headerlink" title="中层功能集，用于在拥挤的场景中进行特定事件和异常检测"></a>中层功能集，用于在拥挤的场景中进行特定事件和异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6738824">Mid-level feature set for specific event and anomaly detection in crowded scenes</a></p>
+<h4
+id="中层功能集用于在拥挤的场景中进行特定事件和异常检测">中层功能集，用于在拥挤的场景中进行特定事件和异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6738824">Mid-level
+feature set for specific event and anomaly detection in crowded
+scenes</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6726158/proceeding">2013 IEEE International Conference on Image Processing</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6726158/proceeding">2013
+IEEE International Conference on Image Processing</a></p>
 <p><strong>Date of Conference:</strong> 15-18 Sept. 2013</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 13 February 2014</p>
 <p><strong>被引用次数：</strong>6</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>In this paper we propose a system for automatic detection of specific events and abnormal behaviors in crowded scenes. In particular, we focus on the parametrization by proposing a set of mid-level spatio-temporal features that successfully model the characteristic motion of typical events in crowd behaviors. Furthermore, due to the fact that some features are more suitable than others to model specific events of interest, we also present an automatic process for feature selection. Our experiments prove that the suggested feature set works successfully for both explicit event detection and distance-based anomaly detection tasks. The results on PETS for explicit event detection are generally better than those previously reported. Regarding anomaly detection, the proposed method performance is comparable to those of state-of-the-art method for PETS and substantially better than that reported for Web dataset.</p>
-<p>在本文中，我们提出了一种用于在拥挤的场景中自动检测特定事件和异常行为的系统。 特别是，我们通过提出一组成功地模拟人群行为中典型事件的特征运动的<strong>中层时空特征</strong>，专注于参数化。 此外，由于某些功能比其他功能更适合于对感兴趣的特定事件建模，因此，我们还提出了一种<strong>自动的功能选择过程</strong>。 我们的实验证明，建议的功能集可成功用于显式事件检测和基于距离的异常检测任务。 用于显式事件检测的PETS结果通常比以前报道的要好。 关于异常检测，所提出的方法性能可与PETS的最新方法相媲美，并且显着优于Web数据集所报告的方法。</p>
+<p>In this paper we propose a system for automatic detection of specific
+events and abnormal behaviors in crowded scenes. In particular, we focus
+on the parametrization by proposing a set of mid-level spatio-temporal
+features that successfully model the characteristic motion of typical
+events in crowd behaviors. Furthermore, due to the fact that some
+features are more suitable than others to model specific events of
+interest, we also present an automatic process for feature selection.
+Our experiments prove that the suggested feature set works successfully
+for both explicit event detection and distance-based anomaly detection
+tasks. The results on PETS for explicit event detection are generally
+better than those previously reported. Regarding anomaly detection, the
+proposed method performance is comparable to those of state-of-the-art
+method for PETS and substantially better than that reported for Web
+dataset.</p>
+<p>在本文中，我们提出了一种用于在拥挤的场景中自动检测特定事件和异常行为的系统。
+特别是，我们通过提出一组成功地模拟人群行为中典型事件的特征运动的<strong>中层时空特征</strong>，专注于参数化。
+此外，由于某些功能比其他功能更适合于对感兴趣的特定事件建模，因此，我们还提出了一种<strong>自动的功能选择过程</strong>。
+我们的实验证明，建议的功能集可成功用于显式事件检测和基于距离的异常检测任务。
+用于显式事件检测的PETS结果通常比以前报道的要好。
+关于异常检测，所提出的方法性能可与PETS的最新方法相媲美，并且显着优于Web数据集所报告的方法。</p>
 <p><strong>Keywords</strong></p>
-<p>behavioural sciences computing,spatiotemporal phenomena,video signal processing，video surveillance</p>
+<p>behavioural sciences computing,spatiotemporal phenomena,video signal
+processing，video surveillance</p>
 <p>行为科学计算，时空现象，视频信号处理，视频监控</p>
-<h4 id="使用最大子序列搜索的异常人群行为检测和定位"><a href="#使用最大子序列搜索的异常人群行为检测和定位" class="headerlink" title="使用最大子序列搜索的异常人群行为检测和定位"></a>使用最大子序列搜索的异常人群行为检测和定位</h4><p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2510650.2510655">Abnormal crowd behavior detection and localization using maximum sub-sequence search</a></p>
+<h4
+id="使用最大子序列搜索的异常人群行为检测和定位">使用最大子序列搜索的异常人群行为检测和定位</h4>
+<p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2510650.2510655">Abnormal
+crowd behavior detection and localization using maximum sub-sequence
+search</a></p>
 <blockquote>
-<p><strong>Publication</strong>:<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/proceedings/10.1145/2510650">ARTEMIS ‘13: Proceedings of the 4th ACM/IEEE international workshop on Analysis and retrieval of tracked events and motion in imagery stream</a></p>
+<p><strong>Publication</strong>:<a
+target="_blank" rel="noopener" href="https://dl.acm.org/doi/proceedings/10.1145/2510650">ARTEMIS '13:
+Proceedings of the 4th ACM/IEEE international workshop on Analysis and
+retrieval of tracked events and motion in imagery stream</a></p>
 <p><strong>October 2013</strong></p>
 <p><strong>被引用次数：</strong>22</p>
 </blockquote>
 <p><strong>ABSTRACT</strong></p>
-<p>This paper presents a novel framework for anomaly event detection and localization in crowded scenes. We propose an anomaly detector that extends the Bayes classifier from multi-class to one-class classification to characterize normal events. We also propose a localization scheme for anomaly localization as a maximum subsequence problem in a video sequence. The maximum subsequence algorithm locates an anomaly event by discovering the optimal collection of successive patches with spatial proximity over time without prior knowledge of the size, start and end of the anomaly event. Our localization scheme can locate multiple occurrences of abnormal events in spite of noise. Experimental results on the well-established UCSD dataset show that the proposed framework significantly outperforms state-of-the-art methods up to 53.55% localization rate. This study concludes that the localization framework plays an important role in abnormal event detection.</p>
-<p>本文提出了一个新的框架，用于在拥挤的场景中进行异常事件检测和定位。 我们提出了一种异常检测器，该检测器将<strong>贝叶斯分类器</strong>从多类分类扩展到一类分类以表征正常事件。 我们还提出了一种用于异常定位的定位方案，作为视频序列中的<strong>最大子序列问题</strong>。 <strong>最大子序列算法通过发现随时间推移具有空间邻近性的连续补丁的最佳集合来定位异常事件</strong>，而无需事先知道异常事件的大小，开始和结束。 尽管有噪音，我们的定位方案仍可以定位多次发生的异常事件。 在完善的UCSD数据集上进行的实验结果表明，该框架在本地化率高达53.55％的情况下，明显优于最新技术。 这项研究得出的结论是，本地化框架在异常事件检测中起着重要作用。</p>
-<h4 id="一种新颖的基于统计学习的框架，用于人群中的自动异常检测和定位"><a href="#一种新颖的基于统计学习的框架，用于人群中的自动异常检测和定位" class="headerlink" title="一种新颖的基于统计学习的框架，用于人群中的自动异常检测和定位"></a>一种新颖的基于统计学习的框架，用于人群中的自动异常检测和定位</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6739629">A novel statistical learning-based framework for automatic anomaly detection and localization in crowds</a></p>
+<p>This paper presents a novel framework for anomaly event detection and
+localization in crowded scenes. We propose an anomaly detector that
+extends the Bayes classifier from multi-class to one-class
+classification to characterize normal events. We also propose a
+localization scheme for anomaly localization as a maximum subsequence
+problem in a video sequence. The maximum subsequence algorithm locates
+an anomaly event by discovering the optimal collection of successive
+patches with spatial proximity over time without prior knowledge of the
+size, start and end of the anomaly event. Our localization scheme can
+locate multiple occurrences of abnormal events in spite of noise.
+Experimental results on the well-established UCSD dataset show that the
+proposed framework significantly outperforms state-of-the-art methods up
+to 53.55% localization rate. This study concludes that the localization
+framework plays an important role in abnormal event detection.</p>
+<p>本文提出了一个新的框架，用于在拥挤的场景中进行异常事件检测和定位。
+我们提出了一种异常检测器，该检测器将<strong>贝叶斯分类器</strong>从多类分类扩展到一类分类以表征正常事件。
+我们还提出了一种用于异常定位的定位方案，作为视频序列中的<strong>最大子序列问题</strong>。
+<strong>最大子序列算法通过发现随时间推移具有空间邻近性的连续补丁的最佳集合来定位异常事件</strong>，而无需事先知道异常事件的大小，开始和结束。
+尽管有噪音，我们的定位方案仍可以定位多次发生的异常事件。
+在完善的UCSD数据集上进行的实验结果表明，该框架在本地化率高达53.55％的情况下，明显优于最新技术。
+这项研究得出的结论是，本地化框架在异常事件检测中起着重要作用。</p>
+<h4
+id="一种新颖的基于统计学习的框架用于人群中的自动异常检测和定位">一种新颖的基于统计学习的框架，用于人群中的自动异常检测和定位</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6739629">A
+novel statistical learning-based framework for automatic anomaly
+detection and localization in crowds</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6725829/proceeding">2013 IEEE International Conference on Robotics and Biomimetics (ROBIO)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6725829/proceeding">2013
+IEEE International Conference on Robotics and Biomimetics
+(ROBIO)</a></p>
 <p><strong>Date of Conference:</strong> 12-14 Dec. 2013</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 17 March 2014</p>
 <p><strong>被引用次数：</strong>3</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>We propose a novel framework for fast and robust video anomaly detection and localization in complicated crowd scenes. Images of each video are split into cells for extracting local motion features represented by optical flow. In the train videos, most background cells are subtracted by ViBe model. Feature vectors are extracted from each cell by integrating the value of optical flow in 8 different direction intervals. Then we apply Principal Component Analysis (PCA) to transform the feature vectors. The normal activity patterns in the train videos are learnt by constructing a Gaussian Mixture Model (GMM) upon the feature vectors. For any new feature vector extracted from the test video clips, we use the learnt model to calculate a probability value to represent normal level of each cell. Considering the continuity of the motion, we also use abnormal information obtained from previous frames as a supplementary for anomaly prediction in the current frame. At last, we determine whether an activity pattern of a cell is normal or abnormal by using mean shift to cluster the probability values of the frame. Qualitative experiments on real-life surveillance videos, the recently published UCSD anomaly detection datasets, validate the effectiveness of the proposed approach.</p>
+<p>We propose a novel framework for fast and robust video anomaly
+detection and localization in complicated crowd scenes. Images of each
+video are split into cells for extracting local motion features
+represented by optical flow. In the train videos, most background cells
+are subtracted by ViBe model. Feature vectors are extracted from each
+cell by integrating the value of optical flow in 8 different direction
+intervals. Then we apply Principal Component Analysis (PCA) to transform
+the feature vectors. The normal activity patterns in the train videos
+are learnt by constructing a Gaussian Mixture Model (GMM) upon the
+feature vectors. For any new feature vector extracted from the test
+video clips, we use the learnt model to calculate a probability value to
+represent normal level of each cell. Considering the continuity of the
+motion, we also use abnormal information obtained from previous frames
+as a supplementary for anomaly prediction in the current frame. At last,
+we determine whether an activity pattern of a cell is normal or abnormal
+by using mean shift to cluster the probability values of the frame.
+Qualitative experiments on real-life surveillance videos, the recently
+published UCSD anomaly detection datasets, validate the effectiveness of
+the proposed approach.</p>
 <p>我们提出了一种新颖的框架，用于在复杂的人群场景中进行快速，鲁棒的视频异常检测和定位。每个视频的图像被分成多个单元，以提取<strong>由光流表示的局部运动特征</strong>。在火车视频中，<strong>ViBe模型减去了大多数背景单元</strong>。通过对8个不同方向间隔中的光流值进行积分，从每个像元中提取特征向量。然后，我们应用<strong>主成分分析（PCA）</strong>来变换特征向量。通过在特征向量上<strong>构建高斯混合模型（GMM）</strong>来学习火车视频中的正常活动模式。对于从测试视频剪辑中提取的任何新特征向量，我们使用学习的模型来计算代表每个单元格正常水平的概率值。考虑到运动的连续性，我们还使用从先前帧中获得的异常信息作为当前帧中异常预测的补充。最后，通过均值漂移对帧的概率值进行聚类，确定细胞的活动模式是正常还是异常。对实时监控视频（最近发布的UCSD异常检测数据集）的定性实验验证了该方法的有效性。</p>
 <p><strong>Keywords</strong></p>
-<p>Feature extraction,Vectors,Optical imaging,Conferences,Optical distortion,Integrated optics,Computer vision</p>
+<p>Feature extraction,Vectors,Optical imaging,Conferences,Optical
+distortion,Integrated optics,Computer vision</p>
 <p>特征提取，矢量，光学成像，会议，光学畸变，集成光学，计算机视觉</p>
-<h4 id="使用具有增量更新的空间MRF在人群中进行异常检测"><a href="#使用具有增量更新的空间MRF在人群中进行异常检测" class="headerlink" title="使用具有增量更新的空间MRF在人群中进行异常检测"></a>使用具有增量更新的空间MRF在人群中进行异常检测</h4><p><a target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/8878/88782J/Anomaly-detection-in-crowds-using-a-space-MRF-with-incremental/10.1117/12.2030562.short?SSO=1">Anomaly detection in crowds using a space MRF with incremental updates</a></p>
+<h4
+id="使用具有增量更新的空间mrf在人群中进行异常检测">使用具有增量更新的空间MRF在人群中进行异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/8878/88782J/Anomaly-detection-in-crowds-using-a-space-MRF-with-incremental/10.1117/12.2030562.short?SSO=1">Anomaly
+detection in crowds using a space MRF with incremental updates</a></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/8878.toc">Proceedings Volume 8878, Fifth International Conference on Digital Image Processing (ICDIP 2013);</a> 88782J (2013) <a target="_blank" rel="noopener" href="https://doi.org/10.1117/12.2030562">https://doi.org/10.1117/12.2030562</a><br>Event: Fifth International Conference on Digital Image Processing, 2013, Beijing, China</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/8878.toc">Proceedings
+Volume 8878, Fifth International Conference on Digital Image Processing
+(ICDIP 2013);</a> 88782J (2013) https://doi.org/10.1117/12.2030562
+Event: Fifth International Conference on Digital Image Processing, 2013,
+Beijing, China</p>
 <p><strong>被引用次数：</strong>3</p>
 </blockquote>
 <p><strong>Abstract</strong></p>
-<p>In this paper, we propose a space Markov Random Field (MRF) model to detect abnormal activities in crowded scenes. The nodes of MRF graph consist of monitors evenly spread on the image, and neighboring nodes in space are associated with links. The normal patterns of activity at each node are learnt by constructing a Gaussian Mixture Model (GMM) upon optical flow locally, while correlation between adjacent nodes is represented by building a single Gaussian model upon inner product of histogram vectors of optical flow observed from a region centered at each node respectively. For any optical flow patterns detected in test video clips, we use the learnt model and MRF graph to calculate an energy value for each local node, and determine whether the behavior pattern of the node is normal or abnormal by comparing the value with a threshold. Further, we apply a method similar to updating of GMM for background subtraction to incrementally update the current model to adapt for visual context changes over a long period of time. Experiments on the published UCSD anomaly datasets Ped1 and Ped2 show the effectiveness of our method.</p>
-<p>在本文中，我们提出了一种<strong>空间马尔可夫随机场（MRF）模型</strong>来检测拥挤场景中的异常活动。 MRF图的节点由<strong>均匀分布在图像上的监视器</strong>组成，空间中的相邻节点与链接关联。通过在<strong>局部光流上构建高斯混合模型（GMM）</strong>来学习每个节点的正常活动模式，而相邻节点之间的相关性可以通过在从某个区域观察到的光流直方图矢量的内积上构建单个高斯模型来表示分别以每个节点为中心。对于在测试视频剪辑中检测到的任何光流模式，我们使用学习的模型和MRF图来计算每个本地节点的能量值，并通过将该值与阈值进行比较来确定该节点的行为模式是正常还是异常。此外，我们应用了一种与GMM更新类似的方法来进行背景扣除，以增量更新当前模型以适应长时间的视觉环境变化。对已发布的UCSD异常数据集Ped1和Ped2进行的实验证明了我们方法的有效性。</p>
-<h4 id="建模人群动作以检测异常活动"><a href="#建模人群动作以检测异常活动" class="headerlink" title="建模人群动作以检测异常活动"></a>建模人群动作以检测异常活动</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6918689">Modeling crowd motions for abnormal activity detection</a></p>
+<p>In this paper, we propose a space Markov Random Field (MRF) model to
+detect abnormal activities in crowded scenes. The nodes of MRF graph
+consist of monitors evenly spread on the image, and neighboring nodes in
+space are associated with links. The normal patterns of activity at each
+node are learnt by constructing a Gaussian Mixture Model (GMM) upon
+optical flow locally, while correlation between adjacent nodes is
+represented by building a single Gaussian model upon inner product of
+histogram vectors of optical flow observed from a region centered at
+each node respectively. For any optical flow patterns detected in test
+video clips, we use the learnt model and MRF graph to calculate an
+energy value for each local node, and determine whether the behavior
+pattern of the node is normal or abnormal by comparing the value with a
+threshold. Further, we apply a method similar to updating of GMM for
+background subtraction to incrementally update the current model to
+adapt for visual context changes over a long period of time. Experiments
+on the published UCSD anomaly datasets Ped1 and Ped2 show the
+effectiveness of our method.</p>
+<p>在本文中，我们提出了一种<strong>空间马尔可夫随机场（MRF）模型</strong>来检测拥挤场景中的异常活动。
+MRF图的节点由<strong>均匀分布在图像上的监视器</strong>组成，空间中的相邻节点与链接关联。通过在<strong>局部光流上构建高斯混合模型（GMM）</strong>来学习每个节点的正常活动模式，而相邻节点之间的相关性可以通过在从某个区域观察到的光流直方图矢量的内积上构建单个高斯模型来表示分别以每个节点为中心。对于在测试视频剪辑中检测到的任何光流模式，我们使用学习的模型和MRF图来计算每个本地节点的能量值，并通过将该值与阈值进行比较来确定该节点的行为模式是正常还是异常。此外，我们应用了一种与GMM更新类似的方法来进行背景扣除，以增量更新当前模型以适应长时间的视觉环境变化。对已发布的UCSD异常数据集Ped1和Ped2进行的实验证明了我们方法的有效性。</p>
+<h4 id="建模人群动作以检测异常活动">建模人群动作以检测异常活动</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6918689">Modeling
+crowd motions for abnormal activity detection</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6912617/proceeding">2014 11th IEEE International Conference on Advanced Video and Signal Based Surveillance (AVSS)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6912617/proceeding">2014
+11th IEEE International Conference on Advanced Video and Signal Based
+Surveillance (AVSS)</a></p>
 <p><strong>Date of Conference:</strong> 26-29 Aug. 2014</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 09 October 2014</p>
 <p><strong>被引用次数：</strong>11</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>In this paper; we propose a novel crowd behavior representation method to detect abnormal behaviors in videos. An adaptive optical flow filtering method is proposed to utilize low-level optical flow informations. Furthermore, a simple framework is developed to detect and to localize abnormal crowd behavior using adaptive optical flow filtering result. The proposed method is more robust than other modeling methods in representing different behaviors. In this model, a normal behavior is presented by the general value. Some outliers in the temporal domain or spatial domain are presented by a higher value. Spatio-temporal cuboids are extracted from the filtering result to present the likelihood of anomaly in the frame. Experimental evaluations are performed on two public datasets with comparison to the provisos abnormal behavior detection methods in the literature. Experimental results show that the proposed methods outperform previous abnormal behavior detection techniques in the literature.</p>
+<p>In this paper; we propose a novel crowd behavior representation
+method to detect abnormal behaviors in videos. An adaptive optical flow
+filtering method is proposed to utilize low-level optical flow
+informations. Furthermore, a simple framework is developed to detect and
+to localize abnormal crowd behavior using adaptive optical flow
+filtering result. The proposed method is more robust than other modeling
+methods in representing different behaviors. In this model, a normal
+behavior is presented by the general value. Some outliers in the
+temporal domain or spatial domain are presented by a higher value.
+Spatio-temporal cuboids are extracted from the filtering result to
+present the likelihood of anomaly in the frame. Experimental evaluations
+are performed on two public datasets with comparison to the provisos
+abnormal behavior detection methods in the literature. Experimental
+results show that the proposed methods outperform previous abnormal
+behavior detection techniques in the literature.</p>
 <p>在本文中，我们提出了一种新颖的人群行为表示方法来检测视频中的异常行为。提出了一种利用<strong>低水平光流信息的自适应光流滤波</strong>方法。此外，开发了一个简单的框架来使用<strong>自适应光流过滤结果来检测和定位异常人群行为</strong>。所提出的方法在表示不同行为方面比其他建模方法更健壮。在此模型中，<strong>正常行为由通用值表示。时域或空间域中的某些异常值由较高的值表示</strong>。从滤波结果中提取出时空长方体，以表示帧中出现异常的可能性。与文献中的临时异常行为检测方法相比，对两个公共数据集进行了实验评估。实验结果表明，所提出的方法优于文献中先前的异常行为检测技术。</p>
-<p> <strong>Keywords</strong><br>Feature extraction,Adaptive optics,Optical filters,Optical imaging,Force,Optical distortion,Dynamics</p>
+<p><strong>Keywords</strong> Feature extraction,Adaptive optics,Optical
+filters,Optical imaging,Force,Optical distortion,Dynamics</p>
 <p>特征提取，自适应光学，光学滤波器，光学成像，力，光学畸变，动态</p>
-<h4 id="从序列数据中学习异常检测"><a href="#从序列数据中学习异常检测" class="headerlink" title="从序列数据中学习异常检测"></a>从序列数据中学习异常检测</h4><p><a target="_blank" rel="noopener" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.682.7818&amp;rep=rep1&amp;type=pdf">LEARNING FROM SEQUENTIAL DATA FOR ANOMALY DETECTION</a></p>
+<h4 id="从序列数据中学习异常检测">从序列数据中学习异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.682.7818&amp;rep=rep1&amp;type=pdf">LEARNING
+FROM SEQUENTIAL DATA FOR ANOMALY DETECTION</a></p>
 <blockquote>
 <p>October 2014</p>
 <p><strong>被引用次数：</strong>23</p>
 </blockquote>
-<p><strong>Abstract</strong> </p>
-<p>Anomaly detection has been used in a wide range of real world problems and has received significant attention in a number of research fields over the last decades. Anomaly detection attempts to identify events, activities, or observations which are measurably different than an expected behavior or pattern present in a dataset. This thesis focuses on a specific set of techniques targeting the detection of anomalous behavior in a discrete, symbolic, and sequential dataset. Since profiling complex sequential data is still an open problem in anomaly detection, and given that the rate of production of sequential data in fields ranging from finance to homeland security is exploding, there is a pressing need to develop effective detection algorithms that can handle patterns in sequential information flows. </p>
-<p>In this thesis, we address context-aware multi-class anomaly detection as applied to discrete sequences and develop a context learning approach using an unsupervised learning paradigm. We begin the anomaly detection process by applying our approach to differentiate normal behavior classes (contexts) before attempting to model normal behavior. This approach leads to stronger learning on each class by taking advantage of the power of advanced models to identify normal behavior of the sequence classes. We evaluate our discrete sequence-based anomaly detection framework using two illustrative applications: 1) System call intrusion detection and 2) Crowd anomaly iii detection. We also evaluate how clustering can guide our context-aware methodology to positively impact the anomaly detection rate. </p>
-<p>In this thesis, we utilize a Hidden Markov Model (HMM) to perform anomaly detection. A HMM is the simplest dynamic Bayesian network. A HMM is a Markov model which can be used when the states are not observable, but observed data is dependent on these hidden states. While there has been a large amount of prior work utilizing Hidden Markov Models (HMMs) for anomaly detection, the proposed models became overly complex when attempting to improve the detection rate, while reducing the false detection rate. </p>
-<p>We apply HMMs to perform anomaly detection on discrete sequential data. We utilize multiple HMMs, one for each context class. We demonstrate our multi-HMM approach to system call anomalies in cyber security and provide results in the presence of anomalies. Applying process trace analysis with multi-HMMs, system call anomaly detection achieves better results using better tuned model settings and a less complex structure to detect anomalies. </p>
-<p>To evaluate the extensibility of our approach, we consider a second application, crowd behavior analytics. We attempt to classify crowd behavior and treat this as an anomaly detection problem on sequential data. We convert crowd video data into a discrete/symbolic sequence of data. We apply computer vision techniques to generate features from objects, and use these features for frame-based representations to model the behavior of the crowd in a video stream. We attempt to identify anomalous behavior of a crowd in a scene by applying machine learning techniques to understand what it means for a video stream to be identifiedas “normal”. The results of applying our context-aware multi-HMMs approach to crowd analytics show the generality of our anomaly detection approach, and the power of our context-learning approach.</p>
+<p><strong>Abstract</strong></p>
+<p>Anomaly detection has been used in a wide range of real world
+problems and has received significant attention in a number of research
+fields over the last decades. Anomaly detection attempts to identify
+events, activities, or observations which are measurably different than
+an expected behavior or pattern present in a dataset. This thesis
+focuses on a specific set of techniques targeting the detection of
+anomalous behavior in a discrete, symbolic, and sequential dataset.
+Since profiling complex sequential data is still an open problem in
+anomaly detection, and given that the rate of production of sequential
+data in fields ranging from finance to homeland security is exploding,
+there is a pressing need to develop effective detection algorithms that
+can handle patterns in sequential information flows.</p>
+<p>In this thesis, we address context-aware multi-class anomaly
+detection as applied to discrete sequences and develop a context
+learning approach using an unsupervised learning paradigm. We begin the
+anomaly detection process by applying our approach to differentiate
+normal behavior classes (contexts) before attempting to model normal
+behavior. This approach leads to stronger learning on each class by
+taking advantage of the power of advanced models to identify normal
+behavior of the sequence classes. We evaluate our discrete
+sequence-based anomaly detection framework using two illustrative
+applications: 1) System call intrusion detection and 2) Crowd anomaly
+iii detection. We also evaluate how clustering can guide our
+context-aware methodology to positively impact the anomaly detection
+rate.</p>
+<p>In this thesis, we utilize a Hidden Markov Model (HMM) to perform
+anomaly detection. A HMM is the simplest dynamic Bayesian network. A HMM
+is a Markov model which can be used when the states are not observable,
+but observed data is dependent on these hidden states. While there has
+been a large amount of prior work utilizing Hidden Markov Models (HMMs)
+for anomaly detection, the proposed models became overly complex when
+attempting to improve the detection rate, while reducing the false
+detection rate.</p>
+<p>We apply HMMs to perform anomaly detection on discrete sequential
+data. We utilize multiple HMMs, one for each context class. We
+demonstrate our multi-HMM approach to system call anomalies in cyber
+security and provide results in the presence of anomalies. Applying
+process trace analysis with multi-HMMs, system call anomaly detection
+achieves better results using better tuned model settings and a less
+complex structure to detect anomalies.</p>
+<p>To evaluate the extensibility of our approach, we consider a second
+application, crowd behavior analytics. We attempt to classify crowd
+behavior and treat this as an anomaly detection problem on sequential
+data. We convert crowd video data into a discrete/symbolic sequence of
+data. We apply computer vision techniques to generate features from
+objects, and use these features for frame-based representations to model
+the behavior of the crowd in a video stream. We attempt to identify
+anomalous behavior of a crowd in a scene by applying machine learning
+techniques to understand what it means for a video stream to be
+identifiedas “normal”. The results of applying our context-aware
+multi-HMMs approach to crowd analytics show the generality of our
+anomaly detection approach, and the power of our context-learning
+approach.</p>
 <p>异常检测已用于许多现实世界中的问题，并且在过去的几十年中已在许多研究领域中引起了极大的关注。异常检测尝试识别事件，活动或观察结果，这些事件，活动或观察结果与数据集中存在的预期行为或模式明显不同。本文着重于针对离散，符号和顺序数据集中异常行为检测的一组特定技术。由于分析复杂的顺序数据仍然是异常检测中的一个开放问题，并且考虑到从金融到国土安全等领域中顺序数据的生产率正在爆炸式增长，迫切需要开发一种能够处理模式中的模式的有效检测算法。顺序信息流。</p>
 <p>在本文中，我们解决了<strong>应用于离散序列的上下文感知多类异常检测问题</strong>，并开发了一种使用无监督学习范式的上下文学习方法。在尝试对正常行为建模之前，我们通过应用我们的方法区分正常行为类（上下文）来开始异常检测过程。这种方法通过利用高级模型的能力来识别序列类的正常行为，从而使每个类的学习更加深入。我们使用两个示例性应用程序评估基于离散序列的异常检测框架：1）系统调用入侵检测和2）人群异常iii检测。我们还评估了聚类如何引导我们的情境感知方法对异常检测率产生积极影响。</p>
-<p>本文利用<strong>隐马尔可夫模型（HMM）</strong>进行异常检测。 HMM是<strong>最简单的动态贝叶斯网络</strong>。 HMM是马尔可夫模型，当状态无法观察到但观察到的数据取决于这些隐藏状态时可以使用。尽管已有大量的利用隐马尔可夫模型（HMM）进行异常检测的先验工作，但是当尝试提高检测率同时减少错误检测率时，提出的模型变得过于复杂。</p>
+<p>本文利用<strong>隐马尔可夫模型（HMM）</strong>进行异常检测。
+HMM是<strong>最简单的动态贝叶斯网络</strong>。
+HMM是马尔可夫模型，当状态无法观察到但观察到的数据取决于这些隐藏状态时可以使用。尽管已有大量的利用隐马尔可夫模型（HMM）进行异常检测的先验工作，但是当尝试提高检测率同时减少错误检测率时，提出的模型变得过于复杂。</p>
 <p>我们应用<strong>HMM对离散的顺序数据执行异常检测</strong>。我们使用多个HMM，每个上下文类一个。我们演示了针对网络安全中系统调用异常的多HMM方法，并在出现异常的情况下提供了结果。将过程跟踪分析与多个HMM结合使用，系统调用异常检测可以使用更好的调整模型设置和更简单的结构来检测异常，从而获得更好的结果。</p>
 <p>为了评估我们方法的可扩展性，我们考虑第二种应用程序，人群行为分析。我们尝试对人群行为进行分类，并将其作为对顺序数据的异常检测问题。我们将人群视频数据转换为离散/符号序列的数据。我们应用计算机视觉技术从对象生成特征，并将这些特征用于基于帧的表示，以对视频流中人群的行为进行建模。我们尝试通过应用机器学习技术来了解场景中人群的异常行为，以了解将视频流识别为“正常”意味着什么。将我们的上下文感知多HMM方法应用于人群分析的结果表明，我们的异常检测方法具有普遍性，并且上下文学习方法具有强大的功能。</p>
-<h4 id="基于发散中心的人群逃生行为检测与定位"><a href="#基于发散中心的人群逃生行为检测与定位" class="headerlink" title="基于发散中心的人群逃生行为检测与定位"></a>基于发散中心的人群逃生行为检测与定位</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6985609">Crowd Escape Behavior Detection and Localization Based on Divergent Centers</a></p>
+<h4
+id="基于发散中心的人群逃生行为检测与定位">基于发散中心的人群逃生行为检测与定位</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6985609">Crowd
+Escape Behavior Detection and Localization Based on Divergent
+Centers</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361">IEEE Sensors Journal</a> ( Volume: 15, <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=7024232">Issue: 4</a>, April 2015)</p>
-<p><strong>Date of Publication:</strong> 18 December 2014 </p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361">IEEE
+Sensors Journal</a> ( Volume: 15, <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=7024232">Issue:
+4</a>, April 2015)</p>
+<p><strong>Date of Publication:</strong> 18 December 2014</p>
 <p><strong>被引用次数：</strong>17</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>In this paper, we propose a novel framework for anomalous crowd behavior detection and localization by introducing divergent centers in intelligent video surveillance systems. In this paper, the scheme proposed can deal with this problem by modeling the crowd motion obtained from the optical flow. The obtained magnitude, position and direction are used to construct the motion model. The method of the weighted velocity is applied to calculate the motion velocity. People usually instinctively escape from a place where abnormal or dangerous events occur. Based on this inference, a novel algorithm of detecting divergent centers is proposed: divergent centers indicate possible places where abnormal events occur. The proposed algorithm of detect divergent centers can identify more than one divergent center by analyzing the intersections of vectors, and this algorithm consist of the distance segmentation method and the nearest neighbor search. The performance of our method is validated in a number of experiments on public data sets.</p>
+<p>In this paper, we propose a novel framework for anomalous crowd
+behavior detection and localization by introducing divergent centers in
+intelligent video surveillance systems. In this paper, the scheme
+proposed can deal with this problem by modeling the crowd motion
+obtained from the optical flow. The obtained magnitude, position and
+direction are used to construct the motion model. The method of the
+weighted velocity is applied to calculate the motion velocity. People
+usually instinctively escape from a place where abnormal or dangerous
+events occur. Based on this inference, a novel algorithm of detecting
+divergent centers is proposed: divergent centers indicate possible
+places where abnormal events occur. The proposed algorithm of detect
+divergent centers can identify more than one divergent center by
+analyzing the intersections of vectors, and this algorithm consist of
+the distance segmentation method and the nearest neighbor search. The
+performance of our method is validated in a number of experiments on
+public data sets.</p>
 <p>在本文中，我们通过在智能视频监控系统中引入不同的中心，提出了一种用于异常人群行为检测和定位的新颖框架。在本文中，提出的方案可以通过对<strong>从光流中获得的人群运动进行建模</strong>来解决此问题。所获得的大小，位置和方向用于构建运动模型。采用<strong>加权速度法计算运动速度</strong>。人们通常会本能地逃离发生异常或危险事件的地方。基于此推断，提出了一种<strong>检测发散中心</strong>的新算法：<strong>发散中心指示异常事件发生的可能位置</strong>。提出的检测发散中心的算法可以通过分析向量的交点来识别多个发散中心，该算法<strong>包括距离分割法和最近邻搜索法</strong>。我们的方法的性能在公共数据集上的大量实验中得到了验证。</p>
-<p><strong>Keywords</strong><br>Feature extraction,Computer vision,Image motion analysis,Optical sensors,Optical imaging,Vectors,Optical reflection</p>
+<p><strong>Keywords</strong> Feature extraction,Computer vision,Image
+motion analysis,Optical sensors,Optical imaging,Vectors,Optical
+reflection</p>
 <p>特征提取，计算机视觉，图像运动分析，光学传感器，光学成像，矢量，光学反射</p>
-<h4 id="具有增强的局部字典的基于稀疏表示的异常检测"><a href="#具有增强的局部字典的基于稀疏表示的异常检测" class="headerlink" title="具有增强的局部字典的基于稀疏表示的异常检测"></a>具有增强的局部字典的基于稀疏表示的异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7026119">Sparse representation based anomaly detection with enhanced local dictionaries</a></p>
+<h4
+id="具有增强的局部字典的基于稀疏表示的异常检测">具有增强的局部字典的基于稀疏表示的异常检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7026119">Sparse
+representation based anomaly detection with enhanced local
+dictionaries</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6992914/proceeding">2014 IEEE International Conference on Image Processing (ICIP)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6992914/proceeding">2014
+IEEE International Conference on Image Processing (ICIP)</a></p>
 <p><strong>Date of Conference:</strong> 27-30 Oct. 2014</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 29 January 2015</p>
 <p><strong>被引用次数：</strong>19</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>In this paper, we propose a novel approach for anomaly detection by modeling the usual behaviour with enhanced dictionary. The corresponding sparse reconstruction error indicates the anomaly. We compute the dictionaries, for each local region, from feature descriptors obtained from usual behavior. The novelty of the proposed work is in enhancing the local dictionaries based on the similarity of usual behavior with its spatial neighbors. Dictionary enhancement is achieved by appending <code>transformed dictionary&#39; to the</code>local dictionary’. This `transformed dictionary’ is learned based on the transformations of behavior patterns across two neighboring regions. We conduct experiments on widely used UCSD Ped1 and Ped2 datasets to compare with the existing algorithms and demonstrate the improvement in anomaly detection with enhanced dictionaries compared to typically learned local dictionary.</p>
-<p>在本文中，我们通过使用增强型字典对通常的行为进行建模，提出了一种新颖的异常检测方法。 相应的稀疏重建错误指示异常。 我们根据从通常行为获得的特征描述符，为每个<strong>局部区域计算字典</strong>。 拟议工作的新颖之处在于，根据平常行为与其空间邻居的相似性，增强了地方词典。 通过将“转换字典”附加到“本地字典”来实现字典增强。 根据跨两个相邻区域的行为模式的转换来学习此“转换后的字典”。 我们对广泛使用的UCSD Ped1和Ped2数据集进行了实验，以与现有算法进行比较，并证明与常规学习的本地字典相比，增强型字典提高了异常检测的性能。</p>
-<p><strong>Keywords</strong><br>Dictionaries,Integrated optics,Hidden Markov models,Conferences,Computer vision,Computational modeling,Feature extraction</p>
+<p>In this paper, we propose a novel approach for anomaly detection by
+modeling the usual behaviour with enhanced dictionary. The corresponding
+sparse reconstruction error indicates the anomaly. We compute the
+dictionaries, for each local region, from feature descriptors obtained
+from usual behavior. The novelty of the proposed work is in enhancing
+the local dictionaries based on the similarity of usual behavior with
+its spatial neighbors. Dictionary enhancement is achieved by appending
+<code>transformed dictionary' to the</code>local dictionary'. This
+`transformed dictionary' is learned based on the transformations of
+behavior patterns across two neighboring regions. We conduct experiments
+on widely used UCSD Ped1 and Ped2 datasets to compare with the existing
+algorithms and demonstrate the improvement in anomaly detection with
+enhanced dictionaries compared to typically learned local
+dictionary.</p>
+<p>在本文中，我们通过使用增强型字典对通常的行为进行建模，提出了一种新颖的异常检测方法。
+相应的稀疏重建错误指示异常。
+我们根据从通常行为获得的特征描述符，为每个<strong>局部区域计算字典</strong>。
+拟议工作的新颖之处在于，根据平常行为与其空间邻居的相似性，增强了地方词典。
+通过将“转换字典”附加到“本地字典”来实现字典增强。
+根据跨两个相邻区域的行为模式的转换来学习此“转换后的字典”。
+我们对广泛使用的UCSD
+Ped1和Ped2数据集进行了实验，以与现有算法进行比较，并证明与常规学习的本地字典相比，增强型字典提高了异常检测的性能。</p>
+<p><strong>Keywords</strong> Dictionaries,Integrated optics,Hidden
+Markov models,Conferences,Computer vision,Computational modeling,Feature
+extraction</p>
 <p>词典，集成光学，隐马尔可夫模型，会议，计算机视觉，计算建模，特征提取</p>
-<h4 id="使用基于有限时间Lyapunov指数的聚类在人群中进行局部异常检测"><a href="#使用基于有限时间Lyapunov指数的聚类在人群中进行局部异常检测" class="headerlink" title="使用基于有限时间Lyapunov指数的聚类在人群中进行局部异常检测"></a>使用基于有限时间Lyapunov指数的聚类在人群中进行局部异常检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6918690">Local anomaly detection in crowded scenes using Finite-Time Lyapunov Exponent based clustering</a></p>
+<h4
+id="使用基于有限时间lyapunov指数的聚类在人群中进行局部异常检测">使用基于有限时间Lyapunov指数的聚类在人群中进行局部异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6918690">Local
+anomaly detection in crowded scenes using Finite-Time Lyapunov Exponent
+based clustering</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6912617/proceeding">2014 11th IEEE International Conference on Advanced Video and Signal Based Surveillance (AVSS)</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6912617/proceeding">2014
+11th IEEE International Conference on Advanced Video and Signal Based
+Surveillance (AVSS)</a></p>
 <p><strong>Date of Conference:</strong> 26-29 Aug. 2014</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 09 October 2014</p>
 <p><strong>被引用次数：</strong>4</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>Surveillance of crowded public spaces and detection of anomalies from the video is important for public safety and security. While anomaly detection is possible by detection and tracking of individuals in low-density areas, such methods are not reliable in high-density crowded scenes. In this work we propose a holistic unsupervised approach to cluster different behaviors in high density crowds and detect the local anomalies using these clusters. Finite-Time Lyapunov Exponents (FTLE) is used for analyzing the crowd flow and this flow data is clustered by agglomerative hierarchical clustering. To detect if there is any anomaly in the video, mean of maximum values for pixels in each cluster is used and skewness value of the clusters are calculated. An adaptive threshold is calculated using equal width thresholding which is subsequently used to determine abnormal clusters which are not coherent with the general flow. The method does not require any user defined thresholds or preset rules. Publicly available datasets and our own dataset (which is also made publicly available) are used for testing and demonstrating the effectiveness of the proposed method.</p>
+<p>Surveillance of crowded public spaces and detection of anomalies from
+the video is important for public safety and security. While anomaly
+detection is possible by detection and tracking of individuals in
+low-density areas, such methods are not reliable in high-density crowded
+scenes. In this work we propose a holistic unsupervised approach to
+cluster different behaviors in high density crowds and detect the local
+anomalies using these clusters. Finite-Time Lyapunov Exponents (FTLE) is
+used for analyzing the crowd flow and this flow data is clustered by
+agglomerative hierarchical clustering. To detect if there is any anomaly
+in the video, mean of maximum values for pixels in each cluster is used
+and skewness value of the clusters are calculated. An adaptive threshold
+is calculated using equal width thresholding which is subsequently used
+to determine abnormal clusters which are not coherent with the general
+flow. The method does not require any user defined thresholds or preset
+rules. Publicly available datasets and our own dataset (which is also
+made publicly available) are used for testing and demonstrating the
+effectiveness of the proposed method.</p>
 <p>对拥挤的公共场所进行监视并从视频中发现异常情况对于公共安全和保安至关重要。尽管可以通过检测和跟踪低密度区域中的个人来进行异常检测，但是这种方法在高密度拥挤场景中并不可靠。在这项工作中，我们提出了一种整体的<strong>无监督方法来对高密度人群中的不同行为进行聚类</strong>，并使用这些聚类来检测局部异常。有限时间<strong>Lyapunov指数（FTLE）用于分析人群流</strong>，并且此流数据通过<strong>聚集层次聚类</strong>进行聚类。为了检测视频中是否存在异常，使用每个群集中像素的最大值的平均值，并计算群集的偏度值。使用等宽度阈值计算自适应阈值，该阈值随后用于确定与总体流程不一致的异常簇。该方法不需要任何用户定义的阈值或预设规则。公开可用的数据集和我们自己的数据集（也公开提供）用于测试和证明所提出方法的有效性。</p>
-<p><strong>Keywords</strong><br>Image motion analysis,Computer vision,Educational institutions,Feature extraction,Trajectory,Clustering algorithms,Flowcharts</p>
+<p><strong>Keywords</strong> Image motion analysis,Computer
+vision,Educational institutions,Feature extraction,Trajectory,Clustering
+algorithms,Flowcharts</p>
 <p>图像运动分析，计算机视觉，教育机构，特征提取，轨迹，聚类算法，流程图</p>
-<h4 id="人群中的变化检测"><a href="#人群中的变化检测" class="headerlink" title="人群中的变化检测"></a>人群中的变化检测</h4><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6656169">Change Detection in Human Crowds</a></p>
+<h4 id="人群中的变化检测">人群中的变化检测</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/6656169">Change
+Detection in Human Crowds</a></p>
 <blockquote>
-<p><strong>Published in:</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6656127/proceeding">2013 XXVI Conference on Graphics, Patterns and Images</a></p>
+<p><strong>Published in:</strong> <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/xpl/conhome/6656127/proceeding">2013
+XXVI Conference on Graphics, Patterns and Images</a></p>
 <p><strong>Date of Conference:</strong> 5-8 Aug. 2013</p>
 <p><strong>Date Added to IEEE *Xplore*:</strong> 07 November 2013</p>
 <p><strong>被引用次数：</strong>35</p>
 </blockquote>
 <p><strong>Abstract:</strong></p>
-<p>This paper presents a method to detect unusual behavior in human crowds based on histograms of velocities in world coordinates. A combination of background removal and optical flow is used to extract the global motion at each image frame, discarding small motion vectors due artifacts such as noise, non-stationary background pixels and compression issues. Using a calibrated camera, the global motion can be estimated, and it is used to build a 2D histogram containing information of speed and direction for all frames. Each frame is compared with a set of previous frames by using a histogram comparison metric, resulting in a similarity vector. This vector is then used to determine changes in the crowd behavior, also allowing a classification based on the nature of the change in time: short or long-term changes. The method was tested on publicly available datasets involving crowded scenarios.</p>
-<p>本文提出了一种<strong>基于世界坐标速度直方图</strong>的检测人群异常行为的方法。 背景去除和光流的组合用于提取每个图像帧的全局运动，并丢弃由于诸如噪声，非平稳背景像素和压缩问题之类的伪影而产生的小<strong>运动矢量</strong>。 使用经过校准的相机，可以估算全局运动，并使用它来构建2D直方图，其中包含所有帧的速度和方向信息。 通过使用直方图比较度量，将每个帧与一组先前的帧进行比较，从而得出<strong>相似度矢量</strong>。 然后，可以使用此向量<strong>确定人群行为的变化</strong>，还可以<strong>根据时间变化的性质进行分类：短期或长期变化</strong>。 该方法已在涉及拥挤场景的可公开获得的数据集上进行了测试。</p>
-<p><strong>Keywords</strong><br>Histograms,Vectors,Cameras,Hidden Markov models,Adaptive optics,Force,Optical sensors</p>
+<p>This paper presents a method to detect unusual behavior in human
+crowds based on histograms of velocities in world coordinates. A
+combination of background removal and optical flow is used to extract
+the global motion at each image frame, discarding small motion vectors
+due artifacts such as noise, non-stationary background pixels and
+compression issues. Using a calibrated camera, the global motion can be
+estimated, and it is used to build a 2D histogram containing information
+of speed and direction for all frames. Each frame is compared with a set
+of previous frames by using a histogram comparison metric, resulting in
+a similarity vector. This vector is then used to determine changes in
+the crowd behavior, also allowing a classification based on the nature
+of the change in time: short or long-term changes. The method was tested
+on publicly available datasets involving crowded scenarios.</p>
+<p>本文提出了一种<strong>基于世界坐标速度直方图</strong>的检测人群异常行为的方法。
+背景去除和光流的组合用于提取每个图像帧的全局运动，并丢弃由于诸如噪声，非平稳背景像素和压缩问题之类的伪影而产生的小<strong>运动矢量</strong>。
+使用经过校准的相机，可以估算全局运动，并使用它来构建2D直方图，其中包含所有帧的速度和方向信息。
+通过使用直方图比较度量，将每个帧与一组先前的帧进行比较，从而得出<strong>相似度矢量</strong>。
+然后，可以使用此向量<strong>确定人群行为的变化</strong>，还可以<strong>根据时间变化的性质进行分类：短期或长期变化</strong>。
+该方法已在涉及拥挤场景的可公开获得的数据集上进行了测试。</p>
+<p><strong>Keywords</strong> Histograms,Vectors,Cameras,Hidden Markov
+models,Adaptive optics,Force,Optical sensors</p>
 <p>直方图，矢量，相机，隐马尔可夫模型，自适应光学，力，光学传感器</p>
-<h4 id="使用计算机视觉进行人群监控"><a href="#使用计算机视觉进行人群监控" class="headerlink" title="使用计算机视觉进行人群监控"></a>使用计算机视觉进行人群监控</h4><p><a target="_blank" rel="noopener" href="https://eprints.qut.edu.au/65652/1/David_Ryan_Thesis.pdf">Crowd Monitoring Using Computer Vision</a></p>
+<h4 id="使用计算机视觉进行人群监控">使用计算机视觉进行人群监控</h4>
+<p><a
+target="_blank" rel="noopener" href="https://eprints.qut.edu.au/65652/1/David_Ryan_Thesis.pdf">Crowd
+Monitoring Using Computer Vision</a></p>
 <blockquote>
 <p><strong>被引用次数：</strong>16</p>
 </blockquote>
-<p><strong>Abstract</strong> </p>
-<p>Public places such as shopping centres and airports are monitored using closed circuit television (CCTV) in order to ensure normal operating conditions. Human operators are typically employed to perform this task, however as CCTV becomes more common it is impossible to monitor all viewpoints due to the number of cameras installed. In recent years, researchers have turned to computer vision in order to monitor crowds automatically. This thesis presents original contributions in four research areas: crowd counting, crowd flow monitoring, queue monitoring and anomaly detection. </p>
-<p>The first major contribution of this thesis is in the field of crowd counting. Crowd size is a holistic description of a scene, therefore the majority of existing crowd counting techniques have utilised holistic image features to estimate crowd size. In this thesis, a novel approach is proposed which is based on local image features, which are specific to individuals and groups within a scene, so that the total crowd estimate is the sum of all group sizes. An extensive analysis shows that local features consistently outperform holistic features. </p>
-<p>Existing approaches to crowd counting are also scene specific, as they are designed to operate in the same environment that was used to train the system. This thesis presents a novel algorithm which utilises camera calibration to achieve scene invariance by scaling features appropriately between viewpoints. Additionally, ii multi camera crowd counting is achieved by using camera calibration to compensate for regions of overlap within a multi camera network. </p>
-<p>The second major contribution of this thesis is in the field of crowd flow monitoring. A novel ‘virtual gate’ is proposed which counts pedestrians as they pass through a hypothetical line, or region of interest. Existing methods have typically fallen into one of two categories: object detection, or regression of optical flow. The virtual gate proposed in this thesis combines these two methods by detecting salient keypoints in an image and accumulating the optical flow of these feature points. Temporal windows and optical flow histograms are also proposed and shown to improve performance.</p>
-<p>The third major contribution of this thesis is in the field of queue monitoring. There are currently very few methods for monitoring queue parameters such as queue length, growth rate, arrival rate and service rate. This thesis proposes a novel algorithm which combines crowd counting and virtual gates to monitor queue parameters automatically. </p>
-<p>The fourth major contribution of this thesis is in the field of anomaly detection. Abnormal motion patterns may be indicative of dangerous or disruptive behaviour, and they may interfere with the operation of the aforementioned algorithms, therefore we seek to detect such events. Existing approaches typically reduce the optical flow field in some way (through quantisation, dimensionality reduction or histogram binning). This thesis proposes a novel visual representation called textures of optical flow which captures the properties of motion patterns in crowded environments by applying traditional textural features directly to an optical flow field. Results demonstrate that the proposed approach outperforms existing algorithms on benchmark anomaly detection sequences.</p>
+<p><strong>Abstract</strong></p>
+<p>Public places such as shopping centres and airports are monitored
+using closed circuit television (CCTV) in order to ensure normal
+operating conditions. Human operators are typically employed to perform
+this task, however as CCTV becomes more common it is impossible to
+monitor all viewpoints due to the number of cameras installed. In recent
+years, researchers have turned to computer vision in order to monitor
+crowds automatically. This thesis presents original contributions in
+four research areas: crowd counting, crowd flow monitoring, queue
+monitoring and anomaly detection.</p>
+<p>The first major contribution of this thesis is in the field of crowd
+counting. Crowd size is a holistic description of a scene, therefore the
+majority of existing crowd counting techniques have utilised holistic
+image features to estimate crowd size. In this thesis, a novel approach
+is proposed which is based on local image features, which are specific
+to individuals and groups within a scene, so that the total crowd
+estimate is the sum of all group sizes. An extensive analysis shows that
+local features consistently outperform holistic features.</p>
+<p>Existing approaches to crowd counting are also scene specific, as
+they are designed to operate in the same environment that was used to
+train the system. This thesis presents a novel algorithm which utilises
+camera calibration to achieve scene invariance by scaling features
+appropriately between viewpoints. Additionally, ii multi camera crowd
+counting is achieved by using camera calibration to compensate for
+regions of overlap within a multi camera network.</p>
+<p>The second major contribution of this thesis is in the field of crowd
+flow monitoring. A novel ‘virtual gate’ is proposed which counts
+pedestrians as they pass through a hypothetical line, or region of
+interest. Existing methods have typically fallen into one of two
+categories: object detection, or regression of optical flow. The virtual
+gate proposed in this thesis combines these two methods by detecting
+salient keypoints in an image and accumulating the optical flow of these
+feature points. Temporal windows and optical flow histograms are also
+proposed and shown to improve performance.</p>
+<p>The third major contribution of this thesis is in the field of queue
+monitoring. There are currently very few methods for monitoring queue
+parameters such as queue length, growth rate, arrival rate and service
+rate. This thesis proposes a novel algorithm which combines crowd
+counting and virtual gates to monitor queue parameters
+automatically.</p>
+<p>The fourth major contribution of this thesis is in the field of
+anomaly detection. Abnormal motion patterns may be indicative of
+dangerous or disruptive behaviour, and they may interfere with the
+operation of the aforementioned algorithms, therefore we seek to detect
+such events. Existing approaches typically reduce the optical flow field
+in some way (through quantisation, dimensionality reduction or histogram
+binning). This thesis proposes a novel visual representation called
+textures of optical flow which captures the properties of motion
+patterns in crowded environments by applying traditional textural
+features directly to an optical flow field. Results demonstrate that the
+proposed approach outperforms existing algorithms on benchmark anomaly
+detection sequences.</p>
 <p>购物中心和机场等公共场所使用闭路电视（CCTV）进行监控，以确保正常的工作条件。通常会雇用人工操作员来执行此任务，但是由于CCTV变得越来越普遍，由于安装的摄像头数量众多，无法监视所有视点。近年来，研究人员已转向计算机视觉来自动监视人群。本文提出了四个研究领域的原创性贡献：人群计数，人群流量监视，队列监视和异常检测。</p>
 <p>本论文的第一个主要贡献是在人群计数领域。人群大小是场景的整体描述，因此，大多数现有的人群计数技术已利用整体图像特征来估计人群大小。本文提出了一种基于局部图像特征的新颖方法，该局部图像特征特定于场景中的个人和群体，因此总人群估计是所有群体规模的总和。广泛的分析表明，局部特征始终优于整体特征。</p>
 <p>现有的人群计数方法也是特定于场景的，因为它们被设计为在用于训练系统的相同环境中运行。本文提出了一种新颖的算法，该算法利用相机校准通过在视点之间适当缩放特征来实现场景不变性。另外，通过使用摄像机校准来补偿多摄像机网络内的重叠区域，可以实现多摄像机人群计数。</p>
@@ -793,9 +1733,16 @@
 <p>本文的第三个主要贡献是在队列监视领域。当前，很少有方法可以监视队列参数，例如队列长度，增长率，到达率和服务率。本文提出了一种新颖的算法，该算法结合了人群计数和虚拟门来自动监测队列参数。</p>
 <p>本文的第四个主要贡献是在<strong>异常检测领域</strong>。异常运动模式可能表示危险或破坏性行为，并且它们可能会干扰上述算法的运行，因此我们试图检测此类事件。现有方法通常以<strong>某种方式（通过量化，降维或直方图合并）减小光流场</strong>。本文提出了一种新颖的视觉表示形式，称为<strong>光流纹理</strong>，该纹理通过将传统的纹理特征直接应用于光流场来捕获拥挤环境中运动模式的特性。结果表明，所提出的方法在基准异常检测序列上优于现有算法。</p>
 <p><strong>Keywords</strong></p>
-<p>Crowd Monitoring, Crowd Counting, Crowd Flow, Queue Monitoring, Anomaly Detection, Local Features, Scene Invariant, Multi Camera, Virtual Gate, Textures of Optical Flow, Computer Vision, Image Processing</p>
+<p>Crowd Monitoring, Crowd Counting, Crowd Flow, Queue Monitoring,
+Anomaly Detection, Local Features, Scene Invariant, Multi Camera,
+Virtual Gate, Textures of Optical Flow, Computer Vision, Image
+Processing</p>
 <p>人群监视，人群计数，人群流动，队列监视，异常检测，局部特征，场景不变，多摄像机，虚拟门，光流纹理，计算机视觉，图像处理</p>
-<h4 id="基于局部最近邻距离描述符的拥挤场景异常检测"><a href="#基于局部最近邻距离描述符的拥挤场景异常检测" class="headerlink" title="基于局部最近邻距离描述符的拥挤场景异常检测"></a>基于局部最近邻距离描述符的拥挤场景异常检测</h4><p><a target="_blank" rel="noopener" href="https://www.hindawi.com/journals/tswj/2014/632575/">Anomaly Detection Based on Local Nearest Neighbor Distance Descriptor in Crowded Scenes</a></p>
+<h4
+id="基于局部最近邻距离描述符的拥挤场景异常检测">基于局部最近邻距离描述符的拥挤场景异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://www.hindawi.com/journals/tswj/2014/632575/">Anomaly
+Detection Based on Local Nearest Neighbor Distance Descriptor in Crowded
+Scenes</a></p>
 <blockquote>
 <p><strong>Received</strong>11 Apr 2014</p>
 <p><strong>Accepted</strong>10 Jun 2014</p>
@@ -803,25 +1750,94 @@
 <p><strong>被引用次数：</strong>20</p>
 </blockquote>
 <p><strong>Abstract</strong></p>
-<p>We propose a novel local nearest neighbor distance (LNND) descriptor for anomaly detection in crowded scenes. Comparing with the commonly used low-level feature descriptors in previous works, LNND descriptor has two major advantages. First, LNND descriptor efficiently incorporates spatial and temporal contextual information around the video event that is important for detecting anomalous interaction among multiple events, while most existing feature descriptors only contain the information of single event. Second, LNND descriptor is a compact representation and its dimensionality is typically much lower than the low-level feature descriptor. Therefore, not only the computation time and storage requirement can be accordingly saved by using LNND descriptor for the anomaly detection method with offline training fashion, but also the negative aspects caused by using high-dimensional feature descriptor can be avoided. We validate the effectiveness of LNND descriptor by conducting extensive experiments on different benchmark datasets. Experimental results show the promising performance of LNND-based method against the state-of-the-art methods. It is worthwhile to notice that the LNND-based approach requires less intermediate processing steps without any subsequent processing such as smoothing but achieves comparable event better performance.</p>
+<p>We propose a novel local nearest neighbor distance (LNND) descriptor
+for anomaly detection in crowded scenes. Comparing with the commonly
+used low-level feature descriptors in previous works, LNND descriptor
+has two major advantages. First, LNND descriptor efficiently
+incorporates spatial and temporal contextual information around the
+video event that is important for detecting anomalous interaction among
+multiple events, while most existing feature descriptors only contain
+the information of single event. Second, LNND descriptor is a compact
+representation and its dimensionality is typically much lower than the
+low-level feature descriptor. Therefore, not only the computation time
+and storage requirement can be accordingly saved by using LNND
+descriptor for the anomaly detection method with offline training
+fashion, but also the negative aspects caused by using high-dimensional
+feature descriptor can be avoided. We validate the effectiveness of LNND
+descriptor by conducting extensive experiments on different benchmark
+datasets. Experimental results show the promising performance of
+LNND-based method against the state-of-the-art methods. It is worthwhile
+to notice that the LNND-based approach requires less intermediate
+processing steps without any subsequent processing such as smoothing but
+achieves comparable event better performance.</p>
 <p>我们提出了一种新颖的<strong>局部最近邻居距离（LNND）</strong>描述符，用于在拥挤的场景中进行异常检测。与先前工作中常用的低级特征描述符相比，LNND描述符具有两个主要优点。首先，LNND描述符有效地合并了视频事件周围的空间和时间上下文信息，这对于检测多个事件之间的异常交互非常重要，而大多数现有特征描述符仅包含单个事件的信息。其次，LNND描述符是一个紧凑的表示形式，其维数通常远低于低级特征描述符。因此，对于<strong>离线训练方式的异常检测方法</strong>，使用LNND描述符不仅可以节省计算时间和存储需求，而且可以避免由于使用高维特征描述符而带来的负面影响。我们通过对不同基准数据集进行广泛的实验来验证LNND描述子的有效性。实验结果表明，基于LNND的方法相对于最新方法具有令人鼓舞的性能。值得注意的是，基于LNND的方法需要较少的中间处理步骤，而无需任何后续处理（例如平滑处理），但可实现类似的事件更好的性能。</p>
-<h4 id="基于短局部轨迹的运动异常检测"><a href="#基于短局部轨迹的运动异常检测" class="headerlink" title="基于短局部轨迹的运动异常检测"></a>基于短局部轨迹的运动异常检测</h4><p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2683483.2683556">Short Local Trajectory based moving anomaly detection</a></p>
+<h4 id="基于短局部轨迹的运动异常检测">基于短局部轨迹的运动异常检测</h4>
+<p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2683483.2683556">Short
+Local Trajectory based moving anomaly detection</a></p>
 <blockquote>
-<p>Publication:<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/proceedings/10.1145/2683483">ICVGIP ‘14: Proceedings of the 2014 Indian Conference on Computer Vision Graphics and Image Processing</a></p>
-<p>December 2014 </p>
+<p>Publication:<a
+target="_blank" rel="noopener" href="https://dl.acm.org/doi/proceedings/10.1145/2683483">ICVGIP '14:
+Proceedings of the 2014 Indian Conference on Computer Vision Graphics
+and Image Processing</a></p>
+<p>December 2014</p>
 <p><strong>被引用次数：</strong>6</p>
 </blockquote>
 <p><strong>ABSTRACT</strong></p>
-<p>A high level abstraction of the behavior a moving object can be obtained by analyzing its trajectory. However, traditional trajectories or tracklets are bound by the limitations of the underlying tracking algorithm used. In this paper, we propose a novel idea of detecting anomalous objects amid other moving objects in a video based on its short history. This history is defined as short local trajectory (SLT). The unique approach of generating SLTs from super-pixels belonging to a foreground object that incorporates both spatial and temporal information is the key in detection of anomaly. Additionally, the proposed trajectory extraction is robust across videos having different crowd density, occlusions, etc. Generally the trajectories of persons/objects moving at a particular region under usual conditions has certain fixed characteristics, thus we use Hidden Markov Model (HMM) for capturing the usual trajectory patterns during training. Whereas during detection, the proposed algorithm takes SLTs as observations for each super-pixel and measures its likelihood of being anomaly using the learned HMMs. Furthermore, we compute the spatial consistency measure for each SLT based on the neighboring trajectories. Thus, anomaly detected by the proposed approach is highly localized as demonstrated from the experiments conducted on two widely used anomaly datasets, namely UCSD Ped1 and UCSD Ped2.</p>
-<p>通过分析运动对象的轨迹可以获得运动对象的行为的高级抽象。但是，传统的轨迹或小径受到所使用的基础跟踪算法的限制。在本文中，我们提出了一种新颖的想法，即根据<strong>视频的短历史来检测视频中其他运动对象之间的异常对象</strong>。此历史记录定义为<strong>短局部轨迹（SLT）</strong>。从属于包含空间和时间信息的前景对象的超像素生成SLT的独特方法是检测异常的关键。另外，建议的轨迹提取在具有不同人群密度，遮挡等的视频中具有鲁棒性。通常，在通常条件下在特定区域移动的人/物体的轨迹具有某些固定的特征，因此我们使用<strong>隐马尔可夫模型（HMM）</strong>进行捕获训练过程中通常的轨迹模式。而在检测过程中，所提出的算法将SLT作为每个超像素的观测值，并使用<strong>学习到的HMM来测量其出现异常的可能性</strong>。此外，我们基于相邻轨迹计算每个SLT的空间一致性度量。因此，如对两个广泛使用的异常数据集（即UCSD Ped1和UCSD Ped2）进行的实验所证明的那样，通过提议的方法检测到的异常高度集中。 </p>
-<h4 id="基于智能视频监控的行人运动跟踪与人群异常行为检测"><a href="#基于智能视频监控的行人运动跟踪与人群异常行为检测" class="headerlink" title="基于智能视频监控的行人运动跟踪与人群异常行为检测"></a>基于智能视频监控的行人运动跟踪与人群异常行为检测</h4><p><a target="_blank" rel="noopener" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.656.4395&amp;rep=rep1&amp;type=pdf#page=36">Pedestrian Motion Tracking and Crowd Abnormal Behavior Detection Based on Intelligent Video Surveillance</a> </p>
+<p>A high level abstraction of the behavior a moving object can be
+obtained by analyzing its trajectory. However, traditional trajectories
+or tracklets are bound by the limitations of the underlying tracking
+algorithm used. In this paper, we propose a novel idea of detecting
+anomalous objects amid other moving objects in a video based on its
+short history. This history is defined as short local trajectory (SLT).
+The unique approach of generating SLTs from super-pixels belonging to a
+foreground object that incorporates both spatial and temporal
+information is the key in detection of anomaly. Additionally, the
+proposed trajectory extraction is robust across videos having different
+crowd density, occlusions, etc. Generally the trajectories of
+persons/objects moving at a particular region under usual conditions has
+certain fixed characteristics, thus we use Hidden Markov Model (HMM) for
+capturing the usual trajectory patterns during training. Whereas during
+detection, the proposed algorithm takes SLTs as observations for each
+super-pixel and measures its likelihood of being anomaly using the
+learned HMMs. Furthermore, we compute the spatial consistency measure
+for each SLT based on the neighboring trajectories. Thus, anomaly
+detected by the proposed approach is highly localized as demonstrated
+from the experiments conducted on two widely used anomaly datasets,
+namely UCSD Ped1 and UCSD Ped2.</p>
+<p>通过分析运动对象的轨迹可以获得运动对象的行为的高级抽象。但是，传统的轨迹或小径受到所使用的基础跟踪算法的限制。在本文中，我们提出了一种新颖的想法，即根据<strong>视频的短历史来检测视频中其他运动对象之间的异常对象</strong>。此历史记录定义为<strong>短局部轨迹（SLT）</strong>。从属于包含空间和时间信息的前景对象的超像素生成SLT的独特方法是检测异常的关键。另外，建议的轨迹提取在具有不同人群密度，遮挡等的视频中具有鲁棒性。通常，在通常条件下在特定区域移动的人/物体的轨迹具有某些固定的特征，因此我们使用<strong>隐马尔可夫模型（HMM）</strong>进行捕获训练过程中通常的轨迹模式。而在检测过程中，所提出的算法将SLT作为每个超像素的观测值，并使用<strong>学习到的HMM来测量其出现异常的可能性</strong>。此外，我们基于相邻轨迹计算每个SLT的空间一致性度量。因此，如对两个广泛使用的异常数据集（即UCSD
+Ped1和UCSD
+Ped2）进行的实验所证明的那样，通过提议的方法检测到的异常高度集中。</p>
+<h4
+id="基于智能视频监控的行人运动跟踪与人群异常行为检测">基于智能视频监控的行人运动跟踪与人群异常行为检测</h4>
+<p><a
+target="_blank" rel="noopener" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.656.4395&amp;rep=rep1&amp;type=pdf#page=36">Pedestrian
+Motion Tracking and Crowd Abnormal Behavior Detection Based on
+Intelligent Video Surveillance</a></p>
 <blockquote>
 <p><strong>被引用次数：</strong>11</p>
 </blockquote>
-<p><strong>Abstract</strong><br>Pedestrian tracking and detection of crowd abnormal activity under dynamic and complex background using Intelligent Video Surveillance (IVS) system are beneficial for security in public places. This paper presents a pedestrian tracking method combing Histogram of Oriented Gradients (HOG) detection and particle filter. This method regards the particle filter as the tracking framework, identifies the target area according to the result of HOG detection and modifies particle sampling constantly. Our method can track pedestrians in dynamic backgrounds more accurately compared with the traditional particle filter algorithms. Meanwhile, a method to detect crowd abnormal activity is also proposed based on a model of crowd features using Mixture of Gaussian (MOG). This method calculates features of crowd-interest points, then establishes the crowd features model using MOG, conducts self-adaptive updating and detects abnormal activity by matching the input feature with model distribution. Experiments show our algorithm can efficiently detect abnormal velocity and escape panic in crowds with a high detection rate and a relatively low false alarm rate. </p>
+<p><strong>Abstract</strong> Pedestrian tracking and detection of crowd
+abnormal activity under dynamic and complex background using Intelligent
+Video Surveillance (IVS) system are beneficial for security in public
+places. This paper presents a pedestrian tracking method combing
+Histogram of Oriented Gradients (HOG) detection and particle filter.
+This method regards the particle filter as the tracking framework,
+identifies the target area according to the result of HOG detection and
+modifies particle sampling constantly. Our method can track pedestrians
+in dynamic backgrounds more accurately compared with the traditional
+particle filter algorithms. Meanwhile, a method to detect crowd abnormal
+activity is also proposed based on a model of crowd features using
+Mixture of Gaussian (MOG). This method calculates features of
+crowd-interest points, then establishes the crowd features model using
+MOG, conducts self-adaptive updating and detects abnormal activity by
+matching the input feature with model distribution. Experiments show our
+algorithm can efficiently detect abnormal velocity and escape panic in
+crowds with a high detection rate and a relatively low false alarm
+rate.</p>
 <p>使用智能视频监控（IVS）系统在动态和复杂的背景下对行人进行跟踪并检测人群的异常活动，对于公共场所的安全非常有帮助。提出了一种结合梯度直方图（HOG）检测和粒子滤波的行人跟踪方法。该方法以粒子滤波器为跟踪框架，根据HOG检测结果识别目标区域，并不断修改粒子采样。与传统的粒子滤波算法相比，我们的方法可以在动态背景下更准确地跟踪行人。同时，还提出了一种基于人群特征模型的混合高斯混合（MOG）检测人群异常活动的方法。该方法计算人群兴趣点的特征，然后使用MOG建立人群特征模型，进行自适应更新，并通过将输入特征与模型分布进行匹配来检测异常活动。实验表明，该算法能够以较高的检测率和较低的误报率有效地检测人群的异常速度和逃生恐慌。</p>
 <p><strong>Keywords</strong></p>
-<p>Pedestrian Tracking; Behavior Detection;Intelligent Video Surveillance; Abnormal Activity</p>
+<p>Pedestrian Tracking; Behavior Detection;Intelligent Video
+Surveillance; Abnormal Activity</p>
 <p>行人追踪；行为检测；智能视频监控;；异常活动</p>
 
       
@@ -1020,7 +2036,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90%E7%9A%84%E5%9C%A8%E7%BA%BF%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">1.</span> <span class="nav-text">基于结构分析的在线人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E5%8C%96%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%88%86%E6%9E%90%E5%92%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">2.</span> <span class="nav-text">层次化的人群分析和异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E6%97%B6%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">实时人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BE%A4%E4%BD%93%E8%BF%90%E5%8A%A8%E7%89%B9%E5%BE%81%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">4.</span> <span class="nav-text">基于群体运动特征的人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#H-264%E5%8E%8B%E7%BC%A9%E8%A7%86%E9%A2%91%E4%B8%AD%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">5.</span> <span class="nav-text">H.264压缩视频中的实时异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%97%B6%E7%A9%BA%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%AD%E7%9A%84%E5%88%86%E5%B1%82%E6%B4%BB%E5%8A%A8%E5%8F%91%E7%8E%B0%E7%9A%84%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">6.</span> <span class="nav-text">基于时空上下文中的分层活动发现的视频异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%BF%90%E5%8A%A8%E5%BD%B1%E5%93%8D%E7%9F%A9%E9%98%B5%E7%9A%84%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E8%A1%A8%E7%A4%BA%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">7.</span> <span class="nav-text">使用运动影响矩阵的人群行为表示异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%AE%9A%E4%BD%8D"><span class="nav-number">8.</span> <span class="nav-text">人群异常检测与定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%BA%BA%E5%91%98%E6%B5%81%E5%8A%A8%E5%92%8C%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93%E7%9A%84%E4%BA%A4%E9%80%9A%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E6%84%9F%E7%9F%A5"><span class="nav-number">9.</span> <span class="nav-text">基于人员流动和社交媒体的交通异常人群感知</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E7%94%A8%E4%BA%8E%E6%8B%A5%E6%8C%A4%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">10.</span> <span class="nav-text">高斯混合用于拥挤场景中的异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%B8%83%E7%BB%B4%E6%B5%81%E5%88%86%E6%9E%90%E7%9A%84%E6%96%B0%E5%9E%8B%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="nav-number">11.</span> <span class="nav-text">基于七维流分析的新型异常检测系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SIFT%E5%AF%B9%E4%BA%BA%E7%BE%A4%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E8%BF%9B%E8%A1%8C%E5%AE%9E%E6%97%B6%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">12.</span> <span class="nav-text">使用SIFT对人群视频监控进行实时全局异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E7%B2%92%E5%AD%90%E7%86%B5%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">13.</span> <span class="nav-text">利用粒子熵的异常人群行为检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%B6%85%E7%90%83%E9%9D%A2%E8%81%9A%E7%B1%BB%E6%A3%80%E6%B5%8B%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA"><span class="nav-number">14.</span> <span class="nav-text">使用超球面聚类检测异常人群行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E9%80%83%E9%80%B8%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B%E7%9A%84%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%A8%A1%E5%9E%8B"><span class="nav-number">15.</span> <span class="nav-text">人群逃逸行为检测的贝叶斯模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%89%E6%B5%81%E5%92%8C%E5%8A%A8%E6%80%81%E9%98%88%E5%80%BC%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">16.</span> <span class="nav-text">基于光流和动态阈值的异常人群行为检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E7%94%9F%E7%89%A9%E5%90%AF%E5%8F%91%E7%9A%84%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%AE%A4%E7%9F%A5%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">17.</span> <span class="nav-text">一种基于生物启发的知识表示方法，用于认知视频监控系统中的异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0%E6%A3%80%E6%B5%8B%E4%BA%BA%E7%BE%A4%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-number">18.</span> <span class="nav-text">通过在线学习检测人群场景中的异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%A5%E6%8C%A4%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%9A%E5%9F%BA%E4%BA%8E%E7%BE%A4%E4%BD%93%E4%BC%98%E5%8C%96%E5%92%8C%E7%A4%BE%E4%BC%9A%E5%8A%9B%E9%87%8F%E5%BB%BA%E6%A8%A1%E7%9A%84%E6%96%B0%E5%9E%8B%E6%A1%86%E6%9E%B6"><span class="nav-number">19.</span> <span class="nav-text">拥挤场景中的异常检测：基于群体优化和社会力量建模的新型框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1%E6%A0%A1%E6%AD%A3%E8%BE%85%E5%8A%A9%E4%B8%8B%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">20.</span> <span class="nav-text">场景透视投影校正辅助下的人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%8A%E5%8F%82%E6%95%B0%E6%89%AB%E6%8F%8F%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E6%97%A0%E7%9B%91%E7%9D%A3%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E6%B4%BB%E5%8A%A8%E6%A3%80%E6%B5%8B"><span class="nav-number">21.</span> <span class="nav-text">使用半参数扫描统计量的无监督异常人群活动检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%89%E6%B5%81%E7%BB%9F%E8%AE%A1%E7%89%B9%E5%BE%81%E7%9A%84%E6%9A%B4%E5%8A%9B%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">22.</span> <span class="nav-text">基于光流统计特征的暴力人群行为检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E6%97%A0%E7%9B%91%E7%9D%A3%E7%9A%84%E4%BA%BA%E7%BE%A4%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95"><span class="nav-number">23.</span> <span class="nav-text">一种无监督的人群视频异常检测方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BE%E4%BC%9A%E5%B1%9E%E6%80%A7%E6%84%9F%E7%9F%A5%E5%8A%9B%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%88%A9%E7%94%A8%E4%BA%A4%E4%BA%92%E7%9A%84%E4%B8%B0%E5%AF%8C%E6%80%A7%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E6%A3%80%E6%B5%8B"><span class="nav-number">24.</span> <span class="nav-text">社会属性感知力模型：利用交互的丰富性进行异常人群检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%B7%9F%E8%B8%AA%E5%92%8C%E8%BF%90%E5%8A%A8%E5%88%86%E6%9E%90"><span class="nav-number">25.</span> <span class="nav-text">异常人群跟踪和运动分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E5%B1%82%E5%8A%9F%E8%83%BD%E9%9B%86%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%9C%A8%E6%8B%A5%E6%8C%A4%E7%9A%84%E5%9C%BA%E6%99%AF%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%89%B9%E5%AE%9A%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">26.</span> <span class="nav-text">中层功能集，用于在拥挤的场景中进行特定事件和异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E6%90%9C%E7%B4%A2%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B%E5%92%8C%E5%AE%9A%E4%BD%8D"><span class="nav-number">27.</span> <span class="nav-text">使用最大子序列搜索的异常人群行为检测和定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E6%96%B0%E9%A2%96%E7%9A%84%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%A1%86%E6%9E%B6%EF%BC%8C%E7%94%A8%E4%BA%8E%E4%BA%BA%E7%BE%A4%E4%B8%AD%E7%9A%84%E8%87%AA%E5%8A%A8%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%92%8C%E5%AE%9A%E4%BD%8D"><span class="nav-number">28.</span> <span class="nav-text">一种新颖的基于统计学习的框架，用于人群中的自动异常检测和定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%85%B7%E6%9C%89%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0%E7%9A%84%E7%A9%BA%E9%97%B4MRF%E5%9C%A8%E4%BA%BA%E7%BE%A4%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">29.</span> <span class="nav-text">使用具有增量更新的空间MRF在人群中进行异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E6%A8%A1%E4%BA%BA%E7%BE%A4%E5%8A%A8%E4%BD%9C%E4%BB%A5%E6%A3%80%E6%B5%8B%E5%BC%82%E5%B8%B8%E6%B4%BB%E5%8A%A8"><span class="nav-number">30.</span> <span class="nav-text">建模人群动作以检测异常活动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E5%BA%8F%E5%88%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%AD%A6%E4%B9%A0%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">31.</span> <span class="nav-text">从序列数据中学习异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8F%91%E6%95%A3%E4%B8%AD%E5%BF%83%E7%9A%84%E4%BA%BA%E7%BE%A4%E9%80%83%E7%94%9F%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%AE%9A%E4%BD%8D"><span class="nav-number">32.</span> <span class="nav-text">基于发散中心的人群逃生行为检测与定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E6%9C%89%E5%A2%9E%E5%BC%BA%E7%9A%84%E5%B1%80%E9%83%A8%E5%AD%97%E5%85%B8%E7%9A%84%E5%9F%BA%E4%BA%8E%E7%A8%80%E7%96%8F%E8%A1%A8%E7%A4%BA%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">33.</span> <span class="nav-text">具有增强的局部字典的基于稀疏表示的异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9F%BA%E4%BA%8E%E6%9C%89%E9%99%90%E6%97%B6%E9%97%B4Lyapunov%E6%8C%87%E6%95%B0%E7%9A%84%E8%81%9A%E7%B1%BB%E5%9C%A8%E4%BA%BA%E7%BE%A4%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%B1%80%E9%83%A8%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">34.</span> <span class="nav-text">使用基于有限时间Lyapunov指数的聚类在人群中进行局部异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E4%B8%AD%E7%9A%84%E5%8F%98%E5%8C%96%E6%A3%80%E6%B5%8B"><span class="nav-number">35.</span> <span class="nav-text">人群中的变化检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E8%BF%9B%E8%A1%8C%E4%BA%BA%E7%BE%A4%E7%9B%91%E6%8E%A7"><span class="nav-number">36.</span> <span class="nav-text">使用计算机视觉进行人群监控</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%B1%80%E9%83%A8%E6%9C%80%E8%BF%91%E9%82%BB%E8%B7%9D%E7%A6%BB%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%9A%84%E6%8B%A5%E6%8C%A4%E5%9C%BA%E6%99%AF%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">37.</span> <span class="nav-text">基于局部最近邻距离描述符的拥挤场景异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%9F%AD%E5%B1%80%E9%83%A8%E8%BD%A8%E8%BF%B9%E7%9A%84%E8%BF%90%E5%8A%A8%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">38.</span> <span class="nav-text">基于短局部轨迹的运动异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%99%BA%E8%83%BD%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E7%9A%84%E8%A1%8C%E4%BA%BA%E8%BF%90%E5%8A%A8%E8%B7%9F%E8%B8%AA%E4%B8%8E%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">39.</span> <span class="nav-text">基于智能视频监控的行人运动跟踪与人群异常行为检测</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90%E7%9A%84%E5%9C%A8%E7%BA%BF%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">1.</span> <span class="nav-text">基于结构分析的在线人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E5%8C%96%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%88%86%E6%9E%90%E5%92%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">2.</span> <span class="nav-text">层次化的人群分析和异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E6%97%B6%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">实时人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BE%A4%E4%BD%93%E8%BF%90%E5%8A%A8%E7%89%B9%E5%BE%81%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">4.</span> <span class="nav-text">基于群体运动特征的人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#h.264%E5%8E%8B%E7%BC%A9%E8%A7%86%E9%A2%91%E4%B8%AD%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">5.</span> <span class="nav-text">H.264压缩视频中的实时异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%97%B6%E7%A9%BA%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%AD%E7%9A%84%E5%88%86%E5%B1%82%E6%B4%BB%E5%8A%A8%E5%8F%91%E7%8E%B0%E7%9A%84%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">6.</span> <span class="nav-text">基于时空上下文中的分层活动发现的视频异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%BF%90%E5%8A%A8%E5%BD%B1%E5%93%8D%E7%9F%A9%E9%98%B5%E7%9A%84%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E8%A1%A8%E7%A4%BA%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">7.</span> <span class="nav-text">使用运动影响矩阵的人群行为表示异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%AE%9A%E4%BD%8D"><span class="nav-number">8.</span> <span class="nav-text">人群异常检测与定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%BA%BA%E5%91%98%E6%B5%81%E5%8A%A8%E5%92%8C%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93%E7%9A%84%E4%BA%A4%E9%80%9A%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E6%84%9F%E7%9F%A5"><span class="nav-number">9.</span> <span class="nav-text">基于人员流动和社交媒体的交通异常人群感知</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E7%94%A8%E4%BA%8E%E6%8B%A5%E6%8C%A4%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">10.</span> <span class="nav-text">高斯混合用于拥挤场景中的异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%B8%83%E7%BB%B4%E6%B5%81%E5%88%86%E6%9E%90%E7%9A%84%E6%96%B0%E5%9E%8B%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="nav-number">11.</span> <span class="nav-text">基于七维流分析的新型异常检测系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8sift%E5%AF%B9%E4%BA%BA%E7%BE%A4%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E8%BF%9B%E8%A1%8C%E5%AE%9E%E6%97%B6%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">12.</span> <span class="nav-text">使用SIFT对人群视频监控进行实时全局异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E7%B2%92%E5%AD%90%E7%86%B5%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">13.</span> <span class="nav-text">利用粒子熵的异常人群行为检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%B6%85%E7%90%83%E9%9D%A2%E8%81%9A%E7%B1%BB%E6%A3%80%E6%B5%8B%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA"><span class="nav-number">14.</span> <span class="nav-text">使用超球面聚类检测异常人群行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E9%80%83%E9%80%B8%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B%E7%9A%84%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%A8%A1%E5%9E%8B"><span class="nav-number">15.</span> <span class="nav-text">人群逃逸行为检测的贝叶斯模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%89%E6%B5%81%E5%92%8C%E5%8A%A8%E6%80%81%E9%98%88%E5%80%BC%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">16.</span> <span class="nav-text">基于光流和动态阈值的异常人群行为检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E7%94%9F%E7%89%A9%E5%90%AF%E5%8F%91%E7%9A%84%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E7%94%A8%E4%BA%8E%E8%AE%A4%E7%9F%A5%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">17.</span> <span class="nav-text">一种基于生物启发的知识表示方法，用于认知视频监控系统中的异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0%E6%A3%80%E6%B5%8B%E4%BA%BA%E7%BE%A4%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-number">18.</span> <span class="nav-text">通过在线学习检测人群场景中的异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%A5%E6%8C%A4%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%9F%BA%E4%BA%8E%E7%BE%A4%E4%BD%93%E4%BC%98%E5%8C%96%E5%92%8C%E7%A4%BE%E4%BC%9A%E5%8A%9B%E9%87%8F%E5%BB%BA%E6%A8%A1%E7%9A%84%E6%96%B0%E5%9E%8B%E6%A1%86%E6%9E%B6"><span class="nav-number">19.</span> <span class="nav-text">拥挤场景中的异常检测：基于群体优化和社会力量建模的新型框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1%E6%A0%A1%E6%AD%A3%E8%BE%85%E5%8A%A9%E4%B8%8B%E7%9A%84%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">20.</span> <span class="nav-text">场景透视投影校正辅助下的人群异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%8A%E5%8F%82%E6%95%B0%E6%89%AB%E6%8F%8F%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E6%97%A0%E7%9B%91%E7%9D%A3%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E6%B4%BB%E5%8A%A8%E6%A3%80%E6%B5%8B"><span class="nav-number">21.</span> <span class="nav-text">使用半参数扫描统计量的无监督异常人群活动检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%89%E6%B5%81%E7%BB%9F%E8%AE%A1%E7%89%B9%E5%BE%81%E7%9A%84%E6%9A%B4%E5%8A%9B%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">22.</span> <span class="nav-text">基于光流统计特征的暴力人群行为检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E6%97%A0%E7%9B%91%E7%9D%A3%E7%9A%84%E4%BA%BA%E7%BE%A4%E8%A7%86%E9%A2%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95"><span class="nav-number">23.</span> <span class="nav-text">一种无监督的人群视频异常检测方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BE%E4%BC%9A%E5%B1%9E%E6%80%A7%E6%84%9F%E7%9F%A5%E5%8A%9B%E6%A8%A1%E5%9E%8B%E5%88%A9%E7%94%A8%E4%BA%A4%E4%BA%92%E7%9A%84%E4%B8%B0%E5%AF%8C%E6%80%A7%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E6%A3%80%E6%B5%8B"><span class="nav-number">24.</span> <span class="nav-text">社会属性感知力模型：利用交互的丰富性进行异常人群检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%B7%9F%E8%B8%AA%E5%92%8C%E8%BF%90%E5%8A%A8%E5%88%86%E6%9E%90"><span class="nav-number">25.</span> <span class="nav-text">异常人群跟踪和运动分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E5%B1%82%E5%8A%9F%E8%83%BD%E9%9B%86%E7%94%A8%E4%BA%8E%E5%9C%A8%E6%8B%A5%E6%8C%A4%E7%9A%84%E5%9C%BA%E6%99%AF%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%89%B9%E5%AE%9A%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">26.</span> <span class="nav-text">中层功能集，用于在拥挤的场景中进行特定事件和异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E6%90%9C%E7%B4%A2%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BA%BA%E7%BE%A4%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B%E5%92%8C%E5%AE%9A%E4%BD%8D"><span class="nav-number">27.</span> <span class="nav-text">使用最大子序列搜索的异常人群行为检测和定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E6%96%B0%E9%A2%96%E7%9A%84%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%A1%86%E6%9E%B6%E7%94%A8%E4%BA%8E%E4%BA%BA%E7%BE%A4%E4%B8%AD%E7%9A%84%E8%87%AA%E5%8A%A8%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%92%8C%E5%AE%9A%E4%BD%8D"><span class="nav-number">28.</span> <span class="nav-text">一种新颖的基于统计学习的框架，用于人群中的自动异常检测和定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%85%B7%E6%9C%89%E5%A2%9E%E9%87%8F%E6%9B%B4%E6%96%B0%E7%9A%84%E7%A9%BA%E9%97%B4mrf%E5%9C%A8%E4%BA%BA%E7%BE%A4%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">29.</span> <span class="nav-text">使用具有增量更新的空间MRF在人群中进行异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E6%A8%A1%E4%BA%BA%E7%BE%A4%E5%8A%A8%E4%BD%9C%E4%BB%A5%E6%A3%80%E6%B5%8B%E5%BC%82%E5%B8%B8%E6%B4%BB%E5%8A%A8"><span class="nav-number">30.</span> <span class="nav-text">建模人群动作以检测异常活动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E5%BA%8F%E5%88%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%AD%A6%E4%B9%A0%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">31.</span> <span class="nav-text">从序列数据中学习异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8F%91%E6%95%A3%E4%B8%AD%E5%BF%83%E7%9A%84%E4%BA%BA%E7%BE%A4%E9%80%83%E7%94%9F%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%AE%9A%E4%BD%8D"><span class="nav-number">32.</span> <span class="nav-text">基于发散中心的人群逃生行为检测与定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E6%9C%89%E5%A2%9E%E5%BC%BA%E7%9A%84%E5%B1%80%E9%83%A8%E5%AD%97%E5%85%B8%E7%9A%84%E5%9F%BA%E4%BA%8E%E7%A8%80%E7%96%8F%E8%A1%A8%E7%A4%BA%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">33.</span> <span class="nav-text">具有增强的局部字典的基于稀疏表示的异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9F%BA%E4%BA%8E%E6%9C%89%E9%99%90%E6%97%B6%E9%97%B4lyapunov%E6%8C%87%E6%95%B0%E7%9A%84%E8%81%9A%E7%B1%BB%E5%9C%A8%E4%BA%BA%E7%BE%A4%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%B1%80%E9%83%A8%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">34.</span> <span class="nav-text">使用基于有限时间Lyapunov指数的聚类在人群中进行局部异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E7%BE%A4%E4%B8%AD%E7%9A%84%E5%8F%98%E5%8C%96%E6%A3%80%E6%B5%8B"><span class="nav-number">35.</span> <span class="nav-text">人群中的变化检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E8%BF%9B%E8%A1%8C%E4%BA%BA%E7%BE%A4%E7%9B%91%E6%8E%A7"><span class="nav-number">36.</span> <span class="nav-text">使用计算机视觉进行人群监控</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%B1%80%E9%83%A8%E6%9C%80%E8%BF%91%E9%82%BB%E8%B7%9D%E7%A6%BB%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%9A%84%E6%8B%A5%E6%8C%A4%E5%9C%BA%E6%99%AF%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">37.</span> <span class="nav-text">基于局部最近邻距离描述符的拥挤场景异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%9F%AD%E5%B1%80%E9%83%A8%E8%BD%A8%E8%BF%B9%E7%9A%84%E8%BF%90%E5%8A%A8%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">38.</span> <span class="nav-text">基于短局部轨迹的运动异常检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%99%BA%E8%83%BD%E8%A7%86%E9%A2%91%E7%9B%91%E6%8E%A7%E7%9A%84%E8%A1%8C%E4%BA%BA%E8%BF%90%E5%8A%A8%E8%B7%9F%E8%B8%AA%E4%B8%8E%E4%BA%BA%E7%BE%A4%E5%BC%82%E5%B8%B8%E8%A1%8C%E4%B8%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">39.</span> <span class="nav-text">基于智能视频监控的行人运动跟踪与人群异常行为检测</span></a></li></ol></div>
             
 
           </div>

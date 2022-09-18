@@ -75,12 +75,12 @@
 
 
 
-<meta name="description" content="问题：在使用git上传文件时，我们经常会有被限制上传文件大小的苦恼，像这样：">
+<meta name="description" content="问题： 在使用git上传文件时，我们经常会有被限制上传文件大小的苦恼，像这样：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【git】git如何上传超过100M的大文件">
 <meta property="og:url" content="https://chocofairy.github.io/2021/04/21/%E3%80%90git%E3%80%91git%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E8%B6%85%E8%BF%87100M%E7%9A%84%E5%A4%A7%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="问题：在使用git上传文件时，我们经常会有被限制上传文件大小的苦恼，像这样：">
+<meta property="og:description" content="问题： 在使用git上传文件时，我们经常会有被限制上传文件大小的苦恼，像这样：">
 <meta property="og:locale">
 <meta property="og:image" content="https://i.loli.net/2021/04/21/My9alLuHYN1kph7.png">
 <meta property="og:image" content="https://i.loli.net/2021/04/21/oGhesBqkVxLANMd.jpg">
@@ -383,21 +383,30 @@
       
 
       
-        <h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>在使用git上传文件时，我们经常会有被限制上传文件大小的苦恼，像这样：</p>
-<p><img src="https://i.loli.net/2021/04/21/My9alLuHYN1kph7.png" alt=""></p>
+        <h2 id="问题">问题：</h2>
+<p>在使用git上传文件时，我们经常会有被限制上传文件大小的苦恼，像这样：</p>
+<p><img src="https://i.loli.net/2021/04/21/My9alLuHYN1kph7.png" /></p>
 <span id="more"></span>
-<h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h2><h5 id="下载lfs-Large-File-Storage-工具"><a href="#下载lfs-Large-File-Storage-工具" class="headerlink" title="下载lfs(Large File Storage)工具"></a>下载<code>lfs(Large File Storage)</code>工具</h5><p>windows下：</p>
+<h2 id="解决方法">解决方法：</h2>
+<h5
+id="下载lfslarge-file-storage工具">下载<code>lfs(Large File Storage)</code>工具</h5>
+<p>windows下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
 <p>Mac下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git-lfs</span><br></pre></td></tr></table></figure>
 <p>Ubuntu下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo .&#x2F;install.sh</span><br></pre></td></tr></table></figure>
-<h5 id="找出超过100M的文件"><a href="#找出超过100M的文件" class="headerlink" title="找出超过100M的文件:"></a>找出超过100M的文件:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .&#x2F; -size +100M</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/04/21/oGhesBqkVxLANMd.jpg" alt=""></p>
+<h5 id="找出超过100m的文件">找出超过100M的文件:</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .&#x2F; -size +100M</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/04/21/oGhesBqkVxLANMd.jpg" /></p>
 <p>复制查找到的路径</p>
-<h5 id="将想要保存的大文件-“路径”-或者-“类型”-添加进-track："><a href="#将想要保存的大文件-“路径”-或者-“类型”-添加进-track：" class="headerlink" title="将想要保存的大文件 “路径” 或者 “类型” 添加进 track："></a>将想要保存的大文件 “路径” 或者 “类型” 添加进 track：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs track &quot;name_of_a_giant_file&quot;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/04/21/iyKeg8CFzoQTdPL.png" alt=""></p>
-<h5 id="正常进行添加、提交和推送即可"><a href="#正常进行添加、提交和推送即可" class="headerlink" title="正常进行添加、提交和推送即可"></a>正常进行添加、提交和推送即可</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;large&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h5
+id="将想要保存的大文件-路径-或者-类型-添加进-track">将想要保存的大文件
+“路径” 或者 “类型” 添加进 track：</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs track &quot;name_of_a_giant_file&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/04/21/iyKeg8CFzoQTdPL.png" /></p>
+<h5 id="正常进行添加提交和推送即可">正常进行添加、提交和推送即可</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;large&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -593,7 +602,8 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">问题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">解决方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDlfs-Large-File-Storage-%E5%B7%A5%E5%85%B7"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">下载lfs(Large File Storage)工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E8%B6%85%E8%BF%87100M%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">找出超过100M的文件:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%86%E6%83%B3%E8%A6%81%E4%BF%9D%E5%AD%98%E7%9A%84%E5%A4%A7%E6%96%87%E4%BB%B6-%E2%80%9C%E8%B7%AF%E5%BE%84%E2%80%9D-%E6%88%96%E8%80%85-%E2%80%9C%E7%B1%BB%E5%9E%8B%E2%80%9D-%E6%B7%BB%E5%8A%A0%E8%BF%9B-track%EF%BC%9A"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">将想要保存的大文件 “路径” 或者 “类型” 添加进 track：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E8%BF%9B%E8%A1%8C%E6%B7%BB%E5%8A%A0%E3%80%81%E6%8F%90%E4%BA%A4%E5%92%8C%E6%8E%A8%E9%80%81%E5%8D%B3%E5%8F%AF"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">正常进行添加、提交和推送即可</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解决方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDlfslarge-file-storage%E5%B7%A5%E5%85%B7"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">下载lfs(Large File Storage)工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E8%B6%85%E8%BF%87100m%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">找出超过100M的文件:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%86%E6%83%B3%E8%A6%81%E4%BF%9D%E5%AD%98%E7%9A%84%E5%A4%A7%E6%96%87%E4%BB%B6-%E8%B7%AF%E5%BE%84-%E6%88%96%E8%80%85-%E7%B1%BB%E5%9E%8B-%E6%B7%BB%E5%8A%A0%E8%BF%9B-track"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">将想要保存的大文件
+“路径” 或者 “类型” 添加进 track：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E8%BF%9B%E8%A1%8C%E6%B7%BB%E5%8A%A0%E6%8F%90%E4%BA%A4%E5%92%8C%E6%8E%A8%E9%80%81%E5%8D%B3%E5%8F%AF"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">正常进行添加、提交和推送即可</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
