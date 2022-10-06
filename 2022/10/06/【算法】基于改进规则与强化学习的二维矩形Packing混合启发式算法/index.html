@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="环境配置," />
+  <meta name="keywords" content="2D Rectangle Packing," />
 
 
 
@@ -75,20 +75,26 @@
 
 
 
-<meta name="description" content="问题 这几天在Hexo博客发布的时候，预览可以看见所有的网络图片，但是一旦deploy上去之后就全部显示不了，如下图所示：   img  用Chrome浏览器，按F12提示如下403错误：   img">
+<meta name="description" content="本文提出了一种基于改进规则和强化学习的混合启发式算法来解决二维矩形Packing问题（2DSPP）。首先，改进了基于skyline算法的评分规则，考虑了具有一组宽度松弛因子的“两步”连续项。改进后的评分规则可以有效地减少空间浪费。其次，作为一种强化学习方法，建立了深度q网络（DQN），得到初始矩形项序列，同时作为放置规则的基本补充。它可以提高空间利用率，防止算法陷入局部最优状态。结合新的”两步”放">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【博客】解决Hexo博客引用网络图片无法显示的问题">
-<meta property="og:url" content="https://chocofairy.github.io/2021/04/11/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E5%BC%95%E7%94%A8%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法">
+<meta property="og:url" content="https://chocofairy.github.io/2022/10/06/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%9F%BA%E4%BA%8E%E6%94%B9%E8%BF%9B%E8%A7%84%E5%88%99%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E6%B7%B7%E5%90%88%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="问题 这几天在Hexo博客发布的时候，预览可以看见所有的网络图片，但是一旦deploy上去之后就全部显示不了，如下图所示：   img  用Chrome浏览器，按F12提示如下403错误：   img">
+<meta property="og:description" content="本文提出了一种基于改进规则和强化学习的混合启发式算法来解决二维矩形Packing问题（2DSPP）。首先，改进了基于skyline算法的评分规则，考虑了具有一组宽度松弛因子的“两步”连续项。改进后的评分规则可以有效地减少空间浪费。其次，作为一种强化学习方法，建立了深度q网络（DQN），得到初始矩形项序列，同时作为放置规则的基本补充。它可以提高空间利用率，防止算法陷入局部最优状态。结合新的”两步”放">
 <meta property="og:locale">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190721222823613.png">
-<meta property="article:published_time" content="2021-04-11T12:59:37.000Z">
-<meta property="article:modified_time" content="2021-04-11T13:09:38.000Z">
+<meta property="og:image" content="https://s2.loli.net/2022/10/06/iLGWQ31FAo8rRxY.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/06/d197jPNWCsXx6bl.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/06/V7kOaZqpXur8Gtg.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/06/OjxfPM148dBSrm5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/06/sXrTlnzfy1jLJ3u.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/06/Pd4jTRHm7MUeucN.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/10/06/MyVZEk42LPjK9fS.jpg">
+<meta property="article:published_time" content="2022-10-06T12:04:47.000Z">
+<meta property="article:modified_time" content="2022-10-06T12:13:02.608Z">
 <meta property="article:author" content="wlz">
-<meta property="article:tag" content="环境配置">
+<meta property="article:tag" content="2D Rectangle Packing">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190721222823613.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/10/06/iLGWQ31FAo8rRxY.png">
 
 
 
@@ -118,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://ChocoFairy.github.io/2021/04/11/【博客】解决Hexo博客引用网络图片无法显示的问题/"/>
+  <link rel="canonical" href="https://ChocoFairy.github.io/2022/10/06/【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法/"/>
 
 
 
 
 
-  <title>【博客】解决Hexo博客引用网络图片无法显示的问题 | 巧克力梦工厂</title>
+  <title>【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法 | 巧克力梦工厂</title>
   
 
 
@@ -261,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2021/04/11/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E5%BC%95%E7%94%A8%E7%BD%91%E7%BB%9C%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2022/10/06/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%9F%BA%E4%BA%8E%E6%94%B9%E8%BF%9B%E8%A7%84%E5%88%99%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E6%B7%B7%E5%90%88%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【博客】解决Hexo博客引用网络图片无法显示的问题</h1>
+          <h1 class="post-title" itemprop="name headline">【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法</h1>
         
 
         <div class="post-meta">
@@ -290,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-11T20:59:37+08:00">
-                2021-04-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-06T20:04:47+08:00">
+                2022-10-06
               </time>
             
 
@@ -313,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index">
-                    <span itemprop="name">环境配置</span>
+                  <a href="/categories/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
                   </a>
                 </span>
 
@@ -344,7 +350,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  105 字
+                  1.5k 字
                 </span>
               
 
@@ -360,7 +366,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -381,32 +387,113 @@
       
 
       
-        <meta name="referrer" content="no-referrer"/>
-<h2 id="问题">问题</h2>
-<p>这几天在Hexo博客发布的时候，预览可以看见所有的网络图片，但是一旦deploy上去之后就全部显示不了，如下图所示：</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20190721222823613.png"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<p>用Chrome浏览器，按F12提示如下403错误：</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/2019072122303179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21xZHhpYW94aWFv,size_16,color_FFFFFF,t_70"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+        <p>本文提出了一种基于改进规则和强化学习的混合启发式算法来解决二维矩形Packing问题（2DSPP）。首先，改进了基于skyline算法的评分规则，考虑了具有一组宽度松弛因子的“两步”连续项。改进后的评分规则可以有效地减少空间浪费。其次，作为一种强化学习方法，建立了深度q网络（DQN），得到初始矩形项序列，同时作为放置规则的基本补充。它可以提高空间利用率，防止算法陷入局部最优状态。结合新的”两步”放置规则和DQN，提出了基于简单随机算法（SRA）的启发式算法，称为基于强化学习的简单随机算法（RSRA）。</p>
 <span id="more"></span>
-<h2 id="解决方法">解决方法</h2>
-方法其实很简单，只需要文章的头部如下图所示位置添加
-<meta name="referrer" content="no-referrer"/>
-<p>这一句话就可以完美解决问题</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20190721223929809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21xZHhpYW94aWFv,size_16,color_FFFFFF,t_70"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<h3 id="模型">模型</h3>
+<h4 id="改进的评分规则">改进的评分规则：</h4>
+<ol type="1">
+<li><p><span
+class="math inline">\(A.w\)</span>表示放置一个矩形块后剩余空间的宽度。<span
+class="math inline">\(r_{min}.w\)</span>是剩余未放置矩形块中最小的矩形块的宽度。<span
+class="math inline">\(r_{min}.w ≤ A.w\)</span>表示<span
+class="math inline">\(r_{min}\)</span>可以放在这里，进一步减少空间浪费。如图
+2(a)-(b) 所示，放置 <span class="math inline">\(r_1\)</span>或<span
+class="math inline">\(r_2\)</span>将得到相同的分数。图 2(c)-(d)
+表明当<span class="math inline">\(r_{min}.w &gt;
+A.w\)</span>时，不可避免地会导致宽度浪费。在这种情况下，宽度较大的项目<span
+class="math inline">\(r_4\)</span>将优先于<span
+class="math inline">\(r_3\)</span>放置，以减少宽度浪费。</p>
+<p>[](<img src="https://s2.loli.net/2022/10/06/iLGWQ31FAo8rRxY.png"
+alt="fig2.png" /></p></li>
+<li><p>由于空间浪费在某种程度上是不可避免的，所以放置的物品越宽，适应度值应该越高。为了最大限度地减少浪费，设计了一组松弛因子<span
+class="math inline">\((α,β,0&lt;α&lt;1,0&lt;β&lt;1)\)</span>在多个宽度区间内给出不同的适应度值。通过大量实验得到了最优值
+<span class="math inline">\(α = 0.2\)</span>和<span
+class="math inline">\(β = 0.5\)</span>。</p>
+<p>[](<img src="https://s2.loli.net/2022/10/06/d197jPNWCsXx6bl.png"
+alt="fig4.png" /></p></li>
+<li><p>为了避免组合放置后高度值过高，我们放弃使用高度松弛因子（图3）。考虑<span
+class="math inline">\(r.w=s_{lowy}.w\)</span>的两种情况如图4(a)-(b)<span
+class="math inline">\((r.h=h_1vs.r.h=h_2)\)</span>，将前者的适应度值设置得更高，这样可以使空间更平坦，更有利于放置下一个矩形块。</p>
+<p>剩余规则如表1。</p></li>
+</ol>
+<p>[](<img src="https://s2.loli.net/2022/10/06/V7kOaZqpXur8Gtg.png"
+alt="table1.png" /></p>
+<h4 id="强化学习方法">强化学习方法：</h4>
+<p>强化学习是基于环境反馈机制的。通过与环境的不断互动，尝试和错误，强化学习实现了整体行动的利益最大化。</p>
+<p>Q-learning算法是强化学习中基于value的算法之一。Q(s,
+a)是表示在状态s的情况下执行动作a的奖励值。Q函数在状态为s的情况下会选择最大动作执行的值。作为Q-learning算法中的表函数，Q-table不适用于2DSPP。
+所以使用DQN代替Q-table进行
+Q-learning。DQN的原理是使用人工神经网络来代替动作值函数。神经网络比人工特征搜索要强大得多，因为它具有很强的表达能力，可以自动提取特征。本文使用的网络结构如图5所示。</p>
+<p>[](<img src="https://s2.loli.net/2022/10/06/OjxfPM148dBSrm5.png"
+alt="fig5.png" /></p>
+<p>数据预处理方法如表2所示。对于输入数据，<span
+class="math inline">\(h_{large}\)</span>是根据<span
+class="math inline">\(r.h\)</span>和<span
+class="math inline">\(h_1\)</span>之间的高度差计算的。<span
+class="math inline">\(h_{small}\)</span>由 <span
+class="math inline">\(r.h\)</span>和<span
+class="math inline">\(h_2\)</span>之间的高度差计算得出。<span
+class="math inline">\(W\)</span>是根据<span
+class="math inline">\(r.w\)</span>的宽度和要放置的空间的宽度的差值来计算的。<span
+class="math inline">\(h_r\)</span>是<span
+class="math inline">\(r.h\)</span>与<span
+class="math inline">\(r_{h_{max}}.h\)</span>的比率，<span
+class="math inline">\(r_{h_{max}}.h\)</span>是剩余矩形块的最大高度。<span
+class="math inline">\(w_r\)</span>是 <span
+class="math inline">\(r.w\)</span>与 <span
+class="math inline">\(r_{w_{max}}\)</span>的比率，<span
+class="math inline">\(r_{w_{max}}\)</span>是剩余矩形块的最大宽度。</p>
+<p>[](<img src="https://s2.loli.net/2022/10/06/sXrTlnzfy1jLJ3u.png"
+alt="table2.png" /></p>
+<p>网络的输出值是矩形<span class="math inline">\(r\)</span>与空间<span
+class="math inline">\(s\)</span>的匹配度。<span
+class="math inline">\(h_{marge}\)</span>、<span
+class="math inline">\(h_{small}\)</span>和<span
+class="math inline">\(w\)</span>三个属性通过线性变换和激活函数得到一个中间值。类似地，其他两个属性<span
+class="math inline">\(h_r\)</span>和<span
+class="math inline">\(w_r\)</span>也可以通过相同的操作具有相应的中间值。然后，这两个中间值首先进行2×4和激活函数tanh的线性变换，然后进行4×1和激活函数sigmoid的线性变换得到最终结果。sigmoid的值范围为<span
+class="math inline">\((0,1)\)</span>。</p>
+<h4 id="基于dqn的启发式算法rsra">基于DQN的启发式算法（RSRA）</h4>
+<p>DQN被用于构造评估函数。</p>
+<p><strong>line 1:</strong>
+skyline算法将在从五个index生成初始序列后分别按照：周长、面积、宽度、长度（来自
+Scorer I）和 Scorer II来排序。
+五个序列中最小高度的解将被保存到下一阶段。</p>
+<p><strong>line2:</strong>
+局部搜索算法LS（）将按照给定的顺序依次交换两个矩形块，并实现skyline算法，以获得一个局部最优的解决方案。</p>
+<p><strong>line3-19:</strong> SRA最终将用于改进解。</p>
+<p>[](<img src="https://s2.loli.net/2022/10/06/Pd4jTRHm7MUeucN.jpg"
+alt="算法1.jpg" /></p>
+<h3 id="实验">实验</h3>
+<h4 id="training过程">training过程：</h4>
+<ol type="1">
+<li>训练开始时，从TrainSet中随机选择n组数据，得到TrainSet*作为本次循环使用的数据集，然后将TrainSet*中的每组数据依次放置，形成一个由矩形块组成的序列R。
+(2)从<span class="math inline">\((0,
+num)\)</span>中随机选择一个数m，其中num是R中的矩形块个数。使用Scorer
+II作为评分规则的skyline算法从R中选出m个矩形块放置。这里将最低的水平线标记为<span
+class="math inline">\(s_{lowy}\)</span>。设 <span
+class="math inline">\(k =num - m\)</span>。非常小的 k 值会导致 DQN
+的可信度低。为 k设置阈值 t，如果<span
+class="math inline">\(k&lt;t\)</span>将跳到下一个循环。否则按照表2的数据预处理方法对此时的k项进行处理，记为<span
+class="math inline">\(x_j\)</span>。</li>
+<li>尝试将每个 $x_j (j = 1 . . . k) <span
+class="math inline">\(放置在\)</span>s_{lowy}<span
+class="math inline">\(的位置执行skyline算法，得到最终的高度\)</span>h_j<span
+class="math inline">\(。记录最大高度\)</span>h_{max}<span
+class="math inline">\(和最小高度\)</span>h_{min}$。</li>
+<li>使用方程<span class="math inline">\(y_j=\frac{h_{max}−h_j}
+{h_{max}−h_{min}}\)</span>从每个<span
+class="math inline">\(x_j\)</span>计算<span
+class="math inline">\(y_j\)</span>。保存所有<span
+class="math inline">\(x_j\)</span>和<span
+class="math inline">\(y_j\)</span>。</li>
+<li>最后，使用保存的<span
+class="math inline">\(x_j\)</span>作为输入，<span
+class="math inline">\(y_j\)</span>作为目标值来训练 Scorer
+II。当达到设定的时间或达到最佳效果时training结束。详见算法2。</li>
+</ol>
+<p>[](<img src="https://s2.loli.net/2022/10/06/MyVZEk42LPjK9fS.jpg"
+alt="算法2.jpg" /></p>
 
       
     </div>
@@ -425,7 +512,7 @@ alt="img" />
       
         <div class="post-tags">
           
-            <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"># 环境配置</a>
+            <a href="/tags/2D-Rectangle-Packing/" rel="tag"># 2D Rectangle Packing</a>
           
         </div>
       
@@ -438,8 +525,8 @@ alt="img" />
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/04/10/%E3%80%90%E5%A4%A7%E5%88%9B%E3%80%91%EF%BC%88%E4%B8%89%EF%BC%89%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0week1%EF%BC%88Foundations-of-Convolutional-Neural-Networks%EF%BC%89/" rel="next" title="【大创】（三）卷积神经网络学习笔记week1（Foundations of Convolutional Neural Networks）">
-                <i class="fa fa-chevron-left"></i> 【大创】（三）卷积神经网络学习笔记week1（Foundations of Convolutional Neural Networks）
+              <a href="/2022/09/17/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91Markdown%E5%B8%B8%E8%A7%81%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/" rel="next" title="【博客】Markdown常见公式语法">
+                <i class="fa fa-chevron-left"></i> 【博客】Markdown常见公式语法
               </a>
             
           </div>
@@ -447,10 +534,6 @@ alt="img" />
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/04/11/%E3%80%90TensorFlow%E3%80%91%E5%A6%82%E4%BD%95%E5%9C%A8jupyter-Notebook%E4%B8%AD%E4%BD%BF%E7%94%A8TensorFlow/" rel="prev" title="【TensorFlow】如何在jupyter Notebook中使用TensorFlow">
-                【TensorFlow】如何在jupyter Notebook中使用TensorFlow <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -602,7 +685,7 @@ alt="img" />
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84%E8%AF%84%E5%88%86%E8%A7%84%E5%88%99"><span class="nav-number">1.1.</span> <span class="nav-text">改进的评分规则：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">强化学习方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Edqn%E7%9A%84%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95rsra"><span class="nav-number">1.3.</span> <span class="nav-text">基于DQN的启发式算法（RSRA）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.</span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#training%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">training过程：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -822,6 +905,26 @@ alt="img" />
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
