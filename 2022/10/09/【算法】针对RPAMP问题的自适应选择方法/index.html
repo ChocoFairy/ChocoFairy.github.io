@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="2D Rectangle Packing," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="摘要 本文研究了二维矩形包装面积最小化问题（RPAMP），其目标是将一组矩形放置到一个具有可变尺寸的容器中，并最小化容器的面积。将RPAMP转化为一系列二维条带包装问题（2DSPs）。提出了一种新的自适应选择方法，在每次迭代中选择一个候选宽度，而不是在最开始就选择最有希望的宽度集。引入了一种迭代重复搜索策略，以避免在相同的宽度上花费太多的精力。采用基于skyline的最佳拟合启发式方法解决2DS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【算法】针对RPAMP问题的自适应选择方法">
+<meta property="og:url" content="https://chocofairy.github.io/2022/10/09/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E9%92%88%E5%AF%B9RPAMP%E9%97%AE%E9%A2%98%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="摘要 本文研究了二维矩形包装面积最小化问题（RPAMP），其目标是将一组矩形放置到一个具有可变尺寸的容器中，并最小化容器的面积。将RPAMP转化为一系列二维条带包装问题（2DSPs）。提出了一种新的自适应选择方法，在每次迭代中选择一个候选宽度，而不是在最开始就选择最有希望的宽度集。引入了一种迭代重复搜索策略，以避免在相同的宽度上花费太多的精力。采用基于skyline的最佳拟合启发式方法解决2DS">
+<meta property="og:locale">
+<meta property="og:image" content="https://s2.loli.net/2022/10/09/PFqV1lWGbvsyxBn.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/10/09/2OlyfWHoSDFXZB6.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/10/09/oqle92pyAQk6XRd.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/09/927uEiHMIjA1bgp.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/09/WoLpBzEDs7gxAXa.jpg">
+<meta property="article:published_time" content="2022-10-09T03:23:51.000Z">
+<meta property="article:modified_time" content="2022-10-09T03:29:42.328Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="2D Rectangle Packing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/10/09/PFqV1lWGbvsyxBn.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2022/10/09/【算法】针对RPAMP问题的自适应选择方法/"/>
+
+
+
+
+
+  <title>【算法】针对RPAMP问题的自适应选择方法 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2022/10/09/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E9%92%88%E5%AF%B9RPAMP%E9%97%AE%E9%A2%98%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【算法】针对RPAMP问题的自适应选择方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-09T11:23:51+08:00">
+                2022-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="摘要">摘要</h3>
+<p>本文研究了二维矩形包装面积最小化问题（RPAMP），其目标是将一组矩形放置到一个具有可变尺寸的容器中，并最小化容器的面积。将RPAMP转化为一系列二维条带包装问题（2DSPs）。提出了一种新的自适应选择方法，在每次迭代中选择一个候选宽度，而不是在最开始就选择最有希望的宽度集。引入了一种迭代重复搜索策略，以避免在相同的宽度上花费太多的精力。采用基于skyline的最佳拟合启发式方法解决2DSP。与以往的方法相比，所提出的方法要简单得多，因为它不需要任何控制参数。</p>
+<span id="more"></span>
+<h3 id="介绍">介绍</h3>
+<p>在本文中，我们提出了一种自适应选择方法（ASA）。ASA通过固定容器的宽度，将RPAMP转换为一系列的2DSPs。ASA不是首先固定有希望的宽度集，而是在每次迭代中随机选择一个可能的宽度。每个宽度被选择的概率被自适应地更新，以确保宽度可能导致一个更好的RPAMP解被给予一个更高的概率。一种基于skyline的启发式方法适用于求解2DSP。</p>
+<p>本文主要有三个贡献：①
+我们提出了一种没有任何控制参数的自适应选择方法来解决RPAMP问题。与以前的策略相比，我们的方法更简单，更易于实现。②
+我们采用了一种基于skyline的启发式方法来解决2DSP，并采用迭代加倍策略来提高效率。③
+在基准测试集上的结果表明，我们的方法优于所有现有的方法，并为大多数实例找到了新的最佳解决方案。</p>
+<h3 id="方法">方法</h3>
+<h4 id="自适应的选择宽度的方法">自适应的选择宽度的方法</h4>
+<p>比起在最开始选择最有希望的候选宽度，我们不是在开始的时候过滤宽度。我们选择将所有可能的宽度添加到候选宽度集中，并在每次迭代时从这个宽度集中随机选择一个宽度。由于选择宽度可能会产生高质量的RPAMP解决方案，我们给每个宽度一个分数来衡量这个宽度可以被选择的概率。这个分数是基于通过在这个宽度上调用RandomLS所得到的最优解的填充率，并且会自适应地更新。每个宽度的初始分数被设置为通过调用RandomLS算法得到的解的填充率。在每次迭代中，根据分数随机选择一个宽度（分数越高，给出的概率越大），对所选择的宽度调用2DSP的随机局部搜索算法求解，并相应地更新该宽度的分数。为了避免在相同的宽度上花费太多的精力，我们将iter初始设置为1，并在每次迭代后iter增加一倍，迭代相同宽度的工作量将加倍。</p>
+<p>自适应选择方法详见算法1，RandomLS过程是2DSP的一种随机局部搜索方法。我们首先计算候选宽度集W（只考虑给定范围内的宽度[Wmin，Wmax]）。此外，我们还舍弃了不能表示输入矩形尺寸组合的宽度。因此，W只包含作为输入矩形的维度组合的宽度。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/09/PFqV1lWGbvsyxBn.jpg"
+alt="算法1.jpg" />
+<figcaption aria-hidden="true">算法1.jpg</figcaption>
+</figure>
+<p>对于每个<span class="math inline">\(W_i\)</span>，使用一个变量<span
+class="math inline">\(H_i\)</span>来记录在这个宽度上找到的最小高度，而<span
+class="math inline">\(fr_i\)</span>是相应的填充比。此外，使用变量<span
+class="math inline">\(iter_i\)</span>记录<span
+class="math inline">\(W_i\)</span>上RandomLS最后一次调用中使用的值，初始<span
+class="math inline">\(iter_i\)</span>设置为1。我们首先调用<span
+class="math inline">\(W\)</span>中每个宽度上<span
+class="math inline">\(iter\)</span>设置为1的RandomLS，然后，<span
+class="math inline">\(W\)</span>中的宽度通过填充率增序进行排序。在每次迭代中，从<span
+class="math inline">\(W\)</span>中随机选择一个宽度，选择第<span
+class="math inline">\(k\)</span>个宽度的概率由<span
+class="math inline">\(\frac{2k}{|W|×(|W|+1)}\)</span>计算，W中序号越大的宽度概率越高。<span
+class="math inline">\(W\)</span>按填充率的增加排序，说明填充率越高的宽度概率越高。假设所选宽度为<span
+class="math inline">\(W_k\)</span>，它首先加倍<span
+class="math inline">\(iter_k\)</span>，然后在<span
+class="math inline">\(W_k\)</span>上调用RandomLS，<span
+class="math inline">\(iter\)</span>设置为<span
+class="math inline">\(iter_k\)</span>。在RandomLS返回值后，必要时<span
+class="math inline">\(H_k\)</span>、<span
+class="math inline">\(fr_k\)</span>和<span
+class="math inline">\(W\)</span>将被更新。最大的<span
+class="math inline">\(iter_k\)</span>的值被限制为<span
+class="math inline">\(n\)</span>，以避免在RandomLS的一次调用中进行过多的迭代。</p>
+<p>在每次调用宽度<span class="math inline">\(W_k\)</span>之前，变量<span
+class="math inline">\(iter_k\)</span>将加倍，以确保在相同的宽度上花费更多的精力。原因是随着过程的进行，解决方案很难得到改进，因此需要更多的迭代才能找到更好的解决方案。但是，为了避免在相同的宽度上花费太多的精力，<span
+class="math inline">\(iter_k\)</span>的最大值被限制在矩形的数量<span
+class="math inline">\(n\)</span>的范围内。</p>
+<h4
+id="dsp上的随机局部搜索算法randomls">2DSP上的随机局部搜索算法RandomLS</h4>
+<p>算法2给出的随机局部搜索RandomLS算法被用来解决2DSP。RandomLS是一个基于序列的随机局部搜索程序，它使用一个最适应HeuristicPacking算法来构建一个放置方案。更确切地说，给定一个矩形块序列<span
+class="math inline">\(R\)</span>，容器的宽度<span
+class="math inline">\(W_k\)</span>和控制参数<span
+class="math inline">\(iter\)</span>，RandomLS调用HeuristicPacking <span
+class="math inline">\(iter\)</span>次，最后发现的最小高度被返回。</p>
+<p>对于每个<span
+class="math inline">\(W_k\)</span>，RandomLS维护一个包含排序规则集的全局集<span
+class="math inline">\(sr_k\)</span>。如果这是第一次在宽度<span
+class="math inline">\(W_k\)</span>上调用RandomLS，RandomLS将首先初始化集合<span
+class="math inline">\(sr_k\)</span>如下：</p>
+<p>1.按面积降序排列；</p>
+<p>2.按高度降序排列；</p>
+<p>3.按宽度降序排列；</p>
+<p>4.随机排序。（生成随机序列使搜索空间多样化）</p>
+<p>它使用四个排序规则生成四个初始序列，并调用在每个序列上的HeuristicPacking，然后将每个排序规则添加到<span
+class="math inline">\(sr_k\)</span>中。然后，<span
+class="math inline">\(sr_k\)</span>按HeuristicPacking返回的高度递减顺序排序。否则，它将从<span
+class="math inline">\(sr_k\)</span>中随机选择一个排序规则。以概率为<span
+class="math inline">\(\frac{2i}{|sr_k|×(|sr_k|+1)}\)</span>选择第<span
+class="math inline">\(i\)</span>个排序规则，然后由所选排序规则生成一个初始序列。在初始序列的基础上，采用RandomLS来改进解。在每次迭代中，它通过从<span
+class="math inline">\(R\)</span>中随机选择两个矩形生成一个新的序列<span
+class="math inline">\(R&#39;\)</span>，并在<span
+class="math inline">\(R&#39;\)</span>上调用Heuristic
+Packing。只有当<span class="math inline">\(R&#39;\)</span>的解不比<span
+class="math inline">\(R\)</span>差时，才用<span
+class="math inline">\(R&#39;\)</span>代替<span
+class="math inline">\(R\)</span>，否则，就放弃<span
+class="math inline">\(R&#39;\)</span>。以上的迭代过程重复<span
+class="math inline">\(iter\)</span>次。最后，我们更新集合<span
+class="math inline">\(sr_k\)</span>，以确保它按高度的递减顺序排序，并返回最终找到的最小高度。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/09/2OlyfWHoSDFXZB6.jpg"
+alt="算法2.jpg" />
+<figcaption aria-hidden="true">算法2.jpg</figcaption>
+</figure>
+<h5 id="基于skyline的best-fit启发式">基于skyline的best-fit启发式</h5>
+<p>启发式使用空间来表示放置模式。</p>
+<p>给定一个矩形序列<span
+class="math inline">\(R\)</span>和容器的宽度<span
+class="math inline">\(W_c\)</span>，HeuristicPacking将矩形一个接一个地放置。最后返回放置结果的最终高度。在每一步中，它首先从skyline中选择最左下角的线段<span
+class="math inline">\(s\)</span>，然后使用<strong>评分规则</strong>选择最适合的矩形，并将选择的矩形放置在<span
+class="math inline">\(s\)</span>处，skyline相应地被更新。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/09/oqle92pyAQk6XRd.png"
+alt="图3.png" />
+<figcaption aria-hidden="true">图3.png</figcaption>
+</figure>
+<p>在我们的方法中，当前的填充模式由一条直线的skyline表示，这是一组连续的垂直线段的轮廓线。图3给出了一个天际线的例子，其中每个线段<span
+class="math inline">\(s_j\)</span>在其左端点被标记为<span
+class="math inline">\(j\)</span>。初始的空放置模式由与容器底部对应的单个线段表示。HeuristicPacking总是选择最左下角的线段<span
+class="math inline">\(s\)</span>作为放置矩形的候选段。矩形放置时左下角被放在<span
+class="math inline">\(s\)</span>的左点，或者右下角被放在<span
+class="math inline">\(s\)</span>的右点。如果有多个矩形可以放置在<span
+class="math inline">\(s\)</span>上，它将使用评分规则选择<strong>最佳拟合（best-fit）</strong>的矩形<span
+class="math inline">\(r\)</span>。在将选定的矩形<span
+class="math inline">\(r\)</span>放置在<span
+class="math inline">\(s\)</span>后，skyline将被更新。添加一个与r的顶边对应的新线段，并更新受影响的现有线段。图4（a）给出了在<span
+class="math inline">\(s_2\)</span>处放置一个矩形<span
+class="math inline">\(r\)</span>后更新的skyline。如果没有可以放置在<span
+class="math inline">\(s\)</span>的矩形，<span
+class="math inline">\(s\)</span>将被提高到它较低邻接线段的高度。在图3中，如果在选定的线段<span
+class="math inline">\(s_2\)</span>上没有可以放置的矩形，则skyline将被更新，如图4（b）。图4（b）中的阴影区域将被舍弃不再使用。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/09/927uEiHMIjA1bgp.png"
+alt="图4.png" />
+<figcaption aria-hidden="true">图4.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/10/09/WoLpBzEDs7gxAXa.jpg"
+alt="算法3.jpg" />
+<figcaption aria-hidden="true">算法3.jpg</figcaption>
+</figure>
+<h5 id="评分规则">评分规则</h5>
+<p>假设当前最左下线段为<span
+class="math inline">\(s\)</span>，其左（右）竖直的高度为<span
+class="math inline">\(h_l\)</span>（<span
+class="math inline">\(h_r\)</span>），对于每个矩形适应地放进<span
+class="math inline">\(s\)</span>中，如果<span class="math inline">\(h_l
+\geq h_r\)</span>，可以分类成8种情况（见图5）。如果<span
+class="math inline">\(h_l &lt;
+h_r\)</span>同样也有8种情况。HeuristicPacking选择分数最高的矩形。如果分数一样，选择R中下标靠前的矩形。由于本文中的矩形是可旋转的，对于每个矩形<span
+class="math inline">\(r\)</span>，尝试将其放在<span
+class="math inline">\(s\)</span>时同时放置两个方向，较高的分数定义为<span
+class="math inline">\(r\)</span>的分数。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/2D-Rectangle-Packing/" rel="tag"># 2D Rectangle Packing</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/10/06/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%9F%BA%E4%BA%8E%E6%94%B9%E8%BF%9B%E8%A7%84%E5%88%99%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E6%B7%B7%E5%90%88%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/" rel="next" title="【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法">
+                <i class="fa fa-chevron-left"></i> 【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E9%80%82%E5%BA%94%E7%9A%84%E9%80%89%E6%8B%A9%E5%AE%BD%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">自适应的选择宽度的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dsp%E4%B8%8A%E7%9A%84%E9%9A%8F%E6%9C%BA%E5%B1%80%E9%83%A8%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95randomls"><span class="nav-number">3.2.</span> <span class="nav-text">2DSP上的随机局部搜索算法RandomLS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Eskyline%E7%9A%84best-fit%E5%90%AF%E5%8F%91%E5%BC%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">基于skyline的best-fit启发式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%84%E5%88%86%E8%A7%84%E5%88%99"><span class="nav-number">3.2.2.</span> <span class="nav-text">评分规则</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
