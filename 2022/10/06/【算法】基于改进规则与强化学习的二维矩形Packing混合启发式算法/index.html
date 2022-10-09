@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/10/06/Pd4jTRHm7MUeucN.jpg">
 <meta property="og:image" content="https://s2.loli.net/2022/10/06/MyVZEk42LPjK9fS.jpg">
 <meta property="article:published_time" content="2022-10-06T12:04:47.000Z">
-<meta property="article:modified_time" content="2022-10-07T01:20:34.947Z">
+<meta property="article:modified_time" content="2022-10-09T08:36:25.190Z">
 <meta property="article:author" content="wlz">
 <meta property="article:tag" content="2D Rectangle Packing">
 <meta name="twitter:card" content="summary">
@@ -485,30 +485,30 @@ alt="算法1.jpg" />
 <h3 id="实验">实验</h3>
 <h4 id="training过程">training过程：</h4>
 <ol type="1">
-<li>训练开始时，从TrainSet中随机选择n组数据，得到TrainSet*作为本次循环使用的数据集，然后将TrainSet*中的每组数据依次放置，形成一个由矩形块组成的序列R。
-(2)从<span class="math inline">\((0,
+<li><p>训练开始时，从TrainSet中随机选择n组数据，得到TrainSet*作为本次循环使用的数据集，然后将TrainSet*中的每组数据依次放置，形成一个由矩形块组成的序列R。</p></li>
+<li><p>从<span class="math inline">\((0,
 num)\)</span>中随机选择一个数m，其中num是R中的矩形块个数。使用Scorer
 II作为评分规则的skyline算法从R中选出m个矩形块放置。这里将最低的水平线标记为<span
 class="math inline">\(s_{lowy}\)</span>。设 <span
 class="math inline">\(k =num - m\)</span>。非常小的 k 值会导致 DQN
 的可信度低。为 k设置阈值 t，如果<span
 class="math inline">\(k&lt;t\)</span>将跳到下一个循环。否则按照表2的数据预处理方法对此时的k项进行处理，记为<span
-class="math inline">\(x_j\)</span>。</li>
-<li>尝试将每个 $x_j (j = 1 . . . k) <span
+class="math inline">\(x_j\)</span>。</p></li>
+<li><p>尝试将每个 $x_j (j = 1 . . . k) <span
 class="math inline">\(放置在\)</span>s_{lowy}<span
 class="math inline">\(的位置执行skyline算法，得到最终的高度\)</span>h_j<span
 class="math inline">\(。记录最大高度\)</span>h_{max}<span
-class="math inline">\(和最小高度\)</span>h_{min}$。</li>
-<li>使用方程<span class="math inline">\(y_j=\frac{h_{max}−h_j}
+class="math inline">\(和最小高度\)</span>h_{min}$。</p></li>
+<li><p>使用方程<span class="math inline">\(y_j=\frac{h_{max}−h_j}
 {h_{max}−h_{min}}\)</span>从每个<span
 class="math inline">\(x_j\)</span>计算<span
 class="math inline">\(y_j\)</span>。保存所有<span
 class="math inline">\(x_j\)</span>和<span
-class="math inline">\(y_j\)</span>。</li>
-<li>最后，使用保存的<span
+class="math inline">\(y_j\)</span>。</p></li>
+<li><p>最后，使用保存的<span
 class="math inline">\(x_j\)</span>作为输入，<span
 class="math inline">\(y_j\)</span>作为目标值来训练 Scorer
-II。当达到设定的时间或达到最佳效果时training结束。详见算法2。</li>
+II。当达到设定的时间或达到最佳效果时training结束。详见算法2。</p></li>
 </ol>
 <figure>
 <img src="https://s2.loli.net/2022/10/06/MyVZEk42LPjK9fS.jpg"
