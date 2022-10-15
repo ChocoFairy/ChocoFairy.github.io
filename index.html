@@ -385,15 +385,15 @@
 <p>首先，确定合理宽度值的区间$ [w_{min},w_{max}]<span
 class="math inline">\(。\)</span>w_{min}<span
 class="math inline">\(设置为所有矩形中较小尺寸的最大值。\)</span>w_{max}<span
-class="math inline">\(设置为\)</span> [area(R)^{1/2}*] <span
-class="math inline">\(，其中area(R)代表所有矩形的总面积，\)</span><span
-class="math inline">\(是不大于\)</span>a<span
-class="math inline">\(的最大整数。我们可以假设\)</span>w_Cl_C$，因为此处不存在方向约束。对于
-100% 的最佳密度，考虑不大于 $ [area(R)^{1/2}] <span
-class="math inline">\(的宽度值就足够了。由于最优解的密度通常较低，因此通过参数\)</span>&gt;1<span
-class="math inline">\(为\)</span>w_{max}<span
-class="math inline">\(选择相对较大的值。对于每个宽度\)</span>w_C<span
-class="math inline">\(，通过算法SPA求解相应的2D-SPP实例\)</span>(w_C,R)$，并将最佳解作为初始RPAMP解。</p>
+class="math inline">\(设置为\)</span>[area(R)^{1/2}*α]<span
+class="math inline">\(，其中area(R)代表所有矩形的总面积，α是不大于\)</span>a<span
+class="math inline">\(的最大整数。我们可以假设\)</span>w_Cl_C$，因为此处不存在方向约束。对于100%的最佳密度，考虑不大于
+<span
+class="math inline">\([area(R)^{1/2}]\)</span>的宽度值就足够了。由于最优解的密度通常较低，因此通过参数<span
+class="math inline">\(α&gt;1\)</span>为<span
+class="math inline">\(w_{max}\)</span>选择相对较大的值。对于每个宽度<span
+class="math inline">\(w_C\in[w_{min},w_{max}]\)</span>，通过算法SPA求解相应的2D-SPP实例<span
+class="math inline">\((w_C,R)\)</span>，并将最佳解作为初始RPAMP解。</p>
 <p>宽度值<span
 class="math inline">\(w_C\)</span>的宽度组合被定义为一组矩形尺寸（<span
 class="math inline">\(l_i\)</span>或<span
