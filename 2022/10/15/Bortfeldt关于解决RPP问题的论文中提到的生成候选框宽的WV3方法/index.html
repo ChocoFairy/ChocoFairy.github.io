@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="2D Rectangle Packing," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="问题 首先，确定合理宽度值的区间$ [w_{min},w_{max}]\(。\)w_{min}\(设置为所有矩形中较小尺寸的最大值。\)w_{max}\(设置为\) [area(R)^{1&#x2F;2}*] \(，其中area(R)代表所有矩形的总面积，\)\(是不大于\)a\(的最大整数。我们可以假设\)w_Cl_C$，因为此处不存在方向约束。对于 100% 的最佳密度，考虑不大于 $ [area(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【算法】Bortfeldt关于解决RPP问题的论文中提到的生成候选框宽的WV3方法">
+<meta property="og:url" content="https://chocofairy.github.io/2022/10/15/Bortfeldt%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3RPP%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E7%94%9F%E6%88%90%E5%80%99%E9%80%89%E6%A1%86%E5%AE%BD%E7%9A%84WV3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="问题 首先，确定合理宽度值的区间$ [w_{min},w_{max}]\(。\)w_{min}\(设置为所有矩形中较小尺寸的最大值。\)w_{max}\(设置为\) [area(R)^{1&#x2F;2}*] \(，其中area(R)代表所有矩形的总面积，\)\(是不大于\)a\(的最大整数。我们可以假设\)w_Cl_C$，因为此处不存在方向约束。对于 100% 的最佳密度，考虑不大于 $ [area(">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-10-15T13:28:08.000Z">
+<meta property="article:modified_time" content="2022-10-15T13:29:18.677Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="2D Rectangle Packing">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2022/10/15/Bortfeldt关于解决RPP问题的论文中提到的生成候选框宽的WV3方法/"/>
+
+
+
+
+
+  <title>【算法】Bortfeldt关于解决RPP问题的论文中提到的生成候选框宽的WV3方法 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2022/10/15/Bortfeldt%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3RPP%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E7%94%9F%E6%88%90%E5%80%99%E9%80%89%E6%A1%86%E5%AE%BD%E7%9A%84WV3%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【算法】Bortfeldt关于解决RPP问题的论文中提到的生成候选框宽的WV3方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-15T21:28:08+08:00">
+                2022-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="问题">问题</h2>
+<p>首先，确定合理宽度值的区间$ [w_{min},w_{max}]<span
+class="math inline">\(。\)</span>w_{min}<span
+class="math inline">\(设置为所有矩形中较小尺寸的最大值。\)</span>w_{max}<span
+class="math inline">\(设置为\)</span> [area(R)^{1/2}*] <span
+class="math inline">\(，其中area(R)代表所有矩形的总面积，\)</span><span
+class="math inline">\(是不大于\)</span>a<span
+class="math inline">\(的最大整数。我们可以假设\)</span>w_Cl_C$，因为此处不存在方向约束。对于
+100% 的最佳密度，考虑不大于 $ [area(R)^{1/2}] <span
+class="math inline">\(的宽度值就足够了。由于最优解的密度通常较低，因此通过参数\)</span>&gt;1<span
+class="math inline">\(为\)</span>w_{max}<span
+class="math inline">\(选择相对较大的值。对于每个宽度\)</span>w_C<span
+class="math inline">\(，通过算法SPA求解相应的2D-SPP实例\)</span>(w_C,R)$，并将最佳解作为初始RPAMP解。</p>
+<p>宽度值<span
+class="math inline">\(w_C\)</span>的宽度组合被定义为一组矩形尺寸（<span
+class="math inline">\(l_i\)</span>或<span
+class="math inline">\(w_i\)</span>的和，<span
+class="math inline">\(i\in\{1,...,n\}\)</span>）。宽度<span
+class="math inline">\(w_C\)</span>的频率<span
+class="math inline">\(nc(w_C)wC\)</span>由值<span
+class="math inline">\(w_C\)</span>的所有宽度组合的数量给出，即其中矩形尺寸之和等于<span
+class="math inline">\(w_C\)</span>的所有宽度组合的数量。每个组合的维数由参数<span
+class="math inline">\(maxitems\)</span>给出。</p>
+<span id="more"></span>
+<h2 id="解决方法">解决方法</h2>
+<h3 id="论文描述的方法">论文描述的方法</h3>
+<p>在这里处理的组合问题可以称为区间子集和问题（Interval Subset Sum
+Problem）：</p>
+<p>给出<span class="math inline">\(n(n&gt;1)\)</span>个正整数<span
+class="math inline">\(w_i\)</span>，一个区间<span
+class="math inline">\([w_{min},w_{max}]\)</span><span
+class="math inline">\((w_{min}\)</span>和<span
+class="math inline">\(w_{max}\)</span>也是正整数)以及一个正整数<span
+class="math inline">\(p_{max}\)</span>。每一个p元组<span
+class="math inline">\((w_{i_1},w_{i_2},...,w_{i_p})\)</span>被称为一个选择，其中$i_k&lt;i_{(k+1)}(k=1,...,p-1)，1i_1,i_pn
+<span class="math inline">\(，\)</span>p<span
+class="math inline">\(被称为它的长度\)</span>(p1且为整数)<span
+class="math inline">\(。如果一个选择\)</span>s=(w_{i_1},w_{i_2},...,w_{i_p})<span
+class="math inline">\(存在\)</span>w_{i_1}+w_{i_2}+...+w_{i_p}=w<span
+class="math inline">\(，则称该选择\)</span>s<span
+class="math inline">\(的和为\)</span>w<span
+class="math inline">\(。对于每个\)</span>w<span
+class="math inline">\(和每个长度\)</span>p<span
+class="math inline">\(，我们必须确定长度\)</span>p<span
+class="math inline">\(和\)</span>w<span
+class="math inline">\(的所有的不同选择的数量\)</span>N^p(w)<span
+class="math inline">\(，要求\)</span>w<span
+class="math inline">\(，\)</span>pp_{max}<span
+class="math inline">\(。我们可以假设\)</span>w_iw_{max}<span
+class="math inline">\(以及\)</span>w_1+w_2+...+w_nw_{min}(i=1,...,n)$。</p>
+<p>为了求解ISSP，提出了一种基于假设<span
+class="math inline">\(w_i&lt;w_{i+1}(i=1,...,n-1)\)</span>的动态规划的过程。我们把整个过程约束在所有整数<span
+class="math inline">\(w_i\)</span>都不相等的情况下。</p>
+<p>设<span class="math inline">\(N^{p,i}(w)\)</span>表示所有长度为<span
+class="math inline">\(p\)</span>和为<span
+class="math inline">\(w\)</span>的选择<span
+class="math inline">\(s\)</span>，附加属性为<span
+class="math inline">\(s\)</span>的最后一个值为<span
+class="math inline">\(w_i(1\leq i\leq n,1\leq w \leq w_{max},1 \leq p
+\leq p_{max})\)</span>。如果<span class="math inline">\(w\leq
+0\)</span>则<span
+class="math inline">\(N^{p,i}(w)\)</span>为0。注意，如果<span
+class="math inline">\(i&lt;p\)</span>则<span
+class="math inline">\(N^{p,i}(w)=0\)</span>。则长度<span
+class="math inline">\(p=1\)</span>的选择方程为： <span
+class="math display">\[
+N^{1,i}(w)=1,仅当w=w_i,i\in\{1,...,n\},w\in [1,w_{max}]\tag{1}
+\]</span> 每个和为<span class="math inline">\(w\)</span>、长度为<span
+class="math inline">\(p+1\)</span>、最后一个值为<span
+class="math inline">\(w_i\)</span>的选择<span
+class="math inline">\(s&#39;\)</span>都可以从一个和为<span
+class="math inline">\(w-w_i\)</span>、长度为<span
+class="math inline">\(p\)</span>的选择<span
+class="math inline">\(s\)</span>得到。<span
+class="math inline">\(s\)</span>是通过<span
+class="math inline">\(s&#39;\)</span>删除最后一个值<span
+class="math inline">\(w_i\)</span>得到的。因此我们有以下递归： <span
+class="math display">\[
+N^{p+1,i}(w)=\sum_{j&lt;i}N^{p,j}(w-w_i),i\in\{1,...,n\}\\
+p\in\{1,...,p_{max}-1\},w\in[1,w_{max}].\tag{2}
+\]</span> 通过关系（1）和（2）我们能够计算出所有的数字<span
+class="math inline">\(N^{p,i}(w)(1\leq i\leq n,w_{min}\leq w\leq
+w_{max},1\leq p\leq p_{max} )\)</span>。最后可以得出等式<span
+class="math inline">\(N^p(w)=\sum_{i-1}^n N^{p,i}(w),(w_{min}\leq w\leq
+w_{max},1\leq p\leq p_{max} )\)</span>以及<span
+class="math inline">\(N(w)=\sum_{p-1}^{p_{max}}N^p(w),(w_{min}\leq w\leq
+w_{max})\)</span>。</p>
+<p>递归（2）的计算构成了这个过程中最耗时的部分。很容易看出，这种计算的最坏情况复杂度为<span
+class="math inline">\(O(w_{max}n^2)\)</span>。因此，ISSP的动态规划过程具有伪多项式复杂度。这个过程可以很容易地扩展为这样一种方式：输出正好由p个值求和或最多p个值求和得到的所有值在区间<span
+class="math inline">\([w_{min},w_{max}]\)</span>内的和<span
+class="math inline">\(w\)</span>的不同选择。</p>
+<h3 id="人话版方法">人话版方法</h3>
+<p>------上面是论文里面提出的复杂公式，下面是在知乎上看到的简略版---------</p>
+<blockquote>
+<p>对于某个给定值M，如何从某个给定的正整数集合S中找个一个子集合s，使得该子集和为给定值M。如M=7，S={1,3,4,5}，则s={3,4}.</p>
+</blockquote>
+<p>对于<span
+class="math inline">\(S={a_1,a_2,...,a_n}\)</span>，每个元素只有取与不取两种情况，再考虑它们的和是否等于M，但是这样的情况共有<span
+class="math inline">\(2^n\)</span>种，这种算法的效率显然是不行的。</p>
+<p>换条思路，令subset(i,j)表示S中前i个元素的子集和等于j的情况，则</p>
+<ul>
+<li>若S[i] &gt; j，则S[i]不在子集s中。</li>
+<li>若S[i] &lt;= j,
+则有以下两种情况：一种情况是S[i]不在子集s中，则subset(i, j) =
+subset(i-1, j); 一种情况是S[i]在子集s中，则subset(i, j)= subset(i-1,
+j-S[i]).</li>
+</ul>
+<p>这样就有了这个问题的子结构问题，因此，只需要确定初始情况即可：</p>
+<blockquote>
+<p>对于i=0,1,2,…,n,有subset(i, 0)=True, 对于j=1,2,…,M, 有subset(0,
+j)=False.</p>
+</blockquote>
+<p>因此，利用动态规划法，就能得到(n+1)*(M+1)的真值表了，而答案就是subset(n,
+M). 算法有了，Python代码自然也有了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"># A Dynamic Programming solution for subset sum problem</span><br><span class="line"># Returns true if there is a subset of set with sum equal to given sum</span><br><span class="line">def isSubsetSum(S, n, M):</span><br><span class="line">    # The value of subset[i, j] will be</span><br><span class="line">    # true if there is a subset of</span><br><span class="line">    # set[0..j-1] with sum equal to i</span><br><span class="line">    subset &#x3D; np.array([[True]*(M+1)]*(n+1))</span><br><span class="line">    # If sum is 0, then answer is true</span><br><span class="line">    for i in range(0, n+1):</span><br><span class="line">        subset[i, 0] &#x3D; True</span><br><span class="line">    # If sum is not 0 and set is empty,</span><br><span class="line">    # then answer is false</span><br><span class="line">    for i in range(1, M+1):</span><br><span class="line">        subset[0, i] &#x3D; False</span><br><span class="line">    # Fill the subset table in bottom-up manner</span><br><span class="line">    for i in range(1, n+1):</span><br><span class="line">        for j in range(1, M+1):</span><br><span class="line">            if j &lt; S[i-1]:</span><br><span class="line">                subset[i, j] &#x3D; subset[i-1, j]</span><br><span class="line">            else:</span><br><span class="line">                subset[i, j] &#x3D; subset[i-1, j] or subset[i-1, j-S[i-1]]</span><br><span class="line">    # print the True-False table</span><br><span class="line">    for i in range(0, n+1):</span><br><span class="line">        for j in range(0, M+1):</span><br><span class="line">            print(&#39;%-6s&#39;%subset[i][j], end&#x3D;&quot;  &quot;)</span><br><span class="line">        print(&quot; &quot;)</span><br><span class="line">    if subset[n, M]:</span><br><span class="line">        print(&quot;Found a subset with given sum&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;No subset with given sum&quot;)</span><br><span class="line"># test</span><br><span class="line">st &#x3D; [1, 3, 4, 5]</span><br><span class="line">n &#x3D; len(st)</span><br><span class="line">sm &#x3D; 7</span><br><span class="line">isSubsetSum(st, n, sm)</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<blockquote>
+<p>True False False False False False False False True True False False
+False False False False True True False True True False False False True
+True False True True True False True True True False True True True True
+True Found a subset with given sum</p>
+</blockquote>
+<p>那么，怎样求解子集s中的元素呢？也许可以用回溯法（backtracing）找出s中的元素。可以从输出的真值表入手：</p>
+<blockquote>
+<p>对于subset(i, j) = subset(i-1,
+j)=True,则元素S[i]不在子集s中。对于subset(i,j)=True而subset(i-1,
+j)=False，则元素S[i]必定在子集s中， 此时subset(i-1,
+j-S[i])=True，这样就能通过递归法找到s中的元素了。对于这个问题，只要从subset(n,
+M)开始即可。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"># A Dynamic Programming solution for subset sum problem</span><br><span class="line"># Returns true if there is a subset of set with sum equal to given sum</span><br><span class="line">def isSubsetSum(S, n, M):</span><br><span class="line">    # The value of subset[i, j] will be</span><br><span class="line">    # true if there is a subset of</span><br><span class="line">    # set[0..j-1] with sum equal to i</span><br><span class="line">    subset &#x3D; np.array([[True]*(M+1)]*(n+1))</span><br><span class="line">    # If sum is 0, then answer is true</span><br><span class="line">    for i in range(0, n+1):</span><br><span class="line">        subset[i, 0] &#x3D; True</span><br><span class="line">    # If sum is not 0 and set is empty,</span><br><span class="line">    # then answer is false</span><br><span class="line">    for i in range(1, M+1):</span><br><span class="line">        subset[0, i] &#x3D; False</span><br><span class="line">    # Fill the subset table in bottom-up manner</span><br><span class="line">    for i in range(1, n+1):</span><br><span class="line">        for j in range(1, M+1):</span><br><span class="line">            if j &lt; S[i-1]:</span><br><span class="line">                subset[i, j] &#x3D; subset[i-1, j]</span><br><span class="line">            else:</span><br><span class="line">                subset[i, j] &#x3D; subset[i-1, j] or subset[i-1, j-S[i-1]]</span><br><span class="line">    # print the True-False table</span><br><span class="line">    for i in range(0, n+1):</span><br><span class="line">        for j in range(0, M+1):</span><br><span class="line">            print(&#39;%-6s&#39;%subset[i][j], end&#x3D;&quot;  &quot;)</span><br><span class="line">        print(&quot; &quot;)</span><br><span class="line">    if subset[n, M]:</span><br><span class="line">        print(&quot;Found a subset with given sum&quot;)</span><br><span class="line">        sol &#x3D; []</span><br><span class="line">        # using backtracing to find the solution</span><br><span class="line">        i &#x3D; n</span><br><span class="line">        while i &gt;&#x3D; 0:</span><br><span class="line">            if subset[i, M] and not subset[i-1, M]:</span><br><span class="line">                sol.append(S[i-1])</span><br><span class="line">                M -&#x3D; st[i-1]</span><br><span class="line">            if M &#x3D;&#x3D; 0:</span><br><span class="line">                break</span><br><span class="line">            i -&#x3D; 1</span><br><span class="line">        print(&#39;The solution is %s.&#39; % sol)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;No subset with given sum&quot;)</span><br><span class="line"># test</span><br><span class="line">st &#x3D; [1, 3, 4, 5]</span><br><span class="line">n &#x3D; len(st)</span><br><span class="line">sm &#x3D; 7</span><br><span class="line">isSubsetSum(st, n, sm)</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<blockquote>
+<p>True False False False False False False False True True False False
+False False False False True True False True True False False False True
+True False True True True False True True True False True True True True
+True Found a subset with given sum The solution is [4, 3].</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/2D-Rectangle-Packing/" rel="tag"># 2D Rectangle Packing</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/10/09/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E9%92%88%E5%AF%B9RPAMP%E9%97%AE%E9%A2%98%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95/" rel="next" title="【算法】针对RPAMP问题的自适应选择方法">
+                <i class="fa fa-chevron-left"></i> 【算法】针对RPAMP问题的自适应选择方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E6%8F%8F%E8%BF%B0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">论文描述的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%BA%E8%AF%9D%E7%89%88%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">人话版方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
