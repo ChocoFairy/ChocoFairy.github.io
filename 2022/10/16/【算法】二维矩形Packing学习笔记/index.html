@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="2D Rectangle Packing," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="优化最短线长 问题描述 \(n\)个可\(90°\)旋转的硬模块，硬模块\(m_i\)尺寸为\(w_i×h_i\)。一个宽、高分别为\(W\)和\(H\)的电路板，\(p\)个表示模块间连接关系的网络net，每个网络是由若干模块组成的集合。要求所有模块正交、无重叠和完全的放置到电路板上，目标是最小化所有网络的连线长度之和。用\((x_{i1},y_{i1})\)和\((x_{i2},y_{i2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【算法】布局学习笔记">
+<meta property="og:url" content="https://chocofairy.github.io/2022/10/16/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="优化最短线长 问题描述 \(n\)个可\(90°\)旋转的硬模块，硬模块\(m_i\)尺寸为\(w_i×h_i\)。一个宽、高分别为\(W\)和\(H\)的电路板，\(p\)个表示模块间连接关系的网络net，每个网络是由若干模块组成的集合。要求所有模块正交、无重叠和完全的放置到电路板上，目标是最小化所有网络的连线长度之和。用\((x_{i1},y_{i1})\)和\((x_{i2},y_{i2">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-10-16T07:17:09.000Z">
+<meta property="article:modified_time" content="2022-10-16T07:18:34.467Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="2D Rectangle Packing">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2022/10/16/【算法】二维矩形Packing学习笔记/"/>
+
+
+
+
+
+  <title>【算法】布局学习笔记 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2022/10/16/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【算法】布局学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-16T15:17:09+08:00">
+                2022-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.6k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="优化最短线长">优化最短线长</h2>
+<h3 id="问题描述">问题描述</h3>
+<p><span class="math inline">\(n\)</span>个可<span
+class="math inline">\(90°\)</span>旋转的硬模块，硬模块<span
+class="math inline">\(m_i\)</span>尺寸为<span
+class="math inline">\(w_i×h_i\)</span>。一个宽、高分别为<span
+class="math inline">\(W\)</span>和<span
+class="math inline">\(H\)</span>的电路板，<span
+class="math inline">\(p\)</span>个表示模块间连接关系的网络net，每个网络是由若干模块组成的集合。要求所有模块正交、无重叠和完全的放置到电路板上，目标是最小化所有网络的连线长度之和。用<span
+class="math inline">\((x_{i1},y_{i1})\)</span>和<span
+class="math inline">\((x_{i2},y_{i2})\)</span>分别表示模块<span
+class="math inline">\(m_i\)</span>的左下角坐标和右上角坐标，<span
+class="math inline">\(w_i\)</span>和<span
+class="math inline">\(h_i\)</span>分别表示模块<span
+class="math inline">\(m_i\)</span>的宽和高。则该问题的形式化定义如下：
+<span class="math display">\[
+目标：min\sum^{p}_{i=1}HPWL(net_i)
+\]</span></p>
+<p><span class="math display">\[
+St.\\(1)(x_{i2}-x_{i1},y_{i2}-y_{i1})\in\{(w_i,h_i),(h_i,w_i)\}\\(2)max(x_{i1}-x_{j2},x_{j1}-x_{i2},y_{i1}-y_{j2},y_{j1}-y_{i2})\geq0\\(3)0\leq
+x_{iq}\leq W,0\leq y_{iq}\leq H,q\in\{1,2\}
+\]</span></p>
+<p>其中<span class="math inline">\(i\)</span>和<span
+class="math inline">\(j\)</span>均取<span
+class="math inline">\(\{1,2,...,n\}\)</span>中的任意值，且<span
+class="math inline">\(i\neq
+j\)</span>。约束(1)表示所有模块正交放置，约束(2)表示模块间无重叠，约束(3)表示模块完全处于电路板上。</p>
+<h3 id="前人求解算法">前人求解算法</h3>
+<h4 id="启发式搜索算法">启发式搜索算法</h4>
+<p>当问题中模块规模较小时，启发式搜索算法有高效的性能。而随着模块规模的不断增加，启发式搜索算法速度慢的缺点就逐渐显现出来，很难在有限的时间内给出高质量的解。</p>
+<h5 id="评估函数">(1)评估函数：</h5>
+<p>经典布图规划问题的评估函数： <span class="math display">\[
+cost(F)=w×
+\frac{area(F)}{norm\_area}+(1-w)×\frac{wirelength(F)}{norm\_wire}
+\]</span> <span class="math inline">\(w:\)</span>处于区间[0,1]的权重</p>
+<p><span class="math inline">\(area(F):\)</span>布图F中电路板的面积</p>
+<p><span
+class="math inline">\(wirelength(F):\)</span>布图F中网络连线长度</p>
+<p><span
+class="math inline">\(norm\_area:\)</span>最优布图中电路板的面积</p>
+<p><span
+class="math inline">\(norm\_wire:\)</span>最优布图中网络连线长度</p>
+<p>最优布图是未知的，具体实现时用初始布图代替最优布图计算<span
+class="math inline">\(norm\_area\)</span>和<span
+class="math inline">\(norm\_wire\)</span>。</p>
+<h5 id="编码到布图的转换">(2)编码到布图的转换：</h5>
+<p>二维矩形Packing问题中研究对象主要是硬矩形块（边长确定），基于矩形块向左、向下放置，利用最长路径算法将编码转为布图。</p>
+<p>布图规划问题主要处理软模块，要同时确定模块的位置和形状。</p>
+<h4 id="层次算法">层次算法</h4>
+<p>通过层次地将模块结合在一起，或层次地将问题划分成一组子问题，以减小问题中模块的规模，获得可快速处理大规模模块的布图规划算法。</p>
+<h5 id="mb-tree">(1)MB*-Tree:</h5>
+<p>分为两个阶段：聚类阶段和分离阶段。</p>
+<p>通过模块的两两结合，聚类阶段层次地将所有模块结合在一起。结合过程中，聚类因子高的模块将被优先结合。结合后两模块的相对位置也就确定了。所有模块结合后相对位置也会确定。</p>
+<p>分离阶段将逐层拆开结合在一起的模块，分离因子高的将被优先拆开。拆开一定数量的模块后会采用模拟退火算法调整模块间相对位置的关系（结合在一起的模块相对位置不变）。所有模块都被拆开后算法停止。
+<span class="math display">\[
+\delta_{ij}=\alpha s_{ij}+\frac{\beta}{d_{ij}}
+\]</span></p>
+<p><span class="math display">\[
+\varphi_{ij}=\lambda s_{ij}+\gamma \omega_{ij}
+\]</span></p>
+<p><span class="math inline">\(\delta_{ij}:\)</span>模块<span
+class="math inline">\(m_i\)</span>和<span
+class="math inline">\(m_j\)</span>的聚类因子</p>
+<p><span class="math inline">\(\alpha、\beta:\)</span>常量</p>
+<p><span class="math inline">\(s_{ij}:\)</span><span
+class="math inline">\(m_i\)</span>和<span
+class="math inline">\(m_j\)</span>结合后所产生的闲置空间的大小</p>
+<p><span class="math inline">\(d_{ij}=c_{ij}/(n_i+n_j):\)</span><span
+class="math inline">\(s_{ij}:\)</span><span
+class="math inline">\(m_i\)</span>和<span
+class="math inline">\(m_j\)</span>连接的紧密程度。其中<span
+class="math inline">\(c_{ij}\)</span>表示连接<span
+class="math inline">\(m_i\)</span>和<span
+class="math inline">\(m_j\)</span>的网络数目，<span
+class="math inline">\(n_i\)</span>和<span
+class="math inline">\(n_j\)</span>表示<span
+class="math inline">\(m_i\)</span>和<span
+class="math inline">\(m_j\)</span>包含的元模块（已知中的模块）的个数</p>
+<p><span class="math inline">\(\varphi_{ij}:\)</span>模块<span
+class="math inline">\(m_i\)</span>和<span
+class="math inline">\(m_j\)</span>的分离因子</p>
+<p><span class="math inline">\(\gamma、\lambda:\)</span>常量</p>
+<p><span class="math inline">\(\omega_{ij}:\)</span>当前布图中连接<span
+class="math inline">\(m_i\)</span>和<span
+class="math inline">\(m_j\)</span>的所有网络的长度之和</p>
+<h5 id="imf">(2)IMF：</h5>
+<p>分为两个阶段：划分阶段和合并阶段</p>
+<p>划分阶段将原问题划分成一组子问题。每次划分，首先构造当前问题对应的超图。其中每个节点对应于问题中的一个模块，每条边对应于一个网络。用超图分割算法hMetis分割超图，模块也就分成了两份。然后按照两份模块面积比例，平行于当前电路板的短边，将其分成两个子电路板。当所有子问题中模块数目都足够小时停止划分。</p>
+<p>合并阶段：逐层合并子问题，采用模拟退火算法调整合并成的问题中模块间相对的位置来优化问题目标。当所有子问题都被合并在一起时，停止合并过程并返回原问题的解。</p>
+<h5 id="patoma">(3)PATOMA:</h5>
+<p>与 IMF 中的划分阶段类似，PATOMA 也采用hMetis递归地划分问题。但与 IMF
+持续划分问题直到所有子问题中模块数目足够小不同，PATOMA
+每次执行划分之前都要用二维矩形 Packing 算法 ZDS 或 ROB
+进行一个判断。其中 ZDS 是处理软模块的算法，ROB
+是处理硬模块和混合模块的算法。如果将要生成的两个子问题中的模块，均可以被
+ZDS 或 ROB
+合法放置到对应的子电路板上，就执行该划分，否则停止划分该问题。当所有子问题都不能被进一步划分时，停止划分过程，并用
+ZDS或 ROB 求解所有子问题，进而得到原问题的布图。</p>
+<p>综上可知，PATOMA 只在层次转化时，利用 hMetis 优化问题目标。MB*-Tree
+和IMF 在第一阶段的层次转化中，分别用模块聚类策略和 hMetis
+优化问题目标，同时在第二阶段对于每层的简化问题都用模拟退火算法调整了模块间相对位置关系、优化了问题目标。因此当计算时间足够大时，MB*
+-Tree 和 IMF 的计算性能优于 PATOMA。但因为 MB*-Tree 和 IMF
+使用了计算速度较慢的模拟退火算法，导致了它们实际的性能劣于 PATOMA。</p>
+<h4 id="两阶段算法">两阶段算法</h4>
+<p>基本思路是将问题的求解分成两个阶段。<strong>第一阶段</strong>优化问题目标，目的是得到一种较优的模块间的相对位置关系。模块间相对位置关系可以用一个具体布图或者一种编码表示。在尽量保持第一阶段所得模块间相对位置关系的基础上，<strong>第二阶段</strong>微调第一阶段所得布图，转换为合法布图。</p>
+<h5 id="ufo">(1)UFO:</h5>
+<p><strong>第一阶段：</strong>采用凸优化模型Push-Pull(PP)，将模块均匀的放置到电路板上，同时优化连线长度。在PP模型中，任意模块<span
+class="math inline">\(m_i\)</span>被视为半径<span
+class="math inline">\(r_i=\sqrt{S_i}\)</span>、中心点坐标为<span
+class="math inline">\((X_i,Y_i)\)</span>的圆<span
+class="math inline">\(C_i\)</span>。对于任意两个圆<span
+class="math inline">\(C_i\)</span>和<span
+class="math inline">\(C_j\)</span>：（上下两个等式分别是有重叠和无重叠时的作用力）
+<span class="math display">\[
+f_{ij}(X_i,X_j,Y_i,Y_j)=\begin{cases}
+c_{ij}d_{ij}+s_{ij}×\frac{p_{ij}}{d_{ij}},p_{ij}\geq0
+\\c_{ij}d_{ij}+1×\frac{p_{ij}}{d_{ij}},p_{ij}&lt;0  \end{cases}
+\]</span> <span
+class="math inline">\(c_{ij}:\)</span>连接它们的网络数目</p>
+<p><span
+class="math inline">\(d_{ij}=\sqrt{(X_i-X_j)^2+(Y_i-Y_j)^2}:\)</span>中心点距离</p>
+<p><span
+class="math inline">\(p_{ij}=(r_i+r_j)-d_{ij}\)</span>：嵌入深度，大于等于0表示无重叠，小于0表示有重叠</p>
+<p><span
+class="math inline">\(s_{ij}=(r_i×r_j)^2:s_{ij}×\frac{p_{ij}}{d_{ij}}\)</span>和<span
+class="math inline">\(1×\frac{p_{ij}}{d_{ij}}\)</span>表示由重叠产生的作用力</p>
+<p>将圆之间所有的作用力加在一起作为目标函数，并用凸规划优化该函数，可得到所有圆均匀分布在电路板上，且连接紧密的圆较近放置的布图。</p>
+<p><strong>第二阶段：</strong>首先用 DT
+方法从阶段一所得均匀布图中，提取圆的相邻关系，并进一步地将圆的相邻关系转化为模块间的相对位置关系。接下来，根据模块间的相对位置关系、软模块的形状约束和模块完全处于电路板上的约束，将布图问题转化成一个凸优化模型，用二阶锥规划优化该模型，得到合法布图。</p>
+<h5 id="defer">(2)Defer:</h5>
+<p><strong>第一阶段：</strong>采用超图分割算法 hMetis
+递归地分割模块，以构造一棵Generalized Slicing
+Tree（GST）表示模块间的位置关系。GST 是 Slicing Tree
+的一种扩展，它是无序的，且在非叶子节点没有标出分割的方向。因此 GST
+只记录每次将模块分割成两个子集的情况，并不规定分割的方向和分割后两个子集间的相对位置关系。分割过程中，若当前模块的数目小于一个常数（例如
+10），就停止分割该组模块，并将它们记为 GST 的一个叶子节点。给出一棵
+Slicing Tree，通过自下而上地布图结合可生成一个分片布图。而由于 GST
+只给出了子布图结合的顺序，并没给出子布图的结合（分割）方向与结合后的相对位置关系，所以根据一棵
+GST 可以构造出一组分片布图。</p>
+<p><strong>第二阶段：</strong>首先对 GST
+中的任意叶子节点，穷举其对应模块可组成的所有分片布图。在此过程中，对于软模块，只离散地取其若干种可能的形状。对于每个布图，用一个坐标点表示它的宽和高，其中横坐标和纵坐标分别等于布图的宽和高，相应的每个叶子节点可用由若干离散坐标点组成的
+Curve 表示。根据 GST 的结构，递归地自下而上结合 Curve，直至所有 Curve
+都结合在一起。在 Curve 结合过程中，为了控制Curve
+上坐标点的数目，使用了基于对最终布图中闲置空间预测的 Whitespace-Aware
+Pruning（WAP）策略，适当地删除新生成 Curve 上的点。最终的 Curve
+上，横、纵坐标分别小于电路板的宽和高的坐标点，对应就是问题的合法解。选取合法解中最好的若干个，并通过调整结合在一起的兄弟模块间的相对位置关系，进一步优化连线长度。最后，连线长度最短的布图即为
+DeFer 所得解。</p>
+<h5 id="f-fm">(3)F-FM:</h5>
+<p><strong>第一阶段：</strong>将所有模块均匀地放置到电路板上，同时优化连线的长度。为了评估模块放置是否均匀，首先将电路板划分成相同大小的格子。利用共轭梯度法优化公式就可将模块均匀放置，且连线长度较短的布图。</p>
+<p><strong>第二阶段：</strong>首先递归地切割阶段一生成的均匀布图构造一棵
+GST，之后采用DeFer 中的第二阶段中的方法，通过自上而下地结合 Curve
+生成最终布图。</p>
+<h5 id="基于拟牛顿法的布图规划算法">(4)基于拟牛顿法的布图规划算法：</h5>
+<p>该算法是一个两阶段布图规划算法。</p>
+<p><strong>第一阶段：</strong>利用超图分割算法hMetis递归地划分问题，得到一个模块均匀放置，连线长度较短的布图。</p>
+<p><strong>第二阶段：</strong>通过移动模块的位置和改变软模块的形状，将第一阶段所得布图转化为合法布图。</p>
+<h2
+id="优化最小面积二维矩形packing">优化最小面积（二维矩形Packing）</h2>
+<h3 id="问题描述-1">问题描述</h3>
+<p>已知 <span class="math inline">\(n\)</span>个可
+90°旋转的矩形块，每个矩形块 <span class="math inline">\(r_i\)</span>
+的尺寸为 <span class="math inline">\(w_i ×
+h_i\)</span>；一个尺寸未知的矩形框。二维矩形 Packing
+面积最小化问题（RPAMP）要求将所有矩形块正交、无重叠、完全地放置到矩形框上，目标是最小化矩形框的面积，即
+<span class="math inline">\(min(W × H)\)</span>。对于任意矩形块<span
+class="math inline">\(r_i\)</span>，<span
+class="math inline">\(t_i\)</span>表示它是否被放置到了矩形框上，<span
+class="math inline">\(t_i=1\)</span>表示已放置，<span
+class="math inline">\(t_i=0\)</span>表示未放置。<span
+class="math inline">\((x_{i1},y_{i1})\)</span>和<span
+class="math inline">\((x_{i2},y_{i2})\)</span>分别表示它的左下角坐标和右上角坐标。RPAMP的形式化定义如下：</p>
+<p>目标：<span class="math inline">\(min W×H\)</span> <span
+class="math display">\[
+St.\\(1)(x_{i2}-x_{i1},y_{i2}-y_{i1})\in\{(x_i,h_i),(h_i,w_i)\},\\(2)max(x_{i1}-x_{j2},x_{j1}-x_{i2},y_{i1}-y_{i2},y_{j1}-y_{i2})×t_it_j\geq0,\\(3)0\leq
+x_{ik}\leq W,0\leq y_{ik}\leq H,k\in\{1,2\}.
+\]</span> 其中<span class="math inline">\(i\)</span>和<span
+class="math inline">\(j\)</span>均取<span
+class="math inline">\(\{1,2,...,n\}\)</span>中的任意值，且<span
+class="math inline">\(i\neq
+j\)</span>。约束（1）表示矩形块是正交放置的；约束（2）表示任意两个已放置矩形块无重叠；约束（3）表示已放置的矩形块完全处于矩形框中。把所有已放置矩形块的面积之和与矩形框面积的比例<span
+class="math inline">\((\sum^n_{i=1}
+w_ih_it_i/(WH))\)</span>称为填充率，用来评估解的质量。</p>
+<h3 id="求解算法">求解算法</h3>
+<h4 id="生成候选框宽的方法">生成候选框宽的方法</h4>
+<p>先从已知的<span
+class="math inline">\(n\)</span>个矩形块中随机地选取最多<span
+class="math inline">\(n_c\)</span>个，并从每个被选取的矩形块的两条边中随机地选取一条边。将所选取的边的长度之和称为一个组合长度，则总共可得<span
+class="math inline">\(2c^1_n+2^2c^2_n+...+2^{n_c}c^{n_c}_n\)</span>种由不同边组合而成的组合长度。穷举所有组合长度可能的取值，然后计算每个值出现的频率，频率最大的前<span
+class="math inline">\(l\)</span>个组合长度就是生成的候选框宽。</p>
+<h4 id="布图紧凑算法">布图紧凑算法</h4>
+<p>紧凑算法（Compacting
+Algorithm，CA）通过迭代地向下、向左移动矩形块将矩形块间无重叠的布图转化为紧凑布图，其中紧凑布图的外包络矩形小于等于原布图的外包络矩形。</p>
+<p><strong>定义1.</strong> 占左下角矩形块<strong>:</strong>
+一个矩形块是占左下角矩形块，当且仅当它的左边界和下边界均与其它占左下角矩形块相贴，其中矩形框的左边界和下边界被视为两个特殊的占左下角矩形块。</p>
+<p><strong>定义2.</strong> 紧凑布图<strong>:</strong>
+如果一个布图中所有矩形块均是占左下角矩形块，则称该布图为一个紧凑布图。</p>
+<p><strong>引理1.</strong>
+如果一个布图中所有矩形块的左边界和下边界都与其它矩形块相贴，则该布图是紧凑布图。</p>
+<p><strong>定义3.</strong> 约束图<strong>:</strong>
+约束图是边带权的有向图，它被用来表示矩形块之间的相对位置关系。根据约束图表示的是矩形块间的左右位置关系或上下位置关系，可分为水平约束图<span
+class="math inline">\((G_h)\)</span>和竖直约束图<span
+class="math inline">\((G_v)\)</span>。假设<span
+class="math inline">\(V\)</span>和<span
+class="math inline">\(E\)</span>分别表示约束图中的顶点和边，则水平约束图<span
+class="math inline">\(G_h(V, E)\)</span>的构造方法如下：</p>
+<p>（1）<span class="math inline">\(V\)</span>：起始点<span
+class="math inline">\(s\)</span>，终止点<span
+class="math inline">\(t\)</span>，<span
+class="math inline">\(n\)</span>个分别以矩形块的名字命名的顶点。</p>
+<p>（2）<span class="math inline">\(E\)</span>：每个矩形块<span
+class="math inline">\(r_i\)</span>有两条边<span
+class="math inline">\(&lt;s,r_i&gt;\)</span>和<span
+class="math inline">\(&lt;r_i,t&gt;\)</span>，任意两个矩形块<span
+class="math inline">\(r_i\)</span>和<span
+class="math inline">\(r_j\)</span>间存在边<span
+class="math inline">\(&lt;r_i,r_j&gt;\)</span>，当且仅当<span
+class="math inline">\(r_i\)</span>在<span
+class="math inline">\(r_j\)</span>的左边、它们在<span
+class="math inline">\(y\)</span>轴上的投影有重叠。</p>
+<p>（3）边的权重：边<span
+class="math inline">\(&lt;s,r_i&gt;\)</span>的权重等于0，边<span
+class="math inline">\(&lt;r_i,t&gt;\)</span>和<span
+class="math inline">\(&lt;r_i,r_j&gt;\)</span>的权重均为<span
+class="math inline">\(w_i\)</span>。</p>
+<p>类似地，可以构造竖直约束图<span class="math inline">\(G_v(V,
+E)\)</span>。</p>
+<p>将约束图中的顶点分为三类：</p>
+<p>（1）稳定顶点，它们对应于占左下角矩形块；</p>
+<p>（2）关键顶点，它们的所有前驱节点都是占左下角矩形块；</p>
+<p>（3）不稳定节点，前驱节点中存在非占左下角矩形块。</p>
+<p><strong>紧凑算法流程：</strong>紧凑算法迭代地执行移动动作将布图转化为紧凑布图，每个移动动作包括一个左移动作和一个下移动作。执行左移动作时，先构造当前布图的水平约束图<span
+class="math inline">\(G_h\)</span>，然后更新每个矩形块<span
+class="math inline">\(r_i\)</span>的左下角<span
+class="math inline">\(x\)</span>坐标值为<span
+class="math inline">\(s\)</span>到 <span
+class="math inline">\(r_i\)</span>的最长路径长度，从而使得每个矩形块的左边界都与其它矩形块相贴。类似地，在执行下移动作时，构造当前布图的竖直约束图<span
+class="math inline">\(G_v\)</span>以更新每个矩形块的左下角<span
+class="math inline">\(y\)</span>坐标值，使得所有矩形块的下边界都与其它矩形块相贴。当一个移动动作没有改变任何矩形块的位置时，停止以上迭代。最终，所得布图是紧凑布图，<span
+class="math inline">\(G_h\)</span> 和<span
+class="math inline">\(G_v\)</span>中<span
+class="math inline">\(s\)</span>点到<span
+class="math inline">\(t\)</span>的的最长路径长度分别为该布图中矩形框的宽和高。</p>
+<p><strong>引理2.</strong>
+如果已知布图是合法的，则CA紧凑所得布图也是合法的。</p>
+<p><strong>引理3.</strong> CA得到的布图是紧凑布图</p>
+<p><strong>引理4.</strong> CA的最坏时间复杂度是<span
+class="math inline">\(O(n^6)\)</span>。</p>
+<h4 id="动态规约算法框架">动态规约算法框架</h4>
+<p>动态规约算法（DRA）首先初始化一个期望填充率（例如
+50%），并用WV3选取若干个矩形块边长的组合长度作为候选框宽。然后进入迭代构造
+RKP 问题，用 LIF 求 解 RKP
+问题的过程。每次迭代，首先根据当前的期望填充率 <span
+class="math inline">\(efr\)</span> 和框宽 <span
+class="math inline">\(W_i\)</span>，计算框高 <span
+class="math inline">\(H_i = 所有矩形块面积之和/(efr×
+W_i)\)</span>，从而构造出相应的 RKP 问题。接下来，根据矩形块的数目选取
+LIF0 或 LIF1 计算 RKP
+问题得到一个布图。如果布图是包括所有矩形块的可行布图，就用紧凑算法继续优化该布图得到紧凑布图，当紧凑布图的填充率大于目前得到的最高填充率时，更新最优布图为该紧凑布图，并更新最高填充率。否则，如果当前框宽下，已无获得更高填充率布图的可能，就取下一个候选框宽作为当前框宽，而如果当前框宽下，仍有获得更高填充率布图的机会，就保持框宽不变，并适当地减小期望填充率。当框宽是最后一个候选框宽，且期望填充率不能再增加时，终止
+DRA 的迭代，返回找到的的最好布图。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/2D-Rectangle-Packing/" rel="tag"># 2D Rectangle Packing</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/10/15/Bortfeldt%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3RPP%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E7%94%9F%E6%88%90%E5%80%99%E9%80%89%E6%A1%86%E5%AE%BD%E7%9A%84WV3%E6%96%B9%E6%B3%95/" rel="next" title="【算法】Bortfeldt关于解决RPP问题的论文中提到的生成候选框宽的WV3方法">
+                <i class="fa fa-chevron-left"></i> 【算法】Bortfeldt关于解决RPP问题的论文中提到的生成候选框宽的WV3方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%9C%80%E7%9F%AD%E7%BA%BF%E9%95%BF"><span class="nav-number">1.</span> <span class="nav-text">优化最短线长</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E4%BA%BA%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">前人求解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8F%91%E5%BC%8F%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">启发式搜索算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%84%E4%BC%B0%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">(1)评估函数：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E5%88%B0%E5%B8%83%E5%9B%BE%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">(2)编码到布图的转换：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">层次算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#mb-tree"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">(1)MB*-Tree:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#imf"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">(2)IMF：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#patoma"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">(3)PATOMA:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">两阶段算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ufo"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">(1)UFO:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#defer"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">(2)Defer:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#f-fm"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">(3)F-FM:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95%E7%9A%84%E5%B8%83%E5%9B%BE%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">(4)基于拟牛顿法的布图规划算法：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2packing"><span class="nav-number">2.</span> <span class="nav-text">优化最小面积（二维矩形Packing）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">求解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%80%99%E9%80%89%E6%A1%86%E5%AE%BD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">生成候选框宽的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E5%9B%BE%E7%B4%A7%E5%87%91%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">布图紧凑算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E7%BA%A6%E7%AE%97%E6%B3%95%E6%A1%86%E6%9E%B6"><span class="nav-number">2.2.3.</span> <span class="nav-text">动态规约算法框架</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
