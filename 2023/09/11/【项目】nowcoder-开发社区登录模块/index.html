@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="nowcoder社区项目中的登录模块功能开发。主要包含内容：利用Spring Email发送邮件（发送邮件、开发注册功能），Cookie、Session的使用（会话管理、生成验证码、登录和退出），Kaptcha生成验证码工具的使用（生成验证码），拦截器的使用（显示登录信息、检查登录状态），TheadLocal的使用（显示登录信息），MultipartFile上传文件（账号设置）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【项目】nowcoder-开发社区登录模块">
+<meta property="og:url" content="https://chocofairy.github.io/2023/09/11/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="nowcoder社区项目中的登录模块功能开发。主要包含内容：利用Spring Email发送邮件（发送邮件、开发注册功能），Cookie、Session的使用（会话管理、生成验证码、登录和退出），Kaptcha生成验证码工具的使用（生成验证码），拦截器的使用（显示登录信息、检查登录状态），TheadLocal的使用（显示登录信息），MultipartFile上传文件（账号设置）。">
+<meta property="og:locale">
+<meta property="og:image" content="https://s2.loli.net/2023/09/11/muc5wxokIRMl9CU.png">
+<meta property="og:image" content="https://s2.loli.net/2023/09/11/kVR9oKLmgv1rO5B.png">
+<meta property="article:published_time" content="2023-09-11T02:36:24.000Z">
+<meta property="article:modified_time" content="2023-09-11T03:15:52.238Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/09/11/muc5wxokIRMl9CU.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2023/09/11/【项目】nowcoder-开发社区登录模块/"/>
+
+
+
+
+
+  <title>【项目】nowcoder-开发社区登录模块 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2023/09/11/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【项目】nowcoder-开发社区登录模块</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-09-11T10:36:24+08:00">
+                2023-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>nowcoder社区项目中的登录模块功能开发。主要包含内容：利用<strong>Spring
+Email</strong>发送邮件（发送邮件、开发注册功能），<strong>Cookie、Session</strong>的使用（会话管理、生成验证码、登录和退出），<strong>Kaptcha</strong>生成验证码工具的使用（生成验证码），<strong>拦截器</strong>的使用（显示登录信息、检查登录状态），<strong>TheadLocal</strong>的使用（显示登录信息），<strong>MultipartFile</strong>上传文件（账号设置）。</p>
+<span id="more"></span>
+<h2 id="发送邮件">发送邮件</h2>
+<ul>
+<li><p>邮箱设置：启用客户端SMTP服务</p></li>
+<li><p>Spring Email:</p>
+<ul>
+<li><p>导入jar包</p></li>
+<li><p>邮箱参数配置</p>
+<p><img src="https://s2.loli.net/2023/09/11/muc5wxokIRMl9CU.png" /></p>
+<p>域名、端口号、邮箱账号、邮箱密码、邮箱协议（smtps表示安全的smtp）、邮箱采用安全连接</p></li>
+<li><p><strong>使用JavaMailSender发送邮件</strong></p>
+<p>src/main/java/community/util/包下新建工具类：MailClient.class</p>
+<p><strong>变量：</strong></p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe82f2661c6c8e546206d9.png" /></p>
+<ul>
+<li><strong>mailSender:</strong> JavaMailSender类型，Spring Framework
+中的一个接口。</li>
+<li><strong>form:</strong>注入发送人的邮箱。</li>
+</ul>
+<p><strong>函数：</strong></p>
+<ul>
+<li><p>sendMail函数：<img
+src="https://pic.imgdb.cn/item/64fe82f2661c6c8e54620707.png" /></p>
+<p>调用mailSender的<code>createMimeMessage()</code>创建邮件主体。MimeMessageHelper是辅助类，用来构建Mime邮件消息。分别设置了发件人，收件人，邮件主题，邮件内容。</p>
+<p>最后调用mailSender的<code>send()</code>函数发送邮件。</p></li>
+</ul></li>
+</ul></li>
+<li><p>模板引擎：使用Thymeleaf发送HTML邮件</p>
+<p><strong>html模板：</strong></p>
+<p><img src="https://s2.loli.net/2023/09/11/kVR9oKLmgv1rO5B.png" /></p>
+<p><strong>利用模板引擎格式化html邮件：</strong></p>
+<p><img
+src="https://s2.loli.net/2023/09/11/R6EkaOT9wphxtYs.png" /></p></li>
+</ul>
+<h2 id="开发注册功能">开发注册功能</h2>
+<p><strong>dao层：数据访问层</strong></p>
+<p>dao层属于一种比较底层，比较基础的操作，具体到对于某个表的增删改查，也就是说某个DAO一定是和数据库的某一张表一
+一对应的，其中封装了增删改查基本操作，建议DAO只做原子操作，增删改查。</p>
+<p>负责与数据库进行联络的一些任务都封装在此，dao层的设计首先是设计dao层的接口，然后在Spring的配置文件中定义此接口的实现类，然后就可以再模块中调用此接口来进行数据业务的处理，而不用关心此接口的具体实现类是哪个类，显得结构非常清晰，dao层的数据源配置，以及有关数据库连接参数都在Spring配置文件中进行配置。</p>
+<p><strong>service层：服务层</strong></p>
+<p>粗略的理解就是对一个或多个DAO进行的再次封装，封装成一个服务，所以这里也就不会是一个原子操作了，需要事物控制。</p>
+<p>service层主要负责业务模块的应用逻辑应用设计。同样是首先设计接口，再设计其实现类，接着再Spring的配置文件中配置其实现的关联。这样我们就可以在应用中调用service接口来进行业务处理。service层的业务实，具体要调用已经定义的dao层接口，封装service层业务逻辑有利于通用的业务逻辑的独立性和重复利用性。程序显得非常简洁。</p>
+<p><strong>controller层</strong>：</p>
+<p>Controler负责请求转发，接受页面过来的参数，传给Service处理，接到返回值，再传给页面。</p>
+<p>controller层负责具体的业务模块流程的控制，在此层要调用service层的接口来控制业务流程，控制的配置也同样是在Spring的配置文件里进行，针对具体的业务流程，会有不同的控制器。我们具体的设计过程可以将流程进行抽象归纳，设计出可以重复利用的子单元流程模块。这样不仅使程序结构变得清晰，也大大减少了代码量。</p>
+<p><strong>三层的关系：</strong></p>
+<p>Service层是建立在DAO层之上的，建立了DAO层后才可以建立Service层，而Service层又是在Controller层之下的，因而Service层应该既调用DAO层的接口，又要提供接口给Controller层的类来进行调用，它刚好处于一个中间层的位置。每个模型都有一个Service接口，每个接口分别封装各自的业务处理方法。</p>
+<ul>
+<li><p>访问注册页面：点击顶部区域内的链接打开注册页面</p>
+<p>在src/main/java/community/Controller包下新建LoginController.class类，声明注册功能访问路径（get方法）</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8330661c6c8e54621c39.png" /></p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe83a4661c6c8e54623a6f.png" /></p></li>
+<li><p>提交注册数据（实现UserService中的register方法）：</p>
+<ul>
+<li><p>服务端验证账号是否已经存在，邮箱是否已经注册</p>
+<p>src/main/java/community/Service包下新建UserService.class类</p>
+<p><code>public Map&lt;String,Object&gt; register(User user)</code>函数：</p>
+<ul>
+<li><p>验证提交数据是否为空：<img
+src="https://pic.imgdb.cn/item/64fe83bf661c6c8e54624336.png" /></p></li>
+<li><p>验证账号合法性：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe83bf661c6c8e54624343.png" /></p></li>
+<li><p>注册用户：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe83da661c6c8e546247f2.png" /></p></li>
+</ul></li>
+<li><p>服务端发送激活邮件</p>
+<p>还是在<code>public Map&lt;String,Object&gt; register(User user)</code>函数内：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe832f661c6c8e54621c02.png" /></p></li>
+</ul></li>
+<li><p>通过表单提交数据（LoginController中实现post方法）：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe83e9661c6c8e546249db.png" /></p></li>
+<li><p>激活注册账号（UserService中activation方法和LoginCotroller中activation方法）：</p>
+<p>点击邮件中的链接，访问服务端激活服务：</p>
+<ul>
+<li><p>UserService中activation方法提供判断用户是否应该被激活以及激活用户的功能：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe832f661c6c8e54621c0f.png" /></p></li>
+<li><p>LoginCotroller中activation方法利用服务端返回的激活状态显示不同的文字：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8330661c6c8e54621c21.png" /></p></li>
+</ul></li>
+</ul>
+<h2 id="会话管理">会话管理</h2>
+<ul>
+<li><p>HTTP基本性质：</p>
+<ul>
+<li>HTTP是简单的</li>
+<li>HTTP是可扩展的</li>
+<li>HTTP是<strong>无状态</strong>，有会话的</li>
+</ul></li>
+<li><p>Cookie</p>
+<ul>
+<li><p>是服务器发送到浏览器并保存在浏览器端的一小块数据</p></li>
+<li><p>浏览器下次访问该服务器时，会自动携带该块数据，将其发送给服务器</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe843f661c6c8e546264ba.png" /></p></li>
+</ul></li>
+<li><p>Session</p>
+<ul>
+<li><p>是JavaEE的标准，用于在服务端记录客户端信息，依赖于Cookie</p></li>
+<li><p>数据存放在服务端更加安全，但是也会增加服务端的内存压力</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe843f661c6c8e546264df.png" /></p></li>
+</ul></li>
+</ul>
+<h2 id="生成验证码">生成验证码</h2>
+<ul>
+<li><p>Kaptcha</p>
+<ul>
+<li><p>编写Kaptcha配置类</p>
+<p>src/main/java/community/Config包下新建KaptchaConfig.class</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8459661c6c8e54626992.png" /></p></li>
+<li><p>生成随机字符、生成图片</p>
+<p>LoginController.class类中新建<code>getKaptcha(HttpServletResponse response, HttpSession session)</code>方法</p>
+<p>验证码不能存在客户端，容易被盗取，所以要存在服务器。利用Session存取Kaptcha生成的验证码</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8459661c6c8e5462699e.png" /></p>
+<p>login.html文件中需要做如下改动：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8459661c6c8e546269ac.png" /></p>
+<p>实现的js方法：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe847e661c6c8e5462748c.png" /></p></li>
+</ul></li>
+</ul>
+<h2 id="登录和退出功能">登录和退出功能</h2>
+<p>Dao层需要实现LoginTicketMapper.class类的增改查功能：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe849e661c6c8e54627a89.png" /></p>
+<ul>
+<li><p>访问登录页面</p>
+<ul>
+<li>点击顶部区域内链接，打开登陆页面</li>
+</ul></li>
+<li><p>登录：实现UserService类中的<code>Map&lt;String,Object&gt; login(String username,String password,long expiredSeconds)</code>方法以及LoginController类中的<code>String login(String username,String password,String code,boolean rememberme,Model model,HttpSession session,HttpServletResponse response)</code>方法</p>
+<ul>
+<li><p>验证账号、密码、验证码</p>
+<p>UserService中的login方法验证账号密码：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8503661c6c8e54629f54.png" /></p>
+<p>LoginController中的login方法验证验证码和账号密码：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8503661c6c8e54629f47.png" /></p></li>
+<li><p>成功时生成登陆凭证（ticket），发放给客户端</p>
+<p>UserService中的login方法:</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8527661c6c8e5462f4f5.png" /></p></li>
+<li><p>失败时跳回登录页</p>
+<p>失败后跳回登录页表单中还包含上次填写的数据，html文件中部分逻辑如下：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8527661c6c8e5462f4db.png" /></p></li>
+</ul></li>
+<li><p>退出</p>
+<ul>
+<li><p>将登陆凭证修改为失效状态</p>
+<p>UserService类中实现<code>void logout(String ticket)</code>方法修改用户状态：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8549661c6c8e546301d1.png" /></p></li>
+<li><p>跳转至网站首页</p>
+<p>loginController类中实现<code>String logout(@CookieValue("ticket") String ticket)</code>方法跳转到首页：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8549661c6c8e546301bf.png" /></p></li>
+</ul></li>
+</ul>
+<h2 id="显示登录信息">显示登录信息</h2>
+<p>主要使用拦截器来实现功能。此处注意如果同时配置一个类继承<code>WebMvcConfigurationSupport</code>和一个类实现<code>WebMvcConfigurer</code>或者<code>WebMvcConfigurerAdapter</code>，就会导致只有一个生效。解决办法：将这些配置都在一个类中设置。</p>
+<p><strong>拦截器：</strong></p>
+<p>spring中拦截器主要分两种，一个是<code>HandlerInterceptor</code>，一个是<code>MethodInterceptor</code>。
+<code>HandlerInterceptor</code>是springMVC项目中的拦截器，它拦截的目标是请求的地址，比<code>MethodInterceptor</code>先执行。</p>
+<p>实现一个<code>HandlerInterceptor</code>拦截器可以直接实现<code>HandlerInterceptor</code>接口，也可以继承<code>HandlerInterceptorAdapter</code>类。这两种方法殊途同归，其实<code>HandlerInterceptorAdapter</code>也就是声明了<code>HandlerInterceptor</code>接口中所有方法的默认实现，而我们在继承他之后只需要重写必要的方法。</p>
+<p><strong>preHandle：</strong>
+用来拦截处理器的执行，preHandle方法将在Controller处理之前调用的。SpringMVC里可以同时存在多个interceptor，它们基于链式方式调用，每个interceptor都根据其声明顺序依次执行。这种链式结构可以中断，当方法返回false时整个请求就结束了。</p>
+<p>方法的返回值是布尔类型，方法如果返回false，那后面的interceptor和Controller都不会执行(通常都会响应一个自定义的
+Http
+错误码给客户端)。如果返回值为true，则接着调用下一个interceptor的preHandle方法。如果当前是最后一个interceptor，接下来就会直接调用Controller的处理方法。</p>
+<p><strong>postHandle：</strong> postHandle
+会在Controller方法调用之后，但是在DispatcherServlet
+渲染视图之前调用。因此我们可以在这个阶段，对将要返回给客户端的ModelAndView进行操作。</p>
+<p><strong>afterCompletion：</strong>
+afterCompletion在当前interceptor的preHandle方法返回true时才执行。该方法会在整个请求处理完成后被调用，就是DispatcherServlet渲染视图完成以后，主要是用来进行资源清理工作。需要注意的是，afterCompletion在interceptor链式结构中以相反的顺序执行，也就是说先申明的interceptor返回会后调用。</p>
+<p>拦截器内方法的执行顺序依次是：preHandle -&gt; postHandle -&gt;
+afterCompletion。</p>
+<ul>
+<li><p>配置拦截器：为拦截器指定拦截、排除的路径</p>
+<p>Config包下新建<code>WebMvcConfig</code>类实现<code>WebMvcConfigurer</code>接口。</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe857b661c6c8e546310a3.png" /></p></li>
+<li><p>拦截器应用</p>
+<p>在Controller包下新建Interceptor包，在Interceptor包中新建<code>LoginTicketInterceptor</code>类实现<code>HandlerInterceptor</code>接口。</p>
+<ul>
+<li><p>在请求开始时查询登录用户</p>
+<p>在LoginTicketInterceptor类中实现<code>boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</code>方法：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe857b661c6c8e54631089.png" /></p>
+<p>注意：hostHolder用于代替Session对象来作为一个容器存储user对象，hostHolder中利用ThreadLocal实现线程隔离。</p>
+<p><strong>ThreadLocal:</strong></p>
+<p>ThreadLocal叫做线程变量，意思是ThreadLocal中填充的变量属于当前线程，该变量对其他线程而言是隔离的，也就是说该变量是当前线程独有的变量。ThreadLocal为变量在每个线程中都创建了一个副本，那么每个线程可以访问自己内部的副本变量。</p>
+<p>ThreadLoal 变量，线程局部变量，同一个 ThreadLocal
+所包含的对象，在不同的线程中有不同的副本。这里有几点需要注意：</p>
+<p>因为每个线程内有自己的实例副本，且该副本只能由当前Thread使用。这是也是ThreadLocal命名的由来。
+既然每个Thread有自己的实例副本，且其它Thread不可访问，那就不存在多线程间共享的问题。
+ThreadLocal提供了线程本地的实例。它与普通变量的区别在于，每个使用该变量的线程都会初始化一个完全独立的实例副本。ThreadLocal
+变量通常被private static修饰。当一个线程结束时，它所使用的所有
+ThreadLocal相对的实例副本都可被回收。</p>
+<figure>
+<img
+src="https://img-blog.csdnimg.cn/20201217201331591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTA0NDUzMDE=,size_16,color_FFFFFF,t_70"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p><strong>ThreadLocal与Synchronized的区别：</strong>
+ThreadLocal其实是与线程绑定的一个变量。ThreadLocal和Synchonized都用于解决多线程并发访问。</p>
+<p>但是ThreadLocal与synchronized有本质的区别：</p>
+<ul>
+<li><p>Synchronized用于线程间的数据共享，而ThreadLocal则用于线程间的数据隔离。</p></li>
+<li><p>Synchronized是利用锁的机制，使变量或代码块在某一时该只能被一个线程访问。而ThreadLocal为每一个线程都提供了变量的副本，使得每个线程在某一时间访问到的并不是同一个对象，这样就隔离了多个线程对数据的数据共享。而Synchronized却正好相反，它用于在多个线程间通信时能够获得数据共享。</p></li>
+</ul>
+<p>一句话理解ThreadLocal，Threadlocal是作为当前线程中属性ThreadLocalMap集合中的某一个Entry的key值
+Entry（Threadlocal,value），虽然不同的线程之间threadlocal这个key值是一样，但是不同的线程所拥有的ThreadLocalMap是独一无二的，也就是不同的线程间同一个ThreadLocal（key）对应存储的值(value)不一样，从而到达了线程间变量隔离的目的，但是在同一个线程中这个value变量地址是一样的。
+<strong>ThreadLocal用法和原理：</strong></p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe859f661c6c8e546317d0.png" /></p>
+<p>ThreadLocal中主要的方法就是set()、get()、clear()。</p>
+<ul>
+<li><p>set()</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe85a0661c6c8e546317f8.png" /></p>
+<p>ThreadLocal
+set赋值的时候首先会获取当前线程thread,并获取thread线程中的ThreadLocalMap属性。如果map属性不为空，则直接更新value值，如果map为空，则实例化threadLocalMap,并将value值初始化。</p></li>
+<li><p>get()</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe85a0661c6c8e546317dd.png" /></p></li>
+<li><p>clear()</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe85a0661c6c8e546317e9.png" /></p></li>
+</ul>
+<p><strong>ThreadLocal常用场景：</strong></p>
+<p>ThreadLocal主要用于：</p>
+<ul>
+<li>每个线程需要有自己单独的实例</li>
+<li>实例需要在多个方法中共享，但不希望被多线程共享</li>
+</ul>
+<p>常见的情况有：</p>
+<ul>
+<li>存储用户Session</li>
+<li>数据库连接，处理数据库事务</li>
+<li>数据跨层传递（controller,service, dao）</li>
+<li>Spring使用ThreadLocal解决线程安全问题</li>
+</ul></li>
+<li><p>在本次请求中持有用户数据</p>
+<p>在LoginTicketInterceptor类中实现<code>void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</code>方法：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe85cf661c6c8e546322fe.png" /></p></li>
+<li><p>在模板视图上显示用户数据</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe85cf661c6c8e5463232d.png" /></p></li>
+<li><p>在请求结束时清理用户数据</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe85cf661c6c8e54632313.png" /></p></li>
+</ul></li>
+</ul>
+<h2 id="账号设置">账号设置</h2>
+<ul>
+<li><p>上传文件</p>
+<ul>
+<li>请求：必须是POST请求</li>
+<li>表单：enctype="multipart/form-data"</li>
+<li>Spring MVC:通过MultipartFile处理上传文件</li>
+</ul></li>
+<li><p>开发步骤</p>
+<ul>
+<li><p>访问账号设置页面</p>
+<p>在Controller包下新建UserController类，声明<code>String getSettingPage()</code>方法：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe85f6661c6c8e546331db.png" /></p></li>
+<li><p>上传头像</p>
+<p>配置上传头像的资源位置：</p>
+<p>在application.properties中增加如下配置：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe860d661c6c8e54639568.png" /></p>
+<p>在UserService类中增加<code>int updateHeader(int userId,String headerUrl)</code>方法：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe860d661c6c8e546394a9.png" /></p>
+<p>在UserController类中增加<code>String uploadHeader(MultipartFile headerImage, Model model)</code>方法上传文件：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe860d661c6c8e54639524.png" /></p></li>
+<li><p>获取头像</p>
+<p>在UserController类中增加<code>void getHeader(@PathVariable("fileName") String fileName, HttpServletResponse response)</code>方法获取用户头像：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe860c661c6c8e5463945a.png" /></p>
+<p>并在setting.html文件中做上传头像部分相应的修改：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe860d661c6c8e546394a0.png" /></p></li>
+</ul></li>
+</ul>
+<h2 id="检查登录状态">检查登录状态</h2>
+<ul>
+<li><p>使用拦截器</p>
+<p>在/user/setting的功能中使用拦截器，如果检测到当前页面不是登录状态，则不允许访问该页面，直接跳转到设置页面。</p>
+<ul>
+<li><p>在方法前标注自定义注解</p>
+<p>在Community下新建annotation包，在该包下新建LoginRequired接口类，声明注解的位置、生效时间：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8642661c6c8e5463a972.png" /></p></li>
+<li><p>拦截所有请求，只处理带有该注解的方法</p>
+<p>在UserController类中的getSettingPage和uploadHeader方法上声明两个注解用来拦截请求：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8642661c6c8e5463a9a2.png" /></p>
+<p>在Interceptor包下新建LoginRequiredInterceptor类读取注解并做处理：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8642661c6c8e5463a98c.png" /></p>
+<p>并且在Config包下的WebMvcConfig类中声明拦截器作用范围：</p>
+<p><img
+src="https://pic.imgdb.cn/item/64fe8642661c6c8e5463a97f.png" /></p></li>
+</ul></li>
+<li><p>自定义注解</p>
+<ul>
+<li><p>常用的元注解：</p>
+<p><span class="citation" data-cites="Target">@Target</span>、<span
+class="citation" data-cites="Retention">@Retention</span>、<span
+class="citation" data-cites="Document">@Document</span>、<span
+class="citation" data-cites="Inherited">@Inherited</span></p></li>
+<li><p>如何读取注解：</p>
+<p>Method.getDeclaredAnnotations()</p>
+<p>Method.getAnnotation(Class<T> annotationClass)</p></li>
+</ul></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/10/16/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="【算法】布局学习笔记">
+                <i class="fa fa-chevron-left"></i> 【算法】布局学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">发送邮件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B3%A8%E5%86%8C%E5%8A%9F%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">开发注册功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">会话管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">生成验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E5%92%8C%E9%80%80%E5%87%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">5.</span> <span class="nav-text">登录和退出功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF"><span class="nav-number">6.</span> <span class="nav-text">显示登录信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A6%E5%8F%B7%E8%AE%BE%E7%BD%AE"><span class="nav-number">7.</span> <span class="nav-text">账号设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E7%99%BB%E5%BD%95%E7%8A%B6%E6%80%81"><span class="nav-number">8.</span> <span class="nav-text">检查登录状态</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
