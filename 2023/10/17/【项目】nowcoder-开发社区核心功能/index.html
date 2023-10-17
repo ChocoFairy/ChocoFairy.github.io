@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="nowcoder社区项目中的社区核心功能开发。主要包含内容：前缀树（过滤敏感词），AJAX（发布帖子，发送私信），事务管理（添加评论），AOP（统一处理异常，统一记录日志）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【项目】nowcoder-开发社区核心功能">
+<meta property="og:url" content="https://chocofairy.github.io/2023/10/17/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:site_name" content="巧克力梦工厂">
+<meta property="og:description" content="nowcoder社区项目中的社区核心功能开发。主要包含内容：前缀树（过滤敏感词），AJAX（发布帖子，发送私信），事务管理（添加评论），AOP（统一处理异常，统一记录日志）。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-10-17T13:26:38.000Z">
+<meta property="article:modified_time" content="2023-10-17T13:45:10.324Z">
+<meta property="article:author" content="wlz">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ChocoFairy.github.io/2023/10/17/【项目】nowcoder-开发社区核心功能/"/>
+
+
+
+
+
+  <title>【项目】nowcoder-开发社区核心功能 | 巧克力梦工厂</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">巧克力梦工厂</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小仙女的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2023/10/17/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/person.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="巧克力梦工厂">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【项目】nowcoder-开发社区核心功能</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-10-17T21:26:38+08:00">
+                2023-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>nowcoder社区项目中的社区核心功能开发。主要包含内容：<strong>前缀树</strong>（过滤敏感词），<strong>AJAX</strong>（发布帖子，发送私信），<strong>事务管理</strong>（添加评论），<strong>AOP</strong>（统一处理异常，统一记录日志）。</p>
+<span id="more"></span>
+<h2 id="过滤敏感词">过滤敏感词</h2>
+<ul>
+<li><p>前缀树</p>
+<ul>
+<li>名称：Trie、字典树、查找树</li>
+<li>特点：查找效率高，消耗内存大</li>
+<li>应用：字符串检索、词频统计、字符串排序等</li>
+</ul></li>
+<li><p>敏感词过滤器</p>
+<ul>
+<li><p>定义前缀树</p>
+<p>在util包下新建SensitiveFilter.class，在该类中新建TrieNode类：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8cd5c458853aefe17737.png"><img
+src="https://pic.imgdb.cn/item/652e8cd5c458853aefe17737.png" /></a></p></li>
+<li><p>根据敏感词，初始化前缀树</p>
+<p>SensitiveFilter.class中的成员变量：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8cd5c458853aefe1759a.png"><img
+src="https://pic.imgdb.cn/item/652e8cd5c458853aefe1759a.png" /></a></p>
+<p>加载敏感词文件：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8cd5c458853aefe1764c.png"><img
+src="https://pic.imgdb.cn/item/652e8cd5c458853aefe1764c.png" /></a></p>
+<p>将敏感词添加到前缀树中：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8cd5c458853aefe17815.png"><img
+src="https://pic.imgdb.cn/item/652e8cd5c458853aefe17815.png" /></a></p></li>
+<li><p>编写过滤敏感词的方法</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8cd3c458853aefe171a1.jpg"><img
+src="https://pic.imgdb.cn/item/652e8cd3c458853aefe171a1.jpg" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="发布帖子">发布帖子</h2>
+<ul>
+<li><p>AJAX</p>
+<ul>
+<li>（Asynchronous JavaScript and
+XML）异步的JavaScript与XML，不是一门新技术，只是一个新术语</li>
+<li>使用AJAX，网页能够将增量更新呈现在页面上，而不需要刷新整个页面</li>
+<li>虽然X代表XML，但是目前JSON的使用比XML更加普遍</li>
+</ul></li>
+<li><p>示例</p>
+<ul>
+<li><p>使用JQuery发送AJAX请求</p>
+<p>在Controller包下的AlphaController中写一个测试方法：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d2cc458853aefe28689.png"><img
+src="https://pic.imgdb.cn/item/652e8d2cc458853aefe28689.png" /></a></p>
+<p>在html文件中使用JQuery发送请求：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d3ec458853aefe2c330.png"><img
+src="https://pic.imgdb.cn/item/652e8d3ec458853aefe2c330.png" /></a></p>
+<p>可以在网页的控制台提交表单后看见数据。</p></li>
+</ul></li>
+<li><p>实践</p>
+<ul>
+<li><p>采用AJAX请求，实现发布帖子的功能</p>
+<p>在dao下的DiscussPostMapper类中新建增加帖子的方法：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d53c458853aefe30418.png"><img
+src="https://pic.imgdb.cn/item/652e8d53c458853aefe30418.png" /></a></p>
+<p>对应的resource下的discusspost-mapper.xml中的sql语句进行增加：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d54c458853aefe306a6.png"><img
+src="https://pic.imgdb.cn/item/652e8d54c458853aefe306a6.png" /></a></p>
+<p>在service下的DiscussPostService类下新建增加帖子的方法，判断传入的参数不能为空后对帖子内容进行转义和过滤：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d54c458853aefe305e3.png"><img
+src="https://pic.imgdb.cn/item/652e8d54c458853aefe305e3.png" /></a></p>
+<p>在controller下新建DiscussPostController类，声明访问路径为"/discuss"，并在类中新建新增帖子的方法，判断客户端数据无误后传到服务器：
+<a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d53c458853aefe30411.png"><img
+src="https://pic.imgdb.cn/item/652e8d53c458853aefe30411.png" /></a></p>
+<p>最后在index.js文件中编写JQuery方法发送异步请求。如果点击我要发贴后不刷新界面，显示发帖框。发帖成功会显示提示框，2s后刷新界面：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d53c458853aefe30502.png"><img
+src="https://pic.imgdb.cn/item/652e8d53c458853aefe30502.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="帖子详情">帖子详情</h2>
+<ul>
+<li><p>DiscussPostMapper</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d97c458853aefe3e695.png"><img
+src="https://pic.imgdb.cn/item/652e8d97c458853aefe3e695.png" /></a></p></li>
+<li><p>DiscussPostService</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d97c458853aefe3e6c9.png"><img
+src="https://pic.imgdb.cn/item/652e8d97c458853aefe3e6c9.png" /></a></p></li>
+<li><p>DiscussPostController</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d96c458853aefe3e47b.png"><img
+src="https://pic.imgdb.cn/item/652e8d96c458853aefe3e47b.png" /></a></p></li>
+<li><p>index.html</p>
+<ul>
+<li><p>在帖子标题上增加访问详情页面的链接</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d97c458853aefe3e63c.png"><img
+src="https://pic.imgdb.cn/item/652e8d97c458853aefe3e63c.png" /></a></p></li>
+</ul></li>
+<li><p>discuss-detail.html</p>
+<ul>
+<li><p>处理静态资源的访问路径</p></li>
+<li><p>复用index.html的header区域</p></li>
+<li><p>显示标题、作者、发布时间、帖子正文等内容</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8d97c458853aefe3e5b7.png"><img
+src="https://pic.imgdb.cn/item/652e8d97c458853aefe3e5b7.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="事务管理">事务管理</h2>
+<ul>
+<li><p>什么是事务</p>
+<p>事务时由N步数据库操作序列组成的逻辑执行单元，这系列操作要么全执行，要么全放弃执行。</p></li>
+<li><p>事务的特性（ACID）</p>
+<ul>
+<li>原子性（Atomicity）：事务时应用中不可再分的最小执行体；</li>
+<li>一致性（Consistency）：事务执行的结果，须使数据从一个一致性状态，变为另一个一致性状态；</li>
+<li>隔离性（Isolation）：各事务的执行互不干扰，任何事务的内部操作对其他事务都是隔离的；</li>
+<li>持久性（Durability）：事务一旦提交，对数据所做的任何改变都要记录到永久的存储器中。</li>
+</ul></li>
+<li><p>事务的隔离性</p>
+<ul>
+<li><p>常见并发异常：</p>
+<ul>
+<li><p>第一类丢失更新，第二类丢失更新</p>
+<p>第一类丢失更新：某一个事务回滚，导致另外一个事务已更新的数据丢失。</p>
+<table>
+<thead>
+<tr class="header">
+<th>时刻</th>
+<th>事务1</th>
+<th>事务2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>Read:N=10</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td></td>
+<td>Read:N=10</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td></td>
+<td>Write:N=9</td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td></td>
+<td>Commit:N=9</td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td>Write:N=11</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>T6</td>
+<td>Rollback:N=10</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>第二类丢失更新：某一个事务提交，导致另外一个事务已更新的数据丢失。</p>
+<table>
+<thead>
+<tr class="header">
+<th>时刻</th>
+<th>事务1</th>
+<th>事务2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>Read:N=10</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td></td>
+<td>Read:N=10</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td></td>
+<td>Write:N=9</td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td></td>
+<td>Commit:N=9</td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td>Write:N=11</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>T6</td>
+<td>Commit:N=11</td>
+<td></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>脏读、不可重复读、幻读</p>
+<p>脏读：某一个事务，读取了另外一个事务未提交的数据。</p>
+<table>
+<thead>
+<tr class="header">
+<th>时刻</th>
+<th>事务1</th>
+<th>事务2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>Read:N=10</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>Write:N=11</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td></td>
+<td>Read:N=11</td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td>Rollback:N=10</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>不可重复读：某一个事务，对同一个数据前后读取的结果不一致。</p>
+<table>
+<thead>
+<tr class="header">
+<th>时刻</th>
+<th>事务1</th>
+<th>事务2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>Read:N=10</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td></td>
+<td>Read:N=10</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>Write:N=11</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td>Commit:N=11</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td></td>
+<td>Read:N=11</td>
+</tr>
+</tbody>
+</table>
+<p>幻读：某一个事务，对同一个表前后查询到的行数不一致。</p>
+<table>
+<thead>
+<tr class="header">
+<th>时刻</th>
+<th>事务1</th>
+<th>事务2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td></td>
+<td>Select:id&lt;10(1,2,3)</td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>Insert:id=4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>Commit:id=(1,2,3,4)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td></td>
+<td>Select:id&lt;10(1,2,3,4)</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><p>常见隔离级别：</p>
+<ul>
+<li>Read Uncommitted:读取未提交的数据</li>
+<li>Read Committed:读取已提交的数据</li>
+<li>Repeatable Read:可重复读</li>
+<li>Serializable：串行化</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 22%" />
+<col style="width: 6%" />
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>隔离级别</th>
+<th>第一类丢失更新</th>
+<th>脏读</th>
+<th>第二类丢失更新</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Read Uncommitted</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="even">
+<td>Read Committed</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="odd">
+<td>Repeatable Read</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr class="even">
+<td>Serializable</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><p>实现机制</p>
+<ul>
+<li><p>悲观锁（数据库）</p>
+<ul>
+<li><p>共享锁（S锁）</p>
+<p>事务A对某数据加了共享锁之后，其他事务只能对该数据加共享锁，但不能加排他锁。</p></li>
+<li><p>排他锁（X锁）</p>
+<p>事务A对某数据加了排他锁之后，其他事务对该数据既不能加共享锁，也不能加排他锁。</p></li>
+</ul></li>
+<li><p>乐观锁（自定义）</p>
+<ul>
+<li><p>版本号，时间戳等</p>
+<p>在更新数据前，检查版本号是否发生变化。若变化则取消本次更新，否则就更新数据（版本号+1）。</p></li>
+</ul></li>
+</ul></li>
+<li><p>Spring事务管理</p>
+<ul>
+<li><p>声明式事务</p>
+<ul>
+<li><p>通过XML配置，声明某方法的事务特征。</p></li>
+<li><p>通过注解，声明某方法的事务特征</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8dccc458853aefe4a55a.png"><img
+src="https://pic.imgdb.cn/item/652e8dccc458853aefe4a55a.png" /></a></p></li>
+</ul></li>
+<li><p>编程式事务</p>
+<ul>
+<li><p>通过TransactionTemplate管理事务，并通过它执行数据库的操作。</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8dccc458853aefe4a469.png"><img
+src="https://pic.imgdb.cn/item/652e8dccc458853aefe4a469.png" /></a></p></li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="显示评论">显示评论</h2>
+<ul>
+<li><p>数据层</p>
+<ul>
+<li><p>根据实体查询一页评论数据</p></li>
+<li><p>根据实体查询评论的数量</p>
+<p>首先在dao包下实现CommentMapper类：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8de8c458853aefe4fc89.png"><img
+src="https://pic.imgdb.cn/item/652e8de8c458853aefe4fc89.png" /></a></p>
+<p>并在resources包下的mapper包肿新建comment-mapper.xml实现sql。</p></li>
+</ul></li>
+<li><p>业务层</p>
+<ul>
+<li><p>处理查询评论的业务</p></li>
+<li><p>处理查询评论数量的业务</p>
+<p>在service包下新建CommentService类，实现两个查询函数</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8de8c458853aefe4fcfb.png"><img
+src="https://pic.imgdb.cn/item/652e8de8c458853aefe4fcfb.png" /></a></p></li>
+</ul></li>
+<li><p>表现层</p>
+<ul>
+<li><p>显示帖子详情数据时，同时显示该帖子所有的评论数据</p>
+<p>在controller包下的DiscussPostController类中补充getDiscussPost函数：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8de8c458853aefe4fc2d.jpg"><img
+src="https://pic.imgdb.cn/item/652e8de8c458853aefe4fc2d.jpg" /></a></p>
+<p>显示帖子详情数据：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8de9c458853aefe4ffbb.png"><img
+src="https://pic.imgdb.cn/item/652e8de9c458853aefe4ffbb.png" /></a></p>
+<p>评论数据：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8de8c458853aefe4fe34.png"><img
+src="https://pic.imgdb.cn/item/652e8de8c458853aefe4fe34.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="添加评论">添加评论</h2>
+<ul>
+<li><p>数据层</p>
+<ul>
+<li><p>增加评论数据</p>
+<p>在dao包下的CommentMapper类中增加方法insertComment来增加评论数据，并在相应的comment-mapper中增加sql语句：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8e3bc458853aefe60ac7.png"><img
+src="https://pic.imgdb.cn/item/652e8e3bc458853aefe60ac7.png" /></a></p></li>
+<li><p>修改帖子的评论数量</p>
+<p>在dao包下的DiscussPostMapper类中增加方法updateCommentCount来更新帖子评论数量：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8e3bc458853aefe60b67.png"><img
+src="https://pic.imgdb.cn/item/652e8e3bc458853aefe60b67.png" /></a></p></li>
+</ul></li>
+<li><p>业务层</p>
+<ul>
+<li><p>处理添加评论的业务：先增加评论，再更新帖子的评论数量</p>
+<p>先在service包下的DiscussPostService类中增加方法updateCommentCount来增加评论在表中：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8e5fc458853aefe68f92.png"><img
+src="https://pic.imgdb.cn/item/652e8e5fc458853aefe68f92.png" /></a></p>
+<p>然后在CommentService类中增加方法addComment调用updateCommentCount方法增加评论，然后更新帖子评论数量。这里需要用事务管理保证新增帖子操作前后一致性：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8e5ec458853aefe68f35.png"><img
+src="https://pic.imgdb.cn/item/652e8e5ec458853aefe68f35.png" /></a></p></li>
+</ul></li>
+<li><p>表现层</p>
+<ul>
+<li><p>处理添加评论数据的请求</p>
+<p>在controller包下新建CommentController类，利用路径传入帖子ID，进行增加评论操作后，提交并重定向回原帖子：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8eabc458853aefe79852.png"><img
+src="https://pic.imgdb.cn/item/652e8eabc458853aefe79852.png" /></a></p></li>
+<li><p>设置添加评论的表单</p>
+<p>利用隐藏输入框提交回复、评论的实体类型和实体id：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8eacc458853aefe7997b.png"><img
+src="https://pic.imgdb.cn/item/652e8eacc458853aefe7997b.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8eacc458853aefe79a10.png"><img
+src="https://pic.imgdb.cn/item/652e8eacc458853aefe79a10.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8eacc458853aefe79b41.png"><img
+src="https://pic.imgdb.cn/item/652e8eacc458853aefe79b41.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="私信列表">私信列表</h2>
+<ul>
+<li><p>私信列表</p>
+<ul>
+<li><p>查询当前用户的会话列表，每个会话只显示一条最新的私信</p>
+<p>在dao层下新建MessageMapper类，并在对应resources/mapper包下新建message-mapper.xml写对应的查询语句。</p>
+<p>MessageMapper：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8ee8c458853aefe856f6.png"><img
+src="https://pic.imgdb.cn/item/652e8ee8c458853aefe856f6.png" /></a></p>
+<p>在Service层下新建MessageServer类，并向上层提供对应的查询服务：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8ee8c458853aefe857a8.png"><img
+src="https://pic.imgdb.cn/item/652e8ee8c458853aefe857a8.png" /></a></p>
+<p>在Controller层下新建MessageController类，显示当前登录用户的会话列表：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f0ec458853aefe8ccf1.png"><img
+src="https://pic.imgdb.cn/item/652e8f0ec458853aefe8ccf1.png" /></a></p></li>
+<li><p>支持分页显示</p>
+<p>SQL语句添加限制：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f0ec458853aefe8cd3d.png"><img
+src="https://pic.imgdb.cn/item/652e8f0ec458853aefe8cd3d.png" /></a></p></li>
+</ul></li>
+<li><p>私信详情</p>
+<ul>
+<li><p>查询某个会话所包含的私信</p>
+<p>MessageController类下新增方法getLetterDetail：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f0ec458853aefe8ce44.png"><img
+src="https://pic.imgdb.cn/item/652e8f0ec458853aefe8ce44.png" /></a></p>
+<p>其中查询target的方法是利用conversationId的特点来查询的。conversationId由两个私信用户的id组成，类似于：id1_id2的形式，小的id在前面。如果id1==当前登录用户，那么id2就是目标用户，否则id1是目标用户：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f0ec458853aefe8cf13.png"><img
+src="https://pic.imgdb.cn/item/652e8f0ec458853aefe8cf13.png" /></a></p></li>
+<li><p>支持分页显示</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f0ec458853aefe8cf6e.png"><img
+src="https://pic.imgdb.cn/item/652e8f0ec458853aefe8cf6e.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="发送私信">发送私信</h2>
+<ul>
+<li><p>发送私信</p>
+<ul>
+<li><p>采用异步的方式发送私信</p>
+<p>异步：异步任务主要的应用场景为发送短信、邮件、异步结果的通知、积分的修改等等业务。指一个动作（类似于发给别人消息之类的动作）完成之后不等待直接进入下一个任务。</p>
+<p>在dao层的MessageMapper类中新增方法用于新增一条私信：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f66c458853aefe9d75f.png"><img
+src="https://pic.imgdb.cn/item/652e8f66c458853aefe9d75f.png" /></a></p>
+<p>在Service层的MessageService类中新增方法，过滤敏感词并插入新消息：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f66c458853aefe9d7c1.png"><img
+src="https://pic.imgdb.cn/item/652e8f66c458853aefe9d7c1.png" /></a></p>
+<p>在Controller层中的MessageController类中新增方法：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f66c458853aefe9d733.png"><img
+src="https://pic.imgdb.cn/item/652e8f66c458853aefe9d733.png" /></a></p>
+<p>letter.js文件中利用JQuery函数处理异步：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f86c458853aefea41c3.png"><img
+src="https://pic.imgdb.cn/item/652e8f86c458853aefea41c3.png" /></a></p></li>
+<li><p>发送成功后刷新私信列表</p>
+<p>letter-detail.html文件中新增方法：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8f86c458853aefea41f2.png"><img
+src="https://pic.imgdb.cn/item/652e8f86c458853aefea41f2.png" /></a></p></li>
+</ul></li>
+<li><p>设置已读</p>
+<ul>
+<li><p>访问私信详情时，将显示的私信设置为已读状态</p>
+<p>在dao层的MessageMapper类中新增函数更新消息已读后的状态：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8fa2c458853aefea9764.png"><img
+src="https://pic.imgdb.cn/item/652e8fa2c458853aefea9764.png" /></a></p>
+<p>在Service层增加方法：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8fa2c458853aefea97ae.png"><img
+src="https://pic.imgdb.cn/item/652e8fa2c458853aefea97ae.png" /></a></p>
+<p>在Controller层中的MessageController类中的getLetterDetail方法中新增代码，因为调用此方法时代表已经点开了和某人的私信列表，即已读：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8fa2c458853aefea9757.png"><img
+src="https://pic.imgdb.cn/item/652e8fa2c458853aefea9757.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="统一处理异常">统一处理异常</h2>
+<ul>
+<li><span class="citation"
+data-cites="ControllerAdvice">@ControllerAdvice</span>
+<ul>
+<li>用于修饰类，表示该类是Controller的全局配置类</li>
+<li>在此类中，可以对Controller进行如下三种全局配置：异常处理方案、绑定数据方案、绑定参数方案</li>
+</ul></li>
+<li><span class="citation"
+data-cites="ExceptionHandler">@ExceptionHandler</span> 异常处理方案
+<ul>
+<li>用于修饰方法，该方法会在Controller出现异常后被调用，用于处理捕获到的异常。</li>
+</ul></li>
+<li><span class="citation"
+data-cites="ModelAttribute">@ModelAttribute</span> 绑定数据方案
+<ul>
+<li>用于修饰方法，该方法会在Controller方法执行前被调用，用于为Model对象绑定参数。</li>
+</ul></li>
+<li><span class="citation" data-cites="DataBinder">@DataBinder</span>
+绑定参数方案
+<ul>
+<li>用于修饰方法，该方法会在Controller方法执行前被调用，用于绑定参数的转换器。</li>
+</ul></li>
+</ul>
+<p>全局配置类：在Controller包下新建advice包，在addvice包下新建ExceptionAdvice类用来做全局配置类：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8fc0c458853aefeaed1e.png"><img
+src="https://pic.imgdb.cn/item/652e8fc0c458853aefeaed1e.png" /></a></p>
+<p>在HomeController类下配置error页面：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8fc0c458853aefeaec13.png"><img
+src="https://pic.imgdb.cn/item/652e8fc0c458853aefeaec13.png" /></a></p>
+<h2 id="统一记录日志">统一记录日志</h2>
+<p>需求：帖子模块、评论模块、消息模块</p>
+<p><strong>AOP的概念</strong></p>
+<ul>
+<li>Aspect Oriented Programing，即面向方面（切面）编程</li>
+<li>AOP是一种编程思想，是对OOP的补充，可以进一步提高编程的效率。</li>
+</ul>
+<p><strong>AOP术语</strong></p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8fc0c458853aefeaedf1.png"><img
+src="https://pic.imgdb.cn/item/652e8fc0c458853aefeaedf1.png" /></a></p>
+<p>AOP的实现</p>
+<ul>
+<li><p>AspectJ</p>
+<ul>
+<li>AspectJ是语言级的实现，它扩展了Java语言，定义了AOP语法</li>
+<li>AspectJ在编译期织入代码，它有一个专门的编译器，用来生成遵守Java字节码规范的class文件</li>
+</ul></li>
+<li><p>Spring AOP</p>
+<ul>
+<li>Spring
+AOP使用纯Java实现，它不需要专门的编译过程，也不需要特殊的类装载器。</li>
+<li>Spring
+AOP在运行时通过代理的方式织入代码，只支持方法类型的连接点。</li>
+<li>Spring AOP支持对AspectJ的集成。</li>
+</ul></li>
+<li><p>JDK动态代理</p>
+<ul>
+<li>java提供的动态代理技术，可以在运行时创建接口的代理实例</li>
+<li>Spring AOP默认采用此种方式，在接口的代理实例中织入代码</li>
+</ul></li>
+<li><p>CGlib动态代理</p>
+<ul>
+<li>采用底层的字节码技术，在运行时创建子类代替实例</li>
+<li>当目标对象不存在接口时，Spring
+AOP会采用此种方式，在子类实例中织入代码</li>
+</ul></li>
+<li><p>使用方式</p>
+<ul>
+<li><p>在com.nowcoder.community下新建包aspect，在aspect包下新建类，示例为AlphaAspect类。类上添加注解@Component和<span
+class="citation"
+data-cites="Aspect">@Aspect</span>。pointcut方法上添加注解@Pointcut()，用于声明在哪些切点上操作。</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8fc0c458853aefeaee61.png"><img
+src="https://pic.imgdb.cn/item/652e8fc0c458853aefeaee61.png" /></a></p></li>
+<li><p><span class="citation"
+data-cites="Before表示在切点前运行">@Before表示在切点前运行</span>，<span
+class="citation"
+data-cites="After表示在切点后运行">@After表示在切点后运行</span>，<span
+class="citation"
+data-cites="AfterReturning表示在返回值之后运行">@AfterReturning表示在返回值之后运行</span>，<span
+class="citation"
+data-cites="AfterThrowing表示在抛出异常后运行">@AfterThrowing表示在抛出异常后运行</span>，<span
+class="citation"
+data-cites="Around表示在切点前和后运行">@Around表示在切点前和后运行</span>，其中JoinPoint是目标对象上织入代码的位置，用Object承载，然后在这行代码之前或者之后写代码就可以了。</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/652e8fc1c458853aefeaef85.png"><img
+src="https://pic.imgdb.cn/item/652e8fc1c458853aefeaef85.png" /></a></p></li>
+</ul></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/09/11/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/" rel="next" title="【项目】nowcoder-开发社区登录模块">
+                <i class="fa fa-chevron-left"></i> 【项目】nowcoder-开发社区登录模块
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/person.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ChocoFairy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wanlizhao@mail.dlut.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E6%95%8F%E6%84%9F%E8%AF%8D"><span class="nav-number">1.</span> <span class="nav-text">过滤敏感词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E5%B8%96%E5%AD%90"><span class="nav-number">2.</span> <span class="nav-text">发布帖子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%96%E5%AD%90%E8%AF%A6%E6%83%85"><span class="nav-number">3.</span> <span class="nav-text">帖子详情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">事务管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%AF%84%E8%AE%BA"><span class="nav-number">5.</span> <span class="nav-text">显示评论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA"><span class="nav-number">6.</span> <span class="nav-text">添加评论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%81%E4%BF%A1%E5%88%97%E8%A1%A8"><span class="nav-number">7.</span> <span class="nav-text">私信列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E7%A7%81%E4%BF%A1"><span class="nav-number">8.</span> <span class="nav-text">发送私信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8"><span class="nav-number">9.</span> <span class="nav-text">统一处理异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97"><span class="nav-number">10.</span> <span class="nav-text">统一记录日志</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wlz</span>
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+   <!--<script type="text/javascript" src="//libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+   雪花特效2
+  <script type="text/javascript" src="/js/snow2.js"></script>--> 
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
