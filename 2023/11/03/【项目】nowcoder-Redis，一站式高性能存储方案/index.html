@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="2D Rectangle Packing," />
+  <meta name="keywords" content="java," />
 
 
 
@@ -75,26 +75,18 @@
 
 
 
-<meta name="description" content="本文提出了一种基于改进规则和强化学习的混合启发式算法来解决二维矩形Packing问题（2DSPP）。首先，改进了基于skyline算法的评分规则，考虑了具有一组宽度松弛因子的“两步”连续项。改进后的评分规则可以有效地减少空间浪费。其次，作为一种强化学习方法，建立了深度q网络（DQN），得到初始矩形项序列，同时作为放置规则的基本补充。它可以提高空间利用率，防止算法陷入局部最优状态。结合新的”两步”放">
+<meta name="description" content="nowcoder社区项目中利用Redis进行高性能存储。主要包含内容：Redis概念和配置以及使用方法（Redis入门，Spring整合Redis），项目中的Redis具体实操（点赞，我收到的赞，关注、取消关注，关注列表、粉丝列表，优化登录模块）等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法">
-<meta property="og:url" content="https://chocofairy.github.io/2022/10/06/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%9F%BA%E4%BA%8E%E6%94%B9%E8%BF%9B%E8%A7%84%E5%88%99%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E6%B7%B7%E5%90%88%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="【项目】nowcoder-Redis，一站式高性能存储方案">
+<meta property="og:url" content="https://chocofairy.github.io/2023/11/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-Redis%EF%BC%8C%E4%B8%80%E7%AB%99%E5%BC%8F%E9%AB%98%E6%80%A7%E8%83%BD%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="本文提出了一种基于改进规则和强化学习的混合启发式算法来解决二维矩形Packing问题（2DSPP）。首先，改进了基于skyline算法的评分规则，考虑了具有一组宽度松弛因子的“两步”连续项。改进后的评分规则可以有效地减少空间浪费。其次，作为一种强化学习方法，建立了深度q网络（DQN），得到初始矩形项序列，同时作为放置规则的基本补充。它可以提高空间利用率，防止算法陷入局部最优状态。结合新的”两步”放">
+<meta property="og:description" content="nowcoder社区项目中利用Redis进行高性能存储。主要包含内容：Redis概念和配置以及使用方法（Redis入门，Spring整合Redis），项目中的Redis具体实操（点赞，我收到的赞，关注、取消关注，关注列表、粉丝列表，优化登录模块）等。">
 <meta property="og:locale">
-<meta property="og:image" content="https://s2.loli.net/2022/10/06/iLGWQ31FAo8rRxY.png">
-<meta property="og:image" content="https://s2.loli.net/2022/10/06/d197jPNWCsXx6bl.png">
-<meta property="og:image" content="https://s2.loli.net/2022/10/06/V7kOaZqpXur8Gtg.png">
-<meta property="og:image" content="https://s2.loli.net/2022/10/06/OjxfPM148dBSrm5.png">
-<meta property="og:image" content="https://s2.loli.net/2022/10/06/sXrTlnzfy1jLJ3u.png">
-<meta property="og:image" content="https://s2.loli.net/2022/10/06/Pd4jTRHm7MUeucN.jpg">
-<meta property="og:image" content="https://s2.loli.net/2022/10/06/MyVZEk42LPjK9fS.jpg">
-<meta property="article:published_time" content="2022-10-06T12:04:47.000Z">
-<meta property="article:modified_time" content="2022-10-09T08:36:25.190Z">
+<meta property="article:published_time" content="2023-11-03T11:23:56.000Z">
+<meta property="article:modified_time" content="2023-11-03T11:38:23.266Z">
 <meta property="article:author" content="wlz">
-<meta property="article:tag" content="2D Rectangle Packing">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2022/10/06/iLGWQ31FAo8rRxY.png">
 
 
 
@@ -124,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="https://ChocoFairy.github.io/2022/10/06/【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法/"/>
+  <link rel="canonical" href="https://ChocoFairy.github.io/2023/11/03/【项目】nowcoder-Redis，一站式高性能存储方案/"/>
 
 
 
 
 
-  <title>【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法 | 巧克力梦工厂</title>
+  <title>【项目】nowcoder-Redis，一站式高性能存储方案 | 巧克力梦工厂</title>
   
 
 
@@ -267,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2022/10/06/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%9F%BA%E4%BA%8E%E6%94%B9%E8%BF%9B%E8%A7%84%E5%88%99%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E6%B7%B7%E5%90%88%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2023/11/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-Redis%EF%BC%8C%E4%B8%80%E7%AB%99%E5%BC%8F%E9%AB%98%E6%80%A7%E8%83%BD%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -284,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【算法】基于改进规则与强化学习的二维矩形Packing混合启发式算法</h1>
+          <h1 class="post-title" itemprop="name headline">【项目】nowcoder-Redis，一站式高性能存储方案</h1>
         
 
         <div class="post-meta">
@@ -296,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-06T20:04:47+08:00">
-                2022-10-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-03T19:23:56+08:00">
+                2023-11-03
               </time>
             
 
@@ -319,8 +311,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index">
-                    <span itemprop="name">论文</span>
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
                   </a>
                 </span>
 
@@ -350,7 +342,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.5k 字
+                  1.2k 字
                 </span>
               
 
@@ -366,7 +358,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -387,134 +379,207 @@
       
 
       
-        <p>本文提出了一种基于改进规则和强化学习的混合启发式算法来解决二维矩形Packing问题（2DSPP）。首先，改进了基于skyline算法的评分规则，考虑了具有一组宽度松弛因子的“两步”连续项。改进后的评分规则可以有效地减少空间浪费。其次，作为一种强化学习方法，建立了深度q网络（DQN），得到初始矩形项序列，同时作为放置规则的基本补充。它可以提高空间利用率，防止算法陷入局部最优状态。结合新的”两步”放置规则和DQN，提出了基于简单随机算法（SRA）的启发式算法，称为基于强化学习的简单随机算法（RSRA）。</p>
+        <p>nowcoder社区项目中利用Redis进行高性能存储。主要包含内容：Redis<strong>概念</strong>和<strong>配置</strong>以及<strong>使用方法</strong>（Redis入门，Spring整合Redis），项目中的Redis具体实操（点赞，我收到的赞，关注、取消关注，关注列表、粉丝列表，优化登录模块）等。</p>
 <span id="more"></span>
-<h3 id="模型">模型</h3>
-<h4 id="改进的评分规则">改进的评分规则：</h4>
-<ol type="1">
-<li><p><span
-class="math inline">\(A.w\)</span>表示放置一个矩形块后剩余空间的宽度。<span
-class="math inline">\(r_{min}.w\)</span>是剩余未放置矩形块中最小的矩形块的宽度。<span
-class="math inline">\(r_{min}.w ≤ A.w\)</span>表示<span
-class="math inline">\(r_{min}\)</span>可以放在这里，进一步减少空间浪费。如图
-2(a)-(b) 所示，放置 <span class="math inline">\(r_1\)</span>或<span
-class="math inline">\(r_2\)</span>将得到相同的分数。图 2(c)-(d)
-表明当<span class="math inline">\(r_{min}.w &gt;
-A.w\)</span>时，不可避免地会导致宽度浪费。在这种情况下，宽度较大的项目<span
-class="math inline">\(r_4\)</span>将优先于<span
-class="math inline">\(r_3\)</span>放置，以减少宽度浪费。</p>
-<figure>
-<img src="https://s2.loli.net/2022/10/06/iLGWQ31FAo8rRxY.png"
-alt="fig2.png" />
-<figcaption aria-hidden="true">fig2.png</figcaption>
-</figure></li>
-<li><p>由于空间浪费在某种程度上是不可避免的，所以放置的物品越宽，适应度值应该越高。为了最大限度地减少浪费，设计了一组松弛因子<span
-class="math inline">\((α,β,0&lt;α&lt;1,0&lt;β&lt;1)\)</span>在多个宽度区间内给出不同的适应度值。通过大量实验得到了最优值
-<span class="math inline">\(α = 0.2\)</span>和<span
-class="math inline">\(β = 0.5\)</span>。</p>
-<figure>
-<img src="https://s2.loli.net/2022/10/06/d197jPNWCsXx6bl.png"
-alt="fig4.png" />
-<figcaption aria-hidden="true">fig4.png</figcaption>
-</figure></li>
-<li><p>为了避免组合放置后高度值过高，我们放弃使用高度松弛因子（图3）。考虑<span
-class="math inline">\(r.w=s_{lowy}.w\)</span>的两种情况如图4(a)-(b)<span
-class="math inline">\((r.h=h_1vs.r.h=h_2)\)</span>，将前者的适应度值设置得更高，这样可以使空间更平坦，更有利于放置下一个矩形块。</p>
-<p>剩余规则如表1。</p></li>
-</ol>
-<figure>
-<img src="https://s2.loli.net/2022/10/06/V7kOaZqpXur8Gtg.png"
-alt="table1.png" />
-<figcaption aria-hidden="true">table1.png</figcaption>
-</figure>
-<h4 id="强化学习方法">强化学习方法：</h4>
-<p>强化学习是基于环境反馈机制的。通过与环境的不断互动，尝试和错误，强化学习实现了整体行动的利益最大化。</p>
-<p>Q-learning算法是强化学习中基于value的算法之一。Q(s,
-a)是表示在状态s的情况下执行动作a的奖励值。Q函数在状态为s的情况下会选择最大动作执行的值。作为Q-learning算法中的表函数，Q-table不适用于2DSPP。
-所以使用DQN代替Q-table进行
-Q-learning。DQN的原理是使用人工神经网络来代替动作值函数。神经网络比人工特征搜索要强大得多，因为它具有很强的表达能力，可以自动提取特征。本文使用的网络结构如图5所示。</p>
-<figure>
-<img src="https://s2.loli.net/2022/10/06/OjxfPM148dBSrm5.png"
-alt="fig5.png" />
-<figcaption aria-hidden="true">fig5.png</figcaption>
-</figure>
-<p>数据预处理方法如表2所示。对于输入数据，<span
-class="math inline">\(h_{large}\)</span>是根据<span
-class="math inline">\(r.h\)</span>和<span
-class="math inline">\(h_1\)</span>之间的高度差计算的。<span
-class="math inline">\(h_{small}\)</span>由 <span
-class="math inline">\(r.h\)</span>和<span
-class="math inline">\(h_2\)</span>之间的高度差计算得出。<span
-class="math inline">\(W\)</span>是根据<span
-class="math inline">\(r.w\)</span>的宽度和要放置的空间的宽度的差值来计算的。<span
-class="math inline">\(h_r\)</span>是<span
-class="math inline">\(r.h\)</span>与<span
-class="math inline">\(r_{h_{max}}.h\)</span>的比率，<span
-class="math inline">\(r_{h_{max}}.h\)</span>是剩余矩形块的最大高度。<span
-class="math inline">\(w_r\)</span>是 <span
-class="math inline">\(r.w\)</span>与 <span
-class="math inline">\(r_{w_{max}}\)</span>的比率，<span
-class="math inline">\(r_{w_{max}}\)</span>是剩余矩形块的最大宽度。</p>
-<figure>
-<img src="https://s2.loli.net/2022/10/06/sXrTlnzfy1jLJ3u.png"
-alt="table2.png" />
-<figcaption aria-hidden="true">table2.png</figcaption>
-</figure>
-<p>网络的输出值是矩形<span class="math inline">\(r\)</span>与空间<span
-class="math inline">\(s\)</span>的匹配度。<span
-class="math inline">\(h_{marge}\)</span>、<span
-class="math inline">\(h_{small}\)</span>和<span
-class="math inline">\(w\)</span>三个属性通过线性变换和激活函数得到一个中间值。类似地，其他两个属性<span
-class="math inline">\(h_r\)</span>和<span
-class="math inline">\(w_r\)</span>也可以通过相同的操作具有相应的中间值。然后，这两个中间值首先进行2×4和激活函数tanh的线性变换，然后进行4×1和激活函数sigmoid的线性变换得到最终结果。sigmoid的值范围为<span
-class="math inline">\((0,1)\)</span>。</p>
-<h4 id="基于dqn的启发式算法rsra">基于DQN的启发式算法（RSRA）</h4>
-<p>DQN被用于构造评估函数。</p>
-<p><strong>line 1:</strong>
-skyline算法将在从五个index生成初始序列后分别按照：周长、面积、宽度、长度（来自
-Scorer I）和 Scorer II来排序。
-五个序列中最小高度的解将被保存到下一阶段。</p>
-<p><strong>line2:</strong>
-局部搜索算法LS（）将按照给定的顺序依次交换两个矩形块，并实现skyline算法，以获得一个局部最优的解决方案。</p>
-<p><strong>line3-19:</strong> SRA最终将用于改进解。</p>
-<figure>
-<img src="https://s2.loli.net/2022/10/06/Pd4jTRHm7MUeucN.jpg"
-alt="算法1.jpg" />
-<figcaption aria-hidden="true">算法1.jpg</figcaption>
-</figure>
-<h3 id="实验">实验</h3>
-<h4 id="training过程">training过程：</h4>
-<ol type="1">
-<li><p>训练开始时，从TrainSet中随机选择n组数据，得到TrainSet*作为本次循环使用的数据集，然后将TrainSet*中的每组数据依次放置，形成一个由矩形块组成的序列R。</p></li>
-<li><p>从<span class="math inline">\((0,
-num)\)</span>中随机选择一个数m，其中num是R中的矩形块个数。使用Scorer
-II作为评分规则的skyline算法从R中选出m个矩形块放置。这里将最低的水平线标记为<span
-class="math inline">\(s_{lowy}\)</span>。设 <span
-class="math inline">\(k =num - m\)</span>。非常小的 k 值会导致 DQN
-的可信度低。为 k设置阈值 t，如果<span
-class="math inline">\(k&lt;t\)</span>将跳到下一个循环。否则按照表2的数据预处理方法对此时的k项进行处理，记为<span
-class="math inline">\(x_j\)</span>。</p></li>
-<li><p>尝试将每个 $x_j (j = 1 . . . k) <span
-class="math inline">\(放置在\)</span>s_{lowy}<span
-class="math inline">\(的位置执行skyline算法，得到最终的高度\)</span>h_j<span
-class="math inline">\(。记录最大高度\)</span>h_{max}<span
-class="math inline">\(和最小高度\)</span>h_{min}$。</p></li>
-<li><p>使用方程<span class="math inline">\(y_j=\frac{h_{max}−h_j}
-{h_{max}−h_{min}}\)</span>从每个<span
-class="math inline">\(x_j\)</span>计算<span
-class="math inline">\(y_j\)</span>。保存所有<span
-class="math inline">\(x_j\)</span>和<span
-class="math inline">\(y_j\)</span>。</p></li>
-<li><p>最后，使用保存的<span
-class="math inline">\(x_j\)</span>作为输入，<span
-class="math inline">\(y_j\)</span>作为目标值来训练 Scorer
-II。当达到设定的时间或达到最佳效果时training结束。详见算法2。</p></li>
-</ol>
-<figure>
-<img src="https://s2.loli.net/2022/10/06/MyVZEk42LPjK9fS.jpg"
-alt="算法2.jpg" />
-<figcaption aria-hidden="true">算法2.jpg</figcaption>
-</figure>
+<h2 id="redis入门">Redis入门</h2>
+<ul>
+<li>Redis是一款基于键值对的NoSQL数据库，它的值支持多种数据结构：字符串（strings）、哈希（hashes）、列表（lists）、集合（sets）、有序集合（sorted
+sets）等。</li>
+<li>Redis将所有数据都存放在内存中，所以它的读写性能十分惊人。同时，Redis还可以将内存中的数据以快照或日志的形式保存到硬盘上，以保证数据的安全性。</li>
+<li>Redis典型的应用场景包括：缓存、排行榜、计数器、社交网络、消息队列等。</li>
+</ul>
+<p>Spring整合Redis</p>
+<ul>
+<li>引入依赖
+<ul>
+<li>spring-boot-starter-data-redis</li>
+</ul></li>
+<li>配置Redis
+<ul>
+<li>配置数据库参数</li>
+<li>编写配置类，构造RedisTemplate</li>
+</ul></li>
+<li>访问Redis
+<ul>
+<li>redisTemplate.opsForValue()</li>
+<li>redisTemplate.opsForHash()</li>
+<li>redisTemplate.opsForList()</li>
+<li>redisTemplate.opsForSet()</li>
+<li>redisTemplate.opsForZSet()</li>
+</ul></li>
+</ul>
+<h2 id="spring整合redis">Spring整合Redis</h2>
+<ul>
+<li><p>引入依赖</p>
+<ul>
+<li><p>spring-boot-starter-data-redis</p>
+<p>在pom.xml文件中加入如下配置：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544d987c458853aef530cfb.png"><img
+src="https://pic.imgdb.cn/item/6544d987c458853aef530cfb.png" /></a></p></li>
+</ul></li>
+<li><p>配置Redis</p>
+<ul>
+<li><p>配置数据库参数类</p>
+<p>在application.properties文件中加入如下配置：<a
+target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544d987c458853aef530e21.png"><img
+src="https://pic.imgdb.cn/item/6544d987c458853aef530e21.png" /></a></p></li>
+<li><p>编写配置类，构造RedisTemplate</p>
+<p>在config包下新建RedisConfig类，在类中构造RedisTemplate:</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544d987c458853aef530dfc.png"><img
+src="https://pic.imgdb.cn/item/6544d987c458853aef530dfc.png" /></a></p></li>
+</ul></li>
+<li><p>访问Redis</p>
+<ul>
+<li>redisTemplate.opsForValue()</li>
+<li>redisTemplate.opsForHash()</li>
+<li>redisTemplate.opsForList()</li>
+<li>redisTemplate.opsForZSet()</li>
+</ul></li>
+</ul>
+<h2 id="点赞">点赞</h2>
+<ul>
+<li><p>点赞</p>
+<ul>
+<li><p>支持对帖子、评论点赞</p>
+<p>首先构造Redis中的key，在util包下新建RedisKeyUtil类，添加对某个实体的赞的查询功能：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544d9cdc458853aef53e6e3.png"><img
+src="https://pic.imgdb.cn/item/6544d9cdc458853aef53e6e3.png" /></a></p></li>
+<li><p>第1次点赞，第2次取消点赞</p></li>
+</ul></li>
+<li><p>首页点赞数量</p>
+<ul>
+<li>统计帖子的点赞数量</li>
+</ul>
+<p>Service包下新建LikeService类：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544d9cdc458853aef53e659.png"><img
+src="https://pic.imgdb.cn/item/6544d9cdc458853aef53e659.png" /></a></p></li>
+<li><p>详情页点赞数量</p>
+<ul>
+<li>统计点赞数量</li>
+<li>显示点赞状态</li>
+</ul>
+<p>Controller包下新建LikeController类：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544d9ccc458853aef53e530.png"><img
+src="https://pic.imgdb.cn/item/6544d9ccc458853aef53e530.png" /></a></p>
+<p>在discuss-detail.html文件中和index.html修改点赞相关的内容：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544d9ccc458853aef53e366.png"><img
+src="https://pic.imgdb.cn/item/6544d9ccc458853aef53e366.png" /></a></p>
+<p>并且引入JSON函数修改状态：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544d9ccc458853aef53e40c.png"><img
+src="https://pic.imgdb.cn/item/6544d9ccc458853aef53e40c.png" /></a></p></li>
+</ul>
+<h2 id="我收到的赞">我收到的赞</h2>
+<ul>
+<li><p>重构点赞功能</p>
+<ul>
+<li><p>以用户为key，记录点赞数量</p>
+<p>在RedisKeyUtil中增加用户key的拼接功能：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544da0bc458853aef54b245.png"><img
+src="https://pic.imgdb.cn/item/6544da0bc458853aef54b245.png" /></a></p></li>
+<li><p>increment(key)，decrement(key)</p>
+<p>重写LikeService里的like函数，增加传入参数entityUserId用来记录当前实体的用户ID，然后用来对该用户的赞进行增减：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544da0bc458853aef54b3c4.png"><img
+src="https://pic.imgdb.cn/item/6544da0bc458853aef54b3c4.png" /></a></p>
+<p>相应的discuss-detail.html传参处、discuss.js中的函数、LikeController中调用LikeService的地方也需要修改</p></li>
+</ul></li>
+<li><p>开发个人主页</p>
+<ul>
+<li><p>以用户为key，查询点赞数量</p>
+<p>在UserController中增加个人主页界面的Mapping，调用在LikeService中增加的查询点赞数量函数来显示点赞数：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544da0bc458853aef54b1fc.png"><img
+src="https://pic.imgdb.cn/item/6544da0bc458853aef54b1fc.png" /></a></p>
+<p>同时在对应的html文件中头像处的链接修改：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544da0ac458853aef54b12f.png"><img
+src="https://pic.imgdb.cn/item/6544da0ac458853aef54b12f.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="关注取消关注">关注、取消关注</h2>
+<ul>
+<li><p>需求</p>
+<ul>
+<li><p>开发关注、取消关注功能</p>
+<p>RedisKeyUtil工具中新增对关注者和粉丝的key的获取：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544dab9c458853aef56d924.png"><img
+src="https://pic.imgdb.cn/item/6544dab9c458853aef56d924.png" /></a></p>
+<p>新增FollowService用来提供关注和取关的逻辑（两者相似）：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544dab9c458853aef56d877.png"><img
+src="https://pic.imgdb.cn/item/6544dab9c458853aef56d877.png" /></a></p>
+<p>新增FollowController提供关注和取消关注的界面：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544dab9c458853aef56d753.png"><img
+src="https://pic.imgdb.cn/item/6544dab9c458853aef56d753.png" /></a></p></li>
+<li><p>统计用户的关注数、粉丝数</p>
+<p>在FollowService中新增查询数量、查询是否关注的函数：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544daf6c458853aef579536.png"><img
+src="https://pic.imgdb.cn/item/6544daf6c458853aef579536.png" /></a></p>
+<p>在UserController中修改profile的界面，展示关注数等：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544daf7c458853aef57967b.png"><img
+src="https://pic.imgdb.cn/item/6544daf7c458853aef57967b.png" /></a></p>
+<p>profile.html文件的修改:</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544daf6c458853aef579463.png"><img
+src="https://pic.imgdb.cn/item/6544daf6c458853aef579463.png" /></a></p>
+<p>profile.html文件中调用的JSON函数的修改：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544daf6c458853aef57936f.png"><img
+src="https://pic.imgdb.cn/item/6544daf6c458853aef57936f.png" /></a></p></li>
+</ul></li>
+<li><p>关键</p>
+<ul>
+<li>若A关注了B，则A是B的Follower（粉丝），B是A的Followee（目标）</li>
+<li>关注的目标可以是用户、帖子、题目等，在实现时将这些目标抽象为实体</li>
+</ul></li>
+</ul>
+<h2 id="关注列表粉丝列表">关注列表、粉丝列表</h2>
+<ul>
+<li><p>业务层</p>
+<ul>
+<li><p>查询某个用户关注的人，支持分页</p>
+<p>在FollowService中添加findFollowees方法：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544db23c458853aef582bb7.png"><img
+src="https://pic.imgdb.cn/item/6544db23c458853aef582bb7.png" /></a></p></li>
+<li><p>查询某个用户的粉丝，支持分页（和上面相似）</p></li>
+</ul></li>
+<li><p>表现层</p>
+<ul>
+<li><p>处理“查询关注的人”、“查询粉丝”请求</p>
+<p>在FollowController中编写getFollowees方法：（查询粉丝相似）</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544db23c458853aef58291a.png"><img
+src="https://pic.imgdb.cn/item/6544db23c458853aef58291a.png" /></a></p></li>
+<li><p>编写“查询关注的人”、“查询粉丝”模板</p>
+<p>查询关注的人模板followee.html文件主要修改部分：（查询粉丝的是follower.html，逻辑几乎相同）</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544db23c458853aef5829d5.png"><img
+src="https://pic.imgdb.cn/item/6544db23c458853aef5829d5.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="优化登录模块">优化登录模块</h2>
+<ul>
+<li><p>使用Redis存储验证码</p>
+<ul>
+<li><p>验证码需要频繁的访问和刷新，对性能要求较高</p></li>
+<li><p>验证码不需要永久保存，通常在很短的时间后就会失效</p></li>
+<li><p>分布式部署时，存在Session共享的问题</p>
+<p>RedisKeyUtil中新增kaptcha的key，然后重写LoginController:</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544db4cc458853aef58aec1.png"><img
+src="https://pic.imgdb.cn/item/6544db4cc458853aef58aec1.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544db4cc458853aef58b004.png"><img
+src="https://pic.imgdb.cn/item/6544db4cc458853aef58b004.png" /></a></p></li>
+</ul></li>
+<li><p>使用Redis存储登录凭证</p>
+<ul>
+<li><p>处理每次请求时，都要查询用户的登录凭证，访问的频率非常高</p>
+<p>利用注解@Deprecated不建议使用LoginTicketMapper，然后在RedisKeyUtil中新增ticket的key。在UerService中修改login方法：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544db4dc458853aef58b0ce.png"><img
+src="https://pic.imgdb.cn/item/6544db4dc458853aef58b0ce.png" /></a></p>
+<p>logout方法和findLoginTicket方法：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544db4dc458853aef58b1e1.png"><img
+src="https://pic.imgdb.cn/item/6544db4dc458853aef58b1e1.png" /></a></p></li>
+</ul></li>
+<li><p>使用Redis缓存用户信息</p>
+<ul>
+<li><p>处理每次请求时，都要根据凭证查询用户信息，访问的频率非常高</p>
+<p>UserService中增加三个方法缓存用户信息和清除缓存，寻找用户的方法属于高频访问，所以直接从redis中取user。在调用update方法时需要清除缓存：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6544db4cc458853aef58ac83.png"><img
+src="https://pic.imgdb.cn/item/6544db4cc458853aef58ac83.png" /></a></p></li>
+</ul></li>
+</ul>
 
       
     </div>
@@ -533,7 +598,7 @@ alt="算法2.jpg" />
       
         <div class="post-tags">
           
-            <a href="/tags/2D-Rectangle-Packing/" rel="tag"># 2D Rectangle Packing</a>
+            <a href="/tags/java/" rel="tag"># java</a>
           
         </div>
       
@@ -546,8 +611,8 @@ alt="算法2.jpg" />
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/09/17/%E3%80%90%E5%8D%9A%E5%AE%A2%E3%80%91Markdown%E5%B8%B8%E8%A7%81%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/" rel="next" title="【博客】Markdown常见公式语法">
-                <i class="fa fa-chevron-left"></i> 【博客】Markdown常见公式语法
+              <a href="/2023/10/17/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD/" rel="next" title="【项目】nowcoder-开发社区核心功能">
+                <i class="fa fa-chevron-left"></i> 【项目】nowcoder-开发社区核心功能
               </a>
             
           </div>
@@ -555,10 +620,6 @@ alt="算法2.jpg" />
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/10/09/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E9%92%88%E5%AF%B9RPAMP%E9%97%AE%E9%A2%98%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95/" rel="prev" title="【算法】针对RPAMP问题的自适应选择方法">
-                【算法】针对RPAMP问题的自适应选择方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -710,7 +771,7 @@ alt="算法2.jpg" />
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84%E8%AF%84%E5%88%86%E8%A7%84%E5%88%99"><span class="nav-number">1.1.</span> <span class="nav-text">改进的评分规则：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">强化学习方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Edqn%E7%9A%84%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95rsra"><span class="nav-number">1.3.</span> <span class="nav-text">基于DQN的启发式算法（RSRA）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.</span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#training%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">training过程：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">Redis入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring%E6%95%B4%E5%90%88redis"><span class="nav-number">2.</span> <span class="nav-text">Spring整合Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%B9%E8%B5%9E"><span class="nav-number">3.</span> <span class="nav-text">点赞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E6%94%B6%E5%88%B0%E7%9A%84%E8%B5%9E"><span class="nav-number">4.</span> <span class="nav-text">我收到的赞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%B3%A8%E5%8F%96%E6%B6%88%E5%85%B3%E6%B3%A8"><span class="nav-number">5.</span> <span class="nav-text">关注、取消关注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%B3%A8%E5%88%97%E8%A1%A8%E7%B2%89%E4%B8%9D%E5%88%97%E8%A1%A8"><span class="nav-number">6.</span> <span class="nav-text">关注列表、粉丝列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97"><span class="nav-number">7.</span> <span class="nav-text">优化登录模块</span></a></li></ol></div>
             
 
           </div>
