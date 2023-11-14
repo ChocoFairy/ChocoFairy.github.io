@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -75,15 +75,17 @@
 
 
 
-<meta name="description" content="wlz的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="巧克力梦工厂">
-<meta property="og:url" content="https://chocofairy.github.io/page/2/index.html">
+<meta name="description" content="nowcoder社区项目中利用Kafka构建TB级异步消息系统。主要包含内容：Kafka的概念（阻塞队列，Kafka入门，Spring整合Kafka），项目中如何利用Kafka进行消息通知（发送系统通知和显示系统通知）等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【项目】nowcoder-Kafka,构建TB级异步消息系统">
+<meta property="og:url" content="https://chocofairy.github.io/2023/11/14/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-Kafka-%E6%9E%84%E5%BB%BATB%E7%BA%A7%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="巧克力梦工厂">
-<meta property="og:description" content="wlz的个人博客">
+<meta property="og:description" content="nowcoder社区项目中利用Kafka构建TB级异步消息系统。主要包含内容：Kafka的概念（阻塞队列，Kafka入门，Spring整合Kafka），项目中如何利用Kafka进行消息通知（发送系统通知和显示系统通知）等。">
 <meta property="og:locale">
+<meta property="article:published_time" content="2023-11-14T12:28:35.000Z">
+<meta property="article:modified_time" content="2023-11-14T12:34:46.893Z">
 <meta property="article:author" content="wlz">
-<meta property="article:tag" content="blog">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
 
 
@@ -114,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="https://ChocoFairy.github.io/page/2/"/>
+  <link rel="canonical" href="https://ChocoFairy.github.io/2023/11/14/【项目】nowcoder-Kafka-构建TB级异步消息系统/"/>
 
 
 
 
 
-  <title>巧克力梦工厂</title>
+  <title>【项目】nowcoder-Kafka,构建TB级异步消息系统 | 巧克力梦工厂</title>
   
 
 
@@ -139,8 +141,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,9 +244,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -258,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2023/09/11/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/">
+    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2023/11/14/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-Kafka-%E6%9E%84%E5%BB%BATB%E7%BA%A7%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -275,9 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/09/11/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/" itemprop="url">【项目】nowcoder-开发社区登录模块</a></h1>
+          <h1 class="post-title" itemprop="name headline">【项目】nowcoder-Kafka,构建TB级异步消息系统</h1>
         
 
         <div class="post-meta">
@@ -289,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-09-11T10:36:24+08:00">
-                2023-09-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-14T20:28:35+08:00">
+                2023-11-14
               </time>
             
 
@@ -343,7 +342,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.5k 字
+                  579 字
                 </span>
               
 
@@ -359,7 +358,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  12 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -380,17 +379,138 @@
       
 
       
-        
-          <p>nowcoder社区项目中的登录模块功能开发。主要包含内容：利用<strong>Spring
-Email</strong>发送邮件（发送邮件、开发注册功能），<strong>Cookie、Session</strong>的使用（会话管理、生成验证码、登录和退出），<strong>Kaptcha</strong>生成验证码工具的使用（生成验证码），<strong>拦截器</strong>的使用（显示登录信息、检查登录状态），<strong>TheadLocal</strong>的使用（显示登录信息），<strong>MultipartFile</strong>上传文件（账号设置）。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/09/11/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>nowcoder社区项目中利用Kafka构建TB级异步消息系统。主要包含内容：<strong>Kafka</strong>的概念（阻塞队列，Kafka入门，Spring整合Kafka），项目中如何利用Kafka进行<strong>消息通知</strong>（发送系统通知和显示系统通知）等。</p>
+<span id="more"></span>
+<h2 id="阻塞队列">阻塞队列</h2>
+<ul>
+<li>BlockingQueue阻塞队列
+<ul>
+<li>解决线程通信的问题</li>
+<li>阻塞方法：put、take</li>
+</ul></li>
+<li>生产者消费者模式
+<ul>
+<li>生产者：产生数据的线程</li>
+<li>消费者：使用数据的线程</li>
+</ul></li>
+<li>实现类
+<ul>
+<li>ArrayBlockingQueue</li>
+<li>LinkedBlockingQueue</li>
+<li>PriorityBlockingQueue、SynchronousQueue、DelayQueue等。</li>
+</ul></li>
+</ul>
+<h2 id="kafka入门">Kafka入门</h2>
+<ul>
+<li><p>Kafka入门</p>
+<ul>
+<li>Kafka是一个分布式流媒体平台</li>
+<li>应用：消息系统、日志收集、用户行为追踪、流式处理</li>
+</ul></li>
+<li><p>Kafka特点</p>
+<ul>
+<li>高吞吐量、消息持久化、高可靠性、高扩展性</li>
+</ul></li>
+<li><p>Kafka术语</p>
+<ul>
+<li><p>Broker、Zookeeper（一个服务器称之为一个Broker。Zookeeper用来管理集群）</p></li>
+<li><p>Topic、Partition、Offset（生产者发布消息的位置叫Topic，用来存放消息。Partition是对Topic的分区，每个分区都是按顺序追加写。Offset是消息在分区中的索引。）</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553689bc458853aef568029.jpg"><img
+src="https://pic.imgdb.cn/item/6553689bc458853aef568029.jpg" /></a></p></li>
+<li><p>Leader Replica（主副本，可以做响应，提供副本）、Follower
+Replica（从副本，不做相应，主副本挂了之后选一个从副本重新为主副本。）</p></li>
+</ul></li>
+</ul>
+<h2 id="spring整合kafka">Spring整合Kafka</h2>
+<ul>
+<li><p>引入依赖</p>
+<ul>
+<li>spring-kafka</li>
+</ul></li>
+<li><p>配置kafka</p>
+<ul>
+<li><p>配置server、consumer</p>
+<p>在application.properties下配置：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553689bc458853aef5680ad.png"><img
+src="https://pic.imgdb.cn/item/6553689bc458853aef5680ad.png" /></a></p></li>
+</ul></li>
+<li><p>访问kafka</p>
+<ul>
+<li><p>生产者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafkaTemplate.send(topic,data);</span><br></pre></td></tr></table></figure></li>
+<li><p>消费者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@KafkaListener(topics=&#123;&quot;test&quot;&#125;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(ConsumerRecord record)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h2 id="发送系统通知">发送系统通知</h2>
+<ul>
+<li><p>触发事件</p>
+<ul>
+<li><p>评论后，发布通知</p>
+<p>重写CommenrController类：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553689cc458853aef568473.png"><img
+src="https://pic.imgdb.cn/item/6553689cc458853aef568473.png" /></a></p></li>
+<li><p>点赞后，发布通知</p>
+<p>在likeController类中重写：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553689cc458853aef5681c4.png"><img
+src="https://pic.imgdb.cn/item/6553689cc458853aef5681c4.png" /></a></p></li>
+<li><p>关注后，发布通知</p>
+<p>重写FollowController类：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553689cc458853aef56829b.png"><img
+src="https://pic.imgdb.cn/item/6553689cc458853aef56829b.png" /></a></p></li>
+</ul></li>
+<li><p>处理事件</p>
+<ul>
+<li><p>封装事件对象</p>
+<p>在entity包下新建Event类：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/655368eac458853aef578416.png"><img
+src="https://pic.imgdb.cn/item/655368eac458853aef578416.png" /></a></p></li>
+<li><p>开发事件的生产者</p>
+<p>新建event包，在event包下新建EventProducer作为生产者类激活事件：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/655368eac458853aef5784ed.png"><img
+src="https://pic.imgdb.cn/item/655368eac458853aef5784ed.png" /></a></p></li>
+<li><p>开发事件的消费者</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/655368ebc458853aef57885a.png"><img
+src="https://pic.imgdb.cn/item/655368ebc458853aef57885a.png" /></a></p></li>
+</ul></li>
+</ul>
+<h2 id="显示系统通知">显示系统通知</h2>
+<ul>
+<li><p>通知列表</p>
+<ul>
+<li><p>显示评论、点赞、关注三种类型的通知</p>
+<p>在MessageController类中新增getNoticeList方法，查询评论类通知：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/655368ecc458853aef578ac3.png"><img
+src="https://pic.imgdb.cn/item/655368ecc458853aef578ac3.png" /></a></p>
+<p>在MessageController类中的getNoticeList方法中查询点赞通知：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/655368ebc458853aef578993.png"><img
+src="https://pic.imgdb.cn/item/655368ebc458853aef578993.png" /></a></p>
+<p>在MessageController类中的getNoticeList方法中查询关注通知：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553692bc458853aef5860ac.png"><img
+src="https://pic.imgdb.cn/item/6553692bc458853aef5860ac.png" /></a></p></li>
+</ul></li>
+<li><p>通知详情</p>
+<ul>
+<li><p>分页显示某一类主题所包含的通知</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553692bc458853aef585f14.png"><img
+src="https://pic.imgdb.cn/item/6553692bc458853aef585f14.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553692bc458853aef585fc0.png"><img
+src="https://pic.imgdb.cn/item/6553692bc458853aef585fc0.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6553692cc458853aef586235.png"><img
+src="https://pic.imgdb.cn/item/6553692cc458853aef586235.png" /></a></p></li>
+</ul></li>
+<li><p>未读消息</p>
+<ul>
+<li><p>在页面头部显示所有未读消息数量</p>
+<p>在MessageController类中的getNoticeList方法中查询所有未读消息数量：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/65536952c458853aef58de56.png"><img
+src="https://pic.imgdb.cn/item/65536952c458853aef58de56.png" /></a></p>
+<p>notice.html中做以下修改：</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/65536952c458853aef58df06.png"><img
+src="https://pic.imgdb.cn/item/65536952c458853aef58df06.png" /></a></p></li>
+</ul></li>
+</ul>
+
       
     </div>
     
@@ -406,393 +526,36 @@ Email</strong>发送邮件（发送邮件、开发注册功能），<strong>Cook
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2022/10/16/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/person.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="巧克力梦工厂">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/10/16/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">【算法】布局学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-16T15:17:09+08:00">
-                2022-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/java/" rel="tag"># java</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  4.6k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  16 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>毕设相关的布局布线总结内容。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/10/16/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E7%BB%B4%E7%9F%A9%E5%BD%A2Packing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/11/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91nowcoder-Redis%EF%BC%8C%E4%B8%80%E7%AB%99%E5%BC%8F%E9%AB%98%E6%80%A7%E8%83%BD%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88/" rel="next" title="【项目】nowcoder-Redis，一站式高性能存储方案">
+                <i class="fa fa-chevron-left"></i> 【项目】nowcoder-Redis，一站式高性能存储方案
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-	
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ChocoFairy.github.io/2022/10/15/Bortfeldt%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3RPP%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E7%94%9F%E6%88%90%E5%80%99%E9%80%89%E6%A1%86%E5%AE%BD%E7%9A%84WV3%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/person.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="巧克力梦工厂">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/10/15/Bortfeldt%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3RPP%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E7%94%9F%E6%88%90%E5%80%99%E9%80%89%E6%A1%86%E5%AE%BD%E7%9A%84WV3%E6%96%B9%E6%B3%95/" itemprop="url">【算法】Bortfeldt关于解决RPP问题的论文中提到的生成候选框宽的WV3方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-15T21:28:08+08:00">
-                2022-10-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index">
-                    <span itemprop="name">论文</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.1k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="问题">问题</h2>
-<p>首先，确定合理宽度值的区间<span
-class="math inline">\([w_{min},w_{max}]\)</span> 。其中<span
-class="math inline">\(w_{min}\)</span>设置为所有矩形中较小尺寸的最大值。<span
-class="math inline">\(w_{max}\)</span>设置为<span
-class="math inline">\([area(R)^{1/2}*α]\)</span>，其中area(R)代表所有矩形的总面积，α是不大于<span
-class="math inline">\(a\)</span>的最大整数。我们可以假设<span
-class="math inline">\(w_C≤l_C\)</span>，因为此处不存在方向约束。对于100%的最佳密度，考虑不大于
-<span
-class="math inline">\([area(R)^{1/2}]\)</span>的宽度值就足够了。由于最优解的密度通常较低，因此通过参数<span
-class="math inline">\(α&gt;1\)</span>为<span
-class="math inline">\(w_{max}\)</span>选择相对较大的值。对于每个宽度<span
-class="math inline">\(w_C\in[w_{min},w_{max}]\)</span>，通过算法SPA求解相应的2D-SPP实例<span
-class="math inline">\((w_C,R)\)</span>，并将最佳解作为初始RPAMP解。</p>
-<p>宽度值<span
-class="math inline">\(w_C\)</span>的宽度组合被定义为一组矩形尺寸（<span
-class="math inline">\(l_i\)</span>或<span
-class="math inline">\(w_i\)</span>的和，<span
-class="math inline">\(i\in\{1,...,n\}\)</span>）。宽度<span
-class="math inline">\(w_C\)</span>的频率<span
-class="math inline">\(nc(w_C)wC\)</span>由值<span
-class="math inline">\(w_C\)</span>的所有宽度组合的数量给出，即其中矩形尺寸之和等于<span
-class="math inline">\(w_C\)</span>的所有宽度组合的数量。每个组合的维数由参数<span
-class="math inline">\(maxitems\)</span>给出。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/10/15/Bortfeldt%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3RPP%E9%97%AE%E9%A2%98%E7%9A%84%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E7%94%9F%E6%88%90%E5%80%99%E9%80%89%E6%A1%86%E5%AE%BD%E7%9A%84WV3%E6%96%B9%E6%B3%95/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-	
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -802,13 +565,11 @@ class="math inline">\(maxitems\)</span>给出。</p>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
-  </nav>
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -816,6 +577,10 @@ class="math inline">\(maxitems\)</span>给出。</p>
 
 
           
+
+  
+
+
 
         </div>
         
@@ -836,8 +601,17 @@ class="math inline">\(maxitems\)</span>给出。</p>
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -917,6 +691,22 @@ class="math inline">\(maxitems\)</span>给出。</p>
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">阻塞队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">Kafka入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring%E6%95%B4%E5%90%88kafka"><span class="nav-number">3.</span> <span class="nav-text">Spring整合Kafka</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%9F%A5"><span class="nav-number">4.</span> <span class="nav-text">发送系统通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%9F%A5"><span class="nav-number">5.</span> <span class="nav-text">显示系统通知</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1070,6 +860,10 @@ class="math inline">\(maxitems\)</span>给出。</p>
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
